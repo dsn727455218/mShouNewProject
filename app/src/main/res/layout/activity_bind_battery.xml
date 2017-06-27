@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/title_bar"/>
+
+    <TextView
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="为了准确计算电池余量\n请选择正确的电池电压"
+        android:textColor="@color/color_text_normal"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/shape_bind_battery_shdow"
+        >
+
+        <com.wp.baselib.widget.WheelView
+            android:id="@+id/wheelview_single"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/commit_register"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_again_password"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/select_login"
+        android:lines="1"
+        android:text="提交"
+        android:textColor="@color/color_bg"/>
+</LinearLayout>

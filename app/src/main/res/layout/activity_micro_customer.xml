@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_service_bg"
+    android:orientation="vertical"
+    >
+
+    <include
+        layout="@layout/title_bar"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="2.7"
+        android:background="@drawable/shape_corner_footer"
+        >
+
+        <ImageView
+            android:id="@+id/qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerInParent="true"
+            android:textColor="#94a4b2"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/customer_phone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="1"
+        android:background="@drawable/dianhuabg"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.3"
+        android:textColor="#595e66"
+        android:textSize="15sp"/>
+
+</LinearLayout>

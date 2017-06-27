@@ -1,0 +1,70 @@
+<resources>
+    Default screen margins, per the Android Design guidelines.
+    Default screen margins, per the Android Design guidelines.
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+    <!--主页-->
+    <dimen name="HOME_WH">65dp</dimen>
+    <dimen name="CENTER_Wh">130dp</dimen>
+    <dimen name="CENTER_CIIRCLE">260dp</dimen>
+    <dimen name="CENTER_CIIRCLE_H">242dp</dimen>
+    <dimen name="CENTER_CIIRCLE_TOP">25dp</dimen>
+    <dimen name="LOCK_MARGIN_TOP">10dp</dimen>
+    <dimen name="Car_Battery_Margin">40dp</dimen>
+    <dimen name="LOCALTION_TOP">40dp</dimen>
+    <dimen name="SEARCH_CAR">15dp</dimen>
+    <dimen name="Text_Size">15sp</dimen>
+    <dimen name="CENTER_CIIRCLE_MARGIN">25dp</dimen>
+    <dimen name="CENTER_CIIRCLE_Left_Right">25dp</dimen>
+    <dimen name="Text_IMG_TOP">2dp</dimen>
+
+    <dimen name="CARPEI_SHOPW">100dp</dimen>
+    <dimen name="CARPEI_SHOPH">55dp</dimen>
+    <dimen name="CARPEI_SHOP_MARGIN">25dp</dimen>
+
+    <dimen name="Banner_H">80dp</dimen>
+
+    <dimen name="WEATHER_TEXT_SIZE">45sp</dimen>
+
+
+    <!--我的-->
+    <dimen name="MYHEAD_PADDING_TOP">26dp</dimen>
+    <dimen name="MYHEAD_PADDING_BOTTOM">15dp</dimen>
+    <dimen name="CircularImage_SHADOW">1dp</dimen>
+    <dimen name="CircularImage_WH">80dp</dimen>
+    <dimen name="text_padding">8dp</dimen>
+    <dimen name="drawable_padding">10dp</dimen>
+    <dimen name="my_text_size">18sp</dimen>
+    <dimen name="my_text_padding_right">20dp</dimen>
+    <dimen name="my_text_parent_padding_top">15dp</dimen>
+    <dimen name="my_nicheng_text_size">18sp</dimen>
+
+
+    <!--服务-->
+    <dimen name="service_banner_height">177dp</dimen>
+    <dimen name="service_right_left_padding">10dp</dimen>
+    <dimen name="service_header_icon_hw">65dp</dimen>
+    <dimen name="service_recyclerview_item_height">86dp</dimen>
+
+    <dimen name="dimens_my_car_delete_w">30dp</dimen>
+    <dimen name="dimens_my_car_delelte_h">35dp</dimen>
+    <dimen name="dimens_my_car_delelet_margintop">10dp</dimen>
+    <dimen name="dimens_my_car_logo_wh">75dp</dimen>
+    <dimen name="dimens_my_car_info_left_padding">15dp</dimen>
+    <dimen name="dimens_my_car_bottom_top_bg_h">10dp</dimen>
+    <dimen name="dimens_msg_padding_left_right">20dp</dimen>
+    <dimen name="dimens_msg_padding_bottom">10dp</dimen>
+    <dimen name="dimens_new_car_img_w_h">45dp</dimen>
+    <dimen name="home_bottom_top">5dp</dimen>
+    <dimen name="shop_adv_height">101dp</dimen>
+    <dimen name="shop_detail_img_height">336dp</dimen>
+    <dimen name="shop_supermarer_adv_height">136dp</dimen>
+    <dimen name="function_img_height">120dp</dimen>
+    <dimen name="home_car_marginRL">55dp</dimen>
+    <dimen name="home_car_margintop">100dp</dimen>
+</resources>

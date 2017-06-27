@@ -1,0 +1,106 @@
+[
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_hint_foreground_material_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_hint_foreground_material_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_spinner.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_spinner.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_hint_foreground_material_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_background_cache_hint_selector_material_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\switch_thumb_material_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\switch_thumb_material_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_btn_colored_text_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_btn_checkable.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_btn_colored_borderless_text_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_seek_thumb.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_material_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_primary_text_material_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_switch_thumb.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_switch_thumb.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_default.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_default.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_search_url_text.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_search_url_text.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_material_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_primary_text_material_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_disable_only_material_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_primary_text_disable_only_material_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_primary_text_disable_only_material_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_primary_text_disable_only_material_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\design_error.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\color\\design_error.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_secondary_text_material_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_secondary_text_material_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_background_cache_hint_selector_material_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_background_cache_hint_selector_material_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_secondary_text_material_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\design_tint_password_toggle.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\color\\design_tint_password_toggle.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_edittext.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_edittext.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\switch_thumb_material_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\switch_thumb_material_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\abc_tint_switch_track.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\color\\abc_tint_switch_track.xml"
+    }
+]

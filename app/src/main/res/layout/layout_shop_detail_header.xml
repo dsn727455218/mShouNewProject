@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.wp.baselib.widget.banner.Banner
+        android:id="@+id/shop_detail_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/shop_detail_img_height"
+        android:scaleType="centerCrop"
+        android:src="@drawable/square_seize"/>
+
+    <ImageView
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/xiangqingback"
+        android:visibility="gone"/>
+
+    <ImageView
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/xiangqinggengduo"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/ll_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_banner"
+        android:orientation="vertical"
+        android:paddingTop="10dp">
+
+
+        <TextView
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/shape_tags"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:text="首牛"
+            android:textColor="@color/white"
+            android:textSize="10dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/shop_intro_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_detail_banner"
+            android:layout_toLeftOf="@+id/shop_share"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="3"
+            android:textColor="#2A2D33"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/shop_share"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ll_tags"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/xiangqingfenxiang"
+        android:text="分享"
+        android:textColor="#9ba4b2"
+        android:textSize="10sp"/>
+
+    <RelativeLayout
+        android:id="@+id/shop_detail_prices"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_tags">
+
+
+        <TextView
+            android:id="@+id/shop_detail_prices_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="#e77817"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/shop_old_prices"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/shop_detail_prices_tv"
+            android:textColor="#9ba4b2"
+            android:textSize="10sp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/kuaidi_money"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_prices"
+        android:textColor="#595e66"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/shop_detail_address"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/shop_detail_prices"
+        android:textColor="#595e66"
+        android:textSize="10sp"/>
+
+    <TextView
+        android:id="@+id/shop_detail_tv_tag"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_address"
+        android:background="#dadee5"
+        android:text="产品详情"
+        android:textColor="#9ba4b2"/>
+
+    <TextView
+        android:id="@+id/shop_detail_shuoming"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_tv_tag"
+        android:background="@android:color/white"
+        android:gravity="center_horizontal"
+        android:lines="4"
+        android:text="产品详情图文介绍"/>
+
+    <LinearLayout
+        android:id="@+id/shop_detail_tuwen_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_shuoming"
+        android:orientation="vertical">
+    </LinearLayout>
+
+    <TextView
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_tuwen_img"
+        android:background="#dadee5"
+        android:text="产品推荐"
+        android:textColor="#9ba4b2"/>
+</RelativeLayout>

@@ -1,0 +1,24 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+
+          package="com.wp.baselib">
+
+    <application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity android:name=".utils.imagepicker.ui.ImageCropActivity"/>
+        <activity
+            android:name=".utils.imagepicker.ui.ImageGridActivity"
+            android:theme="@style/ImagePickerTheme"/>
+        <activity android:name=".utils.imagepicker.ui.ImagePreviewActivity"/>
+        <activity
+            android:name=".common.WebActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+    </application>
+    <!--wifi状态权限-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+
+</manifest>

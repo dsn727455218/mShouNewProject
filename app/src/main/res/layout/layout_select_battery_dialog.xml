@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_pwd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="50dp"
+    android:background="#0f1012"
+    android:orientation="vertical"
+    android:paddingBottom="30dp"
+    >
+
+    <TextView
+        android:id="@+id/cancel"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="取消"
+        android:textColor="@color/select_dialog_btn_color"/>
+
+    <TextView
+        android:id="@+id/sure"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:enabled="true"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:text="确定"
+        android:textColor="@color/select_dialog_btn_color"/>
+    <TextView
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:id="@+id/title"
+        android:layout_centerHorizontal="true"
+        android:text="电池型号(v)"
+        android:textColor="@color/select_dialog_btn_color"/>
+    <com.wp.baselib.widget.WheelView
+        android:id="@+id/wheel_select_battery"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cancel"
+        android:layout_centerHorizontal="true"/>
+
+
+</RelativeLayout>

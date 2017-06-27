@@ -1,0 +1,9 @@
+<com.wp.baselib.widget.TitleBarView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tbar="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/headbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/nav_bg"
+    android:fitsSystemWindows="true"
+    tbar:titleColor="#ffffff"
+    tbar:titleSize="18"/>

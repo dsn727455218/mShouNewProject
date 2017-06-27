@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_pwd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="50dp"
+    android:background="@drawable/shape_common_dialog"
+    android:orientation="vertical"
+    android:paddingBottom="10dp"
+    >
+
+    <TextView
+        android:id="@+id/common_title"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_common_dialog_title"
+        android:text="温馨提示!"
+        android:textColor="@color/white"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/common_msg"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:lineSpacingMultiplier="1.1"
+        android:lines="3"
+        android:text="确定删除我的车辆\n所有资料吗？"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/common_msg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:id="@+id/common_cancel"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/modify_see"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:enabled="true"
+            android:paddingLeft="5dp"
+            android:paddingRight="15dp"
+            android:text="取消"
+            android:textColor="@color/select_dialog_btn_color"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/common_sure"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:enabled="true"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp"
+            android:text="确定"
+            android:textColor="@color/select_dialog_btn_color"
+            android:textSize="18sp"
+            />
+    </LinearLayout>
+</RelativeLayout>

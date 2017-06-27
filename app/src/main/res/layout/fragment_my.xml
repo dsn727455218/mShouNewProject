@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/title_bar"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#1a1d23"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/nav_bg"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/MYHEAD_PADDING_TOP">
+
+
+        <com.wp.baselib.widget.CustomShapeImageView
+            android:id="@+id/my_header_icon"
+            android:layout_width="@dimen/CircularImage_WH"
+            android:layout_height="@dimen/CircularImage_WH"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            android:src="@drawable/square_seize"
+            app:borderColor="#535862"
+            app:imageBorderWidth="1dp"
+            app:onlyDrawBorder="false"
+            app:roundRadius="5dp"
+            app:shape="circle"/>
+
+        <TextView
+            android:id="@+id/my_nichegn_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="@dimen/my_text_parent_padding_top"
+            android:text="未登录"
+            android:textColor="@color/color_hint"
+            android:textSize="@dimen/my_nicheng_text_size"
+            />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_bg_grey"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/my_user_info_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/personal_data"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="个人资料"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+            <include layout="@layout/line_white"/>
+
+            <TextView
+                android:id="@+id/my_hou_wallet_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/wallet"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="首牛钱包"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+            <include layout="@layout/line_white"/>
+
+            <TextView
+                android:id="@+id/function_renew_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/credit_card"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="功能续费"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+            <include layout="@layout/line_white"/>
+
+            <TextView
+                android:id="@+id/sys_setting_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/set_up"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="系统设置"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+
+            <include layout="@layout/line_white"/>
+
+            <TextView
+                android:id="@+id/user_help"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/use_manual"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="使用手册"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+            <include layout="@layout/line_white"/>
+
+            <TextView
+                android:id="@+id/micro_custormer"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/my_customer_service"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="微客服"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+            <include layout="@layout/line_white"/>
+
+            <TextView
+                android:id="@+id/logout"
+                style="@style/BaseTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/cancellation"
+                android:drawablePadding="@dimen/drawable_padding"
+                android:drawableRight="@drawable/right_arrow"
+                android:gravity="left|center_vertical"
+                android:paddingBottom="@dimen/text_padding"
+                android:paddingRight="@dimen/my_text_padding_right"
+                android:paddingTop="@dimen/text_padding"
+                android:text="退出"
+                android:textColor="@color/color_text_my"
+                android:textSize="@dimen/my_text_size"/>
+
+            <include layout="@layout/line_white"/>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,282 @@
+[
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\button_deepgray_selector.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\button_deepgray_selector.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\progressloading.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\xrecyclerview\\build\\intermediates\\bundles\\default\\res\\drawable\\progressloading.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\design_password_eye.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\drawable\\design_password_eye.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_internal_bg.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_cab_background_internal_bg.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_dialog_material_background.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_colored_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_btn_colored_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\pointblack.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\pointblack.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\gray_radius.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\gray_radius.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_back_press.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_back_press.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_thumb_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_seekbar_thumb_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_item_background_holo_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_item_checked.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_item_checked.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_switch_thumb_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_switch_thumb_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_btn_back.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_btn_back.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\notification_icon_background.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\notification_tile_bg.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\notification_tile_bg.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\progressbar_circle.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\progressbar_circle.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\shape_msg_circle.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\shape_msg_circle.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_borderless_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_track_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_seekbar_track_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_clear_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\shape_gray.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\shape_gray.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\black_background.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\black_background.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\progress_bar_states.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\progress_bar_states.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ratingbar_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ratingbar_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_go_search_api_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_radio_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ratingbar_indicator_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ratingbar_indicator_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\shape_corner_footer.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\xrecyclerview\\build\\intermediates\\bundles\\default\\res\\drawable\\shape_corner_footer.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_spinner_textfield_background_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_search_api_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_search_api_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_top_ok.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_top_ok.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_grid_camera_bg.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_grid_camera_bg.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_ab_back_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_ab_back_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_nav_back.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_nav_back.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_holo_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_list_selector_holo_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\shape_blue.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\shape_blue.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_text_cursor_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_text_cursor_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\shape_white.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\shape_white.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_tab_indicator_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_tab_indicator_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_check_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\white_radius.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\white_radius.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_item_background_holo_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_item_background_holo_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\scan_history.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\src\\main\\res\\drawable\\scan_history.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_vector_test.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_vector_test.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ratingbar_small_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg_low.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\notification_bg_low.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\design_fab_background.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\drawable\\design_fab_background.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_dark.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_top_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_cab_background_top_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\design_snackbar_background.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\drawable\\design_snackbar_background.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\progress_round.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\progress_round.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\seekbar_style.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\src\\main\\res\\drawable\\seekbar_style.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\seekbar_bg.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\src\\main\\res\\drawable\\seekbar_bg.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\notification_bg.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\notification_bg.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\design_bottom_navigation_item_background.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\drawable\\design_bottom_navigation_item_background.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\selector_photo_btn.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\selector_photo_btn.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\scan_photo.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\src\\main\\res\\drawable\\scan_photo.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_voice_search_api_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_voice_search_api_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\scan_flashlight.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\src\\main\\res\\drawable\\scan_flashlight.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_default_mtrl_shape.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_btn_default_mtrl_shape.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\navigation_empty_icon.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\a8168fb4ae1629a51c7cda36689a5b1e1da063b8\\output\\res\\drawable\\navigation_empty_icon.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_seekbar_tick_mark_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_list_selector_holo_light.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_list_selector_holo_light.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\abc_textfield_search_material.xml",
+        "source": "C:\\Users\\home\\.android\\build-cache\\0799dd00d1efb3262474103a237e7b468c205518\\output\\res\\drawable\\abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\zxing\\build\\intermediates\\res\\merged\\release\\drawable\\vpi__tab_indicator.xml",
+        "source": "F:\\ShouNews\\shou6\\androidT\\ShouNew\\baselib\\build\\intermediates\\bundles\\default\\res\\drawable\\vpi__tab_indicator.xml"
+    }
+]

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_pwd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/nav_bg"
+    android:orientation="vertical"
+    >
+
+    <GridView
+        android:id="@+id/share_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:horizontalSpacing="5dp"
+        android:numColumns="3"
+        android:scrollbars="none"
+        android:verticalSpacing="10dp"/>
+
+    <Button
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/select_login"
+        android:enabled="true"
+        android:paddingLeft="20dp"
+        android:id="@+id/share_cancel"
+        android:paddingRight="20dp"
+        android:text="取消"
+        android:textColor="@color/select_dialog_btn_color"
+        />
+</LinearLayout>

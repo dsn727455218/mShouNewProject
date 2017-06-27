@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/user_info_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_grey"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <com.wp.baselib.widget.CustomShapeImageView
+            android:id="@+id/my_info_header_iv"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            android:src="@drawable/square_seize"
+            app:borderColor="#535862"
+            app:imageBorderWidth="1dp"
+            app:onlyDrawBorder="false"
+            app:roundRadius="5dp"
+            app:shape="circle"/>
+
+        <TextView
+            android:id="@+id/nicheng_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/my_info_header_iv"
+            android:gravity="bottom"
+            android:paddingTop="15dp"
+            android:text="昵称："
+            android:textColor="@color/color_press"/>
+
+        <com.wp.baselib.widget.ContainsEmojiEditText
+            android:id="@+id/nicheng_ed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nicheng_tv"
+            android:layout_toRightOf="@+id/my_info_header_iv"
+            android:background="@null"
+            android:gravity="left|center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:maxLength="10"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:singleLine="true"
+            android:textColor="@color/bgcolor"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dividingline_bai"/>
+
+    <TextView
+        android:id="@+id/change_phone_tv"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="left|center"
+        android:text="更换手机号码"
+        android:textColor="@color/bgcolor"
+        android:textSize="@dimen/my_text_size"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dividingline_bai"/>
+
+    <TextView
+        android:id="@+id/modify_pwd_tv"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="left|center"
+        android:text="修改密码"
+        android:textColor="@color/bgcolor"
+        android:textSize="@dimen/my_text_size"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dividingline_bai"/>
+
+    <TextView
+        android:id="@+id/address_manage_tv"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        android:drawableRight="@drawable/right_arrow"
+        android:gravity="left|center"
+        android:text="地址管理"
+        android:textColor="@color/bgcolor"
+        android:textSize="@dimen/my_text_size"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dividingline_bai"/>
+</LinearLayout>

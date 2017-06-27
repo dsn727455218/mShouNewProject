@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_grey"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/title_bar"/>
+
+    <View
+        android:id="@+id/address_top_line1"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/headbar"
+        android:background="#ced2d9"/>
+
+    <RelativeLayout
+        android:id="@+id/name_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_top_line1"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/receipt_person1"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="收  货  人:"
+            android:textColor="#595e66"
+            android:textSize="15sp"/>
+
+        <com.wp.baselib.widget.ContainsEmojiEditText
+            android:id="@+id/receipt_person_name"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/receipt_person1"
+            android:background="@null"
+            android:gravity="left|center_vertical"
+            android:hint="请输入收货人的姓名"
+            android:maxLength="6"
+            android:singleLine="true"
+            android:textColor="#2a2d33"
+            android:textColorHint="#595e66"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/address_line1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/name_rl"
+        android:background="#ced2d9"/>
+
+    <RelativeLayout
+        android:id="@+id/address_phone_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_line1"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/receipt_phone"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="手机号码:"
+            android:textColor="#595e66"
+            android:textSize="15sp"/>
+
+        <com.wp.baselib.widget.ContainsEmojiEditText
+            android:id="@+id/receipt_phone_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/receipt_phone"
+            android:background="@null"
+            android:gravity="left|center_vertical"
+            android:hint="请输入收货人的手机号码"
+            android:singleLine="true"
+            android:maxLength="11"
+            android:textColor="#2a2d33"
+            android:inputType="phone"
+            android:textColorHint="#595e66"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/address_line2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/address_phone_rl"
+        android:background="#ced2d9"/>
+
+    <RelativeLayout
+        android:id="@+id/address_region_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_line2"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/receipt_address"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="所在地区:"
+            android:textColor="#595e66"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/select_address"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/receipt_address"
+            android:background="@null"
+            android:drawableRight="@drawable/right_arrow"
+            android:gravity="left|center_vertical"
+            android:hint="请选择"
+            android:singleLine="true"
+            android:paddingLeft="10dp"
+            android:textColor="#2a2d33"
+            android:textColorHint="#595e66"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/address_line3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/address_region_rl"
+        android:background="#ced2d9"/>
+
+    <RelativeLayout
+        android:id="@+id/address_detail_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/address_line3"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/receipt_person"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详细地址:"
+            android:textColor="#595e66"
+            android:textSize="15sp"/>
+
+        <com.wp.baselib.widget.ContainsEmojiEditText
+            android:id="@+id/receipt_detail_address"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/receipt_person"
+            android:background="@null"
+            android:drawableRight="@null"
+            android:gravity="left|top"
+            android:hint="请输入详细地址"
+            android:lines="2"
+            android:textColor="#2a2d33"
+            android:textColorHint="#595e66"
+            android:textSize="15sp"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/address_detail_rl"
+        android:background="#D0D5D9"/>
+
+    <TextView
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/select_login"
+        android:text="完成"
+        android:id="@+id/complete"
+        android:textColor="@color/color_btn"
+        android:textSize="20sp"/>
+</RelativeLayout>

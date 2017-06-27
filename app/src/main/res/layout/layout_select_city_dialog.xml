@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_pwd"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#35383F"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/city_cancel"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:enabled="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="取消"
+        android:textColor="@color/select_dialog_btn_color"/>
+
+    <TextView
+        android:id="@+id/city_sure"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+        android:enabled="true"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="确定"
+        android:textColor="@color/select_dialog_btn_color"/>
+
+    <LinearLayout
+        android:id="@+id/select_city_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/city_sure"
+        android:layout_marginTop="10dp">
+
+        <com.wp.baselib.widget.WheelView
+            android:id="@+id/privince"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <com.wp.baselib.widget.WheelView
+            android:id="@+id/city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <com.wp.baselib.widget.WheelView
+            android:id="@+id/district"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+</RelativeLayout>

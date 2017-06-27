@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/title_bar"/>
+
+    <RelativeLayout
+        android:id="@+id/swipRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/headbar"
+        >
+
+        <View
+            android:id="@+id/home_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/headbar"
+            android:background="#1a1d23"/>
+
+        <LinearLayout
+            android:id="@+id/top_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/home_line"
+            android:layout_toLeftOf="@+id/battery_values_tv"
+            android:background="@color/nav_bg"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/centigrade_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="0dp"
+                android:text="--"
+                android:textColor="#3681f1"
+                android:textSize="@dimen/WEATHER_TEXT_SIZE"/>
+
+            <TextView
+                android:id="@+id/weather_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:lineSpacingMultiplier="1.1"
+                android:paddingLeft="5dp"
+                android:text="定位中...\n获取中..."
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/battery_values_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/top_ll"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/home_line"
+            android:layout_gravity="center_vertical"
+            android:background="@color/nav_bg"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:drawableRight="@drawable/battery1"
+            android:gravity="right|center_vertical"
+            android:paddingRight="10dp"
+            android:text="00"
+            android:textColor="#F4CD45"
+            android:textSize="@dimen/WEATHER_TEXT_SIZE"/>
+
+
+        <RelativeLayout
+            android:id="@+id/banner_fl"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:layout_below="@+id/top_ll"
+            android:background="@color/nav_bg"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/home_bannerseize"/>
+
+            <com.wp.baselib.widget.banner.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="72dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bannerbordd"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_service_item_cor_black"
+                android:visibility="gone"
+                />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/center_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/banner_fl"
+            android:background="@color/nav_bg"
+            android:paddingBottom="@dimen/home_bottom_top"
+            >
+
+            <ImageView
+                android:id="@+id/chepei_shopping_iv"
+                android:layout_width="@dimen/CARPEI_SHOPW"
+                android:layout_height="@dimen/CARPEI_SHOPH"
+                android:layout_marginLeft="@dimen/CARPEI_SHOP_MARGIN"
+                android:src="@drawable/select_chepei"/>
+
+            <ImageView
+                android:id="@+id/select_shouniu_iv"
+                android:layout_width="@dimen/CARPEI_SHOPW"
+                android:layout_height="@dimen/CARPEI_SHOPH"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/CARPEI_SHOP_MARGIN"
+                android:src="@drawable/select_shouniu"
+                />
+        </RelativeLayout>
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/center_ll"
+            android:background="@color/nav_bg">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/electric_vehicle"
+                    layout="@layout/layout_home_battery_car"
+                    android:visibility="visible"/>
+
+                <include
+                    android:id="@+id/car"
+                    layout="@layout/layout_home_car"
+                    android:visibility="gone"/>
+
+            </FrameLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
+</RelativeLayout>

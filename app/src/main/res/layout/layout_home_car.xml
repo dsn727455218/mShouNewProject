@@ -1,0 +1,54 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="@dimen/CENTER_CIIRCLE"
+        android:layout_height="@dimen/CENTER_CIIRCLE_H"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/CENTER_CIIRCLE_TOP"
+        android:background="@drawable/yuan"
+        />
+
+    <include
+        android:id="@+id/track_location_car"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"/>
+
+
+    <include
+        android:id="@+id/car_mute_car"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/home_car_marginRL"
+        android:layout_marginTop="@dimen/home_car_margintop"
+        android:layout_toLeftOf="@+id/track_location_car"
+        android:gravity="center_horizontal"/>
+
+    <include
+        android:id="@+id/battery_manage_car"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/home_car_marginRL"
+        android:layout_marginTop="@dimen/home_car_margintop"
+        android:layout_toEndOf="@+id/track_location_car"
+        android:layout_toRightOf="@+id/track_location_car"
+        android:gravity="center_horizontal"/>
+
+    <ImageView
+        android:id="@+id/lock_iv_car"
+        android:layout_width="@dimen/CENTER_Wh"
+        android:layout_height="@dimen/CENTER_Wh"
+        android:layout_below="@+id/track_location_car"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/LOCK_MARGIN_TOP"
+        android:src="@drawable/select_unlock_start"/>
+</RelativeLayout>

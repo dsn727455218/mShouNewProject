@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="nav_bg">#2A2D33</color>
+    <color name="color_title">#ffffff</color>
+    <color name="ed_color">#9699a1</color>
+
+
+    <color name="bgcolor">#35383E</color>
+    <color name="color_line">#5E6671</color>
+    <color name="color_text">#2a2d33</color>
+    <color name="color_text_login_press">#3f4248</color>
+
+    <color name="color_text_press">#78d278</color>
+    <color name="color_bg">#ffffff</color>
+
+
+    <color name="color_common_press">#52acff</color>
+    <color name="color_common_normal">#7997b3</color>
+    <color name="color_tab_normal">#989898</color>
+    <color name="color_text_normal">#A9B2C0</color>
+
+    <color name="color_my_text">#5A5F62</color>
+    <color name="color_service_bg">#DFE3E6</color>
+
+
+    <color name="color_normal">#59606D</color>
+    <color name="color_press">#8c929e</color>
+    <color name="color_my_car_text">#dadee5</color>
+
+    <color name="color_text_grey">#2a2d33</color>
+    <color name="color_text_hint">#595e66</color>
+    <color name="color_bg_grey">#dadee5</color>
+
+    <color name="color_orgin_select">#ad2424</color>
+    <color name="color_orgin_unselect">#2A2D33</color>
+
+    <color name="color_btn">#9ba4b2</color>
+
+    <color name="color_hint">#9ba4b2</color>
+    <color name="color_text_my">#35383e</color>
+
+    <color name="color_search">#e77817</color>
+</resources>

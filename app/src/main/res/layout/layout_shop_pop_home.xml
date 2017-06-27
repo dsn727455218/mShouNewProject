@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/pop_parent"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/android_supermarket_morepopup_bg"
+              android:orientation="vertical"
+              android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/msg"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/news_white"
+        android:drawablePadding="5dp"
+        android:text="消息"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/home_pop"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/homepage_white"
+        android:drawablePadding="5dp"
+        android:text="云控首页"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/share"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/share_white"
+        android:drawablePadding="5dp"
+        android:text="分享"
+        android:textColor="@android:color/white"/>
+</LinearLayout>

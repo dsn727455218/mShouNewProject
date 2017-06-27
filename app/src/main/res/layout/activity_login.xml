@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/parent_ll"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/bgcolor"
+              android:orientation="vertical">
+
+    <include layout="@layout/title_bar"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/login"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/dividing_line_hei"/>
+
+    <EditText
+        android:id="@+id/account_ed"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/phone"
+        android:drawablePadding="15dp"
+        android:gravity="left"
+        android:hint="请输入您的账号"
+        android:inputType="number"
+        android:maxLength="11"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#9ba4b2"
+        android:textCursorDrawable="@drawable/edit_cusor_color"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dividing_line_hei"
+        />
+
+    <com.wp.baselib.widget.ContainsEmojiEditText
+        android:id="@+id/password_ed"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="25dp"
+        android:background="@null"
+        android:maxLength="20"
+        android:drawableLeft="@drawable/icon_password_key"
+        android:drawablePadding="15dp"
+        android:gravity="left"
+        android:hint="请输入您的密码"
+        android:inputType="textPassword"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="#9ba4b2"
+        android:textCursorDrawable="@drawable/edit_cusor_color"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/dividing_line_hei"
+        />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/select_login"
+        android:text="登录"
+        android:textColor="@color/color_btn"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/register_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:background="@null"
+            android:text="免费注册"
+            android:textColor="@color/select_text_color"/>
+
+        <TextView
+            android:id="@+id/forget_password_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:text="忘记密码"
+            android:textColor="@color/select_text_color"/>
+    </RelativeLayout>
+
+</LinearLayout>

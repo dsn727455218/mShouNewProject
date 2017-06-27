@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/logisitice_circle_ll"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        >
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="77dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#BABABA"/>
+
+        <ImageView
+            android:id="@+id/logisitice_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/shape_logistice_green"/>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/content_tv_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/logisitice_circle_ll"
+        android:layout_alignTop="@+id/logisitice_circle_ll"
+        android:layout_toRightOf="@+id/logisitice_circle_ll"
+        android:paddingBottom="0dp">
+
+        <TextView
+            android:id="@+id/content_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="3"
+            android:paddingTop="0dp"
+            />
+
+        <TextView
+            android:id="@+id/content_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content_tv"
+            android:gravity="left"
+            android:paddingBottom="0dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+</RelativeLayout>

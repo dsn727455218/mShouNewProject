@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/dimens_msg_padding_bottom"
+              android:paddingLeft="@dimen/dimens_msg_padding_left_right"
+              android:paddingRight="@dimen/dimens_msg_padding_left_right"
+              android:paddingTop="15dp">
+
+    <TextView
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/select_login"
+        android:gravity="center_horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="15dp"
+        android:id="@+id/msg_time"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/color_press"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:id="@+id/header_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/logo"
+            android:gravity="center"
+            android:textColor="@color/color_press"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/header_msg"
+            android:background="@drawable/message_bg"
+            android:ellipsize="end"
+            android:id="@+id/msg_content"
+            android:gravity="left|top"
+            android:lineSpacingMultiplier="1.05"
+            android:maxLength="150"
+            android:textColor="#2a2d33"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+</LinearLayout>

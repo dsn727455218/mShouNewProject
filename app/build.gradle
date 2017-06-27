@@ -1,0 +1,62 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
+    defaultConfig {
+        applicationId "com.shownew.home"
+        minSdkVersion 11
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        resConfigs "zh"
+        manifestPlaceholders = [
+                APP_NAME         : "首牛云控",
+                APP_NAME_DES     : "首牛云控",
+                UMENG_APPKEY     : '58e44763c62dca55f2001be2',
+                JPUSH_APPKEY     : '3566523c41c75b361613fe8f',//3566523c41c75b361613fe8f  013abb1eed85fa66dd439b31
+                GAO_DE_MAP_APPKEY: '855bab53de8a9db2d8a99f69b2ad6b8e'
+        ]
+        ndk {
+            // 设置支持的 SO 库构架，注意这里要根据你的实际情况来设置
+            abiFilters 'armeabi'// 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            zipAlignEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+            //sha1  66:EB:68:56:D6:F9:0E:B1:53:03:57:C5:17:B3:17:60:C3:D3:56:57
+            storeFile file("../debug.keystore")
+            storePassword "20170401"//7649301
+            keyAlias "wp"
+            keyPassword "20170401"
+
+        }
+        release {
+            //sha1  79:9F:24:FB:77:C7:D4:CF:40:97:12:E6:9D:BA:11:E0:68:E6:84:1A
+            storeFile file("../release.keystore")
+            storePassword "20170401"
+            keyAlias "wp"
+            keyPassword "20170401"
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':zxing')
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+}

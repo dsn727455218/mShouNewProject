@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_grey"
+    >
+
+    <include layout="@layout/title_bar"/>
+
+    <TextView
+        android:id="@+id/recharg_money_tv"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/headbar"
+        android:background="#ced2d9"
+        android:gravity="left"
+        android:text="充值额度(元):"
+        android:textColor="#595e66"/>
+
+    <com.wp.baselib.widget.NoScrollGridView
+        android:id="@+id/recharge_money_noscorllgrivView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recharg_money_tv"
+        android:horizontalSpacing="20dp"
+        android:numColumns="3"
+        android:padding="20dp"
+        android:scrollbars="none"
+        android:verticalSpacing="20dp"/>
+
+    <RelativeLayout
+        android:id="@+id/dingdingyi_money_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recharge_money_noscorllgrivView">
+
+        <TextView
+            android:id="@+id/zidingyi1"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自定义:"/>
+
+        <EditText
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/zidingyi1"
+            android:gravity="left"
+            android:inputType="numberDecimal"
+            android:maxLength="5"
+            android:id="@+id/zidingyi_money"
+            android:maxLines="1"
+            android:singleLine="true"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/zidingyi"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dingdingyi_money_rl"
+        android:background="#ced2d9"
+        android:gravity="left"
+        android:text="支付方式："
+        android:textColor="#595e66"/>
+
+    <RadioGroup
+        android:id="@+id/rg_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/zidingyi"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        >
+
+        <RadioButton
+            android:id="@+id/rg_wx"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/weixinpay"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/determine_payment_function"
+            android:gravity="left"
+            android:paddingBottom="15dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="15dp"
+            android:text="微信支付"
+            android:textColor="#2A2D33"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dividingline_bai"/>
+
+        <RadioButton
+            android:id="@+id/rg_zf"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/zhifubaopay"
+            android:drawablePadding="10dp"
+            android:drawableRight="@drawable/uncertain_payment_function"
+            android:gravity="left"
+            android:paddingBottom="15dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:paddingTop="15dp"
+            android:text="支付宝支付"
+            android:textColor="#2A2D33"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@drawable/dividingline_bai"/>
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rg_pay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/select_login"
+        android:text="立即支付"
+        android:textColor="@color/color_btn"/>
+</RelativeLayout>

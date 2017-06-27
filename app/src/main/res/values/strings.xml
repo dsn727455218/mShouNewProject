@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">首牛云控</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+
+
+    <string name="tab_bottom_home">主页</string>
+    <string name="tab_bottom_carservice">服务</string>
+    <string name="tab_bottom_my">我的</string>
+</resources>

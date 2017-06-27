@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/home_item_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+
+    <com.wp.baselib.widget.CustomShapeImageView
+        android:id="@+id/shop_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:src="@drawable/square_seize"
+        app:borderColor="#E6EBF2"
+        app:imageBorderWidth="3dp"
+        app:onlyDrawBorder="false"
+        app:roundRadius="5dp"
+        app:shape="rectangle"/>
+
+
+    <RelativeLayout
+        android:id="@+id/shop_img_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/shop_img"
+        android:layout_alignTop="@+id/shop_img"
+        android:layout_toRightOf="@+id/shop_img"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_tags"
+            android:text="首牛"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:textSize="10dp"
+            android:textColor="@color/white"
+            />
+
+        <TextView
+            android:id="@+id/shop_title"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tags"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:maxLines="2"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:textColor="#2a2d33"/>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/shop_title"
+            android:layout_toRightOf="@+id/tags"
+            >
+
+            <TextView
+                android:id="@+id/shop_prices"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:gravity="bottom"
+                android:paddingBottom="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:textColor="#e77817"
+                android:textSize="25sp"/>
+
+            <TextView
+                android:id="@+id/shop_olde_prices"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/shop_prices"
+                android:layout_alignBottom="@+id/shop_prices"
+                android:gravity="bottom"
+                android:paddingBottom="0dp"
+                android:textColor="#9ba4b2"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/shop_img_rl"
+        android:layout_toRightOf="@+id/shop_img"
+        android:background="#ced2d9"/>
+</RelativeLayout>

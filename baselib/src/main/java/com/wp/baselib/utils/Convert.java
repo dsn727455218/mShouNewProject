@@ -1,0 +1,50 @@
+package com.wp.baselib.utils;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonIOException;
+import com.google.gson.JsonSyntaxException;
+import com.google.gson.stream.JsonReader;
+
+import java.io.Reader;
+import java.lang.reflect.Type;
+
+/**
+ * ================================================
+ * 作    者：jeasonlzy（廖子尧）Github地址：https://github.com/jeasonlzy
+ * 版    本：1.0
+ * 创建日期：16/9/28
+ * 描    述：
+ * 修订历史：
+ * ================================================
+ */
+public class Convert {
+    protected static final Gson gson = new Gson();
+
+    public static <T> T fromJson(String json, Class<T> type) throws JsonIOException, JsonSyntaxException {
+        return gson.fromJson(json, type);
+    }
+
+    public static <T> T fromJson(String json, Type type) {
+        return gson.fromJson(json, type);
+    }
+
+    public static <T> T fromJson(JsonReader reader, Type typeOfT) throws JsonIOException, JsonSyntaxException {
+        return gson.fromJson(reader, typeOfT);
+    }
+
+    public static <T> T fromJson(Reader json, Class<T> classOfT) throws JsonSyntaxException, JsonIOException {
+        return gson.fromJson(json, classOfT);
+    }
+
+    public static <T> T fromJson(Reader json, Type typeOfT) throws JsonIOException, JsonSyntaxException {
+        return gson.fromJson(json, typeOfT);
+    }
+
+    public static String toJson(Object src) {
+        return gson.toJson(src);
+    }
+
+    public static String toJson(Object src, Type typeOfSrc) {
+        return gson.toJson(src, typeOfSrc);
+    }
+}

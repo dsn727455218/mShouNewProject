@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp">
+
+
+        <com.wp.baselib.widget.CustomShapeImageView
+            android:id="@+id/my_header_icon"
+            android:layout_width="@dimen/CircularImage_WH"
+            android:layout_height="@dimen/CircularImage_WH"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/square_seize"
+            app:borderColor="#535862"
+            app:imageBorderWidth="1dp"
+            app:onlyDrawBorder="false"
+            app:roundRadius="5dp"
+            app:shape="circle"/>
+
+
+        <RelativeLayout
+            android:id="@+id/balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_toRightOf="@+id/my_header_icon"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/my_nichegn__tag_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="当前余额:"
+                android:textColor="@color/color_hint"
+                android:textSize="12sp"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/my_nichegn__tag_tv"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/my_nichegn_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:textColor="#f4cd45"
+                    android:textSize="25sp"
+                    />
+
+                <TextView
+                    android:id="@+id/wallet_recharge_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/select_wallet_recharge"
+                    android:enabled="true"
+                    android:gravity="center"
+                    android:paddingBottom="2dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="2dp"
+                    android:text="充值"
+                    android:textColor="@color/color_orgin_select"
+                    android:textSize="14sp"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ced2d9"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/header_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/service_right_left_padding"
+        android:layout_marginTop="@dimen/service_right_left_padding"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="#ced2d9"/>
+</LinearLayout>

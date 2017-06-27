@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <View
+        layout="@layout/commone_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimens_my_car_bottom_top_bg_h"
+        android:background="#35383f"
+        />
+
+    <LinearLayout
+        android:id="@+id/new_car_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_corner_footer"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            >
+
+            <com.wp.baselib.widget.CustomShapeImageView
+                android:id="@+id/my_car_header_iv"
+                android:layout_width="@dimen/dimens_my_car_logo_wh"
+                android:layout_height="@dimen/dimens_my_car_logo_wh"
+                android:padding="2dp"
+                android:src="@drawable/square_seize"
+                app:borderColor="#E6EBF2"
+                app:imageBorderWidth="3dp"
+                android:scaleType="centerCrop"
+                app:onlyDrawBorder="false"
+                app:roundRadius="5dp"
+                app:shape="rectangle"/>
+
+
+            <TextView
+                android:id="@+id/my_car_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/my_car_header_iv"
+                android:ellipsize="end"
+                android:lines="1"
+                android:gravity="left"
+                android:layout_toLeftOf="@+id/my_car_delete_iv"
+                android:padding="5dp"
+                android:maxLength="10"
+                android:textColor="@color/color_bg_grey"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/my_car_cur_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/my_car_name"
+                android:layout_toRightOf="@+id/my_car_header_iv"
+                android:layout_alignBottom="@+id/my_car_header_iv"
+                android:padding="5dp"
+                android:layout_toLeftOf="@+id/modify_car"
+                android:gravity="bottom"
+                android:textColor="@color/color_hint"/>
+
+            <TextView
+                android:id="@+id/my_car_delete_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimens_my_car_delelte_h"
+                android:layout_alignParentRight="true"
+                android:text="注销"
+                android:padding="5dp"
+                android:textColor="@color/color_hint"/>
+
+            <TextView
+                android:id="@+id/modify_car"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/my_car_header_iv"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/my_car_name"
+                android:text="修改"
+                android:padding="5dp"
+                android:gravity="bottom"
+                android:textColor="#3681f1"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/dividing_line_hei"/>
+
+        <TextView
+            android:id="@+id/car_userName"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/dimens_my_car_info_left_padding"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_hint"/>
+
+        <TextView
+            android:id="@+id/car_vertify_number"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/dimens_my_car_info_left_padding"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_hint"/>
+
+        <TextView
+            android:id="@+id/car_paihao"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/dimens_my_car_info_left_padding"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_hint"/>
+
+        <TextView
+            android:id="@+id/car_type_number"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/dimens_my_car_info_left_padding"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_hint"/>
+
+        <TextView
+            android:id="@+id/car_jia_number"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
+            android:paddingBottom="5dp"
+            android:paddingLeft="@dimen/dimens_my_car_info_left_padding"
+            android:paddingTop="5dp"
+            android:textColor="@color/color_hint"/>
+    </LinearLayout>
+
+
+</LinearLayout>

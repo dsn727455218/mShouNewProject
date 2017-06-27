@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/service_banner_height"
+        android:scaleType="centerCrop"
+        android:src="@drawable/home_bannerseize"/>
+
+    <com.wp.baselib.widget.banner.Banner
+        android:id="@+id/header_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/service_banner_height"/>
+
+    <ImageView
+        android:id="@+id/header_left_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/header_recyclerView"
+        android:layout_alignTop="@+id/header_recyclerView"
+        android:layout_below="@+id/header_banner"
+        android:layout_marginBottom="@dimen/service_right_left_padding"
+        android:layout_marginTop="@dimen/service_right_left_padding"
+        android:padding="@dimen/service_right_left_padding"
+        android:src="@drawable/left"
+        android:visibility="gone"/>
+
+
+    <!--android:layout_marginBottom="@dimen/service_right_left_padding"-->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/header_recyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_banner"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="@dimen/service_right_left_padding"
+        />
+
+    <ImageView
+        android:id="@+id/header_right_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/header_recyclerView"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/header_recyclerView"
+        android:layout_below="@+id/header_banner"
+        android:layout_marginBottom="@dimen/service_right_left_padding"
+        android:layout_marginTop="@dimen/service_right_left_padding"
+        android:padding="@dimen/service_right_left_padding"
+        android:src="@drawable/right"
+        android:visibility="gone"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/header_recyclerView"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/line"/>
+</RelativeLayout>

@@ -1,0 +1,36 @@
+<resources>
+
+    <string name="app_name">wavefar</string>
+    <string name="ok">确定</string>
+    <string name="cancle">取消</string>
+    <string name="exit_msg">您确定退出应用吗?</string>
+    <string name="clear_account_title">退出</string>
+    <string name="clear_cache_title">清除缓存</string>
+    <string name="clear_cache_msg">您确定要清除缓存文件</string>
+    <string name="clear_account_msg">注销操作将清除当前登录账号信息，您确定要注销当前用户?</string>
+    <string name="not_network">没有可用的网络</string>
+    <string name="open_gprs_msg">请开启GPRS或WIFI网络连接</string>
+    <string name="download_new_title">系统更新提示</string>
+    <string name="app_update_Process">已下载%1$s</string>
+    <string name="download_eixts_msg">亲，您的客户端已经是最新版本哦！</string>
+    <string name="net_error">响应服务器失败！</string>
+    <string name="selePicTitle">添加照片</string>
+    <string name="take_photo">拍照</string>
+    <string name="pick_photo">从相册中选择</string>
+    <string name="photoPickerNotFoundText">没找到可用的照相设备</string>
+    <string name="photoPickerNotFoundText1">没找到相册浏览设备</string>
+
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <string name="all_images">全部图片</string>
+    <string name="complete">完成</string>
+    <string name="folder_image_count">共%1$d张</string>
+    <string name="origin">原图</string>
+    <string name="origin_size">原图(%1$s)</string>
+    <string name="photo_crop">图片裁剪</string>
+    <string name="preview_count">预览(%1$s)</string>
+    <string name="preview_image_count">%1$s/%2$s</string>
+    <string name="select_complete">完成(%1$s/%2$s)</string>
+    <string name="select_limit">最多选择%1$s张图片</string>
+</resources>

@@ -1,0 +1,76 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="@dimen/CENTER_CIIRCLE"
+        android:layout_height="@dimen/CENTER_CIIRCLE_H"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/CENTER_CIIRCLE_TOP"
+        android:background="@drawable/yuan"
+        />
+
+    <include
+        android:id="@+id/track_location"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"/>
+
+
+    <include
+        android:id="@+id/car_mute"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/CENTER_CIIRCLE_MARGIN"
+        android:layout_marginTop="@dimen/Car_Battery_Margin"
+        android:layout_toLeftOf="@+id/track_location"
+        android:gravity="center_horizontal"/>
+
+    <include
+        android:id="@+id/battery_manage"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/CENTER_CIIRCLE_MARGIN"
+        android:layout_marginTop="@dimen/Car_Battery_Margin"
+        android:layout_toEndOf="@+id/track_location"
+        android:layout_toRightOf="@+id/track_location"
+        android:gravity="center_horizontal"/>
+
+    <include
+        android:id="@+id/search"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/car_mute"
+        android:layout_marginRight="@dimen/CENTER_CIIRCLE_Left_Right"
+        android:layout_marginTop="@dimen/SEARCH_CAR"
+        android:layout_toLeftOf="@+id/lock_iv"
+        android:gravity="center_horizontal"/>
+
+    <include
+        android:id="@+id/my_vehicle"
+        layout="@layout/common_home_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/battery_manage"
+        android:layout_marginLeft="@dimen/CENTER_CIIRCLE_Left_Right"
+        android:layout_marginTop="@dimen/SEARCH_CAR"
+        android:layout_toRightOf="@+id/lock_iv"
+        android:gravity="center_horizontal"/>
+
+
+    <ImageView
+        android:id="@+id/lock_iv"
+        android:layout_width="@dimen/CENTER_Wh"
+        android:layout_height="@dimen/CENTER_Wh"
+        android:layout_below="@+id/track_location"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="@dimen/LOCK_MARGIN_TOP"
+        android:src="@drawable/select_unlock_start"/>
+</RelativeLayout>

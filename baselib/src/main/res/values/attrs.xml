@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--titleBar-->
+    <declare-styleable name="MyTitleBar">
+        <attr name="titleTv" format="string"/>
+        <attr name="titleColor" format="color"/>
+        <attr name="titleSize" format="float"/>
+    </declare-styleable>
+    <declare-styleable name="RoundedCornersImage">
+        <attr name="cornerRadius" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="SlidingMenu">
+        <attr name="mode">
+            <enum name="left" value="0"/>
+            <enum name="right" value="1"/>
+        </attr>
+        <attr name="viewAbove" format="reference"/>
+        <attr name="viewBehind" format="reference"/>
+        <attr name="behindOffset" format="dimension"/>
+        <attr name="behindWidth" format="dimension"/>
+        <attr name="behindScrollScale" format="float"/>
+        <attr name="touchModeAbove">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="touchModeBehind">
+            <enum name="margin" value="0"/>
+            <enum name="fullscreen" value="1"/>
+        </attr>
+        <attr name="shadowDrawable" format="reference"/>
+        <attr name="shadowWidth" format="dimension"/>
+        <attr name="fadeEnabled" format="boolean"/>
+        <attr name="fadeDegree" format="float"/>
+        <attr name="selectorEnabled" format="boolean"/>
+        <attr name="selectorDrawable" format="reference"/>
+    </declare-styleable>
+    <!-- 自定义ViewPager支持方向垂直与水平 -->
+    <declare-styleable name="ViewPager">
+        <attr name="orientation">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="XRefreshView">
+        <attr name="isHeightMatchParent" format="boolean"/>
+        <attr name="isWidthMatchParent" format="boolean"/>
+        <attr name="autoRefresh" format="boolean"/>
+        <attr name="autoLoadMore" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="Banner">
+        <attr name="delay_time" format="integer"/>
+        <attr name="scroll_time" format="integer"/>
+        <attr name="is_auto_play" format="boolean"/>
+        <attr name="title_background" format="color|reference"/>
+        <attr name="title_textcolor" format="color"/>
+        <attr name="title_textsize" format="dimension"/>
+        <attr name="title_height" format="dimension"/>
+        <attr name="indicator_width" format="dimension"/>
+        <attr name="indicator_height" format="dimension"/>
+        <attr name="indicator_margin" format="dimension"/>
+        <attr name="indicator_drawable_selected" format="reference"/>
+        <attr name="indicator_drawable_unselected" format="reference"/>
+        <attr name="layout_id" format="reference"/>
+        <attr name="image_scale_type" format="enum">
+            <enum name="center" value="0"/>
+            <enum name="center_crop" value="1"/>
+            <enum name="center_inside" value="2"/>
+            <enum name="fit_center" value="3"/>
+            <enum name="fit_end" value="4"/>
+            <enum name="fit_start" value="5"/>
+            <enum name="fit_xy" value="6"/>
+            <enum name="matrix" value="7"/>
+        </attr>
+        <!--<attr name="indicator_animator" format="reference" />-->
+        <!--<attr name="indicator_animator_reverse" format="reference" />-->
+    </declare-styleable>
+
+
+    <declare-styleable name="CropImageView">
+        <attr name="cropMaskColor" format="color"/>
+        <attr name="cropBorderColor" format="color"/>
+        <attr name="cropBorderWidth" format="dimension"/>
+        <attr name="cropFocusWidth" format="dimension"/>
+        <attr name="cropFocusHeight" format="dimension"/>
+        <attr name="cropStyle" format="enum">
+            <enum name="rectangle" value="0"/>
+            <enum name="circle" value="1"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CustomShapeImageView">
+        <attr name="shape" format="integer">
+            <enum name="circle" value="1"/>
+            <enum name="rectangle" value="2"/>
+            <enum name="arc" value="3"/>
+        </attr>
+        <attr name="imageBorderWidth" format="dimension"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="roundRadius" format="dimension"/>
+        <attr name="leftTopRadius" format="dimension"/>
+        <attr name="rightTopRadius" format="dimension"/>
+        <attr name="rightBottomRadius" format="dimension"/>
+        <attr name="leftBottomRadius" format="dimension"/>
+        <attr name="onlyDrawBorder" format="boolean"/>
+    </declare-styleable>
+</resources>
