@@ -189,6 +189,12 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
         getUserInfoData();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        closeLoadingDialog();
+    }
+
     /**
      * 修改用户昵称
      *

@@ -31,7 +31,7 @@ public class LogisticsAdater extends BaseObjectAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder ;
         if (convertView == null) {
             convertView = mInflater.inflate(R.layout.layout_logistice_items, parent, false);
             viewHolder = new ViewHolder(convertView);

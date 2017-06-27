@@ -103,11 +103,10 @@ public class MyCarAdapter extends RecyclerView.Adapter<MyCarAdapter.MyCarViewHol
 
             String url = carEntity.getCIcon();
             holder.mMy_car_header_iv.setTag(url);
-            if (TextUtils.isEmpty(url) && url.equals(holder.mMy_car_header_iv.getTag())) {
+            if (!TextUtils.isEmpty(url) && url.equals(holder.mMy_car_header_iv.getTag())) {
                 Glide.with(mContext).load(url).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-
                         holder.mMy_car_header_iv.setImageBitmap(resource);
                     }
                 });

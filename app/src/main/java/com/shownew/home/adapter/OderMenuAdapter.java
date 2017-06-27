@@ -20,7 +20,6 @@ import com.wp.baselib.utils.StringUtil;
 
 import java.util.ArrayList;
 
-import static com.shownew.home.activity.share.Defaultcontent.url;
 
 
 /**

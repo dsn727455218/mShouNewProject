@@ -255,7 +255,6 @@ public class AccountRechargeActivity extends BaseActivity implements View.OnClic
      * 支付包 相关ui处理
      */
     private Handler mHandler = new Handler() {
-        @SuppressWarnings("unused")
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case AlipayPayUtils.SDK_PAY_FLAG: {

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!--welcome页面-->
     <style name="Theme.BackgroundTranslucent" parent="android:Theme.Translucent.NoTitleBar.Fullscreen">
@@ -12,7 +12,7 @@
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:textCursorDrawable">@drawable/edit_cusor_color</item>
+        <item name="android:textCursorDrawable" tools:ignore="NewApi">@drawable/edit_cusor_color</item>
     </style>
 
     <!--</style>-->
