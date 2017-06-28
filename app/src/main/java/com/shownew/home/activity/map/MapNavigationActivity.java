@@ -16,7 +16,7 @@ public class MapNavigationActivity extends BaseNavigationActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daohang);
-        setBarColor(R.color.nav_bg);
+        setBarColor(R.color.colornavigation);
         mAMapNaviView = (AMapNaviView) findViewById(R.id.naviview);
         mAMapNaviView.onCreate(savedInstanceState);
         mAMapNaviView.setAMapNaviViewListener(this);
@@ -30,7 +30,6 @@ public class MapNavigationActivity extends BaseNavigationActivity {
             NaviLatLng endLatlNG = bundle.getParcelable("endLocaltion");
             sList.add(startLatlNG);
             eList.add(endLatlNG);
-
         }
     }
 

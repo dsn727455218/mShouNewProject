@@ -15,7 +15,7 @@ android {
                 APP_NAME         : "首牛云控",
                 APP_NAME_DES     : "首牛云控",
                 UMENG_APPKEY     : '58e44763c62dca55f2001be2',
-                JPUSH_APPKEY     : '3566523c41c75b361613fe8f',//3566523c41c75b361613fe8f  013abb1eed85fa66dd439b31
+                JPUSH_APPKEY     : '3566523c41c75b361613fe8f',
                 GAO_DE_MAP_APPKEY: '855bab53de8a9db2d8a99f69b2ad6b8e'
         ]
         ndk {
