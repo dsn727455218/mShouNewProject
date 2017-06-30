@@ -33,15 +33,19 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
 
     protected AMapNaviView mAMapNaviView;
     protected AMapNavi mAMapNavi;
-
+    protected TTSController mTtsManager;
     protected final List<NaviLatLng> sList = new ArrayList<NaviLatLng>();
     protected final List<NaviLatLng> eList = new ArrayList<NaviLatLng>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //实例化语音引擎
+        mTtsManager = TTSController.getInstance(ShouNewApplication.getInstance());
+        mTtsManager.init();
         mAMapNavi = AMapNavi.getInstance(ShouNewApplication.getInstance());
         mAMapNavi.addAMapNaviListener(this);
+        mAMapNavi.addAMapNaviListener(mTtsManager);
     }
 
     @Override
@@ -54,11 +58,11 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
     protected void onPause() {
         super.onPause();
         mAMapNaviView.onPause();
-
-//        仅仅是停止你当前在说的这句话，一会到新的路口还是会再说的
-//
-//        停止导航之后，会触及底层stop，然后就不会再有回调了，但是讯飞当前还是没有说完的半句话还是会说完
-//        mAMapNavi.stopNavi();
+        mTtsManager.stopSpeaking();
+        //        仅仅是停止你当前在说的这句话，一会到新的路口还是会再说的
+        //
+        //        停止导航之后，会触及底层stop，然后就不会再有回调了，但是讯飞当前还是没有说完的半句话还是会说完
+        //        mAMapNavi.stopNavi();
     }
 
     @Override
@@ -68,6 +72,7 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
         //since 1.6.0 不再在naviview destroy的时候自动执行AMapNavi.stopNavi();请自行执行
         mAMapNavi.stopNavi();
         mAMapNavi.destroy();
+        mTtsManager.destroy();
     }
 
     @Override
@@ -278,7 +283,9 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
 
     @Override
     public void onLockMap(boolean isLock) {
-        //锁地图状态发生变化时回调
+        //锁地图状态发生变化时回调\
+
+
     }
 
     @Override
