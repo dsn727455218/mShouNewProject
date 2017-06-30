@@ -3,6 +3,7 @@ package com.shownew.home.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.widget.TextView;
 
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
@@ -66,7 +67,7 @@ public class AppUpdateUtil {
 
     private void showupdateDialog() {
         final Intent intent = new Intent(mContext, AppUpdateService.class);
-        new CommonDialog(mContext, "系统更新提示", remoteMsg, "更新", "取消").setCommonListener(new CommonDialog.CommonListener() {
+        new CommonDialog(mContext, "版本已升级", "为了您的正常使用，请及时更新!", "立即更新", "忽略").setCommonListener(new CommonDialog.CommonListener() {
             @Override
             public void sure(int flag) {
                 if (flag == 1) {
@@ -74,7 +75,11 @@ public class AppUpdateUtil {
                     mContext.startService(intent);
                 }
             }
-        }).setCancelable(false).show();
+        }).setCancelable(true).show();
+    }
+
+    public AppUpdateUtil UpdateExecute(final boolean isinitCheck) {
+        return UpdateExecute(isinitCheck, null);
     }
 
     /**
@@ -82,7 +87,7 @@ public class AppUpdateUtil {
      *
      * @param isinitCheck
      */
-    public void UpdateExecute(final boolean isinitCheck) {
+    public AppUpdateUtil UpdateExecute(final boolean isinitCheck, final TextView tips) {
         new PublicApi(ShouNewApplication.getInstance()).getCheckAppUrl(shouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
@@ -100,7 +105,7 @@ public class AppUpdateUtil {
                                     }
                                 }
                                 if (isinitCheck) {
-                                    initCheckUpdate();
+                                    checkUpdateState(tips);
                                 } else {
                                     checkUpdate();
                                 }
@@ -113,13 +118,9 @@ public class AppUpdateUtil {
                 }
             }
         });
+        return this;
     }
 
-    private void initCheckUpdate() {
-        if (remoteVersionCode > getAppVersionName(mContext)) {
-            showupdateDialog();
-        }
-    }
 
     private void checkUpdate() {
         if (remoteVersionCode > getAppVersionName(mContext)) {
@@ -129,4 +130,11 @@ public class AppUpdateUtil {
         }
     }
 
+    public void checkUpdateState(TextView tips) {
+        if (remoteVersionCode > getAppVersionName(mContext)) {
+            tips.setCompoundDrawablesWithIntrinsicBounds(R.drawable.shape_msg_circle, 0, R.drawable.right_arrow, 0);
+        } else {
+            tips.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.right_arrow, 0);
+        }
+    }
 }

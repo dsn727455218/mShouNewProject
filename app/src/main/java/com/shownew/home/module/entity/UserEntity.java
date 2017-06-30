@@ -1,5 +1,6 @@
 package com.shownew.home.module.entity;
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,6 +10,7 @@ import android.os.Parcelable;
  * @date 2017/3/31 0031
  */
 
+@SuppressLint("ParcelCreator")
 public class UserEntity implements Parcelable {
     /**
      * result : 1
@@ -43,7 +45,7 @@ public class UserEntity implements Parcelable {
         this.user = user;
     }
 
-    public class UserBean implements Parcelable {
+    public class UserBean implements Parcelable{
 
         private String password;
 
@@ -159,26 +161,6 @@ public class UserEntity implements Parcelable {
             this.uRemain = uRemain;
         }
 
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeString(this.password);
-            dest.writeString(this.uId);
-            dest.writeString(this.uPhone);
-            dest.writeString(this.uIcon);
-            dest.writeString(this.uNickname);
-            dest.writeString(this.uCartype);
-            dest.writeString(this.uAddress);
-            dest.writeString(this.uPayaddress);
-            dest.writeString(this.uPayphone);
-            dest.writeString(this.uPayname);
-            dest.writeDouble(this.uRemain);
-        }
-
         public UserBean() {
         }
 
@@ -196,17 +178,15 @@ public class UserEntity implements Parcelable {
             this.uRemain = in.readInt();
         }
 
-        public  final Creator<UserBean> CREATOR = new Creator<UserBean>() {
-            @Override
-            public UserBean createFromParcel(Parcel source) {
-                return new UserBean(source);
-            }
+        @Override
+        public int describeContents() {
+            return 0;
+        }
 
-            @Override
-            public UserBean[] newArray(int size) {
-                return new UserBean[size];
-            }
-        };
+        @Override
+        public void writeToParcel(Parcel dest, int flags) {
+
+        }
     }
 
     @Override
@@ -218,7 +198,6 @@ public class UserEntity implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(this.result);
         dest.writeString(this.jSessionId);
-        dest.writeParcelable(this.user, flags);
     }
 
     public UserEntity() {
@@ -230,15 +209,4 @@ public class UserEntity implements Parcelable {
         this.user = in.readParcelable(UserBean.class.getClassLoader());
     }
 
-    public static final Parcelable.Creator<UserEntity> CREATOR = new Parcelable.Creator<UserEntity>() {
-        @Override
-        public UserEntity createFromParcel(Parcel source) {
-            return new UserEntity(source);
-        }
-
-        @Override
-        public UserEntity[] newArray(int size) {
-            return new UserEntity[size];
-        }
-    };
 }

@@ -13,7 +13,6 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.lzy.okgo.request.BaseRequest;
 import com.shownew.home.activity.LoginActivity;
 import com.shownew.home.activity.NewCarRegisterActivity;
-import com.shownew.home.activity.RegisterActivity;
 import com.shownew.home.module.DeviceAPI;
 import com.shownew.home.module.UserAPI;
 import com.shownew.home.module.entity.UserEntity;
@@ -230,15 +229,15 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
      * 进入登陆界面
      */
     public void jumpLoginActivity(Context context) {
-        new CommonDialog(context, "温馨提示", "你还未登录，请登录进行操作", "登录", "注册").setCommonListener(new CommonDialog.CommonListener() {
+        new CommonDialog(context, "温馨提示", "你还未登录，请登录进行操作", "登录", "取消").setCommonListener(new CommonDialog.CommonListener() {
             @Override
             public void sure(int flag) {
                 if (1 == flag) {
                     redirect(LoginActivity.class);
                 } else if (0 == flag) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("loginOrforgetpwd_flag", 1);//注册
-                    redirectAndPrameter(RegisterActivity.class, bundle);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putInt("loginOrforgetpwd_flag", 1);//注册
+//                    redirectAndPrameter(RegisterActivity.class, bundle);
                 }
             }
         }).setCancelable(true).show();

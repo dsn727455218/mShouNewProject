@@ -20,8 +20,9 @@ import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
 import com.shownew.home.activity.shop.ShopDetailActivity;
-import com.shownew.home.activity.shouniushop.ShoppingMallActivity;
 import com.shownew.home.activity.shop.SupermarketActivity;
+import com.shownew.home.activity.shouniushop.ShopMallDetailActivity;
+import com.shownew.home.activity.shouniushop.ShoppingMallActivity;
 import com.shownew.home.adapter.HeaderAdapter;
 import com.shownew.home.adapter.MyAdapter;
 import com.shownew.home.module.PublicApi;
@@ -76,14 +77,19 @@ public class ShouWalletActivity extends BaseActivity implements View.OnClickList
             @Override
             public void clickService(HomeAdverEntity homeAdverEntity) {
                 if (homeAdverEntity != null) {
-                    if (Config.ACTION_WEB.equals(homeAdverEntity.getaPid())) {
+                    if (Config.ACTION_WEB.equals(homeAdverEntity.getaPid()) && Config.ACTION_WEB.equals(homeAdverEntity.getaMpid())) {
                         if (!TextUtils.isEmpty(homeAdverEntity.getaUrl())) {
                             mShouNewApplication.redirectWeb("", homeAdverEntity.getaUrl());
                         }
                     } else {
                         Bundle bundle = new Bundle();
-                        bundle.putString("shopId", homeAdverEntity.getaPid());
-                        mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
+                        if ("0".equals(homeAdverEntity.getaMpid())) {
+                            bundle.putString("shopId", homeAdverEntity.getaPid());
+                            mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
+                        } else if ("0".equals(homeAdverEntity.getaPid())) {
+                            bundle.putString("shopId", homeAdverEntity.getaMpid());
+                            mShouNewApplication.redirectAndPrameter(ShopMallDetailActivity.class, bundle);
+                        }
                     }
                 }
             }
@@ -262,7 +268,7 @@ public class ShouWalletActivity extends BaseActivity implements View.OnClickList
                         try {
                             JSONObject jsonObject = json.getJSONObject("data");
                             if (jsonObject.has("remain")) {
-                                mMy_nichegn_tv.setText(String.format("¥%s", StringUtil.formatMoney(jsonObject.getString("remain"))));
+                                mMy_nichegn_tv.setText(String.format("¥%s", StringUtil.formatMoney(jsonObject.getDouble("remain"))));
                             }
 
                         } catch (JSONException e) {

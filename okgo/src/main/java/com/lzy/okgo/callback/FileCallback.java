@@ -24,13 +24,10 @@ public abstract class FileCallback extends AbsCallback<File> {
     }
 
     public FileCallback(String destFileName) {
-        this(null, destFileName);
-    }
-
-    public FileCallback(String destFileDir, String destFileName) {
-        convert = new FileConvert(destFileDir, destFileName);
+        convert = new FileConvert(destFileName);
         convert.setCallback(this);
     }
+
 
     @Override
     public File convertSuccess(Response response) throws Exception {

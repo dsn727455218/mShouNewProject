@@ -80,14 +80,14 @@
     <TextView
         android:id="@+id/version_news"
         style="@style/BaseTextStyle"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/version_news_tv"
         android:layout_below="@+id/clear_cacher"
         android:layout_marginLeft="20dp"
-        android:layout_toLeftOf="@+id/version_news_tv"
+        android:drawablePadding="10dp"
         android:gravity="left|center_vertical"
-        android:text="版本更新"
+        android:text="版本信息"
         android:textColor="@color/bgcolor"
         android:textSize="@dimen/my_text_size"/>
 
@@ -96,12 +96,25 @@
         style="@style/BaseTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/version_news_tips"
+        android:layout_below="@+id/clear_cacher"
+        android:layout_toLeftOf="@+id/version_news_tips"
+        android:gravity="left|center_vertical"
+        android:paddingRight="0dp"
+        android:text="版本**"
+        android:textColor="#595e66"/>
+
+    <TextView
+        android:id="@+id/version_news_tips"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/clear_cacher"
         android:layout_marginRight="20dp"
         android:drawableRight="@drawable/right_arrow"
         android:gravity="left|center_vertical"
-        android:text="版本1.1"
+        android:paddingLeft="5dp"
         android:textColor="#595e66"/>
 
     <View

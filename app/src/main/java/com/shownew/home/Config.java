@@ -38,8 +38,8 @@ public class Config extends com.wp.baselib.Config {
     /**
      * api接口跟路径
      */
-    private static final String WEB_ROOT = "http://www.shounew.cn:8090/Shou6Control/";
-//    private static final String WEB_ROOT = "http://www.shounew.cn/Shou6Control/";
+//    private static final String WEB_ROOT = "http://www.shounew.cn:8090/Shou6Control/";
+    private static final String WEB_ROOT = "http://www.shounew.cn/Shou6Control/";
     //================================================================用户相关==
 
     public static final String USER = WEB_ROOT + "user.do";

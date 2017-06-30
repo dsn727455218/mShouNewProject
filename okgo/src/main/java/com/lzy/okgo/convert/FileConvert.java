@@ -2,6 +2,7 @@ package com.lzy.okgo.convert;
 
 import android.os.Environment;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.AbsCallback;
@@ -9,6 +10,7 @@ import com.lzy.okgo.utils.HttpUtils;
 import com.lzy.okgo.utils.OkLogger;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,11 +39,6 @@ public class FileConvert implements Converter<File> {
     }
 
     public FileConvert(String destFileName) {
-        this(Environment.getExternalStorageDirectory() + DM_TARGET_FOLDER, destFileName);
-    }
-
-    public FileConvert(String destFileDir, String destFileName) {
-        this.destFileDir = destFileDir;
         this.destFileName = destFileName;
     }
 
@@ -51,13 +48,27 @@ public class FileConvert implements Converter<File> {
 
     @Override
     public File convertSuccess(Response value) throws Exception {
-        if (TextUtils.isEmpty(destFileDir)) destFileDir = Environment.getExternalStorageDirectory() + DM_TARGET_FOLDER;
-        if (TextUtils.isEmpty(destFileName)) destFileName = HttpUtils.getNetFileName(value, value.request().url().toString());
-
+        boolean sdCardExist = Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED); // 判断sd卡是否挂载
+        if (sdCardExist) {
+            destFileDir = Environment.getExternalStorageDirectory() + DM_TARGET_FOLDER;
+        } else {
+            Toast.makeText(OkGo.getContext(), "没有挂载SD卡!", Toast.LENGTH_LONG).show();
+            return null;
+        }
+        if (TextUtils.isEmpty(destFileDir))
+            destFileDir = Environment.getExternalStorageDirectory() + DM_TARGET_FOLDER;
+        if (TextUtils.isEmpty(destFileName))
+            destFileName = HttpUtils.getNetFileName(value, value.request().url().toString());
         File dir = new File(destFileDir);
-        if (!dir.exists()) dir.mkdirs();
+        if (!dir.exists()) {
+            boolean ismkdirs = dir.mkdirs();
+            OkLogger.d(ismkdirs + "mkdir=============");
+        }
         File file = new File(dir, destFileName);
-        if (file.exists()) file.delete();
+        if (file.exists()) {
+            OkLogger.d(file.delete() + "delete=============");
+        }
+
 
         long lastRefreshUiTime = 0;  //最后一次刷新的时间
         long lastWriteBytes = 0;     //最后一次写入字节数据
@@ -83,7 +94,8 @@ public class FileConvert implements Converter<File> {
                     if (curTime - lastRefreshUiTime >= OkGo.REFRESH_TIME || finalSum == total) {
                         //计算下载速度
                         long diffTime = (curTime - lastRefreshUiTime) / 1000;
-                        if (diffTime == 0) diffTime += 1;
+                        if (diffTime == 0)
+                            diffTime += 1;
                         long diffBytes = finalSum - lastWriteBytes;
                         final long networkSpeed = diffBytes / diffTime;
                         OkGo.getInstance().getDelivery().post(new Runnable() {
@@ -100,14 +112,25 @@ public class FileConvert implements Converter<File> {
             }
             fos.flush();
             return file;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            OkGo.getInstance().getDelivery().post(new Runnable() {
+                @Override
+                public void run() {
+                    callback.onError(null,null,new Exception("更新失败，请到应用市场更新最新版本!"));
+                }
+            });
+            return null;
         } finally {
             try {
-                if (is != null) is.close();
+                if (is != null)
+                    is.close();
             } catch (IOException e) {
                 OkLogger.e(e);
             }
             try {
-                if (fos != null) fos.close();
+                if (fos != null)
+                    fos.close();
             } catch (IOException e) {
                 OkLogger.e(e);
             }

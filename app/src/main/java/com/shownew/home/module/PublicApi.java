@@ -33,6 +33,15 @@ public class PublicApi extends BaseAPI {
     }
 
     /**
+     * 获取用户数据
+     *
+     * @return
+     */
+    public UserEntity getUserInfo() {
+        return JsonUtils.fromJson(Preference.getString(Config.FILE, mainApplication, Config.USERINFO), UserEntity.class);
+    }
+
+    /**
      * 保存资源数据
      *
      * @param data
@@ -51,14 +60,7 @@ public class PublicApi extends BaseAPI {
         }.getType());
     }
 
-    /**
-     * 获取用户数据
-     *
-     * @return
-     */
-    public UserEntity getUserInfo() {
-        return JsonUtils.fromJson(Preference.getString(Config.FILE, mainApplication, Config.USERINFO), UserEntity.class);
-    }
+
 
 
     /**

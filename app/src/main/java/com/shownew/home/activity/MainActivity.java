@@ -10,7 +10,6 @@ import com.shownew.home.ShouNewApplication;
 import com.shownew.home.fragment.CarServiceFragment;
 import com.shownew.home.fragment.HomeFragment;
 import com.shownew.home.fragment.MyFragment;
-import com.shownew.home.utils.AppUpdateUtil;
 import com.wp.baselib.common.TabFragmentActivity;
 import com.wp.baselib.utils.ExitUtil;
 
@@ -28,7 +27,7 @@ public class MainActivity extends TabFragmentActivity {
 
 
         //检查是否有更新
-        checkUpdate();
+
 
         //设置背景
         setTabBackground(R.drawable.bg_bottom_tab);
@@ -42,9 +41,7 @@ public class MainActivity extends TabFragmentActivity {
 
 
 
-    private void checkUpdate() {
-        new AppUpdateUtil(this, mShouNewApplication).UpdateExecute(true);
-    }
+
 
 
     @Override

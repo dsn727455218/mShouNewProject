@@ -15,6 +15,7 @@ import com.lzy.okgo.callback.FileCallback;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
 import com.shownew.home.module.PublicApi;
+import com.wp.baselib.utils.ToastUtil;
 import com.wp.baselib.utils.ToolsUtil;
 
 import java.io.File;
@@ -64,7 +65,7 @@ public class AppUpdateService extends IntentService {
     private void downFile() {
         if (TextUtils.isEmpty(apkUrl))
             return;
-        mPublicApi.downFile(apkUrl, new FileCallback("shouniu.apk'") {
+        mPublicApi.downFile(apkUrl, new FileCallback("shouniu.apk") {
             @Override
             public void resultDataUI(File data, Call call, Response response) {
                 super.resultDataUI(data, call, response);
@@ -92,12 +93,19 @@ public class AppUpdateService extends IntentService {
                     }
                 }
             }
+
+            @Override
+            public void onError(Call call, Response response, Exception e) {
+                super.onError(call, response, e);
+                ToastUtil.showToast(e.getMessage());
+            }
         });
     }
 
 
     private void installApk(File data) {
-        ToolsUtil.installAPK(data, AppUpdateService.this);
+        if (null != data)
+            ToolsUtil.installAPK(data, AppUpdateService.this);
     }
 
 

@@ -107,14 +107,19 @@ public class CarServiceFragment extends BaseFragment implements View.OnClickList
             @Override
             public void clickService(HomeAdverEntity homeAdverEntity) {
                 if (homeAdverEntity != null) {
-                    if (Config.ACTION_WEB.equals(homeAdverEntity.getaPid())) {
+                    if (Config.ACTION_WEB.equals(homeAdverEntity.getaPid()) && Config.ACTION_WEB.equals(homeAdverEntity.getaMpid())) {
                         if (!TextUtils.isEmpty(homeAdverEntity.getaUrl())) {
                             mShouNewApplication.redirectWeb("", homeAdverEntity.getaUrl());
                         }
                     } else {
                         Bundle bundle = new Bundle();
-                        bundle.putString("shopId", homeAdverEntity.getaPid());
-                        mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
+                        if ("0".equals(homeAdverEntity.getaMpid())) {
+                            bundle.putString("shopId", homeAdverEntity.getaPid());
+                            mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
+                        } else if ("0".equals(homeAdverEntity.getaPid())) {
+                            bundle.putString("shopId", homeAdverEntity.getaMpid());
+                            mShouNewApplication.redirectAndPrameter(ShopMallDetailActivity.class, bundle);
+                        }
                     }
                 }
 

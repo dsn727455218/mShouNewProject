@@ -19,6 +19,7 @@ import java.text.DecimalFormat;
 
 public class SetActivity extends BaseActivity implements View.OnClickListener {
     private TextView mClearCacher;
+    private TextView mVersion_news_tips;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,9 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         mClearCacher = (TextView) findViewById(R.id.clear_cacher);
         findViewById(R.id.transaction_pwd).setOnClickListener(this);
         mClearCacher.setOnClickListener(this);
+        mVersion_news_tips = (TextView) findViewById(R.id.version_news_tips);
         findViewById(R.id.version_news).setOnClickListener(this);
+        mVersion_news_tips.setOnClickListener(this);
         TextView version_news_tv = (TextView) findViewById(R.id.version_news_tv);
         version_news_tv.setOnClickListener(this);
         findViewById(R.id.clear_cacher_tv).setOnClickListener(this);
@@ -51,10 +54,17 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        new AppUpdateUtil(this, mShouNewApplication).UpdateExecute(true, mVersion_news_tips);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.version_news:
             case R.id.version_news_tv:
+            case R.id.version_news_tips:
                 checkUpdate();
                 break;
             case R.id.clear_cacher_tv:

@@ -73,6 +73,7 @@ public class SupermarketActivity extends BaseActivity implements View.OnClickLis
         mTitleBarView.setTitle("车配超市");
         mTitleBarView.setTitleTextColor(R.color.color_title);
         mTitleBarView.getMoreBtn().setText("品牌");
+        mTitleBarView.getMoreBtn().setVisibility(View.INVISIBLE);
         mTitleBarView.setOnMoreClickListener(this);
         mTitleBarView.setOnLeftOnClickListener(this);
         mTitleBarView.setLeftIcon(R.drawable.back_arrow);
@@ -363,6 +364,8 @@ public class SupermarketActivity extends BaseActivity implements View.OnClickLis
                 }
                 if (type == null || type.length == 0) {
                     mTitleBarView.getMoreBtn().setVisibility(View.GONE);
+                }else {
+                    mTitleBarView.getMoreBtn().setVisibility(View.VISIBLE);
                 }
 
             }

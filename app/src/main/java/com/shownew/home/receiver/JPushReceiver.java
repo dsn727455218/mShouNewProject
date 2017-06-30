@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.shownew.home.ShouNewApplication;
+import com.shownew.home.activity.msg.AllMsgActivity;
 import com.wp.baselib.utils.LogUtil;
 import com.wp.baselib.utils.ToastUtil;
 
@@ -40,7 +42,7 @@ public class JPushReceiver extends BroadcastReceiver {
 
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             LogUtil.d(TAG, "[MyReceiver] 用户点击打开了通知");
-//            ShouNewApplication.getInstance().redirect(AllMsgActivity.class);
+            ShouNewApplication.getInstance().redirect(AllMsgActivity.class);
         } else if (JPushInterface.ACTION_RICHPUSH_CALLBACK.equals(intent.getAction())) {
             Log.d(TAG, "[MyReceiver] 用户收到到RICH PUSH CALLBACK: " + bundle.getString(JPushInterface.EXTRA_EXTRA));
             //在这里根据 JPushInterface.EXTRA_EXTRA 的内容处理代码，比如打开新的Activity， 打开一个网页等..

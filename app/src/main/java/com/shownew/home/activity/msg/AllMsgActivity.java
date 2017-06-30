@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
 import com.shownew.home.module.PublicApi;
+import com.wp.baselib.utils.Preference;
 import com.wp.baselib.widget.TitleBarView;
 
 import org.json.JSONArray;
@@ -136,6 +137,10 @@ public class AllMsgActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        if (!Preference.getBoolean(this, Preference.IS_LOGIN, false)) {
+            mShouNewApplication.jumpLoginActivity(this);
+            return;
+        }
         Bundle bundle = new Bundle();
         switch (v.getId()) {
             case R.id.backBtn:

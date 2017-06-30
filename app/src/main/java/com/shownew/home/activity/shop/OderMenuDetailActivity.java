@@ -178,8 +178,6 @@ public class OderMenuDetailActivity extends BaseActivity implements View.OnClick
         if (null != mOderDetailEntity) {
             mConsigneeTv.setText(String.format("收货人:%s", mOderDetailEntity.getOKdname()));
             mShouNewApplication.loadImg(mOderDetailEntity.getOSimg(), mShop_img);
-
-
             mShop_title.setText(mOderDetailEntity.getOTitle());
             mShop_type.setText(String.format("颜色分类：%s", mOderDetailEntity.getOColor()));
 
@@ -194,12 +192,9 @@ public class OderMenuDetailActivity extends BaseActivity implements View.OnClick
             mOder_menu_address.setText(String.format("地址：%s", mOderDetailEntity.getOKdaddress()));
 
             int oState = mOderDetailEntity.getOState();
-            mLogistics_state.setText(String.format("物流状态: %s", oState == 0 ? "未支付" : oState == 1 ? "已支付" : "已发货"));
-
+            mLogistics_state.setText(String.format("物流状态: %s", oState == 0 ? "未支付" : oState == 1 ? "已支付,正在揽件" : oState == 2 ? "已发货" : "订单填写有误，请在消息中查看详情"));
             mLogistics_company.setText(String.format("承运公司: %s", mOderDetailEntity.getOKdCompany()));
             mLogistics_account.setText(String.format("运单编号：%s", mOderDetailEntity.getOKdNo()));
         }
-
-
     }
 }

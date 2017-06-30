@@ -75,8 +75,8 @@ public class OderMenuAdapter extends RecyclerView.Adapter<OderMenuAdapter.OrderM
         if (state == 0) {
             holder.order_delete_iv.setVisibility(View.VISIBLE);
         }
-        //（state：0=未支付    1=已支付    2=已发货）
-        holder.my_car_state.setText(Html.fromHtml(String.format("¥%s  <font color=#52acff>(%s)</font>", StringUtil.formatMoney(menuEntity.getOTotalprice()), state == 0 ? "未支付" : state == 1 ? "已支付" : "已发货")));
+        //（state：0=未支付    1=已支付    2=已发货  3 发货失败）
+        holder.my_car_state.setText(Html.fromHtml(String.format("¥%s  <font color=#52acff>(%s)</font>", StringUtil.formatMoney(menuEntity.getOTotalprice()), state == 0 ? "未支付" : state == 1 ? "已支付,正在揽件" : state == 2 ? "已发货" : "订单填写有误，请在消息中查看详情")));
         holder.oder_menu_parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

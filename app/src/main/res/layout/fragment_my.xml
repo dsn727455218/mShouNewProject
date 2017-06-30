@@ -115,21 +115,38 @@
 
             <include layout="@layout/line_white"/>
 
-            <TextView
-                android:id="@+id/sys_setting_tv"
-                style="@style/BaseTextStyle"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/set_up"
-                android:drawablePadding="@dimen/drawable_padding"
-                android:drawableRight="@drawable/right_arrow"
-                android:gravity="left|center_vertical"
-                android:paddingBottom="@dimen/text_padding"
-                android:paddingRight="@dimen/my_text_padding_right"
-                android:paddingTop="@dimen/text_padding"
-                android:text="系统设置"
-                android:textColor="@color/color_text_my"
-                android:textSize="@dimen/my_text_size"/>
+                android:id="@+id/sys_setting_tv"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/BaseTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/set_up"
+                    android:drawablePadding="@dimen/drawable_padding"
+                    android:gravity="left|center_vertical"
+                    android:paddingBottom="@dimen/text_padding"
+                    android:paddingRight="@dimen/my_text_padding_right"
+                    android:paddingTop="@dimen/text_padding"
+                    android:text="系统设置"
+                    android:textColor="@color/color_text_my"
+                    android:textSize="@dimen/my_text_size"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/sys_tips"
+                    android:layout_marginRight="20dp"
+                    android:drawableRight="@drawable/right_arrow"
+                    android:gravity="center_vertical"/>
+
+            </RelativeLayout>
 
 
             <include layout="@layout/line_white"/>

@@ -17,16 +17,17 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
-import com.shownew.home.activity.msg.AllMsgActivity;
 import com.shownew.home.activity.FunctionRenewActivity;
 import com.shownew.home.activity.MainActivity;
 import com.shownew.home.activity.MicroCustomerActivity;
 import com.shownew.home.activity.SetActivity;
 import com.shownew.home.activity.ShouWalletActivity;
 import com.shownew.home.activity.UserInfoActivity;
+import com.shownew.home.activity.msg.AllMsgActivity;
 import com.shownew.home.module.UserAPI;
 import com.shownew.home.module.entity.SourcesEntity;
 import com.shownew.home.module.entity.UserEntity;
+import com.shownew.home.utils.AppUpdateUtil;
 import com.shownew.home.utils.dialog.CommonDialog;
 import com.shownew.home.utils.dialog.ShareDialog;
 import com.wp.baselib.utils.JsonUtils;
@@ -51,6 +52,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     private TextView mNichengTv;
     private UserAPI mUserAPI;
     private TitleBarView mTitleBarView;
+    private TextView mSys_tips;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +69,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         super.onResume();
         getUserInfoData();
         exsitUnReadMsg();
+        new AppUpdateUtil(context, mShouNewApplication).UpdateExecute(true,mSys_tips);
     }
 
     private void initViews() {
@@ -81,6 +84,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         mTitleBarView.setOnLeftOnClickListener(this);
         mTitleBarView.setMoreIcon(R.drawable.share);
         mTitleBarView.setLeftIcon(R.drawable.news);
+
+        mSys_tips = (TextView) mConverView.findViewById(R.id.sys_tips);
 
         mHeaderIcon = (ImageView) mConverView.findViewById(R.id.my_header_icon);
         mNichengTv = (TextView) mConverView.findViewById(R.id.my_nichegn_tv);
