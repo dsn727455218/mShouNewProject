@@ -60,15 +60,18 @@
         <!-- &lt;!&ndash; 主界面 &ndash;&gt; -->
         <activity
             android:name=".activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!-- 向导页 -->
         <activity
             android:name=".activity.GuideActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.BackgroundTranslucent"/>
         <!-- 注册账号 -->
         <activity
             android:name=".activity.RegisterActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!-- 重置密码 -->
 

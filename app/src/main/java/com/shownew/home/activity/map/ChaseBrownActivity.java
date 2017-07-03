@@ -162,7 +162,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                     }
                     carMarker = addMarkersToMap(mAMap, R.drawable.vehiclelocation, new LatLng(mDeviceLatitude, mDeviceLongitude), true, regeocodeResult.getRegeocodeAddress().getFormatAddress(), "");
                     carMarker.setObject("carMarker");
-                    mAMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mDeviceLatitude, mDeviceLongitude), 20));
+                    mAMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mDeviceLatitude, mDeviceLongitude), 16));
                     setMarkPostion(carMarker, new LatLng(mDeviceLatitude, mDeviceLongitude));
                     carMarker.setZIndex(3);
                     mPersonMarker.setZIndex(4);
@@ -200,7 +200,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
         super.getLocation(location);
 
         if (location != null && !isFirst) {
-            changeMapCenter(mAMap, new LatLng(location.getLatitude(), location.getLongitude()));
+            changeMapCenter(mAMap, new LatLng(location.getLatitude(), location.getLongitude()),16);
             isFirst = true;
             mPersonMarker = addMarkersToMap(mAMap, R.drawable.peoplelocation, new LatLng(location.getLatitude(), location.getLongitude()), true, location.getAddress(), location.getCity());
         }
@@ -317,7 +317,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                 getGPS();
                 if (null != location && 0 != mDeviceLatitude && 0 != mDeviceLongitude) {
                     //                    clearMapMarker(mAMap);mDeviceLatitude
-                    changeMapCenter(mAMap, new LatLng(mDeviceLatitude, mDeviceLongitude));
+                    changeMapCenter(mAMap, new LatLng(mDeviceLatitude, mDeviceLongitude),16);
                 }
                 break;
             case R.id.person_daohang_btn:

@@ -115,7 +115,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 if (null == exception) {
                     ToastUtil.showToast("注销成功");
-                    mShouNewApplication.redirect(MainActivity.class);
+//                    mShouNewApplication.redirect(MainActivity.class);
                     Preference.putBoolean(mShouNewApplication, Preference.IS_LOGIN, false);
                 }
 

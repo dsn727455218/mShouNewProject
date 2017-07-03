@@ -32,7 +32,7 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
         setBarColor(R.color.transparent);
         mTimeTask = new TimeTask(3 * 1000, 1000);
-        checkPermission(android.Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA);
+        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION);
     }
 
     /**
@@ -44,7 +44,7 @@ public class WelcomeActivity extends BaseActivity {
             int length = permiss.length;
             ArrayList<String> requestPermissionList = new ArrayList<String>();
             for (int i = 0; i < length; i++) {
-                int permission = ContextCompat.checkSelfPermission(WelcomeActivity.this, Manifest.permission.RECORD_AUDIO);
+                int permission = ContextCompat.checkSelfPermission(WelcomeActivity.this, permiss[i]);
                 if (permission != PackageManager.PERMISSION_GRANTED) {//如果没有权限
                     requestPermissionList.add(permiss[i]);
                 }

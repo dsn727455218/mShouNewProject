@@ -34,7 +34,7 @@ public final class FinishListener implements DialogInterface.OnClickListener, Di
 
   @Override
   public void onCancel(DialogInterface dialogInterface) {
-    run();
+
   }
 
   @Override

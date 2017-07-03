@@ -1,6 +1,11 @@
 package com.shownew.home.activity.map;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -40,6 +45,13 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+            if (permission != PackageManager.PERMISSION_GRANTED) {//如果没有权限
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
+
         //实例化语音引擎
         mTtsManager = TTSController.getInstance(ShouNewApplication.getInstance());
         mTtsManager.init();
@@ -162,6 +174,7 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
 
     @Override
     public void onNaviCancel() {
+
         finish();
     }
 

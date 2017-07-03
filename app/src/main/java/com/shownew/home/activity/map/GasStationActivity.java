@@ -216,7 +216,7 @@ public class GasStationActivity extends BaseLocationActivity implements AMap.OnI
                     }
                     mAMap.addCircle(new CircleOptions().center(new LatLng(location.getLatitude(), location.getLongitude())).radius(5000).strokeColor(Color.BLUE).fillColor(Color.argb(15, 1, 1, 1)).strokeWidth(2));
                 } else {
-                    ToastUtil.showToast("没有相关是数据");
+                    ToastUtil.showToast("没有检索到相关数据");
                 }
 
             }

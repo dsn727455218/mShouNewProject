@@ -1,10 +1,15 @@
 package com.shownew.home.activity.map;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.Interpolator;
 
@@ -32,6 +37,7 @@ import com.amap.api.services.weather.WeatherSearchQuery;
 import com.shownew.home.activity.common.BaseActivity;
 import com.shownew.home.utils.LocalUtils;
 import com.wp.baselib.utils.TimeUtil;
+
 import java.util.List;
 
 
@@ -50,6 +56,12 @@ public class BaseLocationActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION);
+            if (permission != PackageManager.PERMISSION_GRANTED) {//如果没有权限
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
+        }
         LocalUtils.getInstances().initLocation(getApplicationContext(), locationListener);
     }
 
@@ -151,6 +163,8 @@ public class BaseLocationActivity extends BaseActivity {
     protected void changeMapCenter(AMap aMap, LatLng latLng) {
         changeMapCenter(aMap,latLng,15);
     }
+
+
 
     /**
      * 改变地图中心点

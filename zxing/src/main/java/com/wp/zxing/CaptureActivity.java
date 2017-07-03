@@ -1,13 +1,18 @@
 package com.wp.zxing;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -184,7 +189,12 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+            if (permission != PackageManager.PERMISSION_GRANTED) {//如果没有权限
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+            }
+        }
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.capture);
@@ -343,6 +353,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
                                         mHandler.sendMessage(m);
                                         progressDialog.dismiss();
                                     }
+
                                     @Override
                                     public void onAnalyzeFailed() {
                                         Message m = mHandler.obtainMessage();

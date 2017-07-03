@@ -105,7 +105,7 @@ public class TTSController implements MyNaviListener {
                     break;
                 case CHECK_TTS_PLAY:
                     if (!isPlaying) {
-                        handler.obtainMessage(1).sendToTarget();
+                        handler.obtainMessage(TTS_PLAY).sendToTarget();
                     }
                     break;
             }
@@ -180,6 +180,7 @@ public class TTSController implements MyNaviListener {
     public void onArriveDestination() {
         if (wordList != null)
             wordList.addLast("到达目的地附近");
+        handler.obtainMessage(CHECK_TTS_PLAY).sendToTarget();
     }
 
     @Override
@@ -190,6 +191,7 @@ public class TTSController implements MyNaviListener {
     public void onCalculateRouteFailure(int arg0) {
         if (wordList != null)
             wordList.addLast("路线规划失败");
+        handler.obtainMessage(CHECK_TTS_PLAY).sendToTarget();
     }
 
     @Override
@@ -224,12 +226,14 @@ public class TTSController implements MyNaviListener {
     public void onReCalculateRouteForTrafficJam() {
         if (wordList != null)
             wordList.addLast("前方路线拥堵，路线重新规划");
+        handler.obtainMessage(CHECK_TTS_PLAY).sendToTarget();
     }
 
     @Override
     public void onReCalculateRouteForYaw() {
         if (wordList != null)
             wordList.addLast("路线重新规划");
+        handler.obtainMessage(CHECK_TTS_PLAY).sendToTarget();
     }
 
     @Override
