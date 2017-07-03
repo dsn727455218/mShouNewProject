@@ -103,10 +103,9 @@ public class PayStateActivity extends AndroidActivity implements View.OnClickLis
                 alipayCharge(mOrderzNo);
                 break;
             case 2:
-
                 shouniuCharge(mOrderzNo);
                 break;
-            case 3:
+            case 0:
                 createLoadingDialog();
                 wxCharge(mOrderzNo);
                 break;

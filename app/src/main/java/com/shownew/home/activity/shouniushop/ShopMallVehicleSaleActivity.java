@@ -133,15 +133,15 @@ public class ShopMallVehicleSaleActivity extends BaseActivity implements View.On
     @Override
     protected void onResume() {
         super.onResume();
-        createLoadingDialog();
         refresh();
-        getActionAdv();
     }
 
     private void refresh() {
         page = 1;
         isRefresh = true;
+        createLoadingDialog();
         getProductList();
+        getActionAdv();
     }
 
     private void initBanner() {

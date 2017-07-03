@@ -134,15 +134,15 @@ public class VehicleSaleActivity extends BaseActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        createLoadingDialog();
         refresh();
-        getActionAdv();
     }
 
     private void refresh() {
         page = 1;
         isRefresh = true;
+        createLoadingDialog();
         getProductList();
+        getActionAdv();
     }
 
     private void initBanner() {

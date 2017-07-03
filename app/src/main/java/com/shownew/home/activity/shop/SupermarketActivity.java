@@ -155,21 +155,22 @@ public class SupermarketActivity extends BaseActivity implements View.OnClickLis
             }
         });
         headerRecylerView.setAdapter(mHeaderAdapter);
-        getTypeList();
+
     }
 
     private void refresh() {
         page = 1;
         isRefresh = true;
         getProductList();
+        getTypeList();
+        getMyCarTypeList();
+        getActionAdv();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         refresh();
-        getMyCarTypeList();
-        getActionAdv();
     }
 
     private void initBanner() {

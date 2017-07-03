@@ -157,7 +157,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
     /**
      * 用来判断    选择的哪个支付方式
      */
-    private int flag = 3;
+    private int flag = 0;
 
     private void initRechargeWays() {
         rgPay = (RadioGroup) findViewById(R.id.rg_pay);
@@ -183,7 +183,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                         rbWx.setCompoundDrawablesWithIntrinsicBounds(R.drawable.weixinpay, 0, R.drawable.uncertain_payment_function, 0);
                         break;
                     case R.id.rg_wx:
-                        flag = 3;
+                        flag = 0;
                         rbZf.setCompoundDrawablesWithIntrinsicBounds(R.drawable.zhifubaopay, 0, R.drawable.uncertain_payment_function, 0);
                         rbSn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.shouniupay, 0, R.drawable.uncertain_payment_function, 0);
                         rbWx.setCompoundDrawablesWithIntrinsicBounds(R.drawable.weixinpay, 0, R.drawable.determine_payment_function, 0);
@@ -321,7 +321,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                                         case 2:
                                             shouniuCharge(mOrderzNo);
                                             break;
-                                        case 3:
+                                        case 0:
 
                                             wxCharge(mOrderzNo);
                                             break;

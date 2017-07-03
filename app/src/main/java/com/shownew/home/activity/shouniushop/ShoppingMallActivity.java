@@ -40,7 +40,6 @@ import java.util.ArrayList;
 import okhttp3.Response;
 
 
-
 public class ShoppingMallActivity extends BaseActivity implements View.OnClickListener {
     private XRecyclerView mRecyclerView;
     private ShopHomeAdapter mDataAdapter;
@@ -54,7 +53,7 @@ public class ShoppingMallActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_shopping_mall);
         mShopAPI = new ShopAPI(mShouNewApplication);
         initViews();
-        getTypeList();
+
     }
 
     private boolean isRefresh;
@@ -97,7 +96,7 @@ public class ShoppingMallActivity extends BaseActivity implements View.OnClickLi
                 getProductList();
             }
         });
-        getActionAdv();
+
         refresh();
     }
 
@@ -105,6 +104,8 @@ public class ShoppingMallActivity extends BaseActivity implements View.OnClickLi
         isRefresh = true;
         page = 1;
         getProductList();
+        getTypeList();
+        getActionAdv();
     }
 
     private Banner mBanner;
