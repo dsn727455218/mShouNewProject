@@ -73,7 +73,7 @@ public class ActionPayActivity extends BaseActivity implements View.OnClickListe
         mConsignee_phone = (TextView) findViewById(R.id.consignee_phone);
         mConsignee_address = (TextView) findViewById(R.id.consignee_address);
         WordWrapLayout select_car_type = (WordWrapLayout) findViewById(R.id.select_car_type);
-        addViewColor(this, "电瓶车,汽车", select_car_type);
+        addViewColor(this, "电动车,汽车", select_car_type);
         colorLisener(select_car_type);
         mCommit = findViewById(R.id.commit);
         mCommit.setOnClickListener(this);

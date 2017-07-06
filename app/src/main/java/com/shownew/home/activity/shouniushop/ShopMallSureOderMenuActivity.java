@@ -204,10 +204,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                     mNumber++;
                     mShop_number.setText(String.valueOf(mNumber));
                 }
-                mCount_number.setText(String.format("共%s件商品  小计:", mNumber));
-                money = prices * mNumber + mSuperMarkeDetailEntity.getMpKdprice();
-                mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(prices * mNumber)));
-                mTotal_tv.setText(String.format("合计:¥%s", StringUtil.formatMoney(money)));
+                setMoneyData();
                 break;
             case R.id.reduce_number:
                 mNumber = Integer.parseInt(mShop_number.getText().toString().trim());
@@ -215,11 +212,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                     mNumber--;
                     mShop_number.setText(String.valueOf(mNumber));
                 }
-                mCount_number.setText(String.format("共%s件商品  小计:", mNumber));
-                money = prices * mNumber + mSuperMarkeDetailEntity.getMpKdprice();
-                mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(prices * mNumber)));
-                mTotal_tv.setText(String.format("合计:¥%s", StringUtil.formatMoney(money)));
-
+                setMoneyData();
                 break;
             case R.id.rl1:
                 mainApplication.redirect(AddressEditActivity.class);
@@ -228,6 +221,13 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                 submitOrderz();
                 break;
         }
+    }
+
+    private void setMoneyData() {
+        money = prices * mNumber + mSuperMarkeDetailEntity.getMpKdprice();
+        mCount_number.setText(String.format("共%s件商品  小计:", StringUtil.formatMoney(money)));
+        mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(prices * mNumber)));
+        mTotal_tv.setText(String.format("合计:¥%s", StringUtil.formatMoney(money)));
     }
 
     @Override
