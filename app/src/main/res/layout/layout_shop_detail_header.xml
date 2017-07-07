@@ -132,22 +132,13 @@
         android:text="产品详情"
         android:textColor="#9ba4b2"/>
 
-    <TextView
-        android:id="@+id/shop_detail_shuoming"
-        style="@style/BaseTextStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/shop_detail_tv_tag"
-        android:background="@android:color/white"
-        android:gravity="center_horizontal"
-        android:lines="4"
-        android:text="产品详情图文介绍"/>
+
 
     <LinearLayout
         android:id="@+id/shop_detail_tuwen_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/shop_detail_shuoming"
+        android:layout_below="@+id/shop_detail_tv_tag"
         android:orientation="vertical">
     </LinearLayout>
 

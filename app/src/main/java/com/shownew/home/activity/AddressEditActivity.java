@@ -207,10 +207,10 @@ public class AddressEditActivity extends BaseActivity implements View.OnClickLis
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 closeLoadingDialog();
                 if (null == exception) {
-                    ToastUtil.showToast("请求成功");
+                    ToastUtil.showToast("设置成功");
                     finish();
                 } else {
-                    ToastUtil.showToast("请求失败");
+                    ToastUtil.showToast("设置失败");
                     mComplete.setEnabled(true);
                 }
             }

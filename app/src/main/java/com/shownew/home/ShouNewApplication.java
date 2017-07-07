@@ -235,9 +235,9 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
                 if (1 == flag) {
                     redirect(LoginActivity.class);
                 } else if (0 == flag) {
-//                    Bundle bundle = new Bundle();
-//                    bundle.putInt("loginOrforgetpwd_flag", 1);//注册
-//                    redirectAndPrameter(RegisterActivity.class, bundle);
+                    //                    Bundle bundle = new Bundle();
+                    //                    bundle.putInt("loginOrforgetpwd_flag", 1);//注册
+                    //                    redirectAndPrameter(RegisterActivity.class, bundle);
                 }
             }
         }).setCancelable(true).show();
@@ -329,10 +329,18 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
                         Log.e("Msg", "用户未登录");
                         Preference.putBoolean(instance, Preference.IS_LOGIN, false);
                         handleLogin();
+                        response.close();
+                        return;
                     } else if (303 == statusCode) {
                         Log.e("Msg", "服务器连接超时");
                     } else if (305 == statusCode) {//请求被禁止，未绑定默认车辆
                         handleCarBind();
+                        response.close();
+                        return;
+                    } else if (500 == statusCode) {
+                        Log.e("Msg", "服务器连接超时");
+                        ToastUtil.showToast("网络连接失败");
+                        return;
                     }
                     resultData(resultData, jsonObject, response, new Exception(message));
                     Log.e("Msg", message);
@@ -340,6 +348,7 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
                     return;
                 }
                 resultData(resultData, jsonObject, response, new Exception("没有含有statusCode"));
+                response.close();
             } catch (Exception e) {
                 e.printStackTrace();
                 resultData(resultData, null, response, e);
@@ -362,7 +371,7 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
         @Override
         public void onError(Call call, Response response, Exception e) {
             super.onError(call, response, e);
-            if (e instanceof ConnectException || e instanceof SocketTimeoutException||e instanceof UnknownHostException) {
+            if (e instanceof ConnectException || e instanceof SocketTimeoutException || e instanceof UnknownHostException) {
                 ToastUtil.showToast("网络连接失败");
             }
             resultData(null, null, response, e);
@@ -411,9 +420,6 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
         PlatformConfig.setSinaWeibo("3946992314", "55ec1bd872fdf573992810c748b0d4ce", "http://sns.whalecloud.com");
         PlatformConfig.setWeixin("wx18e68dc827ac8cc7", "4315dffa19f1edf682b5d59eaa85530b");
         PlatformConfig.setQQZone("1106101117", "3DpGx0kvmph7ZfCr");
-
-
-
 
 
         PlatformConfig.setYixin("yxc0614e80c9304c11b0391514d09f13bf");

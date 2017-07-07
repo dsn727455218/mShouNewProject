@@ -192,7 +192,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     if ("0".equals(lock)) {
                         mAnim.start();
                         controlLock(2);
-                    }else {
+                    } else {
                         mAnim.start();
                         controlLock(1);
                     }
@@ -506,11 +506,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             @Override
             protected void handleCarBind() {
                 super.handleCarBind();
-                if (context instanceof MainActivity) {
-                    MainActivity activity = (MainActivity) context;
-                    activity.closeLoadingDialog();
-                }
+                closeLoadingDialog();
                 mShouNewApplication.handleCarBind(context);
+            }
+
+            @Override
+            protected void handleLogin() {
+                super.handleLogin();
+                closeLoadingDialog();
+                mShouNewApplication.jumpLoginActivity(context);
             }
         });
     }
@@ -547,7 +551,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
             @Override
             protected void onLoading() {
-                if (context instanceof MainActivity) {
+                if (null != context && context instanceof MainActivity) {
                     MainActivity activity = (MainActivity) context;
                     activity.createLoadingDialog();
                 }
@@ -556,14 +560,25 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             @Override
             protected void handleCarBind() {
                 super.handleCarBind();
-                if (context != null) {
-                    MainActivity activity = (MainActivity) context;
-                    activity.closeLoadingDialog();
-                }
+                closeLoadingDialog();
                 mShouNewApplication.handleCarBind(context);
 
             }
+
+            @Override
+            protected void handleLogin() {
+                super.handleLogin();
+                closeLoadingDialog();
+                mShouNewApplication.jumpLoginActivity(context);
+            }
         });
+    }
+
+    private void closeLoadingDialog() {
+        if (context != null && context instanceof MainActivity) {
+            MainActivity activity = (MainActivity) context;
+            activity.closeLoadingDialog();
+        }
     }
 
     /**
@@ -634,7 +649,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                                     } else {
                                         mBattery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.battery6, 0);
                                     }
-                                    mBattery.setText(String.valueOf(elect>100?100:elect));
+                                    mBattery.setText(String.valueOf(elect > 100 ? 100 : elect));
                                     String isMute = mDeviceEntity.getIsMute();
                                     // isMute：0=静音     1=非静音
                                     if ("0".equals(isMute)) {
