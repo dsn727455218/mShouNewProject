@@ -285,6 +285,7 @@ public class MainApplication extends Application {
             super.onBefore(request);
         }
 
+
         @Override
         public T convertSuccess(Response response) throws Exception {
             return null;
