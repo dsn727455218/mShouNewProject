@@ -9,6 +9,8 @@ package com.shownew.home;
  */
 
 public class Config extends com.wp.baselib.Config {
+    //广播
+    public  static  final String BROADCASEREVEIVER_MGS_ACTION="android.intent.action.Msg";
     //广告活动
     public static final  String ACTION_ADV="1";
     public static final  String ACTION="6";

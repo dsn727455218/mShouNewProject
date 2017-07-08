@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.shownew.home.Config;
 import com.shownew.home.ShouNewApplication;
 import com.shownew.home.activity.msg.AllMsgActivity;
 import com.wp.baselib.utils.LogUtil;
@@ -32,6 +33,7 @@ public class JPushReceiver extends BroadcastReceiver {
             return;
         Bundle bundle = intent.getExtras();
         LogUtil.d(TAG, "onReceive - " + intent.getAction() + ", extras: " + printBundle(bundle));
+        context.sendBroadcast(new Intent(Config.BROADCASEREVEIVER_MGS_ACTION));
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
             String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
             LogUtil.d(TAG, "[MyReceiver] 接收Registration Id : " + regId);
@@ -39,7 +41,6 @@ public class JPushReceiver extends BroadcastReceiver {
 
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             LogUtil.d(TAG, "[MyReceiver] 接收到推送下来的通知");
-
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
             LogUtil.d(TAG, "[MyReceiver] 用户点击打开了通知");
             ShouNewApplication.getInstance().redirect(AllMsgActivity.class);

@@ -377,12 +377,13 @@
         <activity android:name=".activity.common.BaseActivity">
         </activity>
         <!-- 监听网络发生改变   系统时间被修改的 广播 -->
-        <receiver android:name=".receiver.NetworkStateBroadCastRecevier">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-                <action android:name="android.intent.action.TIME_SET"/>
-            </intent-filter>
-        </receiver>
+        <!--<receiver android:name=".receiver.NetworkStateBroadCastRecevier">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>-->
+                <!--<action android:name="android.intent.action.TIME_SET"/>-->
+                <!--<action android:name="android.intent.action.Msg"/>-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
         <!-- 消息 -->
         <activity
             android:name=".activity.msg.AllMsgActivity"

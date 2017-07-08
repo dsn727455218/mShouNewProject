@@ -149,7 +149,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mTitleBarView.setMoreIcon(R.drawable.share);
         mTitleBarView.setLeftIcon(R.drawable.news);
         mTitleBarView.setTitleSize(20);
-        initBanner();
+        initBanner(mBanner);
     }
 
     /**
@@ -320,27 +320,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mMy_vehicle.getChildAt(0).setOnClickListener(this);
     }
 
-    private void initBanner() {
 
-
-        //设置banner样式
-        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-        //设置图片加载器
-        mBanner.setImageLoader(new GlideImageLoader(R.drawable.home_bannerseize));
-        //设置图片集合
-
-        mBanner.setBannerAnimation(Transformer.Default);
-        //设置自动轮播，默认为true
-        mBanner.isAutoPlay(true);
-        //设置轮播时间
-        mBanner.setDelayTime(3000);
-
-        //设置指示器位置（当banner模式中有指示器时）
-        mBanner.setIndicatorGravity(BannerConfig.CENTER);
-
-        //banner设置方法全部调用完毕时最后调用
-        //        mBanner.start();
-    }
 
     @Override
     public void onPause() {
@@ -679,7 +659,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         getDeviceNewData();
         LocalUtils.getInstances().initLocation(context, locationListener);
         getActionAdv();
-        exsitUnReadMsg();
+    }
+
+    @Override
+    public void isHaveMsg(int unRead) {
+        if (0 == unRead) {
+            mTitleBarView.getMsgCircle().setVisibility(View.GONE);
+        } else if (1 == unRead) {
+            mTitleBarView.getMsgCircle().setVisibility(View.VISIBLE);
+        }
     }
 
     /**
@@ -836,34 +824,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
 
-    private void exsitUnReadMsg() {
-        mDeviceAPI.exsitUnReadMsg(mShouNewApplication.new ShouNewHttpCallBackLisener() {
-            @Override
-            protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
-                if (exception == null) {
-                    if (json.has("data")) {
-                        try {
-                            JSONObject jsonObject = json.getJSONObject("data");
-                            if (jsonObject.has("unRead")) {
-                                int unRead = jsonObject.getInt("unRead");
-                                if (0 == unRead) {
-                                    mTitleBarView.getMsgCircle().setVisibility(View.GONE);
-                                } else if (1 == unRead) {
-                                    mTitleBarView.getMsgCircle().setVisibility(View.VISIBLE);
-                                }
-                            }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                } else {
-                    mTitleBarView.getMsgCircle().setVisibility(View.GONE);
-                }
-            }
-        });
-
-    }
 
     private Handler mHandler = new Handler() {
         @Override

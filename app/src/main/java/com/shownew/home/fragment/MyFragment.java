@@ -68,10 +68,18 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         getUserInfoData();
-        exsitUnReadMsg();
         new AppUpdateUtil(context, mShouNewApplication).UpdateExecute(true,mSys_tips);
     }
 
+    @Override
+    public void isHaveMsg(int unRead) {
+        super.isHaveMsg(unRead);
+        if (0 == unRead) {
+            mTitleBarView.getMsgCircle().setVisibility(View.GONE);
+        } else if (1 == unRead) {
+            mTitleBarView.getMsgCircle().setVisibility(View.VISIBLE);
+        }
+    }
     private void initViews() {
         mTitleBarView = (TitleBarView) mConverView.findViewById(R.id.headbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -233,32 +241,4 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         });
     }
 
-    private void exsitUnReadMsg() {
-        mUserAPI.exsitUnReadMsg(mShouNewApplication.new ShouNewHttpCallBackLisener() {
-            @Override
-            protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
-                if (exception == null) {
-                    if (json.has("data")) {
-                        try {
-                            JSONObject jsonObject = json.getJSONObject("data");
-                            if (jsonObject.has("unRead")) {
-                                int unRead = jsonObject.getInt("unRead");
-                                if (0 == unRead) {
-                                    mTitleBarView.getMsgCircle().setVisibility(View.GONE);
-                                } else if (1 == unRead) {
-                                    mTitleBarView.getMsgCircle().setVisibility(View.VISIBLE);
-                                }
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                } else {
-                    mTitleBarView.getMsgCircle().setVisibility(View.GONE);
-                }
-            }
-        });
-
-    }
 }

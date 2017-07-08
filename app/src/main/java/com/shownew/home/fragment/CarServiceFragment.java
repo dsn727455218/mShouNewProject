@@ -28,16 +28,12 @@ import com.shownew.home.activity.shop.ShopDetailActivity;
 import com.shownew.home.activity.shouniushop.ShopMallDetailActivity;
 import com.shownew.home.adapter.HeaderAdapter;
 import com.shownew.home.adapter.ServiceAdapter;
-import com.shownew.home.module.PublicApi;
 import com.shownew.home.module.entity.HomeAdverEntity;
-import com.shownew.home.utils.GlideImageLoader;
 import com.shownew.home.utils.dialog.ShareDialog;
 import com.wp.baselib.utils.JsonUtils;
 import com.wp.baselib.utils.Preference;
 import com.wp.baselib.widget.TitleBarView;
 import com.wp.baselib.widget.banner.Banner;
-import com.wp.baselib.widget.banner.BannerConfig;
-import com.wp.baselib.widget.banner.Transformer;
 import com.wp.baselib.widget.banner.listener.OnBannerListener;
 
 import org.json.JSONException;
@@ -61,28 +57,31 @@ public class CarServiceFragment extends BaseFragment implements View.OnClickList
     protected View mConverView;
     private LayoutInflater inflater;
     private boolean isRefresh;
-    private PublicApi mPublicApi;
+
     /**
      * 获取到的广告图片实体
      */
     private ArrayList<HomeAdverEntity> mHomeAdverEntities;
     private TitleBarView mTitleBarView;
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (null == mConverView) {
             this.inflater = inflater;
             mConverView = inflater.inflate(R.layout.fragment_carservice, container, false);
-            mPublicApi = new PublicApi(mShouNewApplication);
             initViews();
         }
         return mConverView;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        exsitUnReadMsg();
+    public void isHaveMsg(int unRead) {
+        if (0 == unRead) {
+            mTitleBarView.getMsgCircle().setVisibility(View.GONE);
+        } else if (1 == unRead) {
+            mTitleBarView.getMsgCircle().setVisibility(View.VISIBLE);
+        }
     }
 
     private void initViews() {
@@ -159,7 +158,7 @@ public class CarServiceFragment extends BaseFragment implements View.OnClickList
     private View getHeaderView() {
         View hearderView = inflater.inflate(R.layout.layout_recyclerview_header, null);
         mBanner = (Banner) hearderView.findViewById(R.id.header_banner);
-        initBanner();
+        initBanner(mBanner);
         RecyclerView headerRecylerView = (RecyclerView) hearderView.findViewById(R.id.header_recyclerView);
         initRecylerViewDate(headerRecylerView);
         return hearderView;
@@ -195,28 +194,7 @@ public class CarServiceFragment extends BaseFragment implements View.OnClickList
         headerRecylerView.setAdapter(headerAdapter);
     }
 
-    private void initBanner() {
-        //设置banner样式
-        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
-        //        mBanner.  setIndicatorGravity(BannerConfig.CENTER);
-        //设置图片加载器
-        mBanner.setImageLoader(new GlideImageLoader());
-        //设置图片集合
-        //        mBanner.setImages(images);
-        //设置banner动画效果
-        mBanner.setBannerAnimation(Transformer.Default);
-        //设置标题集合（当banner样式有显示title时）
-        //        mBanner.setBannerTitles(data);
-        //设置自动轮播，默认为true
-        mBanner.isAutoPlay(true);
-        //设置轮播时间
-        mBanner.setDelayTime(3000);
 
-        //设置指示器位置（当banner模式中有指示器时）
-        mBanner.setIndicatorGravity(BannerConfig.CENTER);
-        //banner设置方法全部调用完毕时最后调用
-        //        mBanner.start();
-    }
 
     @Override
     public void onClick(View v) {
@@ -227,9 +205,9 @@ public class CarServiceFragment extends BaseFragment implements View.OnClickList
                     return;
                 }
                 mShouNewApplication.redirect(AllMsgActivity.class);
-                if (context!=null&&context instanceof MainActivity){
-                    MainActivity activity= (MainActivity) context;
-                    activity.overridePendingTransition(R.anim.left_in,R.anim.right_out);
+                if (context != null && context instanceof MainActivity) {
+                    MainActivity activity = (MainActivity) context;
+                    activity.overridePendingTransition(R.anim.left_in, R.anim.right_out);
                 }
                 break;
             case R.id.title_bar_more:
@@ -347,32 +325,5 @@ public class CarServiceFragment extends BaseFragment implements View.OnClickList
         });
     }
 
-    private void exsitUnReadMsg() {
-        mPublicApi.exsitUnReadMsg(mShouNewApplication.new ShouNewHttpCallBackLisener() {
-            @Override
-            protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
-                if (exception == null) {
-                    if (json.has("data")) {
-                        try {
-                            JSONObject jsonObject = json.getJSONObject("data");
-                            if (jsonObject.has("unRead")) {
-                                int unRead = jsonObject.getInt("unRead");
-                                if (0 == unRead) {
-                                    mTitleBarView.getMsgCircle().setVisibility(View.GONE);
-                                } else if (1 == unRead) {
-                                    mTitleBarView.getMsgCircle().setVisibility(View.VISIBLE);
-                                }
-                            }
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                } else {
-                    mTitleBarView.getMsgCircle().setVisibility(View.GONE);
-                }
-            }
-        });
-
-    }
 }
