@@ -114,8 +114,9 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
                 mCarNameEt.setText(qrCode.substring(length, qrCode.length()));
             }
             mCarEntity = mBundle.getParcelable("car");
+            mCommit.setText("提  交");
             if (null != mCarEntity) {
-                titleBarView.setTitle("修改车辆");
+                titleBarView.setTitle("车辆信息");
                 mDeviceTypeNumberEt.setText(mCarEntity.getCHardcode());
                 mDeviceTypeNumberEt.setEnabled(false);
                 saoma.setEnabled(false);
@@ -128,6 +129,7 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
                 mUserName.setText(mCarEntity.getCUname());
                 mBatteryType.setText(String.valueOf(mCarEntity.getCBattery()));
                 mMyCarNameEt.setText(mCarEntity.getCName());
+                mCommit.setText("修  改");
             }
         }
     }

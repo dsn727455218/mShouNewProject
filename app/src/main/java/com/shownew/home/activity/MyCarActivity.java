@@ -58,9 +58,6 @@ public class MyCarActivity extends BaseActivity implements View.OnClickListener 
         TitleBarView titleBarView = (TitleBarView) findViewById(R.id.headbar);
         findViewById(R.id.empty_view).setVisibility(View.GONE);
         titleBarView.setTitle("我的车辆");
-        titleBarView.setRightText("新增");
-        titleBarView.setOnRightTvClick(this);
-
         titleBarView.setTitleTextColor(R.color.color_title);
         titleBarView.setOnLeftOnClickListener(this);
         titleBarView.setLeftIconAndText(R.drawable.back_arrow, "返回");
@@ -80,8 +77,8 @@ public class MyCarActivity extends BaseActivity implements View.OnClickListener 
 
             @Override
             public void onLoadMore() {
-                isRefresh = false;
-                getCarDataList();
+//                isRefresh = false;
+//                getCarDataList();
             }
         });
 
@@ -107,9 +104,6 @@ public class MyCarActivity extends BaseActivity implements View.OnClickListener 
             case R.id.backBtn:
                 finish();
                 break;
-            case R.id.commitFeed:
-                addCar();
-                break;
         }
     }
 
@@ -128,9 +122,9 @@ public class MyCarActivity extends BaseActivity implements View.OnClickListener 
                         mCarEntities.clear();
                     }
                 }
-                if (mCarEntities.size() > 0) {
-                    mXRecyclerView.loadMoreComplete();
-                }
+//                if (mCarEntities.size() > 0) {
+//                    mXRecyclerView.loadMoreComplete();
+//                }
                 if (null == exception) {
                     if (json.has("data")) {
                         try {
@@ -148,11 +142,13 @@ public class MyCarActivity extends BaseActivity implements View.OnClickListener 
                         }
                     }
                 } else {
-                    if (mCarEntities.size() > 0) {
-                        mXRecyclerView.setNoMore(true);
-                    }
+//                    if (mCarEntities.size() > 0) {
+//                        mXRecyclerView.setNoMore(true);
+//                    }
                 }
+                mCarEntities.add(null);
                 mMyCarAdapter.notifyDataSetChanged();
+
             }
         });
     }

@@ -124,7 +124,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
 
             @Override
             protected void onLoading() {
-                ToastUtil.showToast("获取中...");
+                createLoadingDialog();
             }
         });
     }

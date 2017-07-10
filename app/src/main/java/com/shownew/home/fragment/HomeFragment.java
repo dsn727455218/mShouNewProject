@@ -32,21 +32,20 @@ import com.google.gson.reflect.TypeToken;
 import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
-import com.shownew.home.activity.msg.AllMsgActivity;
 import com.shownew.home.activity.BatteryManagerActivity;
 import com.shownew.home.activity.MainActivity;
 import com.shownew.home.activity.MyCarActivity;
 import com.shownew.home.activity.common.WebActionActivity;
 import com.shownew.home.activity.map.ChaseBrownActivity;
 import com.shownew.home.activity.map.HistoryTrajectoryActivity;
+import com.shownew.home.activity.msg.AllMsgActivity;
 import com.shownew.home.activity.shop.ShopDetailActivity;
+import com.shownew.home.activity.shop.SupermarketActivity;
 import com.shownew.home.activity.shouniushop.ShopMallDetailActivity;
 import com.shownew.home.activity.shouniushop.ShoppingMallActivity;
-import com.shownew.home.activity.shop.SupermarketActivity;
 import com.shownew.home.module.DeviceAPI;
 import com.shownew.home.module.entity.DeviceEntity;
 import com.shownew.home.module.entity.HomeAdverEntity;
-import com.shownew.home.utils.GlideImageLoader;
 import com.shownew.home.utils.LocalUtils;
 import com.shownew.home.utils.dialog.ShareDialog;
 import com.umeng.socialize.UMShareAPI;
@@ -55,8 +54,6 @@ import com.wp.baselib.utils.Preference;
 import com.wp.baselib.utils.ToastUtil;
 import com.wp.baselib.widget.TitleBarView;
 import com.wp.baselib.widget.banner.Banner;
-import com.wp.baselib.widget.banner.BannerConfig;
-import com.wp.baselib.widget.banner.Transformer;
 import com.wp.baselib.widget.banner.listener.OnBannerListener;
 
 import org.json.JSONException;
@@ -319,7 +316,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mMy_vehicle.getChildAt(0).setTag("my_vehicle");
         mMy_vehicle.getChildAt(0).setOnClickListener(this);
     }
-
 
 
     @Override
@@ -629,7 +625,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                                     } else {
                                         mBattery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.battery6, 0);
                                     }
-                                    mBattery.setText(String.valueOf(elect > 100 ? 100 : elect));
+                                    mBattery.setText(String.valueOf(elect > 100 ? 100 : (elect < 0 ? 0 : elect)));
                                     String isMute = mDeviceEntity.getIsMute();
                                     // isMute：0=静音     1=非静音
                                     if ("0".equals(isMute)) {
@@ -822,8 +818,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
         });
     }
-
-
 
 
     private Handler mHandler = new Handler() {

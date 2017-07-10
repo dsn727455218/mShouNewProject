@@ -47,8 +47,23 @@ public class MyCarAdapter extends RecyclerView.Adapter<MyCarAdapter.MyCarViewHol
     @Override
     public void onBindViewHolder(MyCarViewHolder holder, final int position) {
         final CarEntity carEntity = data.get(position);
-        if (carEntity == null)
+        holder.new_car.setVisibility(View.GONE);
+        holder.new_car_ll.setVisibility(View.VISIBLE);
+        if (carEntity == null){
+            holder.new_car_ll.setVisibility(View.GONE);
+            holder.new_car.setVisibility(View.VISIBLE);
+            holder.new_car.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mContext != null && mContext instanceof MyCarActivity) {
+                        MyCarActivity carActivity = (MyCarActivity) mContext;
+                        carActivity.addCar();
+                    }
+                }
+            });
             return;
+        }
+
         //绑定车辆
         holder.new_car_ll.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -92,8 +107,9 @@ public class MyCarAdapter extends RecyclerView.Adapter<MyCarAdapter.MyCarViewHol
 
     private void setData(final MyCarViewHolder holder, final CarEntity carEntity) {
         if (carEntity != null) {
+
             holder.my_car_name.setText(Html.fromHtml(String.format("%s_<small>%s</small>", carEntity.getCName(), carEntity.getCBattery() + "v")));
-            holder.my_car_cur_name.setText(!"1".equals(carEntity.getcDefault()) ? carEntity.getCMark() : Html.fromHtml(String.format("%s<font color=#0078D7>(%s)</font>", carEntity.getCMark(), "当前车辆")));
+            holder.my_car_cur_name.setText(!"1".equals(carEntity.getcDefault()) ? carEntity.getCMark() : Html.fromHtml(String.format("%s<font color=#0078D7>(%s)</font>", carEntity.getCMark(), "正在使用")));
             holder.mCarUserName.setText(String.format("用户姓名:%s", carEntity.getCUname()));
             holder.mCar_paihao.setText(String.format("车牌号码:%s", carEntity.getCLicencenum()));
             holder.mCar_vertify_number.setText(String.format("身份证号:%s", carEntity.getCUidcard()));
@@ -142,6 +158,7 @@ public class MyCarAdapter extends RecyclerView.Adapter<MyCarAdapter.MyCarViewHol
         private final TextView mCar_type_number;
         private final TextView mCar_jia_number;
         private final ImageView mMy_car_header_iv;
+        private ImageView new_car;
 
 
         public MyCarViewHolder(View itemView) {
@@ -158,6 +175,7 @@ public class MyCarAdapter extends RecyclerView.Adapter<MyCarAdapter.MyCarViewHol
             mCar_type_number = (TextView) itemView.findViewById(R.id.car_type_number);
             mCar_jia_number = (TextView) itemView.findViewById(R.id.car_jia_number);
             mMy_car_header_iv = (ImageView) itemView.findViewById(R.id.my_car_header_iv);
+            new_car = (ImageView) itemView.findViewById(R.id.new_car);
         }
     }
 }
