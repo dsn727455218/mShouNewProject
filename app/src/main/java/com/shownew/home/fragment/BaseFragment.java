@@ -132,6 +132,11 @@ public class BaseFragment extends Fragment implements MsgBroadCasetRecivier.MsgL
                     isHaveMsg(0);
                 }
             }
+
+            @Override
+            protected void handleLogin() {
+                isHaveMsg(0);
+            }
         });
 
     }

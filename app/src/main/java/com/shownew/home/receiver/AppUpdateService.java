@@ -3,7 +3,6 @@ package com.shownew.home.receiver;
 import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
@@ -111,20 +110,20 @@ public class AppUpdateService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-
+        if (intent != null) {
+            apkUrl = intent.getStringExtra("url");
+            sendResidentNoticeType2(this, "首牛云控更新包下载中", 0);
+        }
     }
 
     private String apkUrl;
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        if (intent != null) {
-            apkUrl = intent.getStringExtra("url");
-            sendResidentNoticeType2(this, "首牛云控更新包下载中", 0);
-        }
-        return super.onStartCommand(intent, Service.START_REDELIVER_INTENT, startId);
+        //，我们可以选择START_NOT_STICKY，这也是IntentService的默认选项，当我们认为操作十分重要时，则应该选择START_REDELIVER_INTENT 型服务
+        setIntentRedelivery(true);
+        return super.onStartCommand(intent, flags, startId);
     }
-
 
     @Override
     public void onDestroy() {

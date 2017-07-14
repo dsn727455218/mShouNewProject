@@ -54,7 +54,6 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
      * 纬    度
      */
     private double mDeviceLatitude;
-    private LatLng mLatLngs[];
     private View mHistoryPoint;
     private ImageView mCarLocation;
     private Marker carMarker;
@@ -79,7 +78,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                 mCarLocation.setImageResource(R.drawable.qicheweizhi);
             }
         }
-
+        createLoadingDialog();
         getGPS();
     }
 
@@ -95,7 +94,6 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
 
                 if (null == exception) {
                     if (json.has("data")) {
-                        mHandler.sendEmptyMessageDelayed(0, 5000);
                         try {
                             JSONObject result = json.getJSONObject("data");
                             if (result.has("gps")) {
@@ -116,19 +114,28 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+                        if (getNewsCount <= 4 && getNewsCount > 0) {
+                            if (getNewsCount == 4) {
+                                mHandler.sendEmptyMessageDelayed(0, 5000);
+                            }
+                            getNewsCount--;
+                            mHandler.sendEmptyMessageDelayed(2, 3000);
+                        }
                     }
                 } else {
-                    mHandler.sendEmptyMessageDelayed(1, 5000);
+
+                    mHandler.sendEmptyMessageDelayed(1, 3000);
                 }
             }
 
             @Override
             protected void onLoading() {
-                createLoadingDialog();
+
             }
         });
     }
 
+    private int getNewsCount = 4;
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -136,12 +143,18 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
             switch (msg.what) {
                 case 0:
                     ToastUtil.showToast("获取成功");
+                    closeLoadingDialog();
                     break;
                 case 1:
                     ToastUtil.showToast("获取失败,请重新获取");
+                    closeLoadingDialog();
+                    break;
+                case 2:
+                    if (isFinish)
+                        break;
+                    getGPS();
                     break;
             }
-            closeLoadingDialog();
         }
     };
 
@@ -152,14 +165,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
             if (rCode == AMapException.CODE_AMAP_SUCCESS) {
                 if (regeocodeResult != null && regeocodeResult.getRegeocodeAddress() != null && regeocodeResult.getRegeocodeAddress().getFormatAddress() != null) {
 
-                    List<Marker> mapScreenMarkers = mAMap.getMapScreenMarkers();
-                    int length = mapScreenMarkers.size();
-                    for (int i = 0; i < length; i++) {
-                        Marker marker = mapScreenMarkers.get(i);
-                        if (marker.equals(carMarker)) {
-                            marker.remove();//移除当前Marker
-                        }
-                    }
+                    removeMarker(carMarker);
                     carMarker = addMarkersToMap(mAMap, R.drawable.vehiclelocation, new LatLng(mDeviceLatitude, mDeviceLongitude), true, regeocodeResult.getRegeocodeAddress().getFormatAddress(), "");
                     carMarker.setObject("carMarker");
                     mAMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mDeviceLatitude, mDeviceLongitude), 16));
@@ -177,6 +183,16 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
         }
     };
 
+    private void removeMarker(Marker mark){
+        List<Marker> mapScreenMarkers = mAMap.getMapScreenMarkers();
+        int length = mapScreenMarkers.size();
+        for (int i = 0; i < length; i++) {
+            Marker marker = mapScreenMarkers.get(i);
+            if (marker.equals(mark)) {
+                marker.remove();//移除当前Marker
+            }
+        }
+    }
     private void initViews() {
         findViewById(R.id.my_localtion_btn).setOnClickListener(this);
         mCarLocation = (ImageView) findViewById(R.id.car_localtion_btn);
@@ -185,7 +201,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
         mHistoryPoint = findViewById(R.id.history_stop_car_point_btn);
         mHistoryPoint.setOnClickListener(this);
 
-        TitleBarView  mTitleBarView = (TitleBarView) findViewById(R.id.headbar);
+        TitleBarView mTitleBarView = (TitleBarView) findViewById(R.id.headbar);
         mTitleBarView.setTitle("定位追踪");
         mTitleBarView.setTitleTextColor(R.color.color_title);
         mTitleBarView.setOnLeftOnClickListener(this);
@@ -200,8 +216,9 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
         super.getLocation(location);
 
         if (location != null && !isFirst) {
-            changeMapCenter(mAMap, new LatLng(location.getLatitude(), location.getLongitude()),16);
+            changeMapCenter(mAMap, new LatLng(location.getLatitude(), location.getLongitude()), 16);
             isFirst = true;
+            removeMarker(mPersonMarker);
             mPersonMarker = addMarkersToMap(mAMap, R.drawable.peoplelocation, new LatLng(location.getLatitude(), location.getLongitude()), true, location.getAddress(), location.getCity());
         }
     }
@@ -229,20 +246,20 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
     }
 
 
-
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
+        if (mHandler != null) {
+            mHandler.removeCallbacksAndMessages(null);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        isFinish = false;
         mMapView.onResume();
-
-        //        getGPSList();
     }
 
     @Override
@@ -304,20 +321,23 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.backBtn:
+                isFinish = true;
                 finish();
                 break;
             case R.id.my_localtion_btn:
                 if (null != location) {
                     //                    clearMapMarker(mAMap);
+                    isFirst = false;
                     changeMapCenter(mAMap, new LatLng(location.getLatitude(), location.getLongitude()));
                 }
                 break;
             case R.id.car_localtion_btn:
                 createLoadingDialog();
+                getNewsCount = 4;
                 getGPS();
                 if (null != location && 0 != mDeviceLatitude && 0 != mDeviceLongitude) {
                     //                    clearMapMarker(mAMap);mDeviceLatitude
-                    changeMapCenter(mAMap, new LatLng(mDeviceLatitude, mDeviceLongitude),16);
+                    changeMapCenter(mAMap, new LatLng(mDeviceLatitude, mDeviceLongitude), 16);
                 }
                 break;
             case R.id.person_daohang_btn:
@@ -343,5 +363,14 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
     public boolean onMarkerClick(Marker marker) {
         //        jumpPoint(mAMap, marker);
         return false;
+    }
+
+    private boolean isFinish;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        isFinish = true;
+        finish();
     }
 }
