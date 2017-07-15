@@ -127,11 +127,6 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                     mHandler.sendEmptyMessageDelayed(1, 3000);
                 }
             }
-
-            @Override
-            protected void onLoading() {
-
-            }
         });
     }
 

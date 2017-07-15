@@ -46,8 +46,6 @@ public class ShopMallOderMenuDetailActivity extends BaseActivity implements View
     private TextView mLogistics_state;
     private TextView mLogistics_company;
     private TextView mLogistics_account;
-    private ListView mListView;
-    private TextView mLiuyan;
     private LogisticsAdater mLogisticsAdater;
     private ArrayList<KdEntity> datas = new ArrayList<KdEntity>();
 
@@ -83,10 +81,10 @@ public class ShopMallOderMenuDetailActivity extends BaseActivity implements View
         mLogistics_company = (TextView) findViewById(R.id.logistics_company);
         mLogistics_account = (TextView) findViewById(R.id.logistics_account);
         findViewById(R.id.home_item_parent).setOnClickListener(this);
-        mLiuyan = (TextView) findViewById(R.id.liuyan);
-        mListView = (ListView) findViewById(R.id.listView);
+        TextView liuyan = (TextView) findViewById(R.id.liuyan);
+        ListView listView = (ListView) findViewById(R.id.listView);
         mLogisticsAdater = new LogisticsAdater(this, datas);
-        mListView.setAdapter(mLogisticsAdater);
+        listView.setAdapter(mLogisticsAdater);
     }
 
     @Override

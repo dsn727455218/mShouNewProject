@@ -70,7 +70,6 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
     private TextView mConsignee_phone;
     private TextView mConsignee_address;
     private String locationId;
-    private RadioGroup rgPay;
     private RadioButton rbWx;
     private RadioButton rbZf;
     private RadioButton rbSn;
@@ -160,7 +159,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
     private int flag = 0;
 
     private void initRechargeWays() {
-        rgPay = (RadioGroup) findViewById(R.id.rg_pay);
+        RadioGroup rgPay = (RadioGroup) findViewById(R.id.rg_pay);
 
         rbWx = (RadioButton) findViewById(rg_wx);
         rbZf = (RadioButton) findViewById(rg_zf);

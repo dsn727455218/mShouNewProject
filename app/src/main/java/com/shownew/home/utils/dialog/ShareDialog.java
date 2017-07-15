@@ -20,7 +20,6 @@ import com.shownew.home.adapter.ShareAdapter;
  */
 
 public class ShareDialog extends BaseDialog {
-    private ShareAdapter mShareAdapter;
     private final ShareUtils mShareUtils;
 
     /**
@@ -32,8 +31,8 @@ public class ShareDialog extends BaseDialog {
         View view = mInflater.inflate(R.layout.layout_share_dialog, null);
         GridView gridView = (GridView) view.findViewById(R.id.share_gridview);
         mShareUtils = new ShareUtils(context,shouNewApplication);
-        mShareAdapter = new ShareAdapter(context, mShareUtils.getPlatforms());
-        gridView.setAdapter(mShareAdapter);
+        ShareAdapter shareAdapter = new ShareAdapter(context, mShareUtils.getPlatforms());
+        gridView.setAdapter(shareAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

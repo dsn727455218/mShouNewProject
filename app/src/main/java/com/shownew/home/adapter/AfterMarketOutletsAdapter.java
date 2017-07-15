@@ -49,8 +49,7 @@ public class AfterMarketOutletsAdapter extends RecyclerView.Adapter<AfterMarketO
     @Override
     public AfterMarketOutletsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View converView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_after_market_outlets_items, parent, false);
-        AfterMarketOutletsViewHolder afterMarketOutletsViewHolder = new AfterMarketOutletsViewHolder(converView);
-        return afterMarketOutletsViewHolder;
+        return new AfterMarketOutletsViewHolder(converView);
     }
 
     @Override

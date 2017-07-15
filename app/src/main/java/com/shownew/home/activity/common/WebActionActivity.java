@@ -232,7 +232,7 @@ public class WebActionActivity extends BaseActivity implements View.OnClickListe
     /**
      * 初始化视图
      */
-    @SuppressLint("JavascriptInterface")
+    @SuppressLint({"JavascriptInterface", "AddJavascriptInterface"})
     private void initView() {
         mErrorView = findViewById(R.id.empty_view);
         pb = (ProgressBar) findViewById(R.id.pb);

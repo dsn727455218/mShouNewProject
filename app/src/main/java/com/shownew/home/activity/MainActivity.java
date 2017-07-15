@@ -55,10 +55,6 @@ public class MainActivity extends TabFragmentActivity {
         return super.dispatchKeyEvent(event);
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

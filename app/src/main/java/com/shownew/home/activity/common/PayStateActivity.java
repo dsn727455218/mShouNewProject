@@ -43,7 +43,6 @@ public class PayStateActivity extends AndroidActivity implements View.OnClickLis
     private ShouNewApplication mShouNewApplication;
     private String mOrderzNo;
     private int flag;
-    private boolean isSucess;
     private String mMoney;
 
     @Override
@@ -56,7 +55,7 @@ public class PayStateActivity extends AndroidActivity implements View.OnClickLis
         if (mBundle != null) {
             mOrderzNo = mBundle.getString("orderzNo");
             flag = mBundle.getInt("flag");
-            isSucess = mBundle.getBoolean("isSucess");
+            boolean isSucess = mBundle.getBoolean("isSucess");
             mMoney = mBundle.getString("money");
             isSucess(isSucess);
         }

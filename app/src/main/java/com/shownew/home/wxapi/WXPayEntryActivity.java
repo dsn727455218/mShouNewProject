@@ -30,7 +30,6 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
     private ShouNewApplication mShouNewApplication;
     private int mFlag;
     private int mShopType;
-    private String mOrderzNo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,19 +60,19 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
         //        -2	用户取消	无需处理。发生场景：用户不支付了，点击取消，返回APP。
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
 
-            mOrderzNo = Preference.getString(mShouNewApplication, Config.ORDER);
+            String orderzNo = Preference.getString(mShouNewApplication, Config.ORDER);
             mShopType = Preference.getInt(mShouNewApplication, Config.SHOP_TYPE);
             mFlag = Preference.getInt(mShouNewApplication, Config.FLAG, 1000);
             if (resp.errCode == 0) {
                 //                1  超市            2  钱包 续费  活动
-                checkTenpayOrderz(mOrderzNo);
+                checkTenpayOrderz(orderzNo);
             } else {
                 if (2 == mShopType) {
                     ToastUtil.showToast("支付失败");
                     Preference.putBoolean(mShouNewApplication, Config.WX_STATE, false);
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("orderzNo", mOrderzNo);
+                    bundle.putString("orderzNo", orderzNo);
                     bundle.putInt("flag", mFlag);
                     bundle.putBoolean("isSucess", false);
                     mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);

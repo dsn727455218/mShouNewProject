@@ -18,17 +18,12 @@ import com.shownew.home.R;
 
 public class ShopPopwindow extends PopupWindow implements View.OnClickListener {
 
-    private View conentView;
-    private final TextView msg;
-    private final TextView share;
-    private final TextView home_pop;
-
 
     public ShopPopwindow(final Activity context) {
-        conentView = LayoutInflater.from(context).inflate(R.layout.layout_shop_pop_home, null);
-        msg = (TextView) conentView.findViewById(R.id.msg);
-        share = (TextView) conentView.findViewById(R.id.share);
-        home_pop = (TextView) conentView.findViewById(R.id.home_pop);
+        View conentView = LayoutInflater.from(context).inflate(R.layout.layout_shop_pop_home, null);
+        TextView msg = (TextView) conentView.findViewById(R.id.msg);
+        TextView share = (TextView) conentView.findViewById(R.id.share);
+        TextView home_pop = (TextView) conentView.findViewById(R.id.home_pop);
         home_pop.setOnClickListener(this);
         share.setOnClickListener(this);
         msg.setOnClickListener(this);

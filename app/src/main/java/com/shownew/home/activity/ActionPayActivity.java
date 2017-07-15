@@ -148,7 +148,7 @@ public class ActionPayActivity extends BaseActivity implements View.OnClickListe
                                 if (null != mAddressEntity) {
                                     mConsignee_tv.setText(mAddressEntity.getLName());
                                     mConsignee_phone.setText(mAddressEntity.getLPhone());
-                                    mConsignee_address.setText(mAddressEntity.getLCity() + mAddressEntity.getLAddress());
+                                    mConsignee_address.setText(String.valueOf(mAddressEntity.getLCity() + mAddressEntity.getLAddress()));
                                     locationId = mAddressEntity.getLId();
                                 }
                             }
@@ -232,7 +232,6 @@ public class ActionPayActivity extends BaseActivity implements View.OnClickListe
                      * docType=1) 建议商户依赖异步通知
                      */
                     mCommit.setEnabled(true);
-                    String msgTips = "";
                     // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                     mUserAPI.checkAlipayOrderz(payResult.toString(), mShouNewApplication.new ShouNewHttpCallBackLisener() {
                         @Override

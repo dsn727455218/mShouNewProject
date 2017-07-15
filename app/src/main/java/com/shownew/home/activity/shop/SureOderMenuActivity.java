@@ -66,7 +66,6 @@ public class SureOderMenuActivity extends BaseActivity implements View.OnClickLi
     private TextView mConsignee_phone;
     private TextView mConsignee_address;
     private String locationId;
-    private RadioGroup rgPay;
     private RadioButton rbWx;
     private RadioButton rbZf;
     private RadioButton rbSn;
@@ -162,7 +161,7 @@ public class SureOderMenuActivity extends BaseActivity implements View.OnClickLi
     private int flag = 0;
 
     private void initRechargeWays() {
-        rgPay = (RadioGroup) findViewById(R.id.rg_pay);
+        RadioGroup rgPay = (RadioGroup) findViewById(R.id.rg_pay);
         rbWx = (RadioButton) findViewById(R.id.rg_wx);
         rbZf = (RadioButton) findViewById(R.id.rg_zf);
         rbSn = (RadioButton) findViewById(R.id.rg_sn);

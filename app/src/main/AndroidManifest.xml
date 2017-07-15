@@ -60,7 +60,7 @@
         <!-- &lt;!&ndash; 主界面 &ndash;&gt; -->
         <activity
             android:name=".activity.MainActivity"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"/>
         <!-- 向导页 -->
         <activity
@@ -409,7 +409,6 @@
         <!-- 商品详情 -->
         <activity
             android:name=".activity.shop.ShopDetailActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!-- 确认商品订单 -->
         <activity
@@ -498,7 +497,6 @@
         <!--首牛商城详情界面-->
         <activity
             android:name=".activity.shouniushop.ShopMallDetailActivity"
-            android:launchMode="singleTask"
             android:screenOrientation="portrait"/>
         <!--首牛订单详情-->
         <activity

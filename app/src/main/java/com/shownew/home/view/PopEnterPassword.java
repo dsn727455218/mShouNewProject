@@ -20,12 +20,6 @@ import com.wp.baselib.utils.StringUtil;
  */
 public class PopEnterPassword extends PopupWindow {
 
-    private PasswordView pwdView;
-
-    private View mMenuView;
-
-    private Activity mContext;
-
     public PopEnterPassword(final Activity context, String money) {
         this(context, money, "tips");
     }
@@ -34,13 +28,13 @@ public class PopEnterPassword extends PopupWindow {
 
         super(context);
 
-        this.mContext = context;
+        Activity context1 = context;
 
-        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) context1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        mMenuView = inflater.inflate(R.layout.pop_enter_password, null);
+        View menuView = inflater.inflate(R.layout.pop_enter_password, null);
 
-        pwdView = (PasswordView) mMenuView.findViewById(R.id.pwd_view);
+        PasswordView pwdView = (PasswordView) menuView.findViewById(R.id.pwd_view);
         if (TextUtils.isEmpty(money)) {
             pwdView.getMoneyCharge().setText("");
         } else {
@@ -77,7 +71,7 @@ public class PopEnterPassword extends PopupWindow {
         });
 
         // 设置SelectPicPopupWindow的View
-        this.setContentView(mMenuView);
+        this.setContentView(menuView);
         // 设置SelectPicPopupWindow弹出窗体的宽
         this.setWidth(LayoutParams.MATCH_PARENT);
         // 设置SelectPicPopupWindow弹出窗体的高

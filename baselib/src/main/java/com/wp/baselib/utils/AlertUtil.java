@@ -49,12 +49,9 @@ public class AlertUtil {
             return;
         }
         if (!ToolsUtil.isFastDoubleClick(milliseconds)) {
-            AlertDialog alertDialog ;
+            AlertDialog alertDialog;
             try {
-                alertDialog = new AlertDialog.Builder(context)
-                        .setIcon(android.R.drawable.ic_dialog_alert).setTitle(titleId)
-                        .setPositiveButton(android.R.string.ok, null)
-                        .setMessage(messageId).create();
+                alertDialog = new AlertDialog.Builder(context).setIcon(android.R.drawable.ic_dialog_alert).setTitle(titleId).setPositiveButton(android.R.string.ok, null).setMessage(messageId).create();
                 if (!alertDialog.isShowing())
                     alertDialog.show();
 
@@ -122,23 +119,16 @@ public class AlertUtil {
      * @param cancle
      * @param negativeListener
      */
-    public static void showAlert(Context context, int titleId, int messageId,
-                                 int ok, DialogInterface.OnClickListener positiveListener,
-                                 int cancle, DialogInterface.OnClickListener negativeListener) {
+    public static void showAlert(Context context, int titleId, int messageId, int ok, DialogInterface.OnClickListener positiveListener, int cancle, DialogInterface.OnClickListener negativeListener) {
         if (!checkActivityValid(context)) {
             return;
         }
         if (!ToolsUtil.isFastDoubleClick(milliseconds)) {
             try {
-                String title = titleId != 0 ? context.getResources().getString(titleId)
-                        : "";
-                String msg = messageId != 0 ? context.getResources().getString(
-                        messageId) : "";
+                String title = titleId != 0 ? context.getResources().getString(titleId) : "";
+                String msg = messageId != 0 ? context.getResources().getString(messageId) : "";
                 AlertDialog alertDialog;
-                alertDialog = new AlertDialog.Builder(context).setTitle(title)
-                        .setPositiveButton(ok, positiveListener)
-                        .setNegativeButton(cancle, negativeListener).setMessage(msg)
-                        .setCancelable(false).create();
+                alertDialog = new AlertDialog.Builder(context).setTitle(title).setPositiveButton(ok, positiveListener).setNegativeButton(cancle, negativeListener).setMessage(msg).setCancelable(false).create();
                 if (!alertDialog.isShowing())
                     alertDialog.show();
 
@@ -154,9 +144,7 @@ public class AlertUtil {
         }
     }
 
-    public static void showAlert(Context context, String titleId, String messageId,
-                                 String ok, DialogInterface.OnClickListener positiveListener,
-                                 String cancle, DialogInterface.OnClickListener negativeListener) {
+    public static void showAlert(Context context, String titleId, String messageId, String ok, DialogInterface.OnClickListener positiveListener, String cancle, DialogInterface.OnClickListener negativeListener) {
         if (!checkActivityValid(context)) {
             return;
         }
@@ -164,10 +152,7 @@ public class AlertUtil {
             try {
                 String title = TextUtils.isEmpty(titleId) ? "" : titleId;
                 String msg = TextUtils.isEmpty(messageId) ? "" : messageId;
-                final AlertDialog alertDialog = new AlertDialog.Builder(context).setTitle(title)
-                        .setPositiveButton(ok, positiveListener)
-                        .setNegativeButton(cancle, negativeListener).setMessage(msg)
-                        .setCancelable(false).create();
+                final AlertDialog alertDialog = new AlertDialog.Builder(context).setTitle(title).setPositiveButton(ok, positiveListener).setNegativeButton(cancle, negativeListener).setMessage(msg).setCancelable(false).create();
                 if (!alertDialog.isShowing())
                     alertDialog.show();
 
@@ -193,21 +178,15 @@ public class AlertUtil {
      * @param cancle
      * @param negativeListener
      */
-    public static void showAlert(Context context, int titleId, String message,
-                                 int ok, DialogInterface.OnClickListener positiveListener,
-                                 int cancle, DialogInterface.OnClickListener negativeListener) {
+    public static void showAlert(Context context, int titleId, String message, int ok, DialogInterface.OnClickListener positiveListener, int cancle, DialogInterface.OnClickListener negativeListener) {
         if (!checkActivityValid(context)) {
             return;
         }
         if (!ToolsUtil.isFastDoubleClick(milliseconds)) {
             try {
-                String title = titleId != 0 ? context.getResources().getString(titleId)
-                        : "";
+                String title = titleId != 0 ? context.getResources().getString(titleId) : "";
                 AlertDialog alertDialog;
-                alertDialog = new AlertDialog.Builder(context).setTitle(title)
-                        .setPositiveButton(ok, positiveListener)
-                        .setNegativeButton(cancle, negativeListener)
-                        .setMessage(message).setCancelable(false).create();
+                alertDialog = new AlertDialog.Builder(context).setTitle(title).setPositiveButton(ok, positiveListener).setNegativeButton(cancle, negativeListener).setMessage(message).setCancelable(false).create();
                 if (!alertDialog.isShowing())
                     alertDialog.show();
 
@@ -232,19 +211,14 @@ public class AlertUtil {
      * @param positiveButtontxt
      * @param positiveListener
      */
-    public static void showAlert(Context context, int titleId, int messageId,
-                                 CharSequence positiveButtontxt,
-                                 DialogInterface.OnClickListener positiveListener) {
+    public static void showAlert(Context context, int titleId, int messageId, CharSequence positiveButtontxt, DialogInterface.OnClickListener positiveListener) {
         if (!checkActivityValid(context)) {
             return;
         }
         if (!ToolsUtil.isFastDoubleClick(milliseconds)) {
             AlertDialog alertDialog;
             try {
-                alertDialog = new AlertDialog.Builder(context)
-                        .setIcon(android.R.drawable.ic_dialog_alert).setTitle(titleId)
-                        .setPositiveButton(positiveButtontxt, positiveListener)
-                        .setMessage(messageId).setCancelable(false).create();
+                alertDialog = new AlertDialog.Builder(context).setIcon(android.R.drawable.ic_dialog_alert).setTitle(titleId).setPositiveButton(positiveButtontxt, positiveListener).setMessage(messageId).setCancelable(false).create();
                 if (!alertDialog.isShowing())
                     alertDialog.show();
                 alertDialog.setOnDismissListener(new OnDismissListener() {
@@ -259,39 +233,39 @@ public class AlertUtil {
         }
     }
 
-//    /**
-//     * show Toast
-//     *
-//     * @param context
-//     * @param msg
-//     */
-//    public static void showToast(Context context, String msg) {
-//        if (!checkActivityValid(context)) {
-//            return;
-//        }
-//        try {
-//            if (TextUtils.isEmpty(msg))
-//                return;
-//
-//            Toast mToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
-//            mToast.setGravity(Gravity.CENTER, 0, 0);
-//
-//            mToast.setText(msg);
-//            //还原样式
-//            ViewGroup lay = (ViewGroup) mToast.getView();
-//            if (lay != null) {
-//                Drawable drawable = lay.getBackground();
-//                if (drawable != null) {
-//                    drawable.setAlpha(255);
-//                }
-//                if (lay.getChildCount() == 2)  //移除自定义视图
-//                    lay.removeViewAt(0);
-//            }
-//            mToast.show();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
+    //    /**
+    //     * show Toast
+    //     *
+    //     * @param context
+    //     * @param msg
+    //     */
+    //    public static void showToast(Context context, String msg) {
+    //        if (!checkActivityValid(context)) {
+    //            return;
+    //        }
+    //        try {
+    //            if (TextUtils.isEmpty(msg))
+    //                return;
+    //
+    //            Toast mToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+    //            mToast.setGravity(Gravity.CENTER, 0, 0);
+    //
+    //            mToast.setText(msg);
+    //            //还原样式
+    //            ViewGroup lay = (ViewGroup) mToast.getView();
+    //            if (lay != null) {
+    //                Drawable drawable = lay.getBackground();
+    //                if (drawable != null) {
+    //                    drawable.setAlpha(255);
+    //                }
+    //                if (lay.getChildCount() == 2)  //移除自定义视图
+    //                    lay.removeViewAt(0);
+    //            }
+    //            mToast.show();
+    //        } catch (Exception e) {
+    //            e.printStackTrace();
+    //        }
+    //    }
 
     /**
      * 自定义Toast
@@ -330,8 +304,7 @@ public class AlertUtil {
         try {
             if (TextUtils.isEmpty(msg))
                 return;
-            Toast mToast = Toast.makeText(context,
-                    msg, Toast.LENGTH_SHORT);
+            Toast mToast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
             mToast.setGravity(Gravity.CENTER, 0, 0);
 
             mToast.setText(msg);
@@ -387,7 +360,8 @@ public class AlertUtil {
                     }
                 });
                 Window window = alertDialog.getWindow();
-                window.setContentView(view);
+                if (window != null)
+                    window.setContentView(view);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -455,32 +429,27 @@ public class AlertUtil {
      * @param data            []data 数据项
      * @param onClickListener
      */
-    public static void showSingleChoiceDialog(Context context, String title,
-                                              int index, String[] data, OnClickListener onClickListener) {
+    public static void showSingleChoiceDialog(Context context, String title, int index, String[] data, OnClickListener onClickListener) {
         if (!checkActivityValid(context)) {
             return;
         }
-        AlertDialog alertDialog ;
+        AlertDialog alertDialog;
         if (!ToolsUtil.isFastDoubleClick(milliseconds)) {
             try {
-                Context dialogContext = new ContextThemeWrapper(context,
-                        android.R.style.Theme_Light);
+                Context dialogContext = new ContextThemeWrapper(context, android.R.style.Theme_Light);
                 AlertDialog.Builder builder = new AlertDialog.Builder(dialogContext).setTitle(title);
                 alertDialog = builder.create();
-                ListAdapter adapter = new ArrayAdapter<String>(dialogContext,
-                        android.R.layout.simple_list_item_single_choice, data);
+                ListAdapter adapter = new ArrayAdapter<String>(dialogContext, android.R.layout.simple_list_item_single_choice, data);
 
                 builder.setSingleChoiceItems(adapter, index, onClickListener);
-                builder.setNegativeButton(
-                        context.getResources().getString(R.string.cancle),
-                        new OnClickListener() {
+                builder.setNegativeButton(context.getResources().getString(R.string.cancle), new OnClickListener() {
 
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                                clearDialog();
-                            }
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        clearDialog();
+                    }
 
-                        });
+                });
 
                 if (!alertDialog.isShowing())
                     alertDialog.show();
@@ -498,15 +467,13 @@ public class AlertUtil {
      * @param string          []data 数据项
      * @param onClickListener
      */
-    public static void showListItemDialog(Context context, String title,
-                                          String[] data, final OnClickListener onClickListener) {
+    public static void showListItemDialog(Context context, String title, String[] data, final OnClickListener onClickListener) {
         if (!checkActivityValid(context)) {
             return;
         }
-        AlertDialog alertDialog ;
+        AlertDialog alertDialog;
         if (!ToolsUtil.isFastDoubleClick(milliseconds)) {
-            Context dialogContext = new ContextThemeWrapper(context,
-                    android.R.style.Theme_Light);
+            Context dialogContext = new ContextThemeWrapper(context, android.R.style.Theme_Light);
             AlertDialog.Builder builder = new AlertDialog.Builder(dialogContext).setTitle(title);
             alertDialog = builder.create();
             builder.setItems(data, new OnClickListener() {
@@ -528,8 +495,7 @@ public class AlertUtil {
      * @param title
      * @param message
      */
-    public synchronized static void showProgressDialog(Context context, String title,
-                                                       String message) {
+    public synchronized static void showProgressDialog(Context context, String title, String message) {
         if (!checkActivityValid(context)) {
             return;
         }

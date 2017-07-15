@@ -66,7 +66,6 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
     private TextView mKuaidiMoney;
     private TextView mShopDetailAddress;
     private LinearLayout mShopDetailImgParent;
-    private int mTypeId;
     private LinearLayoutManager mLinearLayoutManager;
     private boolean isRefresh;
     private boolean isClickItem;
@@ -81,7 +80,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
         mShopAPI = new ShopAPI(mShouNewApplication);
         if (mBundle != null) {
             mShopId = mBundle.getString("shopId");
-            mTypeId = mBundle.getInt("typeId");
+            int typeId = mBundle.getInt("typeId");
         }
         initViews();
     }
@@ -132,9 +131,12 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
         mDataAdapter.setShopHomeLisener(new ShopHomeAdapter.ShopHomeLisener() {
             @Override
             public void clickShopItem(String shopId) {
-                mShopId = shopId;
-                isClickItem = true;
-                getProductInfo();
+                //                mShopId = shopId;
+                //                isClickItem = true;
+                //                getProductInfo();
+                Bundle bundle = new Bundle();
+                bundle.putString("shopId", shopId);
+                mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
             }
         });
         mRecyclerView.addHeaderView(getHeaderView());
@@ -376,7 +378,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                                     }
                                     mBanner.start();
                                     mShopIntroTv.setText(mSuperMarkeDetailEntity.getPTitle());
-                                    mShopDetailPricesTv.setText("¥" + StringUtil.formatMoney(mSuperMarkeDetailEntity.getPPrice()));
+                                    mShopDetailPricesTv.setText(String.format("¥%s", StringUtil.formatMoney(mSuperMarkeDetailEntity.getPPrice())));
 
 
                                     mTags.setVisibility(View.GONE);
@@ -422,10 +424,10 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                             e.printStackTrace();
                         }
                     }
-                    if (isClickItem) {
-                        isClickItem = false;
-                        moveToPosition(0);
-                    }
+                    //                    if (isClickItem) {
+                    //                        isClickItem = false;
+                    //                        moveToPosition(0);
+                    //                    }
                 }
             }
         });
@@ -469,7 +471,6 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
 
 
     private boolean move;
-    private int mIndex = 0;
 
     private class RecyclerViewListener extends RecyclerView.OnScrollListener {
         @Override
@@ -479,7 +480,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
             if (move) {
                 move = false;
                 //获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置
-                int n = mIndex - mLinearLayoutManager.findFirstVisibleItemPosition();
+                int n = -mLinearLayoutManager.findFirstVisibleItemPosition();
                 if (0 <= n && n < mRecyclerView.getChildCount()) {
                     //获取要置顶的项顶部离RecyclerView顶部的距离
                     int top = mRecyclerView.getChildAt(n).getTop();

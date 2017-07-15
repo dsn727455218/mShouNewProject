@@ -45,14 +45,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private TextView mSendMsgCode;
     private EditText mRegisterPassword;
     private EditText mRegisterAgainPassword;
-    private Button mCommitRegister;
     private EditText mRegisterVertifyCode;
     private TimeTask mTimeTask;
     private int mFlag;
     private String tag;
-    private View mParent;
     private CheckBox mAgreementCheckBox;
-    private TextView mAgreement_tv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -74,15 +71,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mRegisterEd = (EditText) findViewById(R.id.register_ed);
         mRegisterAgainPassword = (EditText) findViewById(R.id.register_again_password);
         mRegisterPassword = (EditText) findViewById(R.id.register_password);
-        mCommitRegister = (Button) findViewById(R.id.commit_register);
-        mCommitRegister.setOnClickListener(this);
-        mParent = findViewById(R.id.register_parent_rl);
-        mParent.setOnClickListener(this);
+        Button commitRegister = (Button) findViewById(R.id.commit_register);
+        commitRegister.setOnClickListener(this);
+        View parent = findViewById(R.id.register_parent_rl);
+        parent.setOnClickListener(this);
         mRegisterVertifyCode = (EditText) findViewById(R.id.register_vertify_code);
         mAgreementCheckBox = (CheckBox) findViewById(R.id.agreement);
         View agreement_parent = findViewById(R.id.agreement_parent);
         agreement_parent.setVisibility(View.GONE);
-        mAgreement_tv = (TextView) findViewById(R.id.agreement_tv);
+        TextView agreement_tv = (TextView) findViewById(R.id.agreement_tv);
         if (null != mBundle) {
             mFlag = mBundle.getInt("loginOrforgetpwd_flag", 0);//判断是否是注册  重置密码  修改密码
             if (1 == mFlag) {
@@ -91,8 +88,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 mRegisterAgainPassword.setHint("重复密码");
                 tag = "register";
                 agreement_parent.setVisibility(View.VISIBLE);
-                mAgreement_tv.setText(Html.fromHtml(String.format("%s<font color=#3681f1>%s</font>", "我已阅读并同意", "《用户注册/使用协议》")));
-                mAgreement_tv.setOnClickListener(new View.OnClickListener() {
+                agreement_tv.setText(Html.fromHtml(String.format("%s<font color=#3681f1>%s</font>", "我已阅读并同意", "《用户注册/使用协议》")));
+                agreement_tv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         ArrayList<SourcesEntity> sourcesEntities = mUserAPI.getSourcesData();
@@ -121,7 +118,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 mRegisterVertifyCode.setTextColor(getResources().getColor(R.color.color_text_my));
                 mRegisterAgainPassword.setHint("重复密码");
                 tag = "upPass";
-                mParent.setBackgroundResource(R.color.color_bg_grey);
+                parent.setBackgroundResource(R.color.color_bg_grey);
             }
         }
         mRegisterAgainPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {

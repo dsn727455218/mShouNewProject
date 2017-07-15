@@ -34,7 +34,7 @@ public class UserAPI extends PublicApi {
      * @param lis
      */
     public void Login(String name, String password, ShouNewApplication.ShouNewHttpCallBackLisener lis) {
-        Map hashMap = getHashMap(Config.LOGIN);
+        Map<String,String> hashMap = getHashMap(Config.LOGIN);
         hashMap.put("name", name);
         try {
             password = DesUtil.MD5(password + TimeUtil.getTime2String(System.currentTimeMillis() + Preference.getLong(mainApplication, "timestamp"), "yyyyMMddHHmm"));
@@ -133,7 +133,7 @@ public class UserAPI extends PublicApi {
      * @param lisener
      */
     public void changeTradePass(String phone, String pass, String newTradePass, String phoneCode, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
-        Map hashMap = getHashMap(Config.USER);
+        Map <String,String> hashMap = getHashMap(Config.USER);
         hashMap.put("method", "upTradePass");
         hashMap.put("phone", phone);
 
