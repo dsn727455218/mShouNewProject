@@ -214,11 +214,11 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                 isRefresh=true;
                 mKeyWord = mSearchContent.getText().toString();
                 if ("价格升序".equals(queueTypq)) {
-                    oder = 1;
+                    oder = 2;
                     getProductList(oder);
                 }
                 if ("价格降序".equals(queueTypq)) {
-                    oder = 2;
+                    oder = 1;
                     getProductList(oder);
                 }
                 break;
@@ -275,9 +275,9 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                     if (json.has("data")) {
                         try {
                             if (1 == oder) {
-                                mQueue_prices.setText("价格降序");
-                            } else if (2 == oder) {
                                 mQueue_prices.setText("价格升序");
+                            } else if (2 == oder) {
+                                mQueue_prices.setText("价格降序");
                             }
                             JSONObject jsonData = json.getJSONObject("data");
                             if (jsonData.has("mallproductList")) {

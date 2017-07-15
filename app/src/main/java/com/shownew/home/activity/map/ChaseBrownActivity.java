@@ -220,6 +220,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
             isFirst = true;
             removeMarker(mPersonMarker);
             mPersonMarker = addMarkersToMap(mAMap, R.drawable.peoplelocation, new LatLng(location.getLatitude(), location.getLongitude()), true, location.getAddress(), location.getCity());
+            mPersonMarker.setZIndex(4);
         }
     }
 

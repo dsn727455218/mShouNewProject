@@ -26,8 +26,8 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
-import com.shownew.home.activity.msg.AllMsgActivity;
 import com.shownew.home.activity.MainActivity;
+import com.shownew.home.activity.msg.AllMsgActivity;
 import com.shownew.home.adapter.ShopHomeAdapter;
 import com.shownew.home.module.ShopAPI;
 import com.shownew.home.module.entity.ShopMallDetailEntity;
@@ -344,6 +344,7 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
         mBanner.isAutoPlay(false);
         //设置轮播时间
         mBanner.setDelayTime(3000);
+        mBanner.setLimitPager();
 
         //设置指示器位置（当banner模式中有指示器时）
         mBanner.setIndicatorGravity(BannerConfig.CENTER);

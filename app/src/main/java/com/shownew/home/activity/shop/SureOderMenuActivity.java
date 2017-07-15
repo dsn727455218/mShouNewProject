@@ -115,8 +115,8 @@ public class SureOderMenuActivity extends BaseActivity implements View.OnClickLi
                 }
             });
             mCount_number.setText(String.format("共%s件商品  小计:", mNumber));
-            mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(prices * mNumber)));
             money = prices * mNumber + mSuperMarkeDetailEntity.getPKdprice();
+            mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(money)));
             mTotal_tv.setText(String.format("合计:¥%s", StringUtil.formatMoney(money)));
             if ("首牛".equals(mSuperMarkeDetailEntity.getpOwn())) {
                 mTags.setVisibility(View.VISIBLE);
@@ -243,8 +243,8 @@ public class SureOderMenuActivity extends BaseActivity implements View.OnClickLi
 
     private void setMoneyData() {
         money = prices * mNumber + mSuperMarkeDetailEntity.getPKdprice();
-        mCount_number.setText(String.format("共%s件商品  小计:", StringUtil.formatMoney(money)));
-        mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(prices * mNumber)));
+        mTotal_prices.setText(String.format("¥%s", StringUtil.formatMoney(money)));
+        mCount_number.setText(String.format("共%s件商品  小计:", mNumber));
         mTotal_tv.setText(String.format("合计:¥%s", StringUtil.formatMoney(money)));
     }
 

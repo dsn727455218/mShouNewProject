@@ -108,6 +108,13 @@ public class AccountRechargeActivity extends BaseActivity implements View.OnClic
                         mZidingyi_money.setSelection(mZidingyi_money.getText().length());
                     }
                 }
+                if (!TextUtils.isEmpty(text)) {
+                    for (SelectAccountMoneyEntity accountMoneyEntity : mSelectAccountMoneyEntities) {
+                        accountMoneyEntity.setSelect(false);
+                    }
+                    selectMoney = "0";
+                    mAccountRechargeAdapter.notifyDataSetChanged();
+                }
             }
 
             @Override
@@ -320,7 +327,7 @@ public class AccountRechargeActivity extends BaseActivity implements View.OnClic
             money = Double.parseDouble(selectMoney);
         }
         String zidingyimoney = mZidingyi_money.getText().toString();
-        if (!TextUtils.isEmpty(zidingyimoney)) {
+        if (!TextUtils.isEmpty(zidingyimoney) && 0 != Double.parseDouble(zidingyimoney)) {
             money = Double.parseDouble(zidingyimoney);
         }
         if (money <= 0) {

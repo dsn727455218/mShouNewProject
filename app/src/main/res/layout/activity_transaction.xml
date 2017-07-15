@@ -109,20 +109,19 @@
         style="@style/BaseTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/transaction_phone_code"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="13dp"
         android:background="@null"
         android:drawablePadding="15dp"
         android:gravity="left"
         android:hint="输入交易密码"
-        android:inputType="textPassword|number"
+        android:inputType="number"
         android:maxLength="6"
         android:maxLines="1"
         android:paddingLeft="15dp"
         android:textColor="@color/color_text"
-        android:textColorHint="@color/color_text_hint"/>
+        android:textColorHint="@color/color_text_hint"
+        android:layout_below="@+id/line3"
+        android:layout_alignLeft="@+id/line4"/>
 
     <View
         android:id="@+id/line4"
@@ -138,21 +137,20 @@
         style="@style/BaseTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/line4"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="15dp"
         android:background="@null"
         android:drawablePadding="15dp"
         android:imeOptions="actionDone"
         android:gravity="left"
         android:hint="确认交易密码"
-        android:inputType="textPassword|number"
+        android:inputType="number"
         android:maxLength="6"
         android:singleLine="true"
         android:paddingLeft="15dp"
         android:textColor="@color/color_text"
-        android:textColorHint="@color/color_text_hint"/>
+        android:textColorHint="@color/color_text_hint"
+        android:layout_below="@+id/line4"
+        android:layout_alignLeft="@+id/line5"/>
 
     <View
         android:id="@+id/line5"

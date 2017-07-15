@@ -31,15 +31,15 @@ public class ToastUtil {
             return;
         }
         if (toast == null) {
-            toast = Toast.makeText(MainApplication.getInstance(), text, Toast.LENGTH_SHORT);
+            toast = Toast.makeText(MainApplication.getInstance(), text, Toast.LENGTH_LONG);
         } else {
             try {
                 toast.setText(text);
-                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setDuration(Toast.LENGTH_LONG);
             } catch (Exception e) {
-                toast = Toast.makeText(MainApplication.getInstance(), text, Toast.LENGTH_SHORT);
+                toast = Toast.makeText(MainApplication.getInstance(), text, Toast.LENGTH_LONG);
                 toast.setText(text);
-                toast.setDuration(Toast.LENGTH_SHORT);
+                toast.setDuration(Toast.LENGTH_LONG);
             }
         }
         toast.setGravity(Gravity.CENTER, 0, 0);

@@ -215,7 +215,7 @@ public class TransactionActivity extends BaseActivity implements View.OnClickLis
                                 } else if (0 == result) {
                                     msg = "登录密码错误";
                                 } else if (1 == result) {
-                                    msg = "修改成功";
+                                    msg = "设置成功";
                                     ToastUtil.showToast(msg);
                                     finish();
                                     return;

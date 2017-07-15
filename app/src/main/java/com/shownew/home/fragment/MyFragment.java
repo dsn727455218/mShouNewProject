@@ -141,6 +141,10 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
 
         switch (v.getId()) {
             case R.id.logout:
+                if (!Preference.getBoolean(context, Preference.IS_LOGIN, false)) {
+                    mShouNewApplication.jumpLoginActivity(context);
+                    return;
+                }
                 new CommonDialog(context, "是否注销账号").setCommonListener(new CommonDialog.CommonListener() {
                     @Override
                     public void sure(int flag) {
