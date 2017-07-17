@@ -112,7 +112,8 @@
                     android:layout_weight="1"
                     android:gravity="left|center_vertical"
                     android:singleLine="true"
-                    android:text="请选择电池型号"
+                    android:hint="请选择电池型号"
+                    android:textColorHint="@color/color_hint"
                     android:textColor="@color/color_hint"
                     android:textSize="17sp"/>
 

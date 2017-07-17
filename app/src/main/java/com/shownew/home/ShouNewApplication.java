@@ -322,25 +322,24 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
                         response.close();
                         return;
                     } else if (300 == statusCode) {
-                        Log.e("Msg", "接口调用失败");
+                        Log.e("Msg", "接口调用失败300");
                     } else if (301 == statusCode) {
-                        Log.e("Msg", "参数不合法");
+                        Log.e("Msg", "参数不合法301");
                     } else if (302 == statusCode) {
-                        Log.e("Msg", "用户未登录");
+                        Log.e("Msg", "用户未登录302");
                         Preference.putBoolean(instance, Preference.IS_LOGIN, false);
                         handleLogin();
                         response.close();
                         return;
                     } else if (303 == statusCode) {
-                        Log.e("Msg", "服务器连接超时");
+                        Log.e("Msg", "服务器连接超时303");
                     } else if (305 == statusCode) {//请求被禁止，未绑定默认车辆
                         handleCarBind();
                         response.close();
                         return;
                     } else if (500 == statusCode) {
-                        Log.e("Msg", "服务器连接超时");
-                        ToastUtil.showToast("网络连接失败");
-                        return;
+                        Log.e("Msg", "服务器连接超时500");
+                        ToastUtil.showToast("服务器错误");
                     }
                     resultData(resultData, jsonObject, response, new Exception(message));
                     Log.e("Msg", message);
