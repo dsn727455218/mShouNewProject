@@ -16,7 +16,7 @@ android {
                 APP_NAME_DES     : "首牛云控",
                 UMENG_APPKEY     : '58e44763c62dca55f2001be2',
                 JPUSH_APPKEY     : '3566523c41c75b361613fe8f',
-                GAO_DE_MAP_APPKEY: '855bab53de8a9db2d8a99f69b2ad6b8e'
+                GAO_DE_MAP_APPKEY: 'be161bad686b2132e1ade3077d34ac7b'
         ]
         ndk {
             // 设置支持的 SO 库构架，注意这里要根据你的实际情况来设置
