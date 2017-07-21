@@ -99,7 +99,6 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
                             bundle.putInt("flag", mFlag);
                             JSONObject jsonObject = json.getJSONObject("data");
                             String trade_state = jsonObject.getString("trade_state");
-
                             //    SUCCESS—支付成功
                             //    REFUND—转入退款
                             //    NOTPAY—未支付
@@ -154,6 +153,7 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
             bundle.putBoolean("isSucess", false);
             mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
         }
+        closeLoadingDialog();
         finish();
     }
 }

@@ -165,21 +165,7 @@ public class DotMapActivity extends BaseLocationActivity implements AMap.OnInfoW
     }
 
 
-    /**
-     * 地上生长的Marker
-     */
-    private void startGrowAnimation(Marker growMarker) {
-        if (growMarker != null) {
-            com.amap.api.maps.model.animation.Animation animation = new com.amap.api.maps.model.animation.ScaleAnimation(0, 1, 0, 1);
-            animation.setInterpolator(new LinearInterpolator());
-            //整个移动所需要的时间
-            animation.setDuration(1000);
-            //设置动画
-            growMarker.setAnimation(animation);
-            //开始动画
-            growMarker.startAnimation();
-        }
-    }
+
 
     @Override
     public void onRegeocodeSearched(RegeocodeResult result, int rCode) {

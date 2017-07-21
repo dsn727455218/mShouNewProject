@@ -58,6 +58,4 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile project(':zxing')
-    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
-
 }

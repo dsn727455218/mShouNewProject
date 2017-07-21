@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/parent"
+    >
+
+    <FrameLayout
+        android:id="@+id/logisitice_circle_ll"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp">
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="110dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#BABABA" />
+
+        <ImageView
+            android:id="@+id/logisitice_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/gray_target" />
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/content_tv_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/logisitice_circle_ll"
+        android:layout_alignTop="@+id/logisitice_circle_ll"
+        android:layout_toRightOf="@+id/logisitice_circle_ll"
+        android:paddingBottom="0dp">
+
+        <TextView
+            android:id="@+id/content_tv"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/show_more"
+            android:ellipsize="end"
+            android:gravity="left"
+            android:lineSpacingMultiplier="1.2"
+            android:maxLines="3"
+            android:paddingBottom="5dp"
+            android:text="xxx\n四川程度就赶程观看电教分四川程度电教分四川程度就赶快点击观看电教分" />
+
+        <TextView
+            android:id="@+id/content_time"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/content_tv"
+            android:layout_toLeftOf="@+id/show_more"
+            android:gravity="left"
+            android:paddingTop="5dp"
+            android:text="2015165"
+            android:textColor="#727272"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/show_more"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="显示更多"
+            android:textColor="#727272"
+            android:textSize="12sp" />
+    </RelativeLayout>
+</RelativeLayout>

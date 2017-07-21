@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClientOption;
@@ -402,5 +403,22 @@ public class BaseLocationActivity extends BaseActivity {
         GeocodeQuery query = new GeocodeQuery(address, cityCode);// // 第一个参数表示地址，第二个参数表示查询城市，中文或者中文全拼，citycode、adcode，
         geocodeSearch.getFromLocationNameAsyn(query);// 设置异步逆地理编码请求
         geocodeSearch.setOnGeocodeSearchListener(onGeocodeSearchListener);
+    }
+
+
+    /**
+     * 地上生长的Marker
+     */
+    protected void startGrowAnimation(Marker growMarker) {
+        if (growMarker != null) {
+            com.amap.api.maps.model.animation.Animation animation = new com.amap.api.maps.model.animation.ScaleAnimation(0, 1, 0, 1);
+            animation.setInterpolator(new LinearInterpolator());
+            //整个移动所需要的时间
+            animation.setDuration(1000);
+            //设置动画
+            growMarker.setAnimation(animation);
+            //开始动画
+            growMarker.startAnimation();
+        }
     }
 }

@@ -329,14 +329,12 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
                         Log.e("Msg", "用户未登录302");
                         Preference.putBoolean(instance, Preference.IS_LOGIN, false);
                         handleLogin();
-                        response.close();
-                        return;
+                        message="302";
                     } else if (303 == statusCode) {
                         Log.e("Msg", "服务器连接超时303");
                     } else if (305 == statusCode) {//请求被禁止，未绑定默认车辆
                         handleCarBind();
-                        response.close();
-                        return;
+                        message="305";
                     } else if (500 == statusCode) {
                         Log.e("Msg", "服务器连接超时500");
                         ToastUtil.showToast("服务器错误");
@@ -359,6 +357,7 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
          * 处理车辆未绑定
          */
         protected void handleCarBind() {
+
         }
 
         /**

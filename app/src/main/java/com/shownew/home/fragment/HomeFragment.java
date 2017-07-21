@@ -445,6 +445,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                             break;
                     }
                     //                    ToastUtil.showToast("操作成功");
+                } else if ("302".equals(exception.getMessage()) || "305".equals(exception.getMessage())) {
+
                 } else {
                     switch (values) {
                         case 1:
@@ -520,7 +522,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                         setTextColorContent(((TextView) mCar_mute.getChildAt(1)), "开启静音");
                     }
                     mDeviceEntity.setIsMute(values);
-                } else {
+                } else if ("302".equals(exception.getMessage()) || "305".equals(exception.getMessage())) {
+
+                }else {
                     mHandler.sendEmptyMessageDelayed(1, 5000);
                 }
             }

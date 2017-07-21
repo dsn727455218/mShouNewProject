@@ -155,8 +155,8 @@ public class PayStateActivity extends AndroidActivity implements View.OnClickLis
                 isSucess(false);
             }
             mGotoShop.setEnabled(true);
-            closeLoadingDialog();
         }
+        closeLoadingDialog();
 
     }
 

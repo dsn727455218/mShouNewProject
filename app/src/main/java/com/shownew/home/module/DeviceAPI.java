@@ -176,9 +176,10 @@ public class DeviceAPI extends PublicApi {
      *
      * @param lisener
      */
-    public void getGPSList(ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
+    public void getGPSList(int page,ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
         Map<String, String> hashMap = getHashMap(Config.DEVICE_NEW_DATA);
         hashMap.put("method", "getGpsList");
+        hashMap.put("page",String.valueOf(page));
         get(createUrlFromParams(Config.DEVICE_NEW_DATA, hashMap), lisener);
 
     }
