@@ -38,7 +38,7 @@ public class AppUpdateService extends IntentService {
         mPublicApi = new PublicApi(mShouNewApplication);
     }
 
-    public void sendResidentNoticeType2(Context context, String title, int progress) {
+    public void sendResidentNoticeType2(Context context, String title, int progress, String apkUrl) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
         builder.setOngoing(true);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
@@ -55,13 +55,13 @@ public class AppUpdateService extends IntentService {
         notification.contentView = remoteViews;
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(NOTICE_ID_TYPE_0, notification);
-        downFile();
+        downFile(apkUrl);
     }
 
     /**
      * 下载文件
      */
-    private void downFile() {
+    private void downFile(String apkUrl) {
         if (TextUtils.isEmpty(apkUrl))
             return;
         mPublicApi.downFile(apkUrl, new FileCallback("shouniu.apk") {
@@ -111,12 +111,11 @@ public class AppUpdateService extends IntentService {
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null) {
-            apkUrl = intent.getStringExtra("url");
-            sendResidentNoticeType2(this, "首牛云控更新包下载中", 0);
+            String apkUrl = intent.getStringExtra("url");
+            sendResidentNoticeType2(this, "首牛云控更新包下载中", 0, apkUrl);
         }
     }
 
-    private String apkUrl;
 
     @Override
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {

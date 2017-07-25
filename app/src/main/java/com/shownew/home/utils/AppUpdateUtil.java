@@ -3,6 +3,7 @@ package com.shownew.home.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.shownew.home.R;
@@ -42,6 +43,7 @@ public class AppUpdateUtil {
         }
     }
 
+
     /**
      * Returns version name
      *
@@ -66,16 +68,20 @@ public class AppUpdateUtil {
     }
 
     private void showupdateDialog() {
-        final Intent intent = new Intent(mContext, AppUpdateService.class);
         new CommonDialog(mContext, "版本已升级", "为了您的正常使用，请及时更新!", "立即更新", "忽略").setCommonListener(new CommonDialog.CommonListener() {
             @Override
             public void sure(int flag) {
                 if (flag == 1) {
-                    intent.putExtra("url", remoteAppUrl);
-                    mContext.startService(intent);
+                    Intent intent = new Intent(mContext, AppUpdateService.class);
+                    if (!TextUtils.isEmpty(remoteAppUrl)) {
+                        intent.putExtra("url", remoteAppUrl);
+                        mContext.startService(intent);
+                    }
+
                 }
             }
-        }).setCancelable(true).show();
+        }).setCancelable(false).show();
+
     }
 
     public AppUpdateUtil UpdateExecute(final boolean isinitCheck) {
@@ -123,7 +129,7 @@ public class AppUpdateUtil {
 
 
     private void checkUpdate() {
-        if (remoteVersionCode > getAppVersionName(mContext)) {
+        if (remoteVersionCode > getAppVersionCode(mContext)) {
             showupdateDialog();
         } else {
             ToastUtil.showToast(R.string.download_eixts_msg);
@@ -131,7 +137,7 @@ public class AppUpdateUtil {
     }
 
     public void checkUpdateState(TextView tips) {
-        if (remoteVersionCode > getAppVersionName(mContext)) {
+        if (remoteVersionCode > getAppVersionCode(mContext)) {
             tips.setCompoundDrawablesWithIntrinsicBounds(R.drawable.shape_msg_circle, 0, R.drawable.right_arrow, 0);
         } else {
             tips.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.right_arrow, 0);
