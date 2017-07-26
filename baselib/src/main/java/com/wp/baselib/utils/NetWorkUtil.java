@@ -15,97 +15,114 @@ import static java.net.Proxy.Type.HTTP;
 
 /**
  * 网络连接及网络数据传输处理工具类
- * 
+ *
  * @author summer
  */
 public class NetWorkUtil {
-	 Proxy mProxy = null;
-	 Context context;
+    Proxy mProxy = null;
+    Context context;
 
-	public NetWorkUtil(Context context){
-		this.context = context;
-		
-	}
-	/**
-	 * 检查代理，是否cnwap接入
-	 */
-	private  void detectProxy() {
-		ConnectivityManager cm = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo ni = cm.getActiveNetworkInfo();
-		if (ni != null && ni.isAvailable()
-				&& ni.getType() == ConnectivityManager.TYPE_MOBILE) {
-			String proxyHost = android.net.Proxy.getDefaultHost();
-			int port = android.net.Proxy.getDefaultPort();
-			if (proxyHost != null) {
-				final InetSocketAddress sa = new InetSocketAddress(proxyHost,
-						port);
-				mProxy = new Proxy(HTTP, sa);
-			}
-		}
-	}
+    public NetWorkUtil(Context context) {
+        this.context = context;
+
+    }
+
+    /**
+     * 检查代理，是否cnwap接入
+     */
+    private void detectProxy() {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if (ni != null && ni.isAvailable() && ni.getType() == ConnectivityManager.TYPE_MOBILE) {
+            String proxyHost = android.net.Proxy.getDefaultHost();
+            int port = android.net.Proxy.getDefaultPort();
+            if (proxyHost != null) {
+                final InetSocketAddress sa = new InetSocketAddress(proxyHost, port);
+                mProxy = new Proxy(HTTP, sa);
+            }
+        }
+    }
 
 
+    /**
+     * 判断GPS是否可用
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isGpsEnabled(Context context) {
+        LocationManager locationManager = ((LocationManager) context.getSystemService(Context.LOCATION_SERVICE));
+        List<String> accessibleProviders = locationManager.getProviders(true);
+        return accessibleProviders != null && accessibleProviders.size() > 0;
+    }
 
+    /**
+     * 判断网络是否联接
+     *
+     * @param context
+     * @return
+     */
+    public static boolean checkNetworkConnected(Context context) {
+        return checkNetworkConnected(context, false);
+    }
 
+    /**
+     * 判断网络链接的类型是区分是手机网络  0         还是wifi   1    没有连接网络2
+     *
+     * @param context
+     * @return
+     */
+    public static int checkNetworkConnectedType(Context context) {
 
-	/**
-	 * 判断GPS是否可用
-	 * @param context
-	 * @return
-	 */
-	public static boolean isGpsEnabled(Context context) {
-		LocationManager locationManager = ((LocationManager) context
-				.getSystemService(Context.LOCATION_SERVICE));
-		List<String> accessibleProviders = locationManager.getProviders(true);
-		return accessibleProviders != null && accessibleProviders.size() > 0;
-	}
+        if (!checkNetworkConnected(context))
+            return 2;
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+        if (networkInfo != null) {
+            //            if (ConnectivityManager.TYPE_WIFI == networkInfo.getType()) {
+            //                return 1;
+            //            }
+            if (ConnectivityManager.TYPE_MOBILE == networkInfo.getType()) {
+                return 0;
+            }
+        }
+        return 3;
+    }
 
-	/**
-	 * 判断网络是否联接
-	 * @param context
-	 * @return
-	 */
-	public static boolean checkNetworkConnected(Context context) {
-		return checkNetworkConnected(context,false);
-	}
-	
-	/**
-	 * 判断网络是否联接
-	 * @param context
-	 * @param isShowDialog 是否显示网络设置框
-	 * @return
-	 */
-	public static boolean checkNetworkConnected(Context context, boolean isShowDialog) {
-		boolean isConnect = false;
-		ConnectivityManager cm = (ConnectivityManager) context
-				.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo network = cm.getActiveNetworkInfo();
-		if (network != null && network.isConnected()) {
-			isConnect = true;
-		} else {
-			if(isShowDialog)
-				UiUtil.showNoNetworkDialog(context);
-			isConnect = false;
-		}
-		return isConnect;
-	}
+    /**
+     * 判断网络是否联接
+     *
+     * @param context
+     * @param isShowDialog 是否显示网络设置框
+     * @return
+     */
+    public static boolean checkNetworkConnected(Context context, boolean isShowDialog) {
+        boolean isConnect = false;
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo network = cm.getActiveNetworkInfo();
+        if (network != null && network.isConnected()) {
+            isConnect = true;
+        } else {
+            if (isShowDialog)
+                UiUtil.showNoNetworkDialog(context);
+            isConnect = false;
+        }
+        return isConnect;
+    }
 
-	/**
-	 * 
-	 * 获取wifi bssid 列表
-	 * 
-	 * @param context
-	 * @return String
-	 */
-	public static String getNetWorkSSID(Context context) {
-		String str = "";
-		WifiManager wifiMan = (WifiManager) context
-				.getSystemService(Context.WIFI_SERVICE);
-		if (wifiMan.isWifiEnabled()) {
-			WifiInfo info = wifiMan.getConnectionInfo();
-			str = info.getBSSID();
-		}
-		return str;
-	}
+    /**
+     * 获取wifi bssid 列表
+     *
+     * @param context
+     * @return String
+     */
+    public static String getNetWorkSSID(Context context) {
+        String str = "";
+        WifiManager wifiMan = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        if (wifiMan.isWifiEnabled()) {
+            WifiInfo info = wifiMan.getConnectionInfo();
+            str = info.getBSSID();
+        }
+        return str;
+    }
 }
