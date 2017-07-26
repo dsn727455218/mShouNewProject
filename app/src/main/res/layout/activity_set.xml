@@ -101,7 +101,6 @@
         android:layout_toLeftOf="@+id/version_news_tips"
         android:gravity="left|center_vertical"
         android:paddingRight="0dp"
-        android:text="版本**"
         android:textColor="#595e66"/>
 
     <TextView

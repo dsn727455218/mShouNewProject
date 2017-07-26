@@ -49,9 +49,9 @@ public class AppUpdateUtil {
      *
      * @return
      */
-    public static double getAppVersionName(Context context) {
+    public static String getAppVersionName(Context context) {
         try {
-            return Double.parseDouble(context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName);
+            return context.getPackageManager().getPackageInfo(context.getPackageName(), 0).versionName;
         } catch (NameNotFoundException e) {
             throw new RuntimeException(e);
         }

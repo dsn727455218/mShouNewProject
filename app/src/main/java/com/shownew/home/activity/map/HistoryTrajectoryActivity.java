@@ -62,7 +62,7 @@ public class HistoryTrajectoryActivity extends BaseLocationActivity implements V
         initViews();
     }
 
-    int height, xheight;
+    int xheight;
 
     private void initViews() {
         TitleBarView mTitleBarView = (TitleBarView) findViewById(R.id.headbar);
@@ -74,8 +74,8 @@ public class HistoryTrajectoryActivity extends BaseLocationActivity implements V
         mTitleBarView.setLeftIconAndText(R.drawable.back_arrow, "返回");
         mTitleBarView.setTitleSize(20);
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mHistortyRecyclerView.getLayoutParams();
-        height = ((View) mHistortyRecyclerView.getParent()).getHeight();
-        xheight = (int) (height * 0.5 * 0.8);
+
+        xheight = 400;
         layoutParams.height = xheight;
         mHistortyRecyclerView.setLayoutParams(layoutParams);
         mHistortyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -216,36 +216,37 @@ public class HistoryTrajectoryActivity extends BaseLocationActivity implements V
     }
 
 
-//    //绘制一条纹理线
-//    private void addPolylinesWithTexture(LatLng... latLngs) {
-//        int length = latLngs.length;
-//        if (length > 0) {
-//            changeMapCenter(mAMap, latLngs[0]);
-//        }
-//        for (int i = 0; i < length; i++) {
-//            addMarkersToMap(mAMap, historyResourcesId[i], new LatLng(latLngs[i].latitude, latLngs[i].longitude));
-//        }
-//        //用一个数组来存放纹理
-//        List<BitmapDescriptor> texTuresList = new ArrayList<BitmapDescriptor>();
-//        texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.wenli));
-//        //指定某一段用某个纹理，对应texTuresList的index即可, 四个点对应三段颜色
-//        List<Integer> texIndexList = new ArrayList<Integer>();
-//        texIndexList.add(0);//对应上面的第0个纹理
-//
-//        PolylineOptions options = new PolylineOptions();
-//        options.width(20);//设置宽度
-//        //加入四个点
-//        options.add(latLngs);
-//        //加入对应的颜色,使用setCustomTextureList 即表示使用多纹理；
-//        options.setCustomTextureList(texTuresList);
-//
-//        //设置纹理对应的Index
-//        options.setCustomTextureIndex(texIndexList);
-//
-//        mAMap.addPolyline(options);
-////    }
+    //    //绘制一条纹理线
+    //    private void addPolylinesWithTexture(LatLng... latLngs) {
+    //        int length = latLngs.length;
+    //        if (length > 0) {
+    //            changeMapCenter(mAMap, latLngs[0]);
+    //        }
+    //        for (int i = 0; i < length; i++) {
+    //            addMarkersToMap(mAMap, historyResourcesId[i], new LatLng(latLngs[i].latitude, latLngs[i].longitude));
+    //        }
+    //        //用一个数组来存放纹理
+    //        List<BitmapDescriptor> texTuresList = new ArrayList<BitmapDescriptor>();
+    //        texTuresList.add(BitmapDescriptorFactory.fromResource(R.drawable.wenli));
+    //        //指定某一段用某个纹理，对应texTuresList的index即可, 四个点对应三段颜色
+    //        List<Integer> texIndexList = new ArrayList<Integer>();
+    //        texIndexList.add(0);//对应上面的第0个纹理
+    //
+    //        PolylineOptions options = new PolylineOptions();
+    //        options.width(20);//设置宽度
+    //        //加入四个点
+    //        options.add(latLngs);
+    //        //加入对应的颜色,使用setCustomTextureList 即表示使用多纹理；
+    //        options.setCustomTextureList(texTuresList);
+    //
+    //        //设置纹理对应的Index
+    //        options.setCustomTextureIndex(texIndexList);
+    //
+    //        mAMap.addPolyline(options);
+    ////    }
 
     private void isShowRecylerView(boolean isShow) {
+        int height = ((View) mHistortyRecyclerView.getParent()).getHeight();
         ValueAnimator animator = new ValueAnimator();
         animator.setDuration(250);
         animator.setFloatValues(!isShow ? height : xheight, !isShow ? xheight : height);

@@ -15,8 +15,6 @@ import com.wp.baselib.utils.Preference;
 import com.wp.baselib.utils.ToastUtil;
 import com.wp.baselib.widget.TitleBarView;
 
-import java.text.DecimalFormat;
-
 public class SetActivity extends BaseActivity implements View.OnClickListener {
     private TextView mClearCacher;
     private TextView mVersion_news_tips;
@@ -47,7 +45,7 @@ public class SetActivity extends BaseActivity implements View.OnClickListener {
         findViewById(R.id.clear_cacher_tv).setOnClickListener(this);
         try {
             mClearCacher.setText(DataCleanManager.getTotalCacheSize(mShouNewApplication));
-            version_news_tv.setText(String.format("当前版本：%s", new DecimalFormat("0.0").format(AppUpdateUtil.getAppVersionName(mShouNewApplication))));
+            version_news_tv.setText(String.format("当前版本：%s", AppUpdateUtil.getAppVersionName(mShouNewApplication)));
         } catch (Exception e) {
             e.printStackTrace();
         }
