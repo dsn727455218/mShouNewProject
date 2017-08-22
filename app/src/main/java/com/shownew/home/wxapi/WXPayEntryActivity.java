@@ -6,7 +6,8 @@ import android.os.Bundle;
 
 import com.shownew.home.Config;
 import com.shownew.home.ShouNewApplication;
-import com.shownew.home.activity.common.PayStateActivity;
+import com.shownew.home.activity.ConsumeRecoderActivity;
+import com.shownew.home.activity.OrderMenuActivity;
 import com.shownew.home.module.UserAPI;
 import com.tencent.mm.opensdk.constants.ConstantsAPI;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
@@ -71,11 +72,18 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
                     ToastUtil.showToast("支付失败");
                     Preference.putBoolean(mShouNewApplication, Config.WX_STATE, false);
                 } else {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("orderzNo", orderzNo);
-                    bundle.putInt("flag", mFlag);
-                    bundle.putBoolean("isSucess", false);
-                    mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+                    ToastUtil.showToast("支付失败");
+                    Preference.putBoolean(mShouNewApplication, Config.WX_STATE, false);
+                    if(100!=Preference.getInt(mShouNewApplication,Config.Carts)){
+                        mainApplication.redirect(OrderMenuActivity.class);
+                    }
+                    Preference.putInt(mShouNewApplication, Config.Carts, 0);
+
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("orderzNo", orderzNo);
+//                    bundle.putInt("flag", mFlag);
+//                    bundle.putBoolean("isSucess", false);
+//                    mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
                 }
                 finish();
             }
@@ -110,9 +118,13 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
                                 if (2 == mShopType) {
                                     ToastUtil.showToast("支付成功");
                                     Preference.putBoolean(mShouNewApplication, Config.WX_STATE, true);
+                                    mShouNewApplication.redirect(ConsumeRecoderActivity.class);
                                 } else {
-                                    bundle.putBoolean("isSucess", true);
-                                    mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+                                    ToastUtil.showToast("支付成功");
+                                    Preference.putBoolean(mShouNewApplication, Config.WX_STATE, true);
+                                    mainApplication.redirect(OrderMenuActivity.class);
+//                                    bundle.putBoolean("isSucess", true);
+//                                    mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
                                 }
                                 finish();
                                 return;
@@ -150,8 +162,18 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
             ToastUtil.showToast("支付失败");
             Preference.putBoolean(mShouNewApplication, Config.WX_STATE, false);
         } else {
-            bundle.putBoolean("isSucess", false);
-            mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+            ToastUtil.showToast("支付失败");
+            Preference.putBoolean
+                    (mShouNewApplication, Config.WX_STATE, false);
+
+            if(100!=Preference.getInt(mShouNewApplication,Config.Carts)){
+                mainApplication.redirect(OrderMenuActivity.class);
+            }
+                Preference.putInt(mShouNewApplication, Config.Carts, 0);
+
+
+//            bundle.putBoolean("isSucess", false);
+//            mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
         }
         closeLoadingDialog();
         finish();

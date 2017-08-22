@@ -285,6 +285,7 @@ public class AccountRechargeActivity extends BaseActivity implements View.OnClic
                                             String state = jsonObject.getString("trade_state");
                                             if (TextUtils.equals("9000", state)) {
                                                 ToastUtil.showToast("支付成功");
+                                                mShouNewApplication.redirect(ConsumeRecoderActivity.class);
                                             } else if (TextUtils.equals("8000", state)) {
                                                 msgTips = "正在处理中";
                                             } else if (TextUtils.equals("4000", state)) {
@@ -304,6 +305,7 @@ public class AccountRechargeActivity extends BaseActivity implements View.OnClic
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+
                                 }
                             }
                         }

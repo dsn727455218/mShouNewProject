@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/evelute_count"
+        style="@style/BaseTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="用户评价(0)"
+        android:textColor="#5f6164" />
+
+    <LinearLayout
+        android:id="@+id/visiable_evelautes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <com.wp.baselib.widget.CustomShapeImageView
+                android:id="@+id/my_info_header_scv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:src="@drawable/square_seize"
+                app:borderColor="#535862"
+                app:imageBorderWidth="0dp"
+                app:onlyDrawBorder="false"
+                app:roundRadius="5dp"
+                app:shape="circle" />
+
+            <TextView
+                android:id="@+id/nicheng_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/orgin" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/evelute_content"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|top"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="#5f6164" />
+
+        <com.shownew.home.utils.widget.WordWrapLayoutiml
+            android:id="@+id/evelute_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <TextView
+            android:id="@+id/evelute_time"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:lines="1" />
+
+        <TextView
+            android:id="@+id/look_all"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="查看全部"
+            android:textColor="@color/orgin"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>

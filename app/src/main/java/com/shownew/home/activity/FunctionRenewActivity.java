@@ -324,6 +324,7 @@ public class FunctionRenewActivity extends BaseActivity implements View.OnClickL
                                 String trade_state = jsonObject.getString("trade_state");
                                 if ("3000".equals(trade_state)) {
                                     ToastUtil.showToast("支付成功");
+                                    mShouNewApplication.redirect(ConsumeRecoderActivity.class);
                                 } else if ("3001".equals(trade_state)) {
                                     ToastUtil.showToast("订单已支付");
                                 } else if ("3002".equals(trade_state)) {
@@ -348,6 +349,7 @@ public class FunctionRenewActivity extends BaseActivity implements View.OnClickL
                         e.printStackTrace();
 
                     }
+
                 } else {
                     closeLoadingDialog();
                 }
@@ -382,6 +384,7 @@ public class FunctionRenewActivity extends BaseActivity implements View.OnClickL
                                             String state = jsonObject.getString("trade_state");
                                             if (TextUtils.equals("9000", state)) {
                                                 ToastUtil.showToast("支付成功");
+                                                mShouNewApplication.redirect(ConsumeRecoderActivity.class);
                                             } else if (TextUtils.equals("8000", state)) {
                                                 msgTips = "正在处理中";
                                             } else if (TextUtils.equals("4000", state)) {
@@ -401,6 +404,7 @@ public class FunctionRenewActivity extends BaseActivity implements View.OnClickL
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+
                                 }
                             }
                         }

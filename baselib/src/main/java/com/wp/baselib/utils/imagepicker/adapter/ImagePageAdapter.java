@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.wp.baselib.utils.imagepicker.ImagePicker;
 import com.wp.baselib.utils.imagepicker.Utils;
 import com.wp.baselib.utils.imagepicker.bean.ImageItem;
+import com.wp.baselib.utils.imagepicker.loader.ImageLoader;
 import com.wp.baselib.utils.imagepicker.photoview.PhotoView;
 import com.wp.baselib.utils.imagepicker.photoview.PhotoViewAttacher;
 
@@ -29,18 +30,23 @@ public class ImagePageAdapter extends PagerAdapter {
     private int screenWidth;
     private int screenHeight;
     private ImagePicker imagePicker;
-    private ArrayList<ImageItem> images = new ArrayList<>();
+    private ArrayList<ImageItem> images;
     private Activity mActivity;
     public PhotoViewClickListener listener;
+    private String[] mImageUrls;
 
-    public ImagePageAdapter(Activity activity, ArrayList<ImageItem> images) {
+    public ImagePageAdapter(Activity activity, ArrayList<ImageItem> images, String[] mImageUrls) {
         this.mActivity = activity;
         this.images = images;
-
+        this.mImageUrls = mImageUrls;
         DisplayMetrics dm = Utils.getScreenPix(activity);
         screenWidth = dm.widthPixels;
         screenHeight = dm.heightPixels;
         imagePicker = ImagePicker.getInstance();
+        ImageLoader imageLoader = imagePicker.getImageLoader();
+        if (imageLoader == null) {
+            imagePicker.setImageLoader(new com.wp.baselib.utils.GlideImageLoader());
+        }
     }
 
     public void setData(ArrayList<ImageItem> images) {
@@ -54,8 +60,12 @@ public class ImagePageAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         PhotoView photoView = new PhotoView(mActivity);
-        ImageItem imageItem = images.get(position);
-        imagePicker.getImageLoader().displayImage(mActivity, imageItem.path, photoView, screenWidth, screenHeight);
+        if (null != images) {
+            ImageItem imageItem = images.get(position);
+            imagePicker.getImageLoader().displayImage(mActivity, imageItem.path, photoView, screenWidth, screenHeight);
+        } else if (null != mImageUrls) {
+            imagePicker.getImageLoader().displayImageFromUrl(mActivity, mImageUrls[position], photoView, screenWidth, screenHeight);
+        }
         photoView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
             @Override
             public void onPhotoTap(View view, float x, float y) {
@@ -68,7 +78,12 @@ public class ImagePageAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return images.size();
+        if (null != mImageUrls) {
+            return mImageUrls.length;
+        } else if (null != images) {
+            return images.size();
+        }
+        return 0;
     }
 
     @Override

@@ -23,9 +23,9 @@ import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.activity.AccountRechargeActivity;
 import com.shownew.home.activity.AddressEditActivity;
+import com.shownew.home.activity.OrderMenuActivity;
 import com.shownew.home.activity.TransactionActivity;
 import com.shownew.home.activity.common.BaseActivity;
-import com.shownew.home.activity.common.PayStateActivity;
 import com.shownew.home.module.UserAPI;
 import com.shownew.home.module.entity.AddressEntity;
 import com.shownew.home.module.entity.ShopMallDetailEntity;
@@ -61,7 +61,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
     private TextView mShop_title;
     private TextView mShop_color;
     private TextView mShop_prices;
-    private EditText mShop_number;
+    private TextView mShop_number;
     private TextView mKuaidi_fee;
     private TextView mCount_number;
     private TextView mTotal_prices;
@@ -139,7 +139,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
         mKuaidi_fee_ed = (EditText) findViewById(R.id.kuaidi_fee_ed);
         mShop_color = (TextView) findViewById(R.id.shop_color);
         mShop_prices = (TextView) findViewById(R.id.shop_prices);
-        mShop_number = (EditText) findViewById(R.id.shop_number);
+        mShop_number = (TextView) findViewById(R.id.shop_number);
         mKuaidi_fee = (TextView) findViewById(R.id.kuaidi_fee);
         mCount_number = (TextView) findViewById(R.id.count_number);
         mTotal_prices = (TextView) findViewById(R.id.total_prices);
@@ -412,16 +412,17 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                         protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                             if (exception == null) {
                                 if (json.has("data")) {
-                                    String msgTips;
+                                    String msgTips="";
                                     try {
                                         JSONObject jsonObject;
                                         jsonObject = json.getJSONObject("data");
                                         if (jsonObject.has("trade_state")) {
                                             String state = jsonObject.getString("trade_state");
                                             if (TextUtils.equals("9000", state)) {
-                                                bundle.putBoolean("isSucess", true);
-                                                mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
-                                                return;
+                                                msgTips="支付成功";
+//                                                bundle.putBoolean("isSucess", true);
+//                                                mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+//                                                return;
                                             } else if (TextUtils.equals("8000", state)) {
                                                 msgTips = "正在处理中";
                                             } else if (TextUtils.equals("4000", state)) {
@@ -437,11 +438,14 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                                                 msgTips = "支付失败";
                                             }
                                             ToastUtil.showToast(msgTips);
-                                            bundle.putBoolean("isSucess", false);
-                                            mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+//                                            bundle.putBoolean("isSucess", false);
+//                                            mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
+                                    }
+                                    finally {
+                                        mainApplication.redirect(OrderMenuActivity.class);
                                     }
                                 }
                             }
@@ -586,12 +590,12 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                                 String trade_state = jsonObject.getString("trade_state");
                                 if ("3000".equals(trade_state)) {
                                     ToastUtil.showToast("支付成功");
-                                    if (!TextUtils.isEmpty(mOrderzNo)) {
-                                        bundle.putBoolean("isSucess", true);
-                                        mComitOrder.setEnabled(true);
-                                        mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
-                                        return;
-                                    }
+//                                    if (!TextUtils.isEmpty(mOrderzNo)) {
+//                                        bundle.putBoolean("isSucess", true);
+//                                        mComitOrder.setEnabled(true);
+//                                        mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+//                                        return;
+//                                    }
                                 } else if ("3001".equals(trade_state)) {
                                     ToastUtil.showToast("订单已支付");
                                     return;
@@ -621,7 +625,8 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                     mComitOrder.setEnabled(true);
                     bundle.putBoolean("isSucess", false);
                 }
-                mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
+                mainApplication.redirect(OrderMenuActivity.class);
+//                mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
             }
         });
     }

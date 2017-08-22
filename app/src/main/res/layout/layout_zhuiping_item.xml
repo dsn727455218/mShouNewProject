@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:background="@color/orgin" />
+
+    <TextView
+        android:id="@+id/again_evelaute_tv"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="20dp"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.5"
+        android:gravity="left|top"
+        android:maxLines="3"
+        android:textSize="12sp"
+        android:textColor="#717171"
+        />
+
+    <com.shownew.home.utils.widget.WordWrapLayoutiml
+        android:id="@+id/zhuiping_showImg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp" />
+</LinearLayout>

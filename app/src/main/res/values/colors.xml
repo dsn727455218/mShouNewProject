@@ -42,4 +42,14 @@
     <color name="color_text_my">#35383e</color>
 
     <color name="color_search">#e77817</color>
+
+    <color name="orgin">#ff8a29</color>
+    <color name="orgin_press">#edb07e</color>
+
+
+    <color name="color_evalue">#b5b5b5</color>
+    <color name="color_evalue_state">#5c5c5c</color>
+
+    <color name="color_grey_white">#5f6164</color>
+
 </resources>

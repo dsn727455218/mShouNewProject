@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:paddingRight="0dp"
-                android:text="--"
+                android:text=""
                 android:textColor="#3681f1"
                 android:textSize="@dimen/WEATHER_TEXT_SIZE"/>
 
@@ -50,7 +50,7 @@
                 android:gravity="center_vertical"
                 android:lineSpacingMultiplier="1.1"
                 android:paddingLeft="5dp"
-                android:text="定位中...\n获取中..."
+                android:text="请检查网络"
                 android:textColor="@android:color/white"/>
         </LinearLayout>
 

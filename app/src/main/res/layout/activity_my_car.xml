@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:orientation="vertical"
-    >
+    android:id="@+id/parent"
+    android:orientation="vertical">
 
-    <include layout="@layout/title_bar"/>
-
-    <include
-        layout="@layout/list_empty"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/headbar"
-        />
+    <include layout="@layout/title_bar" />
 
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/my_car_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/headbar"
-        android:background="#35383E"/>
+        android:background="#35383E" />
+
+    <include
+        layout="@layout/list_empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/headbar" />
 
 
 </RelativeLayout>

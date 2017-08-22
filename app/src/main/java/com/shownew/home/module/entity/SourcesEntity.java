@@ -21,12 +21,13 @@ public class SourcesEntity implements Parcelable {
     private int sType;
     private String sImg;
     private String sPid;
+    private String sText;
 
-    public int getSType() {
+    public int getsType() {
         return sType;
     }
 
-    public void setSType(int sType) {
+    public void setsType(int sType) {
         this.sType = sType;
     }
 
@@ -34,7 +35,7 @@ public class SourcesEntity implements Parcelable {
         return sImg;
     }
 
-    public void setSImg(String sImg) {
+    public void setsImg(String sImg) {
         this.sImg = sImg;
     }
 
@@ -42,8 +43,16 @@ public class SourcesEntity implements Parcelable {
         return sPid;
     }
 
-    public void setSPid(String sPid) {
+    public void setsPid(String sPid) {
         this.sPid = sPid;
+    }
+
+    public String getsText() {
+        return sText;
+    }
+
+    public void setsText(String sText) {
+        this.sText = sText;
     }
 
     @Override
@@ -56,6 +65,7 @@ public class SourcesEntity implements Parcelable {
         dest.writeInt(this.sType);
         dest.writeString(this.sImg);
         dest.writeString(this.sPid);
+        dest.writeString(this.sText);
     }
 
     public SourcesEntity() {
@@ -65,6 +75,7 @@ public class SourcesEntity implements Parcelable {
         this.sType = in.readInt();
         this.sImg = in.readString();
         this.sPid = in.readString();
+        this.sText = in.readString();
     }
 
     public static final Parcelable.Creator<SourcesEntity> CREATOR = new Parcelable.Creator<SourcesEntity>() {

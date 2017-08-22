@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_launch_evaluate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_bar" />
+
+    <com.wp.baselib.widget.XScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/talk_parent"
+                android:padding="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.shownew.home.utils.widget.EvaluesRatingBar
+                        android:id="@+id/dPdgrade"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        app:left_text="产品评分"
+                        app:max="5"
+                        app:rating="4" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#dadee5" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <com.wp.baselib.widget.ContainsEmojiEditText
+                            android:id="@+id/talk_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:gravity="top|left"
+                            android:hint="宝贝怎么样,还满意吗?"
+                            android:lines="3"
+                            style="@style/BaseTextView"
+                            android:paddingTop="5dp"
+                            android:textColor="#aeb1b5"
+                            android:textSize="13sp" />
+
+                        <com.shownew.home.utils.widget.WordWrapLayoutiml
+                            android:id="@+id/select_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#dadee5" />
+
+                    <com.shownew.home.utils.widget.EvaluesRatingBar
+                        android:id="@+id/dLsgrade"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        app:left_text="物流评分"
+                        app:max="5"
+                        app:rating="4" />
+
+                    <com.shownew.home.utils.widget.EvaluesRatingBar
+                        android:id="@+id/dSvgrade"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        app:left_text="服务态度"
+                        app:max="5"
+                        app:rating="4" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <include
+                layout="@layout/layout_agin_talk"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/commit_btn"
+                android:layout_width="172dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="18dp"
+                android:background="@drawable/select_commit_evaluate_bg"
+                android:text="提交"
+                android:textColor="#ffffff"
+                android:textSize="17.3sp" />
+        </LinearLayout>
+    </com.wp.baselib.widget.XScrollView>
+
+
+</LinearLayout>

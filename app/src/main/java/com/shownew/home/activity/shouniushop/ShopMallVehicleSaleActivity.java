@@ -14,8 +14,6 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.shownew.home.Config;
 import com.shownew.home.R;
-import com.shownew.home.activity.msg.AllMsgActivity;
-import com.shownew.home.activity.MainActivity;
 import com.shownew.home.activity.common.BaseActivity;
 import com.shownew.home.activity.shop.ShopDetailActivity;
 import com.shownew.home.adapter.ShopHomeAdapter;
@@ -23,10 +21,8 @@ import com.shownew.home.module.ShopAPI;
 import com.shownew.home.module.entity.HomeAdverEntity;
 import com.shownew.home.module.entity.ShopMallListEntity;
 import com.shownew.home.utils.GlideImageLoader;
-import com.shownew.home.utils.dialog.ShareDialog;
 import com.shownew.home.utils.dialog.ShopPopwindow;
 import com.wp.baselib.utils.JsonUtils;
-import com.wp.baselib.utils.Preference;
 import com.wp.baselib.widget.TitleBarView;
 import com.wp.baselib.widget.banner.Banner;
 import com.wp.baselib.widget.banner.BannerConfig;
@@ -179,27 +175,7 @@ public class ShopMallVehicleSaleActivity extends BaseActivity implements View.On
                 search();
                 break;
             case R.id.title_bar_more:
-                new ShopPopwindow(this).showPopupWindow(mTitleBarView.getMoreBtn()).setPopClickLisener(new ShopPopwindow.PopClickLisener() {
-                    @Override
-                    public void clickPopItem(int position) {
-                        switch (position) {
-                            case 0:
-                                if (!Preference.getBoolean(ShopMallVehicleSaleActivity.this, Preference.IS_LOGIN, false)) {
-                                    mShouNewApplication.jumpLoginActivity(ShopMallVehicleSaleActivity.this);
-                                    return;
-                                }
-                                mShouNewApplication.redirect(AllMsgActivity.class);
-                                break;
-                            case 1:
-                                mainApplication.redirect(MainActivity.class);
-                                finish();
-                                break;
-                            case 2:
-                                new ShareDialog(ShopMallVehicleSaleActivity.this, mShouNewApplication).setCancelable(true).show();
-                                break;
-                        }
-                    }
-                });
+                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(mTitleBarView.getMoreBtn());
                 break;
         }
     }
@@ -253,7 +229,6 @@ public class ShopMallVehicleSaleActivity extends BaseActivity implements View.On
                         }
                     }
                 } else {
-
                     if (mSuperMarketEntities.size() > 0) {
                         mXRecyclerView.setNoMore(true);
                     }

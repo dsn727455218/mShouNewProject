@@ -41,17 +41,31 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
         super.onCreate(savedInstanceState);
 
         isOrigin = getIntent().getBooleanExtra(ImagePreviewActivity.ISORIGIN, false);
+        mBtnOk = (Button) topBar.findViewById(R.id.btn_ok);
+        mCbCheck = (SuperCheckBox) findViewById(R.id.cb_check);
+        mCbOrigin = (SuperCheckBox) findViewById(R.id.cb_origin);
+        bottomBar = findViewById(R.id.bottom_bar);
+        if (null == mImageItems) {
+            bottomBar.setVisibility(View.GONE);
+            mBtnOk.setVisibility(View.GONE);
+            mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+                @Override
+                public void onPageSelected(int position) {
+                    mCurrentPosition = position;
+                    mTitleCount.setText(getString(R.string.preview_image_count, mCurrentPosition + 1, mImageUrls.length));
+                }
+            });
+            return;
+        }
         imagePicker.addOnImageSelectedListener(this);
 
-        mBtnOk = (Button) topBar.findViewById(R.id.btn_ok);
         mBtnOk.setVisibility(View.VISIBLE);
         mBtnOk.setOnClickListener(this);
 
-        bottomBar = findViewById(R.id.bottom_bar);
+
         bottomBar.setVisibility(View.VISIBLE);
 
-        mCbCheck = (SuperCheckBox) findViewById(R.id.cb_check);
-        mCbOrigin = (SuperCheckBox) findViewById(R.id.cb_origin);
+
         mCbOrigin.setText(getString(R.string.origin));
         mCbOrigin.setOnCheckedChangeListener(this);
         mCbOrigin.setChecked(isOrigin);
@@ -130,6 +144,10 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
 
     @Override
     public void onBackPressed() {
+        if (null == mImageItems) {
+            finish();
+            return;
+        }
         Intent intent = new Intent();
         intent.putExtra(ImagePreviewActivity.ISORIGIN, isOrigin);
         setResult(ImagePicker.RESULT_CODE_BACK, intent);
@@ -157,29 +175,40 @@ public class ImagePreviewActivity extends ImagePreviewBaseActivity implements Im
 
     @Override
     protected void onDestroy() {
-        imagePicker.removeOnImageSelectedListener(this);
+        if (null != mImageItems) {
+            imagePicker.removeOnImageSelectedListener(this);
+        }
         super.onDestroy();
     }
 
-    /** 单击时，隐藏头和尾 */
+    /**
+     * 单击时，隐藏头和尾
+     */
     @Override
     public void onImageSingleTap() {
         if (topBar.getVisibility() == View.VISIBLE) {
             topBar.setAnimation(AnimationUtils.loadAnimation(this, R.anim.top_out));
-            bottomBar.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
             topBar.setVisibility(View.GONE);
-            bottomBar.setVisibility(View.GONE);
+            if (null != mImageItems) {
+                bottomBar.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
+                bottomBar.setVisibility(View.GONE);
+            }
+
 //            tintManager.setStatusBarTintResource(R.color.transparent);//通知栏所需颜色
             //给最外层布局加上这个属性表示，Activity全屏显示，且状态栏被隐藏覆盖掉。
-            if (Build.VERSION.SDK_INT >= 16) content.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+            if (Build.VERSION.SDK_INT >= 16)
+                content.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         } else {
             topBar.setAnimation(AnimationUtils.loadAnimation(this, R.anim.top_in));
-            bottomBar.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
             topBar.setVisibility(View.VISIBLE);
-            bottomBar.setVisibility(View.VISIBLE);
+            if (null != mImageItems) {
+                bottomBar.setAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
+                bottomBar.setVisibility(View.VISIBLE);
+            }
 //            tintManager.setStatusBarTintResource(R.color.status_bar);//通知栏所需颜色
             //Activity全屏显示，但状态栏不会被隐藏覆盖，状态栏依然可见，Activity顶端布局部分会被状态遮住
-            if (Build.VERSION.SDK_INT >= 16) content.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            if (Build.VERSION.SDK_INT >= 16)
+                content.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
     }
 }

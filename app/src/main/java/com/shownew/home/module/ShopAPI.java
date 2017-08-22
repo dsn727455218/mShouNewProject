@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.shownew.home.Config;
 import com.shownew.home.ShouNewApplication;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Map;
 
 /**
@@ -176,6 +178,7 @@ public class ShopAPI extends PublicApi {
 
     /**
      * 获取商品列表接口
+     *
      * @param type    商品类型
      * @param page    页码
      * @param lisener
@@ -193,5 +196,154 @@ public class ShopAPI extends PublicApi {
      */
     public void getShopMallProductList(int type, int page, String id, String keyWord, String order, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
         getProductList(type, page, id, keyWord, order, "getMallproductList", lisener);
+    }
+
+    /**
+     * 商品收藏
+     *
+     * @param type                       0  首牛商城    1   车配超市
+     * @param shopId
+     * @param collect
+     * @param shouNewHttpCallBackLisener
+     */
+    public void collection(int type, String shopId, String collect, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.SHOP_COLLECT);
+        map.put("method", collect);
+        map.put(0 == type ? "mallproductId" : "productId", shopId);
+        post(Config.SHOP_COLLECT, map, shouNewHttpCallBackLisener);
+    }
+
+    /**
+     * 获取收藏的商品
+     *
+     * @param shouNewHttpCallBackLisener
+     */
+    public void getCollectData(int page, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.SHOP_COLLECT);
+        map.put("method", "getCollectionList");
+        map.put("page", String.valueOf(page));
+        get(createUrlFromParams(Config.SHOP_COLLECT, map), shouNewHttpCallBackLisener);
+    }
+
+    /**
+     * 商品评论
+     *
+     * @param dicussContent
+     * @param dPdgrade
+     * @param dSvgrade
+     * @param dLsgrade
+     * @param files
+     * @param shouNewHttpCallBackLisener
+     */
+    public void discuss(String id, String dicussContent, int dPdgrade, int dSvgrade, int dLsgrade, String files, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.Shop_DISCUSS);
+        map.put("method", "discuss");
+        map.put("dPdgrade", String.valueOf(dPdgrade));
+        map.put("dSvgrade", String.valueOf(dSvgrade));
+        map.put("dLsgrade", String.valueOf(dLsgrade));
+        map.put("dText", dicussContent);
+        map.put("id", id);
+        map.put("dImg", files);
+        post(Config.Shop_DISCUSS, map, shouNewHttpCallBackLisener);
+    }
+
+    /**
+     * 获取上次评价的内容
+     *
+     * @param oId
+     * @param shouNewHttpCallBackLisener
+     */
+    public void zuijiaEvaluete(String oId, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.Shop_DISCUSS);
+        map.put("method", "getRootDiscuss");
+        map.put("id", oId);
+        get(createUrlFromParams(Config.Shop_DISCUSS, map), shouNewHttpCallBackLisener);
+    }
+
+    /**
+     * 上传评论图片
+     *
+     * @param files
+     * @param shouNewHttpCallBackLisener
+     */
+    public void upTalkImg(ArrayList<File> files, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.Shop_DISCUSS);
+        map.put("method", "uploadImg");
+        postFiles(Config.Shop_DISCUSS, map, "img", files, shouNewHttpCallBackLisener);
+    }
+
+    /**
+     * 再次评价
+     *
+     * @param did
+     * @param againTalkStr
+     * @param dImg
+     * @param shouNewHttpCallBackLisener
+     */
+    public void againEvaluetes(String did, String againTalkStr, String dImg, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.Shop_DISCUSS);
+        map.put("method", "addDiscuss");
+        map.put("id", did);
+        map.put("dText", againTalkStr);
+        map.put("dImg", dImg);
+        post(Config.Shop_DISCUSS, map, shouNewHttpCallBackLisener);
+    }
+
+    /**
+     * 获取 评价列表
+     * @param producttype
+     * @param productId
+     * @param type
+     * @param page
+     * @param shouNewHttpCallBackLisener
+     */
+    public void getDiscussList(String producttype, String productId, String type, int page, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.Shop_DISCUSS);
+        map.put("method", "getDiscussList");
+        map.put(producttype, productId);
+        map.put("type", String.valueOf(type));
+        map.put("page", String.valueOf(page));
+        get(createUrlFromParams(Config.Shop_DISCUSS, map), shouNewHttpCallBackLisener);
+
+    }
+
+    /**
+     * 点赞借口
+     * @param dId
+     * @param shouNewHttpCallBackLisener
+     */
+    public void fabulous(long dId, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.Shop_DISCUSS);
+        map.put("method", "upNiceCount");
+        map.put("id", String.valueOf(dId));
+        post(Config.Shop_DISCUSS, map, shouNewHttpCallBackLisener);
+    }
+
+    public void updateShopCar(String data, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+
+        Map<String, String> map = getHashMap(Config.SHOP_CAR);
+        map.put("method", "insert");
+        map.put("data", data);
+        post(Config.SHOP_CAR, map, shouNewHttpCallBackLisener);
+    }
+
+    public void getShopcarList( ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.SHOP_CAR);
+        map.put("method", "getShopcarList");
+        get(createUrlFromParams(Config.SHOP_CAR, map), shouNewHttpCallBackLisener);
+    }
+
+    public void updateShopCart(String data, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.SHOP_CAR);
+        map.put("method", "update");
+        map.put("data", data);
+        post(Config.SHOP_CAR, map, shouNewHttpCallBackLisener);
+    }
+
+    public void deleteShopCar(String shId, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
+        Map<String, String> map = getHashMap(Config.SHOP_CAR);
+        map.put("method", "delete");
+        map.put("data", shId);
+        post(Config.SHOP_CAR, map, shouNewHttpCallBackLisener);
     }
 }

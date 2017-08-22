@@ -14,7 +14,7 @@
 
         <View
             android:layout_width="1dp"
-            android:layout_height="110dp"
+            android:layout_height="130dp"
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             android:background="#BABABA" />
@@ -61,7 +61,6 @@
             android:layout_below="@+id/content_tv"
             android:layout_toLeftOf="@+id/show_more"
             android:gravity="left"
-            android:paddingTop="5dp"
             android:text="2015165"
             android:textColor="#727272"
             android:textSize="12sp" />

@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/searchrl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/headbar"
-        android:background="#e77817">
+        android:background="@color/orgin">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="8dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/shape_shop_search_title"
+            android:layout_toLeftOf="@+id/shopping_cart_a_iv"
+            android:background="@drawable/shape_shop_title"
             android:orientation="horizontal">
 
             <com.wp.baselib.widget.ContainsEmojiEditText
                 android:id="@+id/shop_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="left"
@@ -33,17 +35,28 @@
                 android:inputType="text"
                 android:padding="8dp"
                 android:singleLine="true"
-                android:textColor="#2a2d33"
-                android:textColorHint="#9ba4b2"/>
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="16sp" />
 
             <ImageView
                 android:id="@+id/search_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
                 android:padding="8dp"
-                android:src="@drawable/search_shop"/>
+                android:src="@drawable/search_shop" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/shopping_cart_a_iv"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dp"
+            android:padding="5dp"
+            android:src="@drawable/shopping_cart_a" />
     </RelativeLayout>
 
     <ImageView
@@ -51,13 +64,13 @@
         android:layout_height="@dimen/shop_adv_height"
         android:layout_below="@+id/searchrl"
         android:scaleType="centerCrop"
-        android:src="@drawable/home_bannerseize"/>
+        android:src="@drawable/home_bannerseize" />
 
     <com.wp.baselib.widget.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-    android:layout_height="@dimen/shop_adv_height"
-        android:layout_below="@+id/searchrl"/>
+        android:layout_height="@dimen/shop_adv_height"
+        android:layout_below="@+id/searchrl" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/shop_recyclerView"
@@ -68,7 +81,6 @@
         android:paddingBottom="5dp"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:paddingTop="5dp"
-        />
+        android:paddingTop="5dp" />
 
 </RelativeLayout>

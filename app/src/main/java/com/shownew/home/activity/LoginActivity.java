@@ -8,7 +8,10 @@ import android.widget.EditText;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
 import com.shownew.home.activity.common.BaseActivity;
+import com.shownew.home.db.DatabaseUtils;
+import com.shownew.home.module.ShopAPI;
 import com.shownew.home.module.UserAPI;
+import com.shownew.home.module.dao.ShopCarEntity;
 import com.shownew.home.module.entity.UserEntity;
 import com.wp.baselib.Config;
 import com.wp.baselib.utils.DesUtil;
@@ -21,7 +24,12 @@ import com.wp.baselib.widget.TitleBarView;
 
 import org.json.JSONObject;
 
+import java.net.ConnectException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import cn.jpush.android.api.JPushInterface;
@@ -37,9 +45,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     private ShouNewApplication mShouNewApplication;
     private UserAPI mUserAPI;
+    private ShopAPI shopAPI;
     private EditText mAccountEd;
     private EditText mPasswordEd;
-
 
 
     @Override
@@ -49,6 +57,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         setBarColor(R.color.transparent);
         mShouNewApplication = ShouNewApplication.getInstance();
         mUserAPI = new UserAPI(mShouNewApplication);
+        shopAPI = new ShopAPI(mShouNewApplication);
         initView();
     }
 
@@ -66,6 +75,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         findViewById(R.id.login_btn).setOnClickListener(this);
         findViewById(R.id.register_btn).setOnClickListener(this);
         findViewById(R.id.forget_password_btn).setOnClickListener(this);
+        UserEntity userEntity = mUserAPI.getUserInfo();
+        if (null != userEntity) {
+            UserEntity.UserBean userBean = userEntity.getUser();
+            if (userBean != null)
+                mAccountEd.setText(userBean.getUPhone());
+        }
     }
 
 
@@ -126,7 +141,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                 saveData(userEntity);
                                 initPush(userEntity.getUser().getUPhone(), userEntity.getJSessionId());
                                 Preference.putBoolean(mShouNewApplication, Preference.IS_LOGIN, true);
-                                finish();
+                                updateShopCar();
                             }
 
                         } catch (Exception e) {
@@ -134,7 +149,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         }
                     }
                 } else {
-                    ToastUtil.showToast("登录失败");
+                    if (exception instanceof ConnectException ||
+                            exception instanceof SocketTimeoutException ||
+                            exception instanceof UnknownHostException ||
+                            exception instanceof SocketException) {
+                        ToastUtil.showToast("请检查网络");
+                    } else
+                        ToastUtil.showToast("登录失败");
                 }
 
             }
@@ -154,7 +175,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         Bundle bundle;
         switch (v.getId()) {
             case R.id.login_btn:
-              String   mUserName = mAccountEd.getText().toString().trim();
+                String mUserName = mAccountEd.getText().toString().trim();
                 String mPassword = mPasswordEd.getText().toString().trim();
                 loginUser(mUserName, mPassword);
                 break;
@@ -193,5 +214,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 LogUtil.d("====", i + "s:" + s + "set:" + set + "terminalIMEI========" + "" + mShouNewApplication.terminalIMEI);
             }
         });
+    }
+
+
+    private void updateShopCar() {
+        List<ShopCarEntity> shopCarEntities = DatabaseUtils.queryAllData(this);
+        if (shopCarEntities != null && shopCarEntities.size() > 0) {
+            shopAPI.updateShopCar(JsonUtils.toJson(shopCarEntities), mShouNewApplication.new ShouNewHttpCallBackLisener() {
+                @Override
+                protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
+                    DatabaseUtils.deleteAll(LoginActivity.this);
+                    finish();
+                }
+            });
+
+        } else {
+            finish();
+        }
     }
 }

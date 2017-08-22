@@ -26,6 +26,26 @@ public class ShopMallDetailEntity implements Parcelable {
      * mpKdprice : 0.01
      * mpAddress : 四川成都
      */
+    /**
+     *  mpCollect：0-未收藏 1-已收藏
+     */
+    private int mpCollect;
+
+    public int getMpCollect() {
+        return mpCollect;
+    }
+
+    public void setMpCollect(int mpCollect) {
+        this.mpCollect = mpCollect;
+    }
+
+    public void setMpOldprice(double mpOldprice) {
+        this.mpOldprice = mpOldprice;
+    }
+
+    public static Creator<ShopMallDetailEntity> getCREATOR() {
+        return CREATOR;
+    }
 
     private String mpId;
     private String mpTitle;
@@ -127,6 +147,9 @@ public class ShopMallDetailEntity implements Parcelable {
         this.mpImgs = mpImgs;
     }
 
+    public ShopMallDetailEntity() {
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -134,6 +157,7 @@ public class ShopMallDetailEntity implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.mpCollect);
         dest.writeString(this.mpId);
         dest.writeString(this.mpTitle);
         dest.writeDouble(this.mpPrice);
@@ -147,10 +171,8 @@ public class ShopMallDetailEntity implements Parcelable {
         dest.writeStringList(this.mpImgs);
     }
 
-    public ShopMallDetailEntity() {
-    }
-
     protected ShopMallDetailEntity(Parcel in) {
+        this.mpCollect = in.readInt();
         this.mpId = in.readString();
         this.mpTitle = in.readString();
         this.mpPrice = in.readDouble();
@@ -164,7 +186,7 @@ public class ShopMallDetailEntity implements Parcelable {
         this.mpImgs = in.createStringArrayList();
     }
 
-    public static final Parcelable.Creator<ShopMallDetailEntity> CREATOR = new Parcelable.Creator<ShopMallDetailEntity>() {
+    public static final Creator<ShopMallDetailEntity> CREATOR = new Creator<ShopMallDetailEntity>() {
         @Override
         public ShopMallDetailEntity createFromParcel(Parcel source) {
             return new ShopMallDetailEntity(source);

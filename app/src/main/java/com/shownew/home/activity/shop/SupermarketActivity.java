@@ -17,6 +17,7 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
+import com.shownew.home.activity.shopcommon.ShoppingCartActivity;
 import com.shownew.home.activity.shouniushop.ShopMallDetailActivity;
 import com.shownew.home.adapter.ShopHomeAdapter;
 import com.shownew.home.adapter.SuperMarkHeaderAdapter;
@@ -119,6 +120,7 @@ public class SupermarketActivity extends BaseActivity implements View.OnClickLis
         mBanner = (Banner) hearderView.findViewById(R.id.banner);
         hearderView.findViewById(R.id.search_shop).setOnClickListener(this);
         mShop_search = (EditText) hearderView.findViewById(R.id.shop_search);
+        hearderView.findViewById(R.id.shopping_cart_a_iv).setOnClickListener(this);
         mShop_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -201,6 +203,9 @@ public class SupermarketActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.shopping_cart_a_iv:
+                mShouNewApplication.redirect(ShoppingCartActivity.class);
+                break;
             case R.id.backBtn:
                 finish();
                 break;

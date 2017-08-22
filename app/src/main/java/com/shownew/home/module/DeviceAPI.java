@@ -84,10 +84,10 @@ public class DeviceAPI extends PublicApi {
      * @param value   0-关闭 1-打开
      * @param lisener
      */
-    public void setChargerOff(String value, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
+    public void setChargerOff(int value, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
         Map<String, String> hashMap = getHashMap(Config.UP_CHARGER);
         hashMap.put("method", "upCharger");
-        hashMap.put("value", value);
+        hashMap.put("value", String.valueOf(value));
         post(Config.UP_CHARGER, hashMap, lisener);
     }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/search"
@@ -24,6 +24,7 @@
                 android:id="@+id/shop_search"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@null"
                 android:gravity="left"
@@ -32,17 +33,17 @@
                 android:inputType="text"
                 android:padding="8dp"
                 android:singleLine="true"
-                android:textColor="#2a2d33"
-                android:textColorHint="#9ba4b2"
-                />
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
 
             <ImageView
                 android:id="@+id/search_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
                 android:padding="8dp"
-                android:src="@drawable/search_shop"/>
+                android:src="@drawable/search_shop" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -51,13 +52,13 @@
         android:layout_height="@dimen/shop_supermarer_adv_height"
         android:layout_below="@+id/search"
         android:scaleType="centerCrop"
-        android:src="@drawable/home_bannerseize"/>
+        android:src="@drawable/home_bannerseize" />
 
     <com.wp.baselib.widget.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/shop_supermarer_adv_height"
-        android:layout_below="@+id/search"/>
+        android:layout_below="@+id/search" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/shop_recyclerView"
@@ -65,7 +66,6 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/banner"
         android:background="#dadee5"
-        android:padding="10dp"
-        />
+        android:padding="10dp" />
 
 </RelativeLayout>

@@ -11,6 +11,8 @@ import com.wp.baselib.utils.imagepicker.loader.ImageLoader;
 
 import java.io.File;
 
+import static android.R.attr.path;
+
 
 /**
  * ================================================
@@ -21,11 +23,27 @@ import java.io.File;
  * 修订历史：
  * ================================================
  */
-public class GlideImageLoader implements ImageLoader{
+public class GlideImageLoader implements ImageLoader {
 
     @Override
     public void displayImage(Activity activity, String path, ImageView imageView, int width, int height) {
-        Glide.with(activity).load(new File(path))//
+        try {
+            Glide.with(activity).load(new File(path))//
+                    .placeholder(R.drawable.default_image)//
+                    .error(R.drawable.default_image)//
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)//
+                    .into(imageView);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+
+
+    }
+
+    @Override
+    public void displayImageFromUrl(Activity activity, String urlpath, ImageView imageView, int width, int height) {
+        Glide.with(activity).load(urlpath)//
                 .placeholder(R.drawable.default_image)//
                 .error(R.drawable.default_image)//
                 .diskCacheStrategy(DiskCacheStrategy.NONE)//

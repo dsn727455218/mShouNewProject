@@ -100,7 +100,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         if (null == mConverView) {
             mConverView = inflater.inflate(R.layout.fragment_home, container, false);
             initViews();
-            getActionAdv();
+            LocalUtils.getInstances().initLocation(context, locationListener);
         }
         return mConverView;
     }
@@ -317,9 +317,17 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mMy_vehicle.getChildAt(0).setOnClickListener(this);
     }
 
+    private boolean isPause = false;
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        isPause = true;
+    }
 
     @Override
     public void onPause() {
+        isPause = true;
         super.onPause();
         if (null != mBanner) {
             mBanner.stopAutoPlay();
@@ -329,9 +337,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onStart() {
         super.onStart();
-        if (null != mBanner) {
-            mBanner.startAutoPlay();
-        }
+
 
     }
 
@@ -400,6 +406,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
             controlLock(3);
         } else if ("battery_manage".equals(v.getTag())) {
+            if (null == mDeviceEntity) {
+                mShouNewApplication.handleCarBind(context);
+                return;
+            }
             mShouNewApplication.redirect(BatteryManagerActivity.class);
             //车辆管理
         } else if ("mCarHistory".equals(tag)) {//汽车的历史轨迹
@@ -524,7 +534,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                     mDeviceEntity.setIsMute(values);
                 } else if ("302".equals(exception.getMessage()) || "305".equals(exception.getMessage())) {
 
-                }else {
+                } else {
                     mHandler.sendEmptyMessageDelayed(1, 5000);
                 }
             }
@@ -560,6 +570,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             activity.closeLoadingDialog();
         }
     }
+
 
     /**
      * 获取硬件最新数据接口（已测试）
@@ -616,7 +627,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                                     if (TextUtils.isEmpty(elecStr))
                                         return;
                                     int elect = Integer.parseInt(mDeviceEntity.getElectricity());
-                                    if (elect == 0) {
+                                    if (elect <= 0) {
                                         mBattery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.battery1, 0);
                                     } else if (elect <= 20) {
                                         mBattery.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.battery2, 0);
@@ -656,8 +667,15 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void onResume() {
         super.onResume();
+        isPause = false;
+        if (null != mBanner) {
+            mBanner.startAutoPlay();
+        }
+        getData();
+    }
+
+    private void getData() {
         getDeviceNewData();
-        LocalUtils.getInstances().initLocation(context, locationListener);
         getActionAdv();
     }
 
@@ -722,6 +740,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 if (null != localWeatherLive) {
                     mCentigradeTv.setText(String.format("%s°", localWeatherLive.getTemperature()));
                     mWeatherTv.setText(Html.fromHtml(String.format(HTML, localWeatherLive.getCity(), localWeatherLive.getWeather())));
+                    if (mDeviceEntity == null && !isPause) {
+                        getData();
+                    }
                 }
 
             }

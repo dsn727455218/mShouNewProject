@@ -43,17 +43,21 @@ public class TitleBarView extends FrameLayout {
         initViews(context, attrs);
     }
 
-    public void showRightBt() {
+    public LinearLayout showRightBt() {
         rightBt.setVisibility(VISIBLE);
         more.setVisibility(View.GONE);
         layout_right_tv.setVisibility(GONE);
+        return rightBt;
     }
 
     public void setRightBtClick(OnClickListener listener) {
         showRightBt();
         rightBt.setOnClickListener(listener);
     }
-
+    public void setRightTextClick(OnClickListener listener) {
+        layout_right_tv.setVisibility(VISIBLE);
+        layout_right_tv.setOnClickListener(listener);
+    }
     public void initViews(Context context, AttributeSet attrs) {
         LayoutInflater.from(context).inflate(R.layout.layout_title, this);
         if (!isInEditMode()) {
@@ -173,13 +177,16 @@ public class TitleBarView extends FrameLayout {
     public void setLeftIcon(int sources) {
         backbtn.setCompoundDrawablesWithIntrinsicBounds(sources, 0, 0, 0);
     }
+
     public void setRigthTextColor(int color) {
         layout_right_tv.setTextColor(getResources().getColor(color));
     }
+
     public void setRigthTextSize(int size) {
         layout_right_tv.setTextSize(size);
     }
-    public  void setTitleTextColor(int color){
+
+    public void setTitleTextColor(int color) {
         titletv.setTextColor(getResources().getColor(color));
     }
 }

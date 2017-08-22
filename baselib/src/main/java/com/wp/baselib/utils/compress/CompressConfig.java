@@ -23,7 +23,7 @@ public class CompressConfig implements Serializable {
     /**
      * 是否启用像素压缩
      */
-    private boolean enablePixelCompress=false;
+    private boolean enablePixelCompress=true;
     /**
      * 是否启用质量压缩
      */
@@ -32,7 +32,7 @@ public class CompressConfig implements Serializable {
     /**
      * 是否保留原文件
      */
-    private boolean enableReserveRaw = true;
+    private boolean enableReserveRaw = false;
 
 
     public static CompressConfig ofDefaultConfig(){

@@ -36,6 +36,15 @@ public class SuperMarkeDetailEntity implements Parcelable {
     private String pAddress;
     private String pAllprice;
     private String pOwn;  //判断是否是首牛
+    private int pCollect;
+
+    public int getpCollect() {
+        return pCollect;
+    }
+
+    public void setpCollect(int pCollect) {
+        this.pCollect = pCollect;
+    }
 
     public String getpOwn() {
         return pOwn;
@@ -157,6 +166,7 @@ public class SuperMarkeDetailEntity implements Parcelable {
         dest.writeString(this.pAddress);
         dest.writeString(this.pAllprice);
         dest.writeString(this.pOwn);
+        dest.writeInt(this.pCollect);
         dest.writeStringList(this.pImg);
         dest.writeStringList(this.pImgs);
     }
@@ -172,6 +182,7 @@ public class SuperMarkeDetailEntity implements Parcelable {
         this.pAddress = in.readString();
         this.pAllprice = in.readString();
         this.pOwn = in.readString();
+        this.pCollect = in.readInt();
         this.pImg = in.createStringArrayList();
         this.pImgs = in.createStringArrayList();
     }

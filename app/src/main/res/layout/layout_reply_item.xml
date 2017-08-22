@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="20dp"
+    android:gravity="left|top"
+    style="@style/BaseTextStyle"
+    android:textColor="#717171"
+    android:text="回复：感谢您的大力支持。祝您生活愉快！"
+    android:layout_height="match_parent">
+</TextView>

@@ -34,7 +34,7 @@ public class UserAPI extends PublicApi {
      * @param lis
      */
     public void Login(String name, String password, ShouNewApplication.ShouNewHttpCallBackLisener lis) {
-        Map<String,String> hashMap = getHashMap(Config.LOGIN);
+        Map<String, String> hashMap = getHashMap(Config.LOGIN);
         hashMap.put("name", name);
         try {
             password = DesUtil.MD5(password + TimeUtil.getTime2String(System.currentTimeMillis() + Preference.getLong(mainApplication, "timestamp"), "yyyyMMddHHmm"));
@@ -133,7 +133,7 @@ public class UserAPI extends PublicApi {
      * @param lisener
      */
     public void changeTradePass(String phone, String pass, String newTradePass, String phoneCode, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
-        Map <String,String> hashMap = getHashMap(Config.USER);
+        Map<String, String> hashMap = getHashMap(Config.USER);
         hashMap.put("method", "upTradePass");
         hashMap.put("phone", phone);
 
@@ -291,6 +291,22 @@ public class UserAPI extends PublicApi {
      * 提交订单
      *
      * @param locationId
+     * @param lisener
+     */
+    public void submitOrderzShopCarts(String locationId, int type, String jsonData, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
+        Map<String, String> map = getHashMap(Config.ODER_MENU);
+        map.put("method", "submitBatchOrderz");
+        map.put("locationId", locationId);
+        map.put("data", jsonData);
+        map.put("type", String.valueOf(type));
+        post(Config.ODER_MENU, map, lisener);
+    }
+
+
+    /**
+     * 提交订单
+     *
+     * @param locationId
      * @param productId
      * @param color
      * @param num
@@ -360,7 +376,8 @@ public class UserAPI extends PublicApi {
 
     /**
      * 获取余额、首次充值接口（已测试）
-     *      response     remain：用户余额       isFirst：0=首冲    1=非首冲       tradePass：0=未设置交易密码    1=已设置交易密码）
+     * response     remain：用户余额       isFirst：0=首冲    1=非首冲       tradePass：0=未设置交易密码    1=已设置交易密码）
+     *
      * @param lisener
      */
     public void getPayAboutInfo(ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
@@ -453,5 +470,19 @@ public class UserAPI extends PublicApi {
         map.put("data", data);
         map.put("method", "checkAlipayOrderz");
         post(Config.PAY, map, lisener);
+    }
+
+    public void cancelOrderz(String oId, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
+        Map<String, String> map = getHashMap(Config.ODER_MENU);
+        map.put("method", "cannelOrderz");
+        map.put("id", oId);
+        post(Config.ODER_MENU, map, lisener);
+    }
+
+    public void confirmReceived(String oId, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
+        Map<String, String> map = getHashMap(Config.ODER_MENU);
+        map.put("method", "confirmReceived");
+        map.put("id", oId);
+        post(Config.ODER_MENU, map, lisener);
     }
 }

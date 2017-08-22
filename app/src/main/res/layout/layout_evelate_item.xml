@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/visiable_evelautes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <com.wp.baselib.widget.CustomShapeImageView
+                android:id="@+id/my_info_header_scv"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
+                android:layout_centerVertical="true"
+                android:src="@drawable/square_seize"
+                app:borderColor="#535862"
+                app:imageBorderWidth="0dp"
+                app:onlyDrawBorder="false"
+                app:roundRadius="5dp"
+                app:shape="circle" />
+
+            <TextView
+                android:id="@+id/nicheng_tv"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_toLeftOf="@+id/evelute_time"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/my_info_header_scv"
+                android:gravity="left"
+                android:text="昵称更好的价格好"
+                android:textColor="@color/orgin" />
+
+            <TextView
+                android:id="@+id/evelute_time"
+                style="@style/BaseTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="left"
+                android:lines="1"
+                android:text="2017-454-45"
+                android:textColor="@color/color_grey_white" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/evelute_content"
+            style="@style/BaseTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:ellipsize="end"
+            android:gravity="left|top"
+            android:maxLines="2"
+            android:text="第二次购买了，宝贝很好，物流很给力，服务很周到"
+            android:textColor="@color/color_grey_white" />
+
+        <TextView
+            android:id="@+id/fabulous"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:drawableLeft="@drawable/fabulous_gray"
+            android:gravity="center"
+            android:text="0"
+            android:textColor="@color/color_grey_white"
+            android:textSize="11sp" />
+
+        <com.shownew.home.utils.widget.WordWrapLayoutiml
+            android:id="@+id/evelute_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/reply_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="10dp"
+        android:background="#dadee5" />
+</LinearLayout>

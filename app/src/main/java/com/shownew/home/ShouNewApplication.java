@@ -30,9 +30,6 @@ import com.wp.baselib.utils.ToastUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
-import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
 
 import cn.jpush.android.api.JPushInterface;
@@ -54,10 +51,12 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
         mUserAPI = new UserAPI(instance);
         //        Thread.setDefaultUncaughtExceptionHandler(this);
         initJPush();
+//        setDatabase();
         getSystemTime();
         updataDeviceData();
         initShare();
         getReource();
+
     }
 
     public void loadImg(String imgUrl, final ImageView imageView) {
@@ -229,18 +228,19 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
      * 进入登陆界面
      */
     public void jumpLoginActivity(Context context) {
-        new CommonDialog(context, "温馨提示", "你还未登录，请登录进行操作", "登录", "取消").setCommonListener(new CommonDialog.CommonListener() {
-            @Override
-            public void sure(int flag) {
-                if (1 == flag) {
-                    redirect(LoginActivity.class);
-                } else if (0 == flag) {
-                    //                    Bundle bundle = new Bundle();
-                    //                    bundle.putInt("loginOrforgetpwd_flag", 1);//注册
-                    //                    redirectAndPrameter(RegisterActivity.class, bundle);
-                }
-            }
-        }).setCancelable(true).show();
+        redirect(LoginActivity.class);
+//        new CommonDialog(context, "温馨提示", "你还未登录，请登录进行操作", "登录", "取消").setCommonListener(new CommonDialog.CommonListener() {
+//            @Override
+//            public void sure(int flag) {
+//                if (1 == flag) {
+//                    redirect(LoginActivity.class);
+//                } else if (0 == flag) {
+//                    //                    Bundle bundle = new Bundle();
+//                    //                    bundle.putInt("loginOrforgetpwd_flag", 1);//注册
+//                    //                    redirectAndPrameter(RegisterActivity.class, bundle);
+//                }
+//            }
+//        }).setCancelable(true).show();
     }
 
     public void handleCarBind(Context context) {
@@ -369,9 +369,9 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
         @Override
         public void onError(Call call, Response response, Exception e) {
             super.onError(call, response, e);
-            if (e instanceof ConnectException || e instanceof SocketTimeoutException || e instanceof UnknownHostException) {
-                ToastUtil.showToast("网络连接失败");
-            }
+//            if (e instanceof ConnectException || e instanceof SocketTimeoutException || e instanceof UnknownHostException||e instanceof SocketException) {
+//            }
+            ToastUtil.showToast("网络连接失败");
             resultData(null, null, response, e);
         }
 
@@ -430,4 +430,30 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
         PlatformConfig.setVKontakte("5764965", "5My6SNliAaLxEm3Lyd9J");
         PlatformConfig.setDropbox("oz8v5apet3arcdy", "h7p2pjbzkkxt02a");
     }
+
+//    private DaoMaster.DevOpenHelper mHelper;
+//    private SQLiteDatabase db;
+//    private DaoMaster mDaoMaster;
+//    private DaoSession mDaoSession;
+//    /**
+//     * 设置greenDao
+//     */
+//    private void setDatabase() {
+//        // 通过 DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的 SQLiteOpenHelper 对象。
+//        // 可能你已经注意到了，你并不需要去编写「CREATE TABLE」这样的 SQL 语句，因为 greenDAO 已经帮你做了。
+//        // 注意：默认的 DaoMaster.DevOpenHelper 会在数据库升级时，删除所有的表，意味着这将导致数据的丢失。
+//        // 所以，在正式的项目中，你还应该做一层封装，来实现数据库的安全升级。
+//        mHelper = new DaoMaster.DevOpenHelper(this, "notes-db", null);
+//        db = mHelper.getWritableDatabase();
+//        // 注意：该数据库连接属于 DaoMaster，所以多个 Session 指的是相同的数据库连接。
+//        mDaoMaster = new DaoMaster(db);
+//        mDaoSession = mDaoMaster.newSession();
+//    }
+//    public DaoSession getDaoSession() {
+//        return mDaoSession;
+//    }
+//    public SQLiteDatabase getDb() {
+//        return db;
+//    }
+
 }

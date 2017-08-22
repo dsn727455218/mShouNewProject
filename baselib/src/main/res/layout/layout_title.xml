@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/layout_title_bg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/nav_bg"
-                android:gravity="center_vertical">
+    android:id="@+id/layout_title_bg"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/nav_bg"
+    android:gravity="center_vertical">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -21,17 +21,16 @@
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:textColor="#ffffff"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <View
+            android:id="@+id/msg_circle"
             android:layout_width="8dp"
             android:layout_height="8dp"
-            android:visibility="gone"
-            android:id="@+id/msg_circle"
-            android:layout_marginTop="12dp"
             android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/shape_msg_circle"
-            />
+            android:visibility="gone" />
     </RelativeLayout>
 
 
@@ -52,7 +51,7 @@
         android:scrollHorizontally="true"
         android:text=""
         android:textColor="#ffffff"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/commitFeed"
@@ -66,8 +65,7 @@
         android:paddingRight="5dp"
         android:text=""
         android:textColor="#ffffff"
-        android:textSize="14sp"
-        />
+        android:textSize="14sp" />
     <!--android:drawableRight="@drawable/tianjia"-->
 
     <TextView
@@ -80,7 +78,7 @@
         android:padding="10dp"
         android:textColor="#fff"
         android:textSize="15sp"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/rightBt"
@@ -88,29 +86,22 @@
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:gravity="center"
+        android:layout_toRightOf="@+id/topTitle"
+        android:gravity="right|center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
         android:visibility="gone">
 
         <ImageView
-            android:layout_width="5dp"
-            android:layout_height="5dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/pointblack"/>
+            android:id="@+id/rightBt_img1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp" />
 
         <ImageView
-            android:layout_width="5dp"
-            android:layout_height="5dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/pointblack"/>
-
-        <ImageView
-            android:layout_width="5dp"
-            android:layout_height="5dp"
-            android:layout_marginLeft="2dp"
-            android:background="@drawable/pointblack"/>
+            android:id="@+id/rightBt_img2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp" />
     </LinearLayout>
 
 </RelativeLayout>

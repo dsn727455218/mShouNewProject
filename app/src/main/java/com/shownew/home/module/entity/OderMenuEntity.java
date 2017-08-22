@@ -22,6 +22,24 @@ public class OderMenuEntity implements Parcelable {
      * oTotalprice : 308
      */
     private String oMpid;
+    private  int oIsdiscuss;
+    private int oIsbatch;
+
+    public int getoIsbatch() {
+        return oIsbatch;
+    }
+
+    public void setoIsbatch(int oIsbatch) {
+        this.oIsbatch = oIsbatch;
+    }
+
+    public int getoIsdiscuss() {
+        return oIsdiscuss;
+    }
+
+    public void setoIsdiscuss(int oIsdiscuss) {
+        this.oIsdiscuss = oIsdiscuss;
+    }
 
     public String getoMpid() {
         return oMpid;
@@ -39,6 +57,15 @@ public class OderMenuEntity implements Parcelable {
     private String oTitle;
     private String oSimg;
     private String oTotalprice;
+   private String oNo;  //订单号
+
+    public String getoNo() {
+        return oNo;
+    }
+
+    public void setoNo(String oNo) {
+        this.oNo = oNo;
+    }
 
     public String getOId() {
         return oId;
@@ -115,6 +142,8 @@ public class OderMenuEntity implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(this.oMpid);
+        dest.writeInt(this.oIsdiscuss);
+        dest.writeInt(this.oIsbatch);
         dest.writeString(this.oId);
         dest.writeInt(this.oPid);
         dest.writeInt(this.oNum);
@@ -123,10 +152,13 @@ public class OderMenuEntity implements Parcelable {
         dest.writeString(this.oTitle);
         dest.writeString(this.oSimg);
         dest.writeString(this.oTotalprice);
+        dest.writeString(this.oNo);
     }
 
     protected OderMenuEntity(Parcel in) {
         this.oMpid = in.readString();
+        this.oIsdiscuss = in.readInt();
+        this.oIsbatch = in.readInt();
         this.oId = in.readString();
         this.oPid = in.readInt();
         this.oNum = in.readInt();
@@ -135,6 +167,7 @@ public class OderMenuEntity implements Parcelable {
         this.oTitle = in.readString();
         this.oSimg = in.readString();
         this.oTotalprice = in.readString();
+        this.oNo = in.readString();
     }
 
     public static final Creator<OderMenuEntity> CREATOR = new Creator<OderMenuEntity>() {

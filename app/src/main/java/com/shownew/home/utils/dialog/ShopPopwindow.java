@@ -6,9 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.shownew.home.R;
+import com.shownew.home.ShouNewApplication;
+import com.shownew.home.activity.MainActivity;
+import com.shownew.home.activity.msg.AllMsgActivity;
+import com.shownew.home.activity.shopcommon.ShopCollectActivity;
+import com.wp.baselib.utils.Preference;
+
+import static com.shownew.home.R.id.home_pop;
+import static com.shownew.home.R.id.msg;
 
 /**
  * @author Jason
@@ -18,15 +25,17 @@ import com.shownew.home.R;
 
 public class ShopPopwindow extends PopupWindow implements View.OnClickListener {
 
+    private Activity context;
+    private ShouNewApplication shouNewApplication;
 
-    public ShopPopwindow(final Activity context) {
+    public ShopPopwindow(final Activity context, ShouNewApplication shouNewApplication) {
+        this.context = context;
+        this.shouNewApplication = shouNewApplication;
         View conentView = LayoutInflater.from(context).inflate(R.layout.layout_shop_pop_home, null);
-        TextView msg = (TextView) conentView.findViewById(R.id.msg);
-        TextView share = (TextView) conentView.findViewById(R.id.share);
-        TextView home_pop = (TextView) conentView.findViewById(R.id.home_pop);
-        home_pop.setOnClickListener(this);
-        share.setOnClickListener(this);
-        msg.setOnClickListener(this);
+        conentView.findViewById(msg).setOnClickListener(this);
+        conentView.findViewById(R.id.share).setOnClickListener(this);
+        conentView.findViewById(home_pop).setOnClickListener(this);
+        conentView.findViewById(R.id.collect).setOnClickListener(this);
         this.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
         this.setContentView(conentView);
@@ -52,7 +61,7 @@ public class ShopPopwindow extends PopupWindow implements View.OnClickListener {
     public ShopPopwindow showPopupWindow(View parent, int x) {
         if (!this.isShowing()) {
             // 以下拉方式显示popupwindow  x == 0 ? parent.getLayoutParams().width / 2
-            this.showAsDropDown(parent, -125 , -25);
+            this.showAsDropDown(parent, -125, -25);
             //            this.showAtLocation(parent, Gravity.BOTTOM,0,0);
         } else {
             this.dismiss();
@@ -64,34 +73,35 @@ public class ShopPopwindow extends PopupWindow implements View.OnClickListener {
         return showPopupWindow(parent, 0);
     }
 
-
-    private PopClickLisener mPopClickLisener;
-
-    public void setPopClickLisener(PopClickLisener popClickLisener) {
-        mPopClickLisener = popClickLisener;
-    }
-
     @Override
     public void onClick(View v) {
-        int position = 0;
+        dismiss();
         switch (v.getId()) {
-            case R.id.msg:
-                position = 0;
+            case msg:
+                if (!Preference.getBoolean(context, Preference.IS_LOGIN, false)) {
+                    shouNewApplication.jumpLoginActivity(context);
+                    return;
+                }
+                shouNewApplication.redirect(AllMsgActivity.class);
                 break;
-            case R.id.home_pop:
-                position = 1;
+            case home_pop:
+                shouNewApplication.redirect(MainActivity.class);
+                context.finish();
                 break;
             case R.id.share:
-                position = 2;
+                new ShareDialog(context, shouNewApplication).setCancelable(true).show();
+                break;
+            case R.id.collect:
+                if (!Preference.getBoolean(context, Preference.IS_LOGIN, false)) {
+                    shouNewApplication.jumpLoginActivity(context);
+                    return;
+                }
+                shouNewApplication.redirect(ShopCollectActivity.class);
                 break;
         }
-        if (null != mPopClickLisener) {
-            dismiss();
-            mPopClickLisener.clickPopItem(position);
-        }
+
+
     }
 
-    public interface PopClickLisener {
-        void clickPopItem(int position);
-    }
+
 }

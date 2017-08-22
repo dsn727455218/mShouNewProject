@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/shop_detail_xrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/buy_shop"/>
+        android:layout_above="@+id/buy_shop_ll" />
 
     <RelativeLayout
         android:id="@+id/shop_detail_title"
@@ -23,8 +21,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:src="@drawable/xiangqingback"
-            android:visibility="invisible"/>
+            android:src="@drawable/details_more"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/shop_title"
@@ -33,39 +31,93 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="产品详情"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/buy_shop_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="#dadee5"
+            android:drawableTop="@drawable/collection_gary"
+            android:gravity="center"
+            android:paddingBottom="7dp"
+            android:paddingLeft="15dp"
+            android:id="@+id/is_favor"
+            android:paddingRight="15dp"
+            android:paddingTop="7dp"
+            android:text="收藏"
+            android:textColor="#515151"
+            android:textSize="9sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/add_shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffa938"
+                android:text="加入购物车"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/buy_shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#f3901c"
+                android:text="立即购买"
+                android:textColor="#ffffff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <RelativeLayout
         android:id="@+id/shop_detail_title_parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/back_shop_detail"
             style="@style/BaseTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/xiangqingback"/>
+            android:src="@drawable/details_back" />
+
 
         <ImageView
+            android:id="@+id/cart_menu"
             style="@style/BaseTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/more_menu"
-            android:layout_alignParentRight="true"
-            android:src="@drawable/xiangqinggengduo"/>
-    </RelativeLayout>
+            android:layout_toLeftOf="@+id/more_menu"
+            android:src="@drawable/details_shopping_cart" />
 
-    <Button
-        android:id="@+id/buy_shop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="2dp"
-        android:background="#e77817"
-        android:text="立即购买"
-        android:textColor="#ffffff"/>
+        <ImageView
+            android:id="@+id/more_menu"
+            style="@style/BaseTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/details_more" />
+    </RelativeLayout>
 </RelativeLayout>

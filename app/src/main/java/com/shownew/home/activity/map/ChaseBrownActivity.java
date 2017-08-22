@@ -72,7 +72,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
         if (mBundle != null) {
             int mType = mBundle.getInt("type");
             if (1 == mType) {//电动车
-                mCarLocation.setImageResource(R.drawable.cheweizhi);
+                mCarLocation.setImageResource(R.drawable.track_vehicle_location);
             } else if (2 == mType) {//汽车
                 mHistoryPoint.setVisibility(View.GONE);
                 mCarLocation.setImageResource(R.drawable.qicheweizhi);

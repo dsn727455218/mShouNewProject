@@ -247,6 +247,7 @@ public class ActionPayActivity extends BaseActivity implements View.OnClickListe
 
                                             if (TextUtils.equals("9000", state)) {
                                                 Toast.makeText(ActionPayActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                                                mShouNewApplication.redirect(ConsumeRecoderActivity.class);
                                                 finish();
                                                 return;
                                             } else if (TextUtils.equals("8000", state)) {

@@ -4,8 +4,23 @@
     <!-- TODO: Remove or change this placeholder text -->
 
 
-
     <string name="tab_bottom_home">主页</string>
     <string name="tab_bottom_carservice">服务</string>
     <string name="tab_bottom_my">我的</string>
+
+    <string-array name="right_text">
+        <!--1星  非常差-->
+        <!--2星  差-->
+        <!--3星  一般-->
+        <!--4星  好-->
+        <!--5星  非常好-->
+        <item>非常差</item>
+        <item>差</item>
+        <item>一般</item>
+        <item>好</item>
+        <item>非常好</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

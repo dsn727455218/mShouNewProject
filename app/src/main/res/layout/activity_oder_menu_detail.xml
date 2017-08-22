@@ -147,6 +147,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
+
                             android:layout_centerVertical="true"
                             android:layout_toLeftOf="@+id/shop_olde_prices"
                             android:paddingLeft="10dp"
@@ -164,7 +165,6 @@
                             android:layout_marginRight="20dp"
                             android:gravity="center_vertical"
                             android:textColor="#9ba4b2"
-                            android:textSize="26sp"
                             />
                     </RelativeLayout>
                 </RelativeLayout>

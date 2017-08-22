@@ -85,6 +85,7 @@ public class WebActionActivity extends BaseActivity implements View.OnClickListe
      */
 
     private int isFirst;
+
     private void getPayAboutInfo() {
         mUserAPI.getPayAboutInfo(mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
@@ -494,7 +495,7 @@ public class WebActionActivity extends BaseActivity implements View.OnClickListe
                 bundle.putDouble("money", 298);
                 mShouNewApplication.redirectAndPrameter(ActionPayActivity.class, bundle);
             } else {
-                ToastUtil.showToast("您的首次充值金额已经大于298元");
+                ToastUtil.showToast("您已经参与此活动");
             }
         }
 

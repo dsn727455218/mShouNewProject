@@ -10,11 +10,11 @@ package com.shownew.home;
 
 public class Config extends com.wp.baselib.Config {
     //广播
-    public  static  final String BROADCASEREVEIVER_MGS_ACTION="android.intent.action.Msg";
+    public static final String BROADCASEREVEIVER_MGS_ACTION = "android.intent.action.Msg";
     //广告活动
-    public static final  String ACTION_ADV="1";
-    public static final  String ACTION="6";
-    public static final  String ACTION_WEB="0";
+    public static final String ACTION_ADV = "1";
+    public static final String ACTION = "6";
+    public static final String ACTION_WEB = "0";
 
     //订单号
     public static final String ORDER = "order";
@@ -23,6 +23,8 @@ public class Config extends com.wp.baselib.Config {
     public static final String WX_STATE = "WX_STATE";
     //支付类型
     public static final String FLAG = "flag";
+    //购物车
+    public static final String Carts = "Carts";
     /**
      * 是否 第一次进入app
      */
@@ -40,8 +42,8 @@ public class Config extends com.wp.baselib.Config {
     /**
      * api接口跟路径
      */
-//    private static final String WEB_ROOT = "http://www.shounew.cn:8090/Shou6Control/";
-    private static final String WEB_ROOT = "http://www.shounew.cn/Shou6Control/";
+    private static final String WEB_ROOT = "http://www.shounew.cn:8090/Shou6Control/";
+//    private static final String WEB_ROOT = "http://www.shounew.cn/Shou6Control/";
     //================================================================用户相关==
 
     public static final String USER = WEB_ROOT + "user.do";
@@ -133,6 +135,19 @@ public class Config extends com.wp.baselib.Config {
      * 商品搜索
      */
     public static final String SHOP_SEARCH = WEB_ROOT + "search.do";
+    /**
+     * 收藏
+     */
+    public static final String SHOP_COLLECT = WEB_ROOT + "collection.do";
+
+    /**
+     * 商品评论
+     */
+    public static final String Shop_DISCUSS = WEB_ROOT + "discuss.do";
+    /**
+     * 商品购物车
+     */
+    public static final String SHOP_CAR = WEB_ROOT + "shopcar.do";
 
     /**
      * 钱包充值接口

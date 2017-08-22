@@ -148,7 +148,6 @@ public class MyCarActivity extends BaseActivity implements View.OnClickListener 
                 }
                 mCarEntities.add(null);
                 mMyCarAdapter.notifyDataSetChanged();
-
             }
         });
     }

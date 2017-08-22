@@ -1,31 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <com.wp.baselib.widget.banner.Banner
         android:id="@+id/shop_detail_banner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/shop_detail_img_height"
         android:scaleType="centerCrop"
-        android:src="@drawable/square_seize"/>
+        android:src="@drawable/square_seize" />
 
     <ImageView
         style="@style/BaseTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/xiangqingback"
-        android:visibility="gone"/>
+        android:src="@drawable/details_more"
+        android:visibility="gone" />
 
     <ImageView
         style="@style/BaseTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:src="@drawable/xiangqinggengduo"
-        android:visibility="gone"/>
+        android:src="@drawable/details_more"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/ll_tags"
@@ -47,8 +45,7 @@
             android:text="首牛"
             android:textColor="@color/white"
             android:textSize="10dp"
-            android:visibility="gone"
-            />
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/shop_intro_tv"
@@ -60,7 +57,7 @@
             android:ellipsize="end"
             android:gravity="left"
             android:maxLines="3"
-            android:textColor="#2A2D33"/>
+            android:textColor="#2A2D33" />
     </LinearLayout>
 
     <TextView
@@ -74,7 +71,7 @@
         android:drawableTop="@drawable/xiangqingfenxiang"
         android:text="分享"
         android:textColor="#9ba4b2"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
 
     <RelativeLayout
         android:id="@+id/shop_detail_prices"
@@ -90,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:textColor="#e77817"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/shop_old_prices"
@@ -100,7 +97,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/shop_detail_prices_tv"
             android:textColor="#9ba4b2"
-            android:textSize="10sp"/>
+            android:textSize="10sp" />
     </RelativeLayout>
 
     <TextView
@@ -110,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/shop_detail_prices"
         android:textColor="#595e66"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/shop_detail_address"
@@ -120,18 +117,35 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/shop_detail_prices"
         android:textColor="#595e66"
-        android:textSize="10sp"/>
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/shop_evaluate_tv_tag"
+        style="@style/BaseTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_detail_address"
+        android:background="#dadee5"
+        android:text="评价"
+        android:textColor="#9ba4b2" />
+
+
+    <LinearLayout
+        android:id="@+id/shop_evaluate_tuwen_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/shop_evaluate_tv_tag"
+        android:orientation="vertical" />
 
     <TextView
         android:id="@+id/shop_detail_tv_tag"
         style="@style/BaseTextStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/shop_detail_address"
+        android:layout_below="@+id/shop_evaluate_tuwen_img"
         android:background="#dadee5"
         android:text="产品详情"
-        android:textColor="#9ba4b2"/>
-
+        android:textColor="#9ba4b2" />
 
 
     <LinearLayout
@@ -139,8 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/shop_detail_tv_tag"
-        android:orientation="vertical">
-    </LinearLayout>
+        android:orientation="vertical" />
 
     <TextView
         style="@style/BaseTextStyle"
@@ -149,5 +162,5 @@
         android:layout_below="@+id/shop_detail_tuwen_img"
         android:background="#dadee5"
         android:text="产品推荐"
-        android:textColor="#9ba4b2"/>
+        android:textColor="#9ba4b2" />
 </RelativeLayout>

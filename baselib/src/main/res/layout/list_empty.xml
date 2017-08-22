@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/empty_view"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#b9b9b9"
-                android:orientation="vertical"
-    >
+    android:id="@+id/empty_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b9b9b9"
+    android:orientation="vertical">
 
 
     <ProgressBar
@@ -14,10 +13,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView"
-        android:layout_gravity="center_vertical"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_vertical"
         android:background="@null"
-        android:indeterminateDuration="1200"/>
+        android:indeterminateDuration="1200" />
 
     <TextView
         android:id="@+id/textView"
@@ -28,5 +27,5 @@
         android:gravity="center"
         android:lines="2"
         android:padding="10dp"
-        android:text="数据加载中..."/>
+        android:text="数据加载中..." />
 </RelativeLayout>

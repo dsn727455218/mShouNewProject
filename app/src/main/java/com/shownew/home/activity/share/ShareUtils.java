@@ -29,6 +29,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.shownew.home.activity.share.Defaultcontent.url;
+
 /**
  * 友盟分享工具类
  *
@@ -94,39 +96,39 @@ public class ShareUtils {
             styles.add(com.shownew.home.activity.share.StyleUtil.VIDEO11);
         } else if (share_media == SHARE_MEDIA.QZONE) {
             styles.add(com.shownew.home.activity.share.StyleUtil.WEB11);
-            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGELOCAL);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGEURL);
+            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.MUSIC11);
             styles.add(com.shownew.home.activity.share.StyleUtil.VIDEO11);
         } else if (share_media == SHARE_MEDIA.SINA) {
             styles.add(com.shownew.home.activity.share.StyleUtil.WEB11);
-            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
-            styles.add(com.shownew.home.activity.share.StyleUtil.TEXTANDIMAGE);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGELOCAL);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGEURL);
+            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
+            styles.add(com.shownew.home.activity.share.StyleUtil.TEXTANDIMAGE);
             styles.add(com.shownew.home.activity.share.StyleUtil.MUSIC11);
             styles.add(com.shownew.home.activity.share.StyleUtil.VIDEO11);
         } else if (share_media == SHARE_MEDIA.WEIXIN) {
             styles.add(com.shownew.home.activity.share.StyleUtil.WEB11);
-            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGELOCAL);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGEURL);
+            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.MUSIC11);
             styles.add(com.shownew.home.activity.share.StyleUtil.VIDEO11);
             styles.add(com.shownew.home.activity.share.StyleUtil.EMOJI);
         } else if (share_media == SHARE_MEDIA.WEIXIN_CIRCLE) {
             styles.add(com.shownew.home.activity.share.StyleUtil.WEB11);
-            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGELOCAL);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGEURL);
+            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.MUSIC11);
             styles.add(com.shownew.home.activity.share.StyleUtil.VIDEO11);
         } else if (share_media == SHARE_MEDIA.WEIXIN_FAVORITE) {
             styles.add(com.shownew.home.activity.share.StyleUtil.WEB11);
-            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGELOCAL);
             styles.add(com.shownew.home.activity.share.StyleUtil.IMAGEURL);
+            styles.add(com.shownew.home.activity.share.StyleUtil.TEXT);
             styles.add(com.shownew.home.activity.share.StyleUtil.MUSIC11);
             styles.add(com.shownew.home.activity.share.StyleUtil.VIDEO11);
         }
@@ -185,7 +187,7 @@ public class ShareUtils {
         } else if (styles.get(position).equals(com.shownew.home.activity.share.StyleUtil.FILE)) {
             new ShareAction(activity).withFile(file).withText(Defaultcontent.text).withSubject(Defaultcontent.title).setPlatform(share_media).setCallback(shareListener).share();
         } else if (styles.get(position).equals(com.shownew.home.activity.share.StyleUtil.MINAPP)) {
-            UMMin umMin = new UMMin(Defaultcontent.url);
+            UMMin umMin = new UMMin(url);
             umMin.setThumb(imagelocal);
             umMin.setTitle(Defaultcontent.title);
             umMin.setDescription(Defaultcontent.text);
@@ -204,8 +206,13 @@ public class ShareUtils {
         UMImageMark umImageMark = new UMImageMark();
         umImageMark.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
         umImageMark.setMarkBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher));
+
+
         imageurl = new UMImage(context, Defaultcontent.imageurl);
-        imageurl.setThumb(new UMImage(context, R.drawable.ic_launcher));
+        imageurl.setDescription("description");
+        imageurl.setTitle("title");
+
+
         imagelocal = new UMImage(context, R.drawable.ic_launcher);
         imagelocal.setThumb(new UMImage(context, R.drawable.ic_launcher));
         music = new UMusic(Defaultcontent.musicurl);
@@ -213,22 +220,29 @@ public class ShareUtils {
 
 
         final ArrayList<SourcesEntity> sourcesEntities = mUserAPI.getSourcesData();
-        String url = Defaultcontent.url;
-        if (sourcesEntities != null && sourcesEntities.size() >= 4) {
+//        String url = Defaultcontent.url;
+        if (sourcesEntities != null && sourcesEntities.size() >= 6) {
             url = sourcesEntities.get(4).getSImg();
+//            imageurl.setThumb(new UMImage(context,url));
+            String imgUrl = sourcesEntities.get(6).getSImg();
+            String description = sourcesEntities.get(6).getsText();
+            web = new UMWeb(url);
+            if (description.contains("**")) {
+                String[] values = description.split("\\*\\*");
+                if (values.length >= 2) {
+                    web.setTitle(values[0]);
+                    web.setThumb(new UMImage(context, imgUrl));
+                    web.setDescription(values[1]);
+                }
+            }
+
         }
-        web = new UMWeb(url);
-
-        web.setTitle("首牛云控：我们坚信多方位的车辆监控报警系统，可以让人车更安全。");
-        web.setThumb(new UMImage(context, R.drawable.logo));
-        web.setDescription("首牛云控：我们坚信多方位的车辆监控报警系统，可以让人车更安全。");
-
 
 
         music.setTitle("This is music title");
         music.setThumb(new UMImage(context, R.drawable.ic_launcher));
         music.setDescription("my description");
-        music.setmTargetUrl(Defaultcontent.url);
+        music.setmTargetUrl(url);
         video.setThumb(new UMImage(context, R.drawable.ic_launcher));
         video.setTitle("This is video title");
         video.setDescription("my description");

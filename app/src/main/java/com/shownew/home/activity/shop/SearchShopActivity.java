@@ -13,16 +13,13 @@ import com.google.gson.reflect.TypeToken;
 import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.shownew.home.R;
-import com.shownew.home.activity.msg.AllMsgActivity;
-import com.shownew.home.activity.MainActivity;
 import com.shownew.home.activity.common.BaseActivity;
+import com.shownew.home.activity.shopcommon.ShoppingCartActivity;
 import com.shownew.home.adapter.ShopHomeAdapter;
 import com.shownew.home.module.ShopAPI;
 import com.shownew.home.module.entity.SuperMarketEntity;
-import com.shownew.home.utils.dialog.ShareDialog;
 import com.shownew.home.utils.dialog.ShopPopwindow;
 import com.wp.baselib.utils.JsonUtils;
-import com.wp.baselib.utils.Preference;
 import com.wp.baselib.utils.ToastUtil;
 
 import org.json.JSONException;
@@ -78,9 +75,11 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
     private void initViews() {
 
         findViewById(R.id.search_iv).setOnClickListener(this);
+        findViewById(R.id.shopping_cart).setOnClickListener(this);
         mSearchContent = (EditText) findViewById(R.id.search_content);
         findViewById(R.id.backBtn).setOnClickListener(this);
         findViewById(R.id.more).setOnClickListener(this);
+        findViewById(R.id.list_show).setOnClickListener(this);
         mRecyclerView = (XRecyclerView) findViewById(R.id.search_xrecyclerView);
         mDataAdapter = new ShopHomeAdapter(mShouNewApplication, mSuperMarketEntities);
         mRecyclerView.setAdapter(mDataAdapter);
@@ -191,6 +190,12 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.shopping_cart:
+                mShouNewApplication.redirect(ShoppingCartActivity.class);
+                break;
+            case R.id.list_show:
+                ToastUtil.showToast("列表展示");
+                break;
             case R.id.search_iv:
                 mKeyWord = mSearchContent.getText().toString();
 
@@ -225,27 +230,7 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
                 }
                 break;
             case R.id.more:
-                new ShopPopwindow(this).showPopupWindow(v, (int) (v.getWidth() / 2 * 0.1)).setPopClickLisener(new ShopPopwindow.PopClickLisener() {
-                    @Override
-                    public void clickPopItem(int position) {
-                        switch (position) {
-                            case 0:
-                                if (!Preference.getBoolean(SearchShopActivity.this, Preference.IS_LOGIN, false)) {
-                                    mShouNewApplication.jumpLoginActivity(SearchShopActivity.this);
-                                    return;
-                                }
-                                mShouNewApplication.redirect(AllMsgActivity.class);
-                                break;
-                            case 1:
-                                mainApplication.redirect(MainActivity.class);
-                                finish();
-                                break;
-                            case 2:
-                                new ShareDialog(SearchShopActivity.this, mShouNewApplication).setCancelable(true).show();
-                                break;
-                        }
-                    }
-                });
+                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(v, (int) (v.getWidth() / 2 * 0.1));
                 break;
 
         }

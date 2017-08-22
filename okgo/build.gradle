@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 24
         versionName "2.1.4"
     }
@@ -16,5 +16,7 @@ android {
 }
 
 dependencies {
-    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    //    compile files('libs/okhttp-3.4.1-sources.jar')
+    //    compile files('libs/okio-1.9.0.jar')
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
 }

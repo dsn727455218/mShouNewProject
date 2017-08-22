@@ -8,8 +8,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,20 +28,27 @@ import com.jcodecraeer.xrecyclerview.ProgressStyle;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
-import com.shownew.home.activity.MainActivity;
-import com.shownew.home.activity.msg.AllMsgActivity;
+import com.shownew.home.activity.shopcommon.AllEvalueteActivity;
+import com.shownew.home.activity.shopcommon.ShoppingCartActivity;
 import com.shownew.home.adapter.ShopHomeAdapter;
+import com.shownew.home.db.DatabaseUtils;
 import com.shownew.home.module.ShopAPI;
+import com.shownew.home.module.dao.ShopCarEntity;
 import com.shownew.home.module.entity.SuperMarkeDetailEntity;
 import com.shownew.home.module.entity.SuperMarketEntity;
 import com.shownew.home.utils.GlideImageLoader;
+import com.shownew.home.utils.PreviewImgUtils;
 import com.shownew.home.utils.dialog.ShareDialog;
 import com.shownew.home.utils.dialog.ShopPopwindow;
 import com.shownew.home.utils.dialog.ShopSelectDialog;
+import com.shownew.home.utils.widget.WordWrapLayoutiml;
 import com.wp.baselib.AndroidActivity;
 import com.wp.baselib.utils.JsonUtils;
 import com.wp.baselib.utils.Preference;
 import com.wp.baselib.utils.StringUtil;
+import com.wp.baselib.utils.TimeUtil;
+import com.wp.baselib.utils.ToastUtil;
+import com.wp.baselib.widget.CustomShapeImageView;
 import com.wp.baselib.widget.banner.Banner;
 import com.wp.baselib.widget.banner.BannerConfig;
 import com.wp.baselib.widget.banner.Transformer;
@@ -50,6 +59,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import okhttp3.Response;
+
+import static com.shownew.home.R.id.add_shop;
 
 
 public class ShopDetailActivity extends AndroidActivity implements View.OnClickListener {
@@ -71,6 +82,18 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
     private boolean isClickItem;
     private View mMoreMenu;
     private TextView mTags;
+    /**
+     * 是否  收藏
+     */
+    private TextView isFavor;
+
+    private WordWrapLayoutiml wrapLayoutiml;
+    private View visiable_evelautes;
+    private TextView evelute_count;
+    private CustomShapeImageView my_info_header_scv;
+    private TextView nicheng_tv;
+    private TextView evelute_content;
+    private TextView evelute_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +106,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
             int typeId = mBundle.getInt("typeId");
         }
         initViews();
+        refresh();
     }
 
     private void initViews() {
@@ -92,6 +116,9 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
             mShopDetailTitle.findViewById(R.id.shop_title).setPadding(0, ShouNewApplication.getStatusBarHeight(this), 0, 0);
             mShopDetailTitle.setPadding(0, ShouNewApplication.getStatusBarHeight(this), 0, 0);
         }
+        isFavor = (TextView) findViewById(R.id.is_favor);
+        isFavor.setOnClickListener(this);
+        findViewById(add_shop).setOnClickListener(this);
         mMoreMenu = findViewById(R.id.more_menu);
         mMoreMenu.setOnClickListener(this);
         findViewById(R.id.back_shop_detail).setOnClickListener(this);
@@ -139,6 +166,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                 mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
             }
         });
+
         mRecyclerView.addHeaderView(getHeaderView());
         mRecyclerView.setPullRefreshEnabled(false);
         mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
@@ -155,11 +183,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        refresh();
-    }
+
 
     private void refresh() {
         isRefresh = true;
@@ -226,6 +250,8 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
         View hearderView = getLayoutInflater().inflate(R.layout.layout_shop_detail_header, null);
 
         initHeaderViews(hearderView);
+        LinearLayout evaluateLl = (LinearLayout) hearderView.findViewById(R.id.shop_evaluate_tuwen_img);
+        getEvaluateView(evaluateLl);
         mBanner = (Banner) hearderView.findViewById(R.id.shop_detail_banner);
         hearderView.findViewById(R.id.shop_share).setOnClickListener(this);
         mTags = (TextView) hearderView.findViewById(R.id.tags);
@@ -355,6 +381,23 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
         //        mBanner.start();
     }
 
+    private void getEvaluateView(LinearLayout evaluateLl) {
+        View layout_evalute = getLayoutInflater().inflate(R.layout.layout_evalute, null);
+
+        visiable_evelautes = layout_evalute.findViewById(R.id.visiable_evelautes);
+        evelute_count = (TextView) layout_evalute.findViewById(R.id.evelute_count);
+        my_info_header_scv = (CustomShapeImageView) layout_evalute.findViewById(R.id.my_info_header_scv);
+        nicheng_tv = (TextView) layout_evalute.findViewById(R.id.nicheng_tv);
+        evelute_content = (TextView) layout_evalute.findViewById(R.id.evelute_content);
+        wrapLayoutiml = (WordWrapLayoutiml) layout_evalute.findViewById(R.id.evelute_img);
+        wrapLayoutiml.setShow(true);
+        wrapLayoutiml.setWidth((int) (mShouNewApplication.terminalWidth *0.7));
+        evelute_time = (TextView) layout_evalute.findViewById(R.id.evelute_time);
+        findViewById(R.id.cart_menu).setOnClickListener(this);
+        layout_evalute.findViewById(R.id.look_all).setOnClickListener(this);
+        evaluateLl.addView(layout_evalute);
+    }
+
     private void getProductInfo() {
         mShopAPI.getProductInfo(mShopId, mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
@@ -390,7 +433,9 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                                     StrikethroughSpan stSpan = new StrikethroughSpan();  //设置删除线样式
                                     spanStrikethrough.setSpan(stSpan, 0, spanStrikethrough.length() - 1, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
                                     mShopOldPrices.setText(spanStrikethrough);
-
+                                    int mpColect = mSuperMarkeDetailEntity.getpCollect();
+                                    isFavor.setText(mpColect == 0 ? "未收藏" : "已收藏");
+                                    isFavor.setCompoundDrawablesWithIntrinsicBounds(0, mpColect == 0 ? R.drawable.collection_gary : R.drawable.collection_orange, 0, 0);
                                     mKuaidiMoney.setText(String.format("快递:%s元", StringUtil.formatMoney(mSuperMarkeDetailEntity.getPKdprice())));
                                     mShopDetailAddress.setText(mSuperMarkeDetailEntity.getPAddress());
                                     ArrayList<String> imgs = mSuperMarkeDetailEntity.getPImgs();
@@ -420,6 +465,53 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                                     }
                                 }
                             }
+                            if (jsonData.has("total")) {
+                                long total = jsonData.getLong("total");
+                                evelute_count.setText(Html.fromHtml(String.format("<font color=#ff8a29>用户评价</font>(%s)", total > 999 ? "999+" : total)));
+                                if (total <= 0) {
+                                    visiable_evelautes.setVisibility(View.GONE);
+                                } else {
+                                    visiable_evelautes.setVisibility(View.VISIBLE);
+                                }
+                            }
+                            if (jsonData.has("discuss")) {//评价
+                                JSONObject discuss = jsonData.getJSONObject("discuss");
+                                mShouNewApplication.loadImg(discuss.getString("dUicon"), my_info_header_scv);
+                                nicheng_tv.setText(discuss.getString("dUname"));
+                                String dimg = discuss.getString("dImg");
+                                evelute_time.setText(discuss.getString("dDate"));
+                                evelute_content.setText(discuss.getString("dText"));
+                                if (!TextUtils.isEmpty(dimg)) {
+                                    ArrayList<ImageView> imageViews;
+                                    if (dimg.contains(",")) {
+                                        String dims[] = dimg.split(",");
+                                        int length = dims.length;
+                                        imageViews = wrapLayoutiml.getImage(length);
+                                        for (int i = 0; i < length; i++) {
+                                            ImageView imageView = imageViews.get(i);
+                                            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                            String imgUrl = dims[i];
+                                            imageView.setTag(imgUrl);
+                                            if (!TextUtils.isEmpty(imgUrl) && imgUrl.equals(imageView.getTag())) {
+                                                mShouNewApplication.loadImg(imgUrl, imageView);
+                                            }
+                                            PreviewImgUtils.previewImg(imageView,dims,i,mShouNewApplication);
+                                        }
+                                    } else {
+                                        imageViews = wrapLayoutiml.getImage(1);
+                                        ImageView imageView = imageViews.get(0);
+                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                        imageView.setTag(dimg);
+                                        if (!TextUtils.isEmpty(dimg) && dimg.equals(imageView.getTag())) {
+                                            mShouNewApplication.loadImg(dimg, imageView);
+                                        }
+                                        PreviewImgUtils.previewImg(imageView,new String[]{dimg},0,mShouNewApplication);
+                                    }
+
+                                }
+
+
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -437,6 +529,46 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.cart_menu:
+                mShouNewApplication.redirect(ShoppingCartActivity.class);
+                break;
+            case R.id.look_all:
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("shop", mSuperMarkeDetailEntity);
+                mShouNewApplication.redirectAndPrameter(AllEvalueteActivity.class, bundle);
+                break;
+            case R.id.add_shop://添加购物车
+                if (mSuperMarkeDetailEntity != null) {
+                    new ShopSelectDialog(this, mSuperMarkeDetailEntity.getPSimg(), mSuperMarkeDetailEntity.getpAllprice(), mSuperMarkeDetailEntity.getPColor()).setDialogLisener(new ShopSelectDialog.DialogLisener() {
+                        @Override
+                        public void sure(String color, int number, double prices) {
+                            ShopCarEntity shopCarEntity = new ShopCarEntity();
+                            shopCarEntity.setShColor(color);
+                            shopCarEntity.setShMpid(0);
+                            shopCarEntity.setShNum(number);
+                            shopCarEntity.setShPid(Integer.parseInt(mSuperMarkeDetailEntity.getPId()));
+                            shopCarEntity.setShPrice(prices * number);
+                            shopCarEntity.setSinglePrice(prices);
+                            shopCarEntity.setShDate(TimeUtil.getCurrentDateTime("yyyy-MM-dd HH:mm:ss"));
+                            shopCarEntity.setShSimg(mSuperMarkeDetailEntity.getPSimg());
+                            shopCarEntity.setShTitle(mSuperMarkeDetailEntity.getPTitle());
+                            shopCarEntity.setShKdprice(mSuperMarkeDetailEntity.getPKdprice());
+
+                            if (!Preference.getBoolean(mShouNewApplication, Preference.IS_LOGIN, false)) {
+                                DatabaseUtils.insert(ShopDetailActivity.this, shopCarEntity);
+                                ToastUtil.showToast("添加成功");
+                            } else {
+                                updateShopCar(shopCarEntity);
+                            }
+                        }
+                    }).setCancelable(true).show();
+                }
+                break;
+            case R.id.is_favor://收藏
+                if (mSuperMarkeDetailEntity != null) {
+                    collection();
+                }
+                break;
             case R.id.shop_share:
                 new ShareDialog(this, mShouNewApplication).setCancelable(true).show();
                 break;
@@ -444,27 +576,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.more_menu:
-                new ShopPopwindow(this).showPopupWindow(mMoreMenu, (int) (mMoreMenu.getWidth() / 2 * 0.1)).setPopClickLisener(new ShopPopwindow.PopClickLisener() {
-                    @Override
-                    public void clickPopItem(int position) {
-                        switch (position) {
-                            case 0:
-                                if (!Preference.getBoolean(ShopDetailActivity.this, Preference.IS_LOGIN, false)) {
-                                    mShouNewApplication.jumpLoginActivity(ShopDetailActivity.this);
-                                    return;
-                                }
-                                mShouNewApplication.redirect(AllMsgActivity.class);
-                                break;
-                            case 1:
-                                mainApplication.redirect(MainActivity.class);
-                                finish();
-                                break;
-                            case 2:
-                                new ShareDialog(ShopDetailActivity.this, mShouNewApplication).setCancelable(true).show();
-                                break;
-                        }
-                    }
-                });
+                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(mMoreMenu, (int) (mMoreMenu.getWidth() / 2 * 0.1));
                 break;
         }
     }
@@ -516,5 +628,64 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
             move = true;
         }
 
+    }
+
+
+    private void collection() {
+
+        if (!Preference.getBoolean(ShopDetailActivity.this, Preference.IS_LOGIN, false)) {
+            mShouNewApplication.jumpLoginActivity(ShopDetailActivity.this);
+            return;
+        }
+        //  cannelCollection  取消
+        //collect  收藏
+        String collect = mSuperMarkeDetailEntity.getpCollect() == 0 ? "collect" : "cannelCollection";
+        String shopId = mSuperMarkeDetailEntity.getPId();
+        mShopAPI.collection(1, shopId, collect, mShouNewApplication.new ShouNewHttpCallBackLisener() {
+
+            @Override
+            protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
+                if (exception == null) {
+                    int mpColect = mSuperMarkeDetailEntity.getpCollect();
+                    if (mpColect == 0) {
+                        ToastUtil.showToast("已收藏");
+                    } else {
+                        ToastUtil.showToast("已取消");
+                    }
+                    mSuperMarkeDetailEntity.setpCollect(mpColect != 0 ? 0 : 1);
+                    isFavor.setText(mpColect != 0 ? "未收藏" : "已收藏");
+                    isFavor.setCompoundDrawablesWithIntrinsicBounds(0, mpColect != 0 ? R.drawable.collection_gary : R.drawable.collection_orange, 0, 0);
+                } else {
+                    ToastUtil.showToast("操作失败，请重试");
+                }
+            }
+        });
+    }
+
+    /**
+     * 加入购物车
+     *
+     * @param shopCarEntities
+     */
+    private void updateShopCar(ShopCarEntity shopCarEntities) {
+        if (shopCarEntities != null) {
+            try {
+                ArrayList<ShopCarEntity> carEntities = new ArrayList<ShopCarEntity>();
+                carEntities.add(shopCarEntities);
+                mShopAPI.updateShopCar(JsonUtils.toJson(carEntities), mShouNewApplication.new ShouNewHttpCallBackLisener() {
+                    @Override
+                    protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
+//                        mShouNewApplication.redirect(ShoppingCartActivity.class);
+                        if(exception==null){
+                            ToastUtil.showToast("添加成功");
+                        }else {
+                            ToastUtil.showToast("添加失败");
+                        }
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

@@ -25,8 +25,21 @@ public class DeviceEntity implements Parcelable {
     private String electricity;
     private String isLock;
     private String isMute;
-    private Object distance;
-    private Object check;
+    private String distance;
+    private String check;
+    private int isCharge;
+
+    public int getIsCharge() {
+        return isCharge;
+    }
+
+    public void setIsCharge(int isCharge) {
+        this.isCharge = isCharge;
+    }
+
+    public static Creator<DeviceEntity> getCREATOR() {
+        return CREATOR;
+    }
 
     public String getGps() {
         return gps;
@@ -64,7 +77,7 @@ public class DeviceEntity implements Parcelable {
         return distance;
     }
 
-    public void setDistance(Object distance) {
+    public void setDistance(String distance) {
         this.distance = distance;
     }
 
@@ -72,7 +85,7 @@ public class DeviceEntity implements Parcelable {
         return check;
     }
 
-    public void setCheck(Object check) {
+    public void setCheck(String check) {
         this.check = check;
     }
 
