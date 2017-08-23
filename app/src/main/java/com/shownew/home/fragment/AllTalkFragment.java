@@ -1,8 +1,10 @@
 package com.shownew.home.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,6 +69,7 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
             shouNewApplication = ShouNewApplication.getInstance();
             shopAPI = new ShopAPI(shouNewApplication);
         }
+        initVariable();
     }
 
     @Override
@@ -87,7 +90,6 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
             mRecyclerView.setRefreshProgressStyle(ProgressStyle.BallClipRotateMultiple);
             mRecyclerView.setArrowImageView(R.drawable.refresh_arrow);
             mRecyclerView.setEmptyView(mEmptyView);
-            mRecyclerView.setPullRefreshEnabled(false);
             mRecyclerView.setLoadingMoreProgressStyle(ProgressStyle.BallClipRotateMultiple);
             mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
                 @Override
@@ -101,13 +103,111 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
                     getDiscussList();
                 }
             });
-            refresh();
+
+//            refresh();
         }
 
         return view;
     }
 
 
+    private boolean isFragmentVisible;
+    private boolean isReuseView;
+    private boolean isFirstVisible;
+    private View rootView;
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        //setUserVisibleHint()有可能在fragment的生命周期外被调用
+        if (rootView == null) {
+            return;
+        }
+        if (isFirstVisible && isVisibleToUser) {
+            onFragmentFirstVisible();
+            isFirstVisible = false;
+        }
+        if (isVisibleToUser) {
+            onFragmentVisibleChange(true);
+            isFragmentVisible = true;
+            return;
+        }
+        if (isFragmentVisible) {
+            isFragmentVisible = false;
+            onFragmentVisibleChange(false);
+        }
+    }
+
+    private void onFragmentVisibleChange(boolean isVisible) {
+
+        if (isVisible) {
+            //更新界面数据，如果数据还在下载中，就显示加载框
+//            notifyDataSetChanged();
+//            if (mRefreshState == STATE_REFRESHING) {
+//                mRefreshListener.onRefreshing();
+//            }
+//            ToastUtil.showToast("更新界面数据");
+            refresh();
+        } else {
+            //关闭加载框
+//            mRefreshListener.onRefreshFinish();
+//            ToastUtil.showToast("关闭加载框");
+        }
+    }
+
+    private void onFragmentFirstVisible() {
+        //去服务器下载数据
+
+    }
+
+    @Override
+    public void onViewCreated(View view1, @Nullable Bundle savedInstanceState) {
+        //如果setUserVisibleHint()在rootView创建前调用时，那么
+        //就等到rootView创建完后才回调onFragmentVisibleChange(true)
+        //保证onFragmentVisibleChange()的回调发生在rootView创建完成之后，以便支持ui操作
+        if (rootView == null) {
+            rootView = view1;
+            if (getUserVisibleHint()) {
+                if (isFirstVisible) {
+                    onFragmentFirstVisible();
+                    isFirstVisible = false;
+                }
+                onFragmentVisibleChange(true);
+                isFragmentVisible = true;
+            }
+        }
+        super.onViewCreated(isReuseView ? rootView : view1, savedInstanceState);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        initVariable();
+    }
+
+    private void initVariable() {
+        isFirstVisible = true;
+        isFragmentVisible = false;
+        rootView = null;
+        isReuseView = true;
+    }
+
+    /**
+     * 设置是否使用 view 的复用，默认开启
+     * view 的复用是指，ViewPager 在销毁和重建 Fragment 时会不断调用 onCreateView() -> onDestroyView()
+     * 之间的生命函数，这样可能会出现重复创建 view 的情况，导致界面上显示多个相同的 Fragment
+     * view 的复用其实就是指保存第一次创建的 view，后面再 onCreateView() 时直接返回第一次创建的 view
+     *
+     * @param isReuse
+     */
+    protected void reuseView(boolean isReuse) {
+        isReuseView = isReuse;
+    }
 
     private void refresh() {
         isRefresh = true;
@@ -118,6 +218,8 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
     private boolean isRefresh;
 
     private void getDiscussList() {
+        if (TextUtils.isEmpty(productsType))
+            return;
         shopAPI.getDiscussList(productsType, productId, type, page, shouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {

@@ -533,9 +533,12 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                 mShouNewApplication.redirect(ShoppingCartActivity.class);
                 break;
             case R.id.look_all:
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("shop", mSuperMarkeDetailEntity);
-                mShouNewApplication.redirectAndPrameter(AllEvalueteActivity.class, bundle);
+                if(null!=mSuperMarkeDetailEntity){
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("shop", mSuperMarkeDetailEntity);
+                    mShouNewApplication.redirectAndPrameter(AllEvalueteActivity.class, bundle);
+                }
+
                 break;
             case R.id.add_shop://添加购物车
                 if (mSuperMarkeDetailEntity != null) {

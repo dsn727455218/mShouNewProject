@@ -3,6 +3,7 @@ package com.shownew.home.activity.shopcommon;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -50,9 +51,9 @@ public class AllEvalueteActivity extends BaseActivity implements View.OnClickLis
         super.readSaveBundle(bundle);
         if (bundle != null) {
             Object o = bundle.getParcelable("shop");
-            if (o instanceof SuperMarkeDetailEntity) {
+            if (null != o && o instanceof SuperMarkeDetailEntity) {
                 superMarkeDetailEntity = (SuperMarkeDetailEntity) o;
-            } else if (o instanceof ShopMallDetailEntity) {
+            } else if (null != o && o instanceof ShopMallDetailEntity) {
                 shopMallDetailEntity = (ShopMallDetailEntity) o;
             } else {
                 id = bundle.getString("id");
@@ -104,6 +105,10 @@ public class AllEvalueteActivity extends BaseActivity implements View.OnClickLis
         if (shopMallDetailEntity != null || superMarkeDetailEntity != null) {
             id = shopMallDetailEntity == null ? superMarkeDetailEntity.getPId() : shopMallDetailEntity.getMpId();
             productType = shopMallDetailEntity == null ? "productId" : "mallproductId";
+        }
+        if (TextUtils.isEmpty(productType)) {
+            finish();
+            return;
         }
         shopAPI.getDiscussList(productType, id, "0", 1, mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override

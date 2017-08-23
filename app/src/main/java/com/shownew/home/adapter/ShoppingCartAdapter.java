@@ -196,7 +196,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
             for (ShopCarEntity shopCarEntityIml : shopCarEntities) {
                 if(shopCarEntityIml.isSelect()){
                     shopCount += shopCarEntityIml.getShNum();
-                    shopPrices += shopCarEntityIml.getShKdprice();
+//                    shopPrices += shopCarEntityIml.getShKdprice();
                     shopPrices += shopCarEntityIml.getShPrice();
                 }
             }

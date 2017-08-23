@@ -164,7 +164,6 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
     }
 
 
-
     private void refresh() {
         isRefresh = true;
         page = 1;
@@ -310,7 +309,7 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
         evelute_content = (TextView) layout_evalute.findViewById(R.id.evelute_content);
         wrapLayoutiml = (WordWrapLayoutiml) layout_evalute.findViewById(R.id.evelute_img);
         wrapLayoutiml.setShow(true);
-        wrapLayoutiml.setWidth((int) (mShouNewApplication.terminalWidth *0.7));
+        wrapLayoutiml.setWidth((int) (mShouNewApplication.terminalWidth * 0.7));
         evelute_time = (TextView) layout_evalute.findViewById(R.id.evelute_time);
         layout_evalute.findViewById(R.id.look_all).setOnClickListener(this);
         evaluateLl.addView(layout_evalute);
@@ -470,7 +469,7 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
                                             if (!TextUtils.isEmpty(imgUrl) && imgUrl.equals(imageView.getTag())) {
                                                 mShouNewApplication.loadImg(imgUrl, imageView);
                                             }
-                                            PreviewImgUtils.previewImg(imageView,dims,i,mShouNewApplication);
+                                            PreviewImgUtils.previewImg(imageView, dims, i, mShouNewApplication);
                                         }
                                     } else {
                                         imageViews = wrapLayoutiml.getImage(1);
@@ -480,7 +479,7 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
                                         if (!TextUtils.isEmpty(dimg) && dimg.equals(imageView.getTag())) {
                                             mShouNewApplication.loadImg(dimg, imageView);
                                         }
-                                        PreviewImgUtils.previewImg(imageView,new String[]{dimg},0,mShouNewApplication);
+                                        PreviewImgUtils.previewImg(imageView, new String[]{dimg}, 0, mShouNewApplication);
                                     }
 
                                 }
@@ -506,9 +505,11 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.look_all:
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("shop", mShopMallDetailEntity);
-                mShouNewApplication.redirectAndPrameter(AllEvalueteActivity.class, bundle);
+                if (null != mShopMallDetailEntity) {
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("shop", mShopMallDetailEntity);
+                    mShouNewApplication.redirectAndPrameter(AllEvalueteActivity.class, bundle);
+                }
                 break;
             case R.id.buy_shop:
                 if (!Preference.getBoolean(ShopMallDetailActivity.this, Preference.IS_LOGIN, false)) {
@@ -573,7 +574,7 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
                 mShouNewApplication.redirect(ShoppingCartActivity.class);
                 break;
             case R.id.more_menu:
-                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(mMoreMenu, (int) (mMoreMenu.getWidth() / 2 * 0.1));
+                new ShopPopwindow(this, mShouNewApplication).showPopupWindow(mMoreMenu, (int) (mMoreMenu.getWidth() / 2 * 0.1));
                 break;
         }
     }
@@ -661,20 +662,21 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
 
     /**
      * 加入购物车
+     *
      * @param shopCarEntities
      */
     private void updateShopCar(ShopCarEntity shopCarEntities) {
         if (shopCarEntities != null) {
             try {
-                ArrayList<ShopCarEntity> carEntities=new ArrayList<ShopCarEntity>();
+                ArrayList<ShopCarEntity> carEntities = new ArrayList<ShopCarEntity>();
                 carEntities.add(shopCarEntities);
                 mShopAPI.updateShopCar(JsonUtils.toJson(carEntities), mShouNewApplication.new ShouNewHttpCallBackLisener() {
                     @Override
                     protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
 //                        mShouNewApplication.redirect(ShoppingCartActivity.class);
-                        if(exception==null){
+                        if (exception == null) {
                             ToastUtil.showToast("添加成功");
-                        }else {
+                        } else {
                             ToastUtil.showToast("添加失败");
                         }
 

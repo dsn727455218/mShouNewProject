@@ -37,7 +37,7 @@
             android:layout_toLeftOf="@+id/buy_shop"
             android:layout_toRightOf="@+id/line"
             android:background="#dadee5"
-            android:gravity="right|center"
+            android:gravity="right|center_vertical"
             android:text="合计：¥0.00"
             android:textColor="@color/orgin"
             android:textSize="15sp" />

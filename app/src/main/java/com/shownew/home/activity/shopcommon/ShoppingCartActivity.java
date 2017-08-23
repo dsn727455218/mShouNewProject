@@ -2,6 +2,7 @@ package com.shownew.home.activity.shopcommon;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.text.Html;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -302,7 +303,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
 
 
     public void callBackData(int shopCount, double shopPrices) {
-        show_shop_prices.setText(String.format("合计：¥%s", StringUtil.formatMoney(shopPrices)));
+        show_shop_prices.setText(Html.fromHtml(String.format("合计：¥%s<br/><font color=#585858><small>不含运费</small></font>", StringUtil.formatMoney(shopPrices))));
         buyShop.setText(String.format("结算(%s)", shopCount));
     }
 
