@@ -55,7 +55,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     @Override
     protected void onResume() {
         super.onResume();
-        callBackData(0,0);
+        callBackData(0, 0);
         select.setText("全选");
         select.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.not_selected_cart, 0, 0);
         if (!Preference.getBoolean(mShouNewApplication, Preference.IS_LOGIN, false)) {
@@ -317,6 +317,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
                 if (shopCarEntityIml.isSelect()) {
                     shopCount += shopCarEntityIml.getShNum();
                     shopPrices += shopCarEntityIml.getShKdprice();
+
                     shopPrices += shopCarEntityIml.getShPrice();
                 }
             }
@@ -324,5 +325,15 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
         }
 
 
+    }
+
+    public void isEdit(boolean b) {
+        if (b) {
+            buyShop.setEnabled(false);
+            buyShop.setBackgroundColor(getResources().getColor(R.color.color_tab_normal));
+        } else {
+            buyShop.setEnabled(true);
+            buyShop.setBackgroundColor(getResources().getColor(R.color.orgin));
+        }
     }
 }

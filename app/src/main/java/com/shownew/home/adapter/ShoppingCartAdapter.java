@@ -78,6 +78,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                 notifyDataSetChanged();
             }
         });
+        isEdit();
         holder.cart_edit_ll.setVisibility(View.GONE);
         holder.show_info_ll.setVisibility(View.VISIBLE);
         if (shopCarEntity.isEdit()) {
@@ -168,12 +169,24 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         }
     }
 
+    public void isEdit() {
+        int size = getItemCount();
+        for (int i = 0; i < size; i++) {
+            if (shopCarEntities.get(i).isEdit()) {//取消全选
+                context.isEdit(true);
+                return;
+            }
+            else if (i==size-1){
+                context.isEdit(false);
+            }
+        }
+    }
+
     public void isAllSelect() {
         int size = getItemCount();
         for (int i = 0; i < size; i++) {
             if (!shopCarEntities.get(i).isSelect()) {//取消全选
                 context.isSelect(false);
-
                 return;
             }
             if (i == size - 1) {
