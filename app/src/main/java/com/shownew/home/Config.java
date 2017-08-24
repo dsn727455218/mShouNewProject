@@ -23,8 +23,7 @@ public class Config extends com.wp.baselib.Config {
     public static final String WX_STATE = "WX_STATE";
     //支付类型
     public static final String FLAG = "flag";
-    //购物车
-    public static final String Carts = "Carts";
+
     /**
      * 是否 第一次进入app
      */

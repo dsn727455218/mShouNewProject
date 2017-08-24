@@ -25,13 +25,8 @@ public class PopEnterPassword extends PopupWindow {
     }
 
     public PopEnterPassword(final Activity context, String money, String tips) {
-
         super(context);
-
-        Activity context1 = context;
-
-        LayoutInflater inflater = (LayoutInflater) context1.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View menuView = inflater.inflate(R.layout.pop_enter_password, null);
 
         PasswordView pwdView = (PasswordView) menuView.findViewById(R.id.pwd_view);

@@ -39,7 +39,7 @@ public class TTSController implements MyNaviListener {
     /**
      * 请替换您自己申请的ID。
      */
-    private final String appId = "595386f2";
+    private final static String appId = "595386f2";
 
     public static TTSController ttsManager;
     private Context mContext;

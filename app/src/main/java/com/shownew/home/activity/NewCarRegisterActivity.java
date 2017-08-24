@@ -359,8 +359,7 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
             String qrCode = data.getStringExtra("QRCode");
             if (com.wp.zxing.config.Config.decode_time_out.equals(qrCode)) {
                 ToastUtil.showToast("二维码扫描超时！请手动输入设备号！");
-            } else if (com.wp.zxing.config.Config.jump_saoma.equals(qrCode)) {
-            } else {
+            } else if (!com.wp.zxing.config.Config.jump_saoma.equals(qrCode)) {
                 if (qrCode.contains(Config.SN)) {
                     int length = 15 + Config.SN.length();
                     mDeviceType_ed.setText(qrCode.substring(Config.SN.length(), length));
@@ -368,7 +367,6 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
                 } else {
                     ToastUtil.showToast("不是首牛硬件二维码");
                 }
-
             }
         }
 

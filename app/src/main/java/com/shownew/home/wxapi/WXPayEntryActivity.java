@@ -74,11 +74,7 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
                 } else {
                     ToastUtil.showToast("支付失败");
                     Preference.putBoolean(mShouNewApplication, Config.WX_STATE, false);
-                    if(100!=Preference.getInt(mShouNewApplication,Config.Carts)){
-                        mainApplication.redirect(OrderMenuActivity.class);
-                    }
-                    Preference.putInt(mShouNewApplication, Config.Carts, 0);
-
+                    mainApplication.redirect(OrderMenuActivity.class);
 //                    Bundle bundle = new Bundle();
 //                    bundle.putString("orderzNo", orderzNo);
 //                    bundle.putInt("flag", mFlag);
@@ -128,23 +124,24 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
                                 }
                                 finish();
                                 return;
-                            } else if ("REFUND".equals(trade_state)) {
-                                //                                ToastUtil.showToast("转入退款");
-                            } else if ("NOTPAY".equals(trade_state)) {
-                                //                                ToastUtil.showToast("未支付");
-
-                            } else if ("CLOSED".equals(trade_state)) {
-                                //                                ToastUtil.showToast("已关闭");
-
-                            } else if ("REVOKED".equals(trade_state)) {
-                                //                                    ToastUtil.showToast("已撤销");
-
-                            } else if ("USERPAYING".equals(trade_state)) {
-                                //                                ToastUtil.showToast("用户支付中");
-
-                            } else if ("PAYERROR".equals(trade_state)) {
-                                //                                ToastUtil.showToast("支付失败");
                             }
+//                             else if ("REFUND".equals(trade_state)) {
+//                                //                                ToastUtil.showToast("转入退款");
+//                            } else if ("NOTPAY".equals(trade_state)) {
+//                                //                                ToastUtil.showToast("未支付");
+//
+//                            } else if ("CLOSED".equals(trade_state)) {
+//                                //                                ToastUtil.showToast("已关闭");
+//
+//                            } else if ("REVOKED".equals(trade_state)) {
+//                                //                                    ToastUtil.showToast("已撤销");
+//
+//                            } else if ("USERPAYING".equals(trade_state)) {
+//                                //                                ToastUtil.showToast("用户支付中");
+//
+//                            } else if ("PAYERROR".equals(trade_state)) {
+//                                //                                ToastUtil.showToast("支付失败");
+//                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -165,11 +162,7 @@ public class WXPayEntryActivity extends AndroidActivity implements IWXAPIEventHa
             ToastUtil.showToast("支付失败");
             Preference.putBoolean
                     (mShouNewApplication, Config.WX_STATE, false);
-
-            if(100!=Preference.getInt(mShouNewApplication,Config.Carts)){
-                mainApplication.redirect(OrderMenuActivity.class);
-            }
-                Preference.putInt(mShouNewApplication, Config.Carts, 0);
+            mainApplication.redirect(OrderMenuActivity.class);
 
 
 //            bundle.putBoolean("isSucess", false);

@@ -42,7 +42,6 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     private TextView buyShop;
     private TextView mEmptyTips;
     private ProgressBar mEmptyProgressBar;
-    private View mEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +78,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
         select.setOnClickListener(this);
         show_shop_prices = (TextView) findViewById(R.id.show_shop_prices);
 
-        mEmptyView = findViewById(R.id.empty_view);
+        View  mEmptyView = findViewById(R.id.empty_view);
         mEmptyView.setBackgroundColor(getResources().getColor(R.color.white));
         mEmptyView.setOnClickListener(this);
         mEmptyTips = (TextView) findViewById(R.id.textView);
@@ -119,7 +118,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
                         }
                     }
                 }
-                if (shopCarEntityImls != null && shopCarEntityImls.size() > 0) {
+                if (shopCarEntityImls.size() > 0) {
                     Bundle bundle = new Bundle();
                     bundle.putParcelableArrayList("shopCarEntityImls", shopCarEntityImls);
                     mShouNewApplication.redirectAndPrameter(SureOderMenuShopCarActivity.class, bundle);

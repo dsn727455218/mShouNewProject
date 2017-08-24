@@ -31,8 +31,6 @@ import okio.Buffer;
 public class HttpLoggingInterceptor implements Interceptor {
 
 
-
-
     private static final Charset UTF8 = Charset.forName("UTF-8");
 
     private volatile Level printLevel = Level.NONE;
@@ -58,8 +56,19 @@ public class HttpLoggingInterceptor implements Interceptor {
         colorLevel = level;
     }
 
+    private boolean isPrintLog;
+
+    /**
+     * 是否打印log
+     * @param isPrintLog
+     */
+    public void setIsPrintLog(boolean isPrintLog) {
+        this.isPrintLog = isPrintLog;
+    }
+
     public void log(String message) {
-        logger.log(colorLevel, message);
+        if (isPrintLog)
+            logger.log(colorLevel, message);
     }
 
     @Override

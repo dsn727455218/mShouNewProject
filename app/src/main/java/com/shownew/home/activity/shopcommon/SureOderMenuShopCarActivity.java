@@ -60,7 +60,6 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
     private TextView mTotal_tv;
     private RadioButton rbZf;
     private RadioButton rbSn;
-    private OrderMenuListAdapter orderMenuListAdapter;
     private double money;
     private String mOrderzNo;
     private View mComitOrder;
@@ -80,7 +79,7 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
                 finish();
                 return;
             }
-            orderMenuListAdapter = new OrderMenuListAdapter(this, shopCarEntityImls);
+            OrderMenuListAdapter orderMenuListAdapter = new OrderMenuListAdapter(this, shopCarEntityImls);
             order_detail_ll.setAdapter(orderMenuListAdapter);
             int size = shopCarEntityImls.size();
             int shopCount = 0;
@@ -93,7 +92,6 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
                 callBackData(shopCount, shopPrices);
                 if (shopCarEntityIml.getShMpid() == 0) {
                     rbSn.setVisibility(View.GONE);
-                    continue;
                 }
             }
 
@@ -258,7 +256,7 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
             money += orderMenuShopCarsEntity.getOPrice();
             money += orderMenuShopCarsEntity.getOKdprice();
         }
-        if (orderMenuShopCarsEntities != null && orderMenuShopCarsEntities.size() > 0) {
+        if (orderMenuShopCarsEntities.size() > 0) {
             if (TextUtils.isEmpty(locationId)) {
                 ToastUtil.showToast("请填写地址");
                 return;
@@ -347,8 +345,6 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
                                 Preference.putString(mShouNewApplication, Config.ORDER, orderzNo);
                                 Preference.putInt(mShouNewApplication, Config.SHOP_TYPE, 1);
                                 Preference.putInt(mShouNewApplication, Config.FLAG, flag);
-                                Preference.putInt(mShouNewApplication, Config.Carts, 100);
-
                                 WXPay.getInstans(SureOderMenuShopCarActivity.this).WxPay(tenpayInfo);
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -423,6 +419,7 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
                                             }
                                             ToastUtil.showToast(msgTips);
                                             bundle.putBoolean("isSucess", false);
+                                            mainApplication.redirect(OrderMenuActivity.class);
 //                                            mShouNewApplication.redirectAndPrameter(PayStateActivity.class, bundle);
                                         }
                                     } catch (JSONException e) {
@@ -580,11 +577,13 @@ public class SureOderMenuShopCarActivity extends BaseActivity implements View.On
                                         }
                                     }).setCancelable(true).show();
                                     return;
-                                } else if ("3004".equals(trade_state)) {
-                                    //                                    ToastUtil.showToast("支付失败");
                                 }
+//                                else if ("3004".equals(trade_state)) {
+//                                    //                                    ToastUtil.showToast("支付失败");
+//                                }
                                 mComitOrder.setEnabled(true);
                                 bundle.putBoolean("isSucess", false);
+                                mainApplication.redirect(OrderMenuActivity.class);
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();

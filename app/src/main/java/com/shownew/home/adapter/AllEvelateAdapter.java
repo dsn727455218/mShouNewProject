@@ -85,12 +85,11 @@ public class AllEvelateAdapter extends RecyclerView.Adapter<AllEvelateAdapter.Al
                     final ImageView imageView = imageViews.get(i);
                     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                     String urlImg = dims[i];
-                    final int imgPosition = i;
                     imageViews.get(i).setTag(urlImg);
                     if (!TextUtils.isEmpty(urlImg) && urlImg.equals(imageView.getTag())) {
                         shouNewApplication.loadImg(urlImg, imageView);
                     }
-                    PreviewImgUtils.previewImg(imageView, dims, imgPosition, shouNewApplication);
+                    PreviewImgUtils.previewImg(imageView, dims, i, shouNewApplication);
                 }
             } else {
                 imageViews = holder.evelute_img.getImage(1);
@@ -148,11 +147,10 @@ public class AllEvelateAdapter extends RecyclerView.Adapter<AllEvelateAdapter.Al
                             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
                             String urlImg = dims[i];
                             imageView.setTag(urlImg);
-                            final int imgPosition = i;
                             if (!TextUtils.isEmpty(urlImg) && urlImg.equals(imageView.getTag())) {
                                 shouNewApplication.loadImg(urlImg, imageView);
                             }
-                            PreviewImgUtils.previewImg(imageView, dims, imgPosition, shouNewApplication);
+                            PreviewImgUtils.previewImg(imageView, dims, i, shouNewApplication);
                         }
                     } else {
                         imageViews = zhuiping_showImg.getImage(1);

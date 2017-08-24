@@ -456,9 +456,10 @@ public class OrderMenuActivity extends BaseActivity implements View.OnClickListe
                                         }
                                     }).setCancelable(true).show();
                                     return;
-                                } else if ("3004".equals(trade_state)) {
-                                    //                                    ToastUtil.showToast("支付失败");
                                 }
+//                                else if ("3004".equals(trade_state)) {
+//                                    //                                    ToastUtil.showToast("支付失败");
+//                                }
                                 bundle.putBoolean("isSucess", false);
                             }
                         } catch (JSONException e) {

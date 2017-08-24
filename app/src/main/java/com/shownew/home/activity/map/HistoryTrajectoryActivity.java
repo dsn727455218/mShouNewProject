@@ -253,8 +253,7 @@ public class HistoryTrajectoryActivity extends BaseLocationActivity implements V
         animator.setEvaluator(new FloatEvaluator() {
             @Override
             public Float evaluate(float fraction, Number startValue, Number endValue) {
-                float values = startValue.floatValue() + (endValue.floatValue() - startValue.floatValue()) * fraction;
-                return values;
+                return startValue.floatValue() + (endValue.floatValue() - startValue.floatValue()) * fraction;
             }
         });
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -301,13 +300,13 @@ public class HistoryTrajectoryActivity extends BaseLocationActivity implements V
     public void showMore() {
         if (!isShowMore) {
             isShowMore = true;
-            isShowRecylerView(isShowMore);
+            isShowRecylerView(true);
             historyMapPointEntities.get(0).setShow(true);
             notifyAdapter();
             mHistortyRecyclerView.setPullRefreshEnabled(true);//刷新
         } else {
             isShowMore = false;
-            isShowRecylerView(isShowMore);
+            isShowRecylerView(false);
             notifyData();
             mHistortyRecyclerView.setPullRefreshEnabled(false);//禁止刷新
         }
@@ -319,7 +318,7 @@ public class HistoryTrajectoryActivity extends BaseLocationActivity implements V
         if (isShowMore) {
             //关闭显示更多
             isShowMore = false;
-            isShowRecylerView(isShowMore);
+            isShowRecylerView(false);
             notifyData();
         }
         mHistortyRecyclerView.setPullRefreshEnabled(false);//刷新

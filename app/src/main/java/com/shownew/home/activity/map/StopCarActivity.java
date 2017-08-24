@@ -3,7 +3,6 @@ package com.shownew.home.activity.map;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;

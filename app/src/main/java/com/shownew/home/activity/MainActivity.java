@@ -33,10 +33,6 @@ public class MainActivity extends TabFragmentActivity {
     }
 
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-    }
 
     /**
      * 准备tab的内容Intent

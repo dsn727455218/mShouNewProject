@@ -37,7 +37,6 @@ public class ShopCollectActivity extends BaseActivity implements View.OnClickLis
     private CollectShopAdapter collectShopAdapter;
     private TextView mEmptyTips;
     private ProgressBar mEmptyProgressBar;
-    private View mEmptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class ShopCollectActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initTitle() {
-        mEmptyView = findViewById(R.id.empty_view);
+       View mEmptyView = findViewById(R.id.empty_view);
         mEmptyView.setBackgroundColor(getResources().getColor(R.color.white));
         mEmptyView.setOnClickListener(this);
         mEmptyTips = (TextView) findViewById(R.id.textView);

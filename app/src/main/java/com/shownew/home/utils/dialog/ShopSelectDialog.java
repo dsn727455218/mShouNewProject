@@ -156,12 +156,11 @@ public class ShopSelectDialog extends BaseDialog implements View.OnClickListener
         typeParent.removeAllViews();
         if (!TextUtils.isEmpty(color) && color.contains(",")) {
             String[] colors = color.split(",");
-            int length = colors.length;
-            for (int i = 0; i < length; i++) {
+            for (String color1 : colors) {
                 TextView textView = new TextView(context);
                 textView.setPadding(15, 5, 15, 5);
                 ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                textView.setText(colors[i]);
+                textView.setText(color1);
                 textView.setGravity(Gravity.CENTER);
                 textView.setLayoutParams(layoutParams);
                 typeParent.addView(textView);

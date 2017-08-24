@@ -412,7 +412,7 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                         protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                             if (exception == null) {
                                 if (json.has("data")) {
-                                    String msgTips="";
+                                    String msgTips;
                                     try {
                                         JSONObject jsonObject;
                                         jsonObject = json.getJSONObject("data");
@@ -611,9 +611,10 @@ public class ShopMallSureOderMenuActivity extends BaseActivity implements View.O
                                         }
                                     }).setCancelable(true).show();
                                     return;
-                                } else if ("3004".equals(trade_state)) {
-                                    //                                    ToastUtil.showToast("支付失败");
                                 }
+//                                else if ("3004".equals(trade_state)) {
+//                                    //                                    ToastUtil.showToast("支付失败");
+//                                }
                                 mComitOrder.setEnabled(true);
                                 bundle.putBoolean("isSucess", false);
                             }

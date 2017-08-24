@@ -72,24 +72,26 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private View mConverView;
     private Banner mBanner;
     private DeviceAPI mDeviceAPI;
+    /**
+     * 电动车控制
+     */
     private LinearLayout mCar_mute;
-    private LinearLayout mMy_vehicle;
+
+
     private ImageView mLock_iv;
     private DeviceEntity mDeviceEntity;
     private TextView mCentigradeTv;
     private TextView mWeatherTv;
-    private final String HTML = "%s<br/>%s";
+    private final static String HTML = "%s<br/>%s";
     private TextView mBattery;
-    private View mChepeiShoppingIv;
-    private View mSelectShouniuIv;
+
     private ObjectAnimator mAnim;
     /**
      * 获取到的广告图片实体
      */
     private ArrayList<HomeAdverEntity> mHomeAdverEntities;
-    private LinearLayout mCarLocation;
-    private LinearLayout mCarHistory;
-    private LinearLayout mCarMYCAR;
+
+
     private String mType;
     private ImageView mCarLockIv;
     private TitleBarView mTitleBarView;
@@ -129,10 +131,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mCentigradeTv = (TextView) mConverView.findViewById(R.id.centigrade_tv);
         mWeatherTv = (TextView) mConverView.findViewById(R.id.weather_tv);
         mBattery = (TextView) mConverView.findViewById(R.id.battery_values_tv);
-
-        mChepeiShoppingIv = mConverView.findViewById(R.id.chepei_shopping_iv);
+         View mChepeiShoppingIv = mConverView.findViewById(R.id.chepei_shopping_iv);
         mChepeiShoppingIv.setOnClickListener(this);
-        mSelectShouniuIv = mConverView.findViewById(R.id.select_shouniu_iv);
+        View   mSelectShouniuIv = mConverView.findViewById(R.id.select_shouniu_iv);
         mSelectShouniuIv.setOnClickListener(this);
 
         mTitleBarView = (TitleBarView) mConverView.findViewById(R.id.headbar);
@@ -153,20 +154,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
      * 汽车相关的控间
      */
     private void findViewIdByCar() {
-
-        mCarLocation = (LinearLayout) mConverView.findViewById(R.id.track_location_car);
+         LinearLayout mCarLocation = (LinearLayout) mConverView.findViewById(R.id.track_location_car);
         ((ImageView) mCarLocation.getChildAt(0)).setImageResource(R.drawable.select_location);
         setTextColorContent(((TextView) mCarLocation.getChildAt(1)), "追踪定位");
         mCarLocation.getChildAt(0).setTag("mCarLocation");
         mCarLocation.getChildAt(0).setOnClickListener(this);
-
+         LinearLayout
         mCarHistory = (LinearLayout) mConverView.findViewById(R.id.car_mute_car);
         ((ImageView) mCarHistory.getChildAt(0)).setImageResource(R.drawable.select_history_car);
         setTextColorContent(((TextView) mCarHistory.getChildAt(1)), "历史轨迹");
         mCarHistory.getChildAt(0).setTag("mCarHistory");
         mCarHistory.getChildAt(0).setOnClickListener(this);
 
-        mCarMYCAR = (LinearLayout) mConverView.findViewById(R.id.battery_manage_car);
+        LinearLayout  mCarMYCAR = (LinearLayout) mConverView.findViewById(R.id.battery_manage_car);
         ((ImageView) mCarMYCAR.getChildAt(0)).setImageResource(R.drawable.select_my_car);
         setTextColorContent(((TextView) mCarMYCAR.getChildAt(1)), "我的车辆");
         mCarMYCAR.getChildAt(0).setTag("mCarMYCAR");
@@ -309,8 +309,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 }
             }
         });
-
-        mMy_vehicle = (LinearLayout) mConverView.findViewById(R.id.my_vehicle);
+        /**
+         * 汽车 控制
+         */
+        LinearLayout mMy_vehicle = (LinearLayout) mConverView.findViewById(R.id.my_vehicle);
         ((ImageView) mMy_vehicle.getChildAt(0)).setImageResource(R.drawable.select_my_vehicle);
         setTextColorContent(((TextView) mMy_vehicle.getChildAt(1)), "我的车辆");
         mMy_vehicle.getChildAt(0).setTag("my_vehicle");
@@ -334,12 +336,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         }
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-
-    }
 
     @Override
     public void onRefresh() {
@@ -775,10 +772,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
      */
     private void getActionAdv() {
         mDeviceAPI.getLastAdList(0, mShouNewApplication.new ShouNewHttpCallBackLisener() {
-            @Override
-            protected Object parseData(String result) {
-                return null;
-            }
 
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {

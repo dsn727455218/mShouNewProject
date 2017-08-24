@@ -142,6 +142,7 @@ public class OkGo {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(tag);
         loggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
         loggingInterceptor.setColorLevel(level);
+        loggingInterceptor.setIsPrintLog(isPrintException);
         okHttpClientBuilder.addInterceptor(loggingInterceptor);
         OkLogger.debug(isPrintException);
         return this;

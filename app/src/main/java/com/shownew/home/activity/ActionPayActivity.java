@@ -197,11 +197,11 @@ public class ActionPayActivity extends BaseActivity implements View.OnClickListe
         if (!TextUtils.isEmpty(values) && values.contains(",")) {
             String[] colors = values.split(",");
             int length = colors.length;
-            for (int i = 0; i < length; i++) {
+            for (String color : colors) {
                 TextView textView = new TextView(context);
                 textView.setPadding(15, 5, 15, 5);
                 ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                textView.setText(colors[i]);
+                textView.setText(color);
                 textView.setGravity(Gravity.CENTER);
                 textView.setLayoutParams(layoutParams);
                 typeParent.addView(textView);
@@ -220,7 +220,7 @@ public class ActionPayActivity extends BaseActivity implements View.OnClickListe
     /**
      * 支付包 相关ui处理
      */
-    private Handler mHandler = new Handler() {
+    private  Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
         public void handleMessage(Message msg) {
             switch (msg.what) {

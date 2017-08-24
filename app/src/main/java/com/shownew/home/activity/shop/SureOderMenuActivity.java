@@ -610,9 +610,10 @@ public class SureOderMenuActivity extends BaseActivity implements View.OnClickLi
                                         }
                                     }).setCancelable(true).show();
                                     return;
-                                } else if ("3004".equals(trade_state)) {
-                                    //                                    ToastUtil.showToast("支付失败");
                                 }
+//                                else if ("3004".equals(trade_state)) {
+//                                    //                                    ToastUtil.showToast("支付失败");
+//                                }
                                 mComitOrder.setEnabled(true);
                                 bundle.putBoolean("isSucess", false);
                             }

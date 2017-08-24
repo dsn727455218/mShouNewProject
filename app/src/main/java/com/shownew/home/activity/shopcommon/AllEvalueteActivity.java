@@ -119,7 +119,6 @@ public class AllEvalueteActivity extends BaseActivity implements View.OnClickLis
                             JSONObject jsonObject = json.getJSONObject("data");
                             if (jsonObject.has("countArray")) {
                                 JSONArray countArray = jsonObject.getJSONArray("countArray");
-
                                 int length = countArray.length();
                                 ArrayList<String> tabList = new ArrayList<String>();
                                 for (int i = 0; i < length; i++) {

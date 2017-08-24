@@ -221,17 +221,10 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
      * 商品评价
      */
     private void shopDiscuss() {
-
         if (menuEntity == null) {
             return;
         }
-        if (selectMax == 6) {
-            final String dicussContent = talkContent.getText().toString().trim();
-            if (TextUtils.isEmpty(dicussContent)) {
-                ToastUtil.showToast("请输入评价内容");
-                return;
-            }
-        } else if (selectMax == 3) {
+       if (selectMax == 3) {
             String againTalkStr = again_talk_content.getText().toString().trim();
             if (TextUtils.isEmpty(againTalkStr)) {
                 ToastUtil.showToast("请输入评价内容");
@@ -262,8 +255,8 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
 
 
         } else {
-
-            evaluteData("");
+            createLoadingDialog();
+            judgeType();
         }
 
     }
@@ -361,6 +354,12 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
     private void postFile(ArrayList<File> files) {
         shopAPI.upTalkImg(files, mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
+            protected void onLoading() {
+                super.onLoading();
+                createLoadingDialog();
+            }
+
+            @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 if (exception == null) {
                     if (json.has("data")) {
@@ -382,11 +381,11 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
                     }
                 } else {
                     judgeType();
-
                 }
             }
         });
     }
+
 
     private void judgeType() {
         if (selectMax == 6) {
@@ -394,24 +393,22 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
         } else if (selectMax == 3) {
             againEvaluetes("");
         }
+
     }
 
     private void evaluteData(String imgUrl) {
         if (menuEntity == null) {
+            closeLoadingDialog();
             return;
         }
         final String dicussContent = talkContent.getText().toString().trim();
-        if (TextUtils.isEmpty(dicussContent)) {
-            ToastUtil.showToast("请输入评价内容");
-            return;
-        }
         final int dPdgrade = Math.round(dPdgradeRatingBar.getRating());
         final int dSvgrade = Math.round(dSvgradeRatingBar.getRating());
         final int dLsgrade = Math.round(dLsgradeRatingBar.getRating());
-
         shopAPI.discuss(menuEntity.getOId(), dicussContent, dPdgrade, dSvgrade, dLsgrade, imgUrl, mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
+                createLoadingDialog();
                 if (exception == null) {
                     ToastUtil.showToast("评价成功");
                     id = String.valueOf(menuEntity.getOPid());
@@ -428,6 +425,7 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
                 } else {
                     ToastUtil.showToast("评价失败");
                 }
+
             }
         });
     }
@@ -436,16 +434,16 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
      * 再次评价
      */
     private void againEvaluetes(String dImg) {
-
         String againTalkStr = again_talk_content.getText().toString().trim();
-
         if (TextUtils.isEmpty(againTalkStr)) {
             ToastUtil.showToast("请输入评价内容");
+            closeLoadingDialog();
             return;
         }
         shopAPI.againEvaluetes(did, againTalkStr, dImg, mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
+                createLoadingDialog();
                 if (exception == null) {
                     ToastUtil.showToast("评价成功");
                     if(TextUtils.isEmpty(id)&&TextUtils.isEmpty(shopType)){

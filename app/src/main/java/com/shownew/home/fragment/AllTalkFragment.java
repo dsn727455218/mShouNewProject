@@ -142,16 +142,9 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
 
         if (isVisible) {
             //更新界面数据，如果数据还在下载中，就显示加载框
-//            notifyDataSetChanged();
-//            if (mRefreshState == STATE_REFRESHING) {
-//                mRefreshListener.onRefreshing();
-//            }
-//            ToastUtil.showToast("更新界面数据");
             refresh();
         } else {
             //关闭加载框
-//            mRefreshListener.onRefreshFinish();
-//            ToastUtil.showToast("关闭加载框");
         }
     }
 
@@ -179,10 +172,6 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(isReuseView ? rootView : view1, savedInstanceState);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-    }
 
     @Override
     public void onDestroy() {
@@ -280,7 +269,6 @@ public class AllTalkFragment extends Fragment implements View.OnClickListener {
         if (disnice == -1) {//未登录
             if (!Preference.getBoolean(getActivity(), Preference.IS_LOGIN, false)) {
                 shouNewApplication.jumpLoginActivity(getActivity());
-                return;
             }
         } else if (disnice == 0) {//点赞
             shopAPI.fabulous(allEvelateEntity.getDId(), shouNewApplication.new ShouNewHttpCallBackLisener() {

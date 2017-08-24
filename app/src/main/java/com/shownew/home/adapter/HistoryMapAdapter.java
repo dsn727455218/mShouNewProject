@@ -22,8 +22,8 @@ public class HistoryMapAdapter extends RecyclerView.Adapter<HistoryMapAdapter.Hi
 
     private ArrayList<HistoryMapPointEntity> historyMapPointEntities;
     private HistoryTrajectoryActivity context;
-    private String ONE_HTML = "<small><font color=#727272>%s</font></small><br/><big><font color=#3681f1>%s</font></big>";
-    private String HTML = "<big><font color=#3681f1>%s</font></big>";
+    private final static String ONE_HTML = "<small><font color=#727272>%s</font></small><br/><big><font color=#3681f1>%s</font></big>";
+    private final static String HTML = "<big><font color=#3681f1>%s</font></big>";
 
     public HistoryMapAdapter(ArrayList<HistoryMapPointEntity> historyMapPointEntities, HistoryTrajectoryActivity context) {
         this.historyMapPointEntities = historyMapPointEntities;

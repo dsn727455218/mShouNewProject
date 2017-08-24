@@ -221,7 +221,7 @@ public class ShareUtils {
 
         final ArrayList<SourcesEntity> sourcesEntities = mUserAPI.getSourcesData();
 //        String url = Defaultcontent.url;
-        if (sourcesEntities != null && sourcesEntities.size() >= 6) {
+        if (sourcesEntities != null && sourcesEntities.size() > 6) {
             url = sourcesEntities.get(4).getSImg();
 //            imageurl.setThumb(new UMImage(context,url));
             String imgUrl = sourcesEntities.get(6).getSImg();
