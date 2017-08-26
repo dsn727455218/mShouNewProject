@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="5dp"
         android:layout_below="@+id/rl1"
-        android:background="@drawable/confirm_order_line" />
+        android:background="#f5f5f5" />
 
     <RelativeLayout
         android:id="@+id/home_item_parent"

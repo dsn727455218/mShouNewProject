@@ -315,8 +315,6 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
             for (ShopCarEntity shopCarEntityIml : shopCarEntities) {
                 if (shopCarEntityIml.isSelect()) {
                     shopCount += shopCarEntityIml.getShNum();
-                    shopPrices += shopCarEntityIml.getShKdprice();
-
                     shopPrices += shopCarEntityIml.getShPrice();
                 }
             }

@@ -53,14 +53,18 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
             mType = mBundle.getInt("type");
             if (!TextUtils.isEmpty(mKeyWord)) {
                 mSearchContent.setText(mKeyWord);
-                refresh();
             }
+            refresh();
         }
         mSearchContent.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     mKeyWord = mSearchContent.getText().toString();
+                    if (TextUtils.isEmpty(mKeyWord)) {
+                        ToastUtil.showToast("请输入搜索关键字");
+                        return false;
+                    }
                     refresh();
                     return true;
                 }
@@ -119,8 +123,8 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
 
 
     private void refresh() {
-
         isRefresh = true;
+        createLoadingDialog();
         page = 1;
         searchShop(mKeyWord);
     }
@@ -134,17 +138,7 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
      * @param keyWord
      */
     private void searchShop(String keyWord) {
-        if (TextUtils.isEmpty(keyWord)) {
-            ToastUtil.showToast("请输入搜索关键字");
-            return;
-        }
         mShopAPI.searchShopMall(keyWord, page, mShouNewApplication.new ShouNewHttpCallBackLisener() {
-            @Override
-            protected void onLoading() {
-                super.onLoading();
-                createLoadingDialog();
-            }
-
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 closeLoadingDialog();
@@ -159,7 +153,6 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                 if (exception == null) {
                     if (json.has("data")) {
                         try {
-
                             JSONObject jsonData = json.getJSONObject("data");
                             if (jsonData.has("mallproductList")) {
                                 String productList = jsonData.getString("mallproductList");
@@ -187,12 +180,13 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
 
     @Override
     public void onClick(View v) {
+        mKeyWord = mSearchContent.getText().toString();
         switch (v.getId()) {
             case R.id.shopping_cart:
                 mShouNewApplication.redirect(ShoppingCartActivity.class);
                 break;
             case R.id.search_iv:
-                mKeyWord = mSearchContent.getText().toString();
+                if (checkIsNull(mKeyWord)) return;
                 refresh();
                 break;
             case R.id.backBtn:
@@ -203,8 +197,10 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                 mQueue_prices.setTextColor(0xff595e66);
                 page = 1;
                 oder = 0;
-                isRefresh=true;
-                mKeyWord = mSearchContent.getText().toString();
+                isRefresh = true;
+
+                if (checkIsNull(mKeyWord)) return;
+                createLoadingDialog();
                 getProductList(oder);
                 break;
             case R.id.queue_prices:
@@ -212,8 +208,9 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                 mQueue_prices.setTextColor(0xffe77817);
                 mQueque_all.setTextColor(0xff595e66);
                 page = 1;
-                isRefresh=true;
-                mKeyWord = mSearchContent.getText().toString();
+                isRefresh = true;
+                if (checkIsNull(mKeyWord)) return;
+                createLoadingDialog();
                 if ("价格升序".equals(queueTypq)) {
                     oder = 2;
                     getProductList(oder);
@@ -224,10 +221,18 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                 }
                 break;
             case R.id.more:
-                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(v, (int) (v.getWidth() / 2 * 0.1));
+                new ShopPopwindow(this, mShouNewApplication).showPopupWindow(v, (int) (v.getWidth() / 2 * 0.1));
                 break;
 
         }
+    }
+
+    private boolean checkIsNull(String keyWord) {
+        if (TextUtils.isEmpty(keyWord)) {
+            ToastUtil.showToast("请输入搜索关键字");
+            return true;
+        }
+        return false;
     }
 
     private int oder = 5;
@@ -283,11 +288,7 @@ public class ShopMallSearchShopActivity extends BaseActivity implements View.OnC
                 mDataAdapter.notifyDataSetChanged();
             }
 
-            @Override
-            protected void onLoading() {
-                super.onLoading();
-                createLoadingDialog();
-            }
+
         });
     }
 

@@ -75,12 +75,18 @@
             </RelativeLayout>
 
 
+            <View
+                android:id="@+id/line1"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/rl1"
+                android:background="@drawable/confirm_order_line" />
 
             <com.wp.baselib.widget.NoScrollListView
                 android:id="@+id/order_detail_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/rl1"/>
+                android:layout_below="@+id/line1" />
 
             <RelativeLayout
                 android:id="@+id/total_rl"

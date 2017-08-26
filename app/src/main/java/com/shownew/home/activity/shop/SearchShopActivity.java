@@ -53,14 +53,16 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
             mType = mBundle.getInt("type");
             if (!TextUtils.isEmpty(mKeyWord)) {
                 mSearchContent.setText(mKeyWord);
-                refresh();
+
             }
+            refresh();
         }
         mSearchContent.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     mKeyWord = mSearchContent.getText().toString();
+                    if (checkIsNull(mKeyWord)) return false;
                     refresh();
                     return true;
                 }
@@ -120,7 +122,7 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
 
 
     private void refresh() {
-
+        createLoadingDialog();
         isRefresh = true;
         page = 1;
         searchShop(mKeyWord);
@@ -135,17 +137,9 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
      * @param keyWord
      */
     private void searchShop(String keyWord) {
-        if (TextUtils.isEmpty(keyWord)) {
-            ToastUtil.showToast("请输入搜索关键字");
-            return;
-        }
 
         mShopAPI.searchShop(keyWord, page, mShouNewApplication.new ShouNewHttpCallBackLisener() {
-            @Override
-            protected void onLoading() {
-                super.onLoading();
-                createLoadingDialog();
-            }
+
 
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
@@ -187,6 +181,14 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
         });
     }
 
+    private boolean checkIsNull(String keyWord) {
+        if (TextUtils.isEmpty(keyWord)) {
+            ToastUtil.showToast("请输入搜索关键字");
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -198,7 +200,7 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
                 break;
             case R.id.search_iv:
                 mKeyWord = mSearchContent.getText().toString();
-
+                if (checkIsNull(mKeyWord)) return ;
                 refresh();
                 break;
             case R.id.backBtn:
@@ -211,6 +213,8 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
                 oder = 0;
                 isRefresh = true;
                 mKeyWord = mSearchContent.getText().toString();
+                if (checkIsNull(mKeyWord)) return ;
+                createLoadingDialog();
                 getProductList(oder);
                 break;
             case R.id.queue_prices:
@@ -220,6 +224,8 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
                 page = 1;
                 isRefresh = true;
                 mKeyWord = mSearchContent.getText().toString();
+                if (checkIsNull(mKeyWord)) return ;
+                createLoadingDialog();
                 if ("价格升序".equals(queueTypq)) {
                     oder = 2;
                     getProductList(oder);
@@ -230,7 +236,7 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
                 }
                 break;
             case R.id.more:
-                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(v, (int) (v.getWidth() / 2 * 0.1));
+                new ShopPopwindow(this, mShouNewApplication).showPopupWindow(v, (int) (v.getWidth() / 2 * 0.1));
                 break;
 
         }
@@ -289,11 +295,7 @@ public class SearchShopActivity extends BaseActivity implements View.OnClickList
                 mDataAdapter.notifyDataSetChanged();
             }
 
-            @Override
-            protected void onLoading() {
-                super.onLoading();
-                createLoadingDialog();
-            }
+
         });
     }
 

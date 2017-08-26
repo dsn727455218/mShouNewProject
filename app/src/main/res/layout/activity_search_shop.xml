@@ -115,9 +115,10 @@
             android:text="列表展示"
             android:textColor="#595e66" />
     </RelativeLayout>
-
+<include layout="@layout/commone_line"/>
     <com.jcodecraeer.xrecyclerview.XRecyclerView
         android:id="@+id/search_xrecyclerView"
         android:layout_width="match_parent"
+        android:background="#fff"
         android:layout_height="match_parent" />
 </LinearLayout>
