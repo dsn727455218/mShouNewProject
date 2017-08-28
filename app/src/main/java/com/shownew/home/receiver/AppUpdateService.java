@@ -14,7 +14,7 @@ import com.lzy.okgo.callback.FileCallback;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
 import com.shownew.home.module.PublicApi;
-import com.wp.baselib.utils.ToastUtil;
+import com.shownew.home.utils.AppUpdateUtil;
 import com.wp.baselib.utils.ToolsUtil;
 
 import java.io.File;
@@ -31,7 +31,6 @@ public class AppUpdateService extends IntentService {
     private NotificationManager manager;
     private static final int NOTICE_ID_TYPE_0 = R.string.app_name;
     private PublicApi mPublicApi;
-
     public AppUpdateService() {
         super("AppUpdateService'");
         ShouNewApplication mShouNewApplication = ShouNewApplication.getInstance();
@@ -40,7 +39,7 @@ public class AppUpdateService extends IntentService {
 
     public void sendResidentNoticeType2(Context context, String title, int progress, String apkUrl) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
-        builder.setOngoing(true);
+        builder.setOngoing(false);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
         remoteViews = new RemoteViews(context.getPackageName(), R.layout.notifiticon_update_file);
         remoteViews.setTextViewText(R.id.title_tv, title);
@@ -61,7 +60,7 @@ public class AppUpdateService extends IntentService {
     /**
      * 下载文件
      */
-    private void downFile(String apkUrl) {
+    private void  downFile(String apkUrl) {
         if (TextUtils.isEmpty(apkUrl))
             return;
         mPublicApi.downFile(apkUrl, new FileCallback("shouniu.apk") {
@@ -69,6 +68,10 @@ public class AppUpdateService extends IntentService {
             public void resultDataUI(File data, Call call, Response response) {
                 super.resultDataUI(data, call, response);
                 installApk(data);
+                AppUpdateUtil.isDownloading=false;
+                if (manager != null) {
+                    manager.cancel(NOTICE_ID_TYPE_0);
+                }
             }
 
             //  * @param currentSize  当前下载的字节数
@@ -96,7 +99,10 @@ public class AppUpdateService extends IntentService {
             @Override
             public void onError(Call call, Response response, Exception e) {
                 super.onError(call, response, e);
-                ToastUtil.showToast(e.getMessage());
+                AppUpdateUtil.isDownloading=false;
+                if (manager != null) {
+                    manager.cancel(NOTICE_ID_TYPE_0);
+                }
             }
         });
     }

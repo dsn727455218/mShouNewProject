@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.lzy.okgo.OkGo;
 import com.wp.baselib.utils.ExitUtil;
 import com.wp.baselib.utils.ToastUtil;
 import com.wp.baselib.utils.UMengUtil;
@@ -63,9 +62,10 @@ public class AndroidActivity extends FragmentActivity {
         UMengUtil.uMengOnPause(this);
         closeProgressDialog();
         //volley取消网络队列
-        OkGo.getInstance().cancelTag(this);
-        OkGo.getInstance().cancelAll();
+//        OkGo.getInstance().cancelTag(this);
+//        OkGo.getInstance().cancelAll();
     }
+
 
     @Override
     protected void onResume() {
