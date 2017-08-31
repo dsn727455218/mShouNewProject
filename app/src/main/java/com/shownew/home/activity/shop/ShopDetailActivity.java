@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,7 +36,6 @@ import com.shownew.home.module.dao.ShopCarEntity;
 import com.shownew.home.module.entity.SuperMarkeDetailEntity;
 import com.shownew.home.module.entity.SuperMarketEntity;
 import com.shownew.home.utils.GlideImageLoader;
-import com.shownew.home.utils.PreviewImgUtils;
 import com.shownew.home.utils.dialog.ShareDialog;
 import com.shownew.home.utils.dialog.ShopPopwindow;
 import com.shownew.home.utils.dialog.ShopSelectDialog;
@@ -182,7 +180,6 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
             }
         });
     }
-
 
 
     private void refresh() {
@@ -391,7 +388,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
         evelute_content = (TextView) layout_evalute.findViewById(R.id.evelute_content);
         wrapLayoutiml = (WordWrapLayoutiml) layout_evalute.findViewById(R.id.evelute_img);
         wrapLayoutiml.setShow(true);
-        wrapLayoutiml.setWidth((int) (mShouNewApplication.terminalWidth *0.7));
+        wrapLayoutiml.setWidth((int) (mShouNewApplication.terminalWidth * 0.7));
         evelute_time = (TextView) layout_evalute.findViewById(R.id.evelute_time);
         findViewById(R.id.cart_menu).setOnClickListener(this);
         layout_evalute.findViewById(R.id.look_all).setOnClickListener(this);
@@ -476,39 +473,47 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                             }
                             if (jsonData.has("discuss")) {//评价
                                 JSONObject discuss = jsonData.getJSONObject("discuss");
-                                mShouNewApplication.loadImg(discuss.getString("dUicon"), my_info_header_scv);
-                                nicheng_tv.setText(discuss.getString("dUname"));
-                                String dimg = discuss.getString("dImg");
+                                if (discuss.has("dUicon")) {
+                                    mShouNewApplication.loadImg(discuss.getString("dUicon"), my_info_header_scv);
+                                } else {
+                                    mShouNewApplication.loadImg("dUicon", my_info_header_scv);
+                                }
+                                if (discuss.has("dUname")) {
+                                    nicheng_tv.setText(discuss.getString("dUname"));
+                                } else {
+                                    nicheng_tv.setText("首牛用户");
+                                }
+//                                String dimg = discuss.getString("dImg");
                                 evelute_time.setText(discuss.getString("dDate"));
                                 evelute_content.setText(discuss.getString("dText"));
-                                if (!TextUtils.isEmpty(dimg)) {
-                                    ArrayList<ImageView> imageViews;
-                                    if (dimg.contains(",")) {
-                                        String dims[] = dimg.split(",");
-                                        int length = dims.length;
-                                        imageViews = wrapLayoutiml.getImage(length);
-                                        for (int i = 0; i < length; i++) {
-                                            ImageView imageView = imageViews.get(i);
-                                            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                            String imgUrl = dims[i];
-                                            imageView.setTag(imgUrl);
-                                            if (!TextUtils.isEmpty(imgUrl) && imgUrl.equals(imageView.getTag())) {
-                                                mShouNewApplication.loadImg(imgUrl, imageView);
-                                            }
-                                            PreviewImgUtils.previewImg(imageView,dims,i,mShouNewApplication);
-                                        }
-                                    } else {
-                                        imageViews = wrapLayoutiml.getImage(1);
-                                        ImageView imageView = imageViews.get(0);
-                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                        imageView.setTag(dimg);
-                                        if (!TextUtils.isEmpty(dimg) && dimg.equals(imageView.getTag())) {
-                                            mShouNewApplication.loadImg(dimg, imageView);
-                                        }
-                                        PreviewImgUtils.previewImg(imageView,new String[]{dimg},0,mShouNewApplication);
-                                    }
-
-                                }
+//                                if (!TextUtils.isEmpty(dimg)) {
+//                                    ArrayList<ImageView> imageViews;
+//                                    if (dimg.contains(",")) {
+//                                        String dims[] = dimg.split(",");
+//                                        int length = dims.length;
+//                                        imageViews = wrapLayoutiml.getImage(length);
+//                                        for (int i = 0; i < length; i++) {
+//                                            ImageView imageView = imageViews.get(i);
+//                                            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                                            String imgUrl = dims[i];
+//                                            imageView.setTag(imgUrl);
+//                                            if (!TextUtils.isEmpty(imgUrl) && imgUrl.equals(imageView.getTag())) {
+//                                                mShouNewApplication.loadImg(imgUrl, imageView);
+//                                            }
+//                                            PreviewImgUtils.previewImg(imageView,dims,i,mShouNewApplication);
+//                                        }
+//                                    } else {
+//                                        imageViews = wrapLayoutiml.getImage(1);
+//                                        ImageView imageView = imageViews.get(0);
+//                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                                        imageView.setTag(dimg);
+//                                        if (!TextUtils.isEmpty(dimg) && dimg.equals(imageView.getTag())) {
+//                                            mShouNewApplication.loadImg(dimg, imageView);
+//                                        }
+//                                        PreviewImgUtils.previewImg(imageView,new String[]{dimg},0,mShouNewApplication);
+//                                    }
+//
+//                                }
 
 
                             }
@@ -533,7 +538,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                 mShouNewApplication.redirect(ShoppingCartActivity.class);
                 break;
             case R.id.look_all:
-                if(null!=mSuperMarkeDetailEntity){
+                if (null != mSuperMarkeDetailEntity) {
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("shop", mSuperMarkeDetailEntity);
                     mShouNewApplication.redirectAndPrameter(AllEvalueteActivity.class, bundle);
@@ -579,7 +584,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.more_menu:
-                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(mMoreMenu, (int) (mMoreMenu.getWidth() / 2 * 0.1));
+                new ShopPopwindow(this, mShouNewApplication).showPopupWindow(mMoreMenu, (int) (mMoreMenu.getWidth() / 2 * 0.1));
                 break;
         }
     }
@@ -679,9 +684,9 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                     @Override
                     protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
 //                        mShouNewApplication.redirect(ShoppingCartActivity.class);
-                        if(exception==null){
+                        if (exception == null) {
                             ToastUtil.showToast("添加成功");
-                        }else {
+                        } else {
                             ToastUtil.showToast("添加失败");
                         }
                     }

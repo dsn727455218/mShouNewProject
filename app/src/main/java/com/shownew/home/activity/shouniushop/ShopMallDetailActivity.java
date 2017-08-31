@@ -11,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.TextUtils;
 import android.text.style.StrikethroughSpan;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,7 +36,6 @@ import com.shownew.home.module.dao.ShopCarEntity;
 import com.shownew.home.module.entity.ShopMallDetailEntity;
 import com.shownew.home.module.entity.ShopMallListEntity;
 import com.shownew.home.utils.GlideImageLoader;
-import com.shownew.home.utils.PreviewImgUtils;
 import com.shownew.home.utils.dialog.ShareDialog;
 import com.shownew.home.utils.dialog.ShopPopwindow;
 import com.shownew.home.utils.dialog.ShopSelectDialog;
@@ -450,39 +448,47 @@ public class ShopMallDetailActivity extends AndroidActivity implements View.OnCl
                             }
                             if (jsonData.has("discuss")) {//评价
                                 JSONObject discuss = jsonData.getJSONObject("discuss");
-                                mShouNewApplication.loadImg(discuss.getString("dUicon"), my_info_header_scv);
-                                nicheng_tv.setText(discuss.getString("dUname"));
-                                String dimg = discuss.getString("dImg");
+                                if (discuss.has("dUicon")) {
+                                    mShouNewApplication.loadImg(discuss.getString("dUicon"), my_info_header_scv);
+                                } else {
+                                    mShouNewApplication.loadImg("dUicon", my_info_header_scv);
+                                }
+                                if (discuss.has("dUname")) {
+                                    nicheng_tv.setText(discuss.getString("dUname"));
+                                } else {
+                                    nicheng_tv.setText("首牛用户");
+                                }
+//                                String dimg = discuss.getString("dImg");
                                 evelute_time.setText(discuss.getString("dDate"));
                                 evelute_content.setText(discuss.getString("dText"));
-                                if (!TextUtils.isEmpty(dimg)) {
-                                    ArrayList<ImageView> imageViews;
-                                    if (dimg.contains(",")) {
-                                        String dims[] = dimg.split(",");
-                                        int length = dims.length;
-                                        imageViews = wrapLayoutiml.getImage(length);
-                                        for (int i = 0; i < length; i++) {
-                                            ImageView imageView = imageViews.get(i);
-                                            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                            String imgUrl = dims[i];
-                                            imageView.setTag(imgUrl);
-                                            if (!TextUtils.isEmpty(imgUrl) && imgUrl.equals(imageView.getTag())) {
-                                                mShouNewApplication.loadImg(imgUrl, imageView);
-                                            }
-                                            PreviewImgUtils.previewImg(imageView, dims, i, mShouNewApplication);
-                                        }
-                                    } else {
-                                        imageViews = wrapLayoutiml.getImage(1);
-                                        ImageView imageView = imageViews.get(0);
-                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                                        imageView.setTag(dimg);
-                                        if (!TextUtils.isEmpty(dimg) && dimg.equals(imageView.getTag())) {
-                                            mShouNewApplication.loadImg(dimg, imageView);
-                                        }
-                                        PreviewImgUtils.previewImg(imageView, new String[]{dimg}, 0, mShouNewApplication);
-                                    }
-
-                                }
+//                                if (!TextUtils.isEmpty(dimg)) {
+//                                    ArrayList<ImageView> imageViews;
+//                                    if (dimg.contains(",")) {
+//                                        String dims[] = dimg.split(",");
+//                                        int length = dims.length;
+//                                        imageViews = wrapLayoutiml.getImage(length);
+//                                        for (int i = 0; i < length; i++) {
+//                                            ImageView imageView = imageViews.get(i);
+//                                            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                                            String imgUrl = dims[i];
+//                                            imageView.setTag(imgUrl);
+//                                            if (!TextUtils.isEmpty(imgUrl) && imgUrl.equals(imageView.getTag())) {
+//                                                mShouNewApplication.loadImg(imgUrl, imageView);
+//                                            }
+//                                            PreviewImgUtils.previewImg(imageView, dims, i, mShouNewApplication);
+//                                        }
+//                                    } else {
+//                                        imageViews = wrapLayoutiml.getImage(1);
+//                                        ImageView imageView = imageViews.get(0);
+//                                        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//                                        imageView.setTag(dimg);
+//                                        if (!TextUtils.isEmpty(dimg) && dimg.equals(imageView.getTag())) {
+//                                            mShouNewApplication.loadImg(dimg, imageView);
+//                                        }
+//                                        PreviewImgUtils.previewImg(imageView, new String[]{dimg}, 0, mShouNewApplication);
+//                                    }
+//
+//                                }
 
 
                             }

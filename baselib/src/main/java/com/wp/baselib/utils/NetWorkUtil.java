@@ -89,6 +89,10 @@ public class NetWorkUtil {
         return 3;
     }
 
+    public static boolean checkNetworkConnected(Context context, boolean isShowDialog) {
+        return checkNetworkConnected(context, isShowDialog, null);
+    }
+
     /**
      * 判断网络是否联接
      *
@@ -96,15 +100,15 @@ public class NetWorkUtil {
      * @param isShowDialog 是否显示网络设置框
      * @return
      */
-    public static boolean checkNetworkConnected(Context context, boolean isShowDialog) {
-        boolean isConnect = false;
+    public static boolean checkNetworkConnected(Context context, boolean isShowDialog, UiUtil.AlertDialogLisener listener) {
+        boolean isConnect;
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo network = cm.getActiveNetworkInfo();
         if (network != null && network.isConnected()) {
             isConnect = true;
         } else {
             if (isShowDialog)
-                UiUtil.showNoNetworkDialog(context);
+                UiUtil.showNoNetworkDialog(context, listener);
             isConnect = false;
         }
         return isConnect;

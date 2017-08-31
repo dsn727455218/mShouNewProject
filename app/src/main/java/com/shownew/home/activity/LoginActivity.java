@@ -131,7 +131,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                     break;
                                 case 1:
                                     msg = "登录成功";
-
+                                    break;
+                                case -3:
+                                    msg="车辆正在被使用，稍后登录";
                                     break;
                             }
                             ToastUtil.showToast(msg);

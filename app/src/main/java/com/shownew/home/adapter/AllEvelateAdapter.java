@@ -55,7 +55,7 @@ public class AllEvelateAdapter extends RecyclerView.Adapter<AllEvelateAdapter.Al
             return;
         }
         holder.evelute_content.setText(allEvelateEntity.getDText());
-        holder.nicheng_tv.setText(allEvelateEntity.getDUname());
+        holder.nicheng_tv.setText(TextUtils.isEmpty(allEvelateEntity.getDUname())?"首牛用户":allEvelateEntity.getDUname());
         holder.fabulous.setText(String.valueOf(allEvelateEntity.getDNicecount() > 9999 ? "9999+" : allEvelateEntity.getDNicecount()));
         holder.fabulous.setCompoundDrawablesWithIntrinsicBounds(allEvelateEntity.getDIsnice() == 1
                 ? R.drawable.fabulous_orange

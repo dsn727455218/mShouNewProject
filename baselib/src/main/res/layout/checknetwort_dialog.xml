@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_network_circle"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tips_tv"
+        style="@style/BaseTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:text="网络无法访问，请检查网络连接！"
+        android:textColor="#4c4c4c"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tips_tv"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            style="@style/BaseTextView"
+            android:id="@+id/cacel"
+            android:textSize="15sp"
+            android:textColor="#4c4c4c"
+            android:background="@drawable/bg_network__cacel"
+            android:text="取消" />
+
+        <Button
+            android:id="@+id/sure"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            style="@style/BaseTextView"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_network__sure"
+            android:text="确定"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</RelativeLayout>

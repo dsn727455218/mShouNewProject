@@ -9,10 +9,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
+import com.lzy.okgo.OkGo;
 import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
+import com.wp.baselib.utils.NetWorkUtil;
 import com.wp.baselib.utils.Preference;
+import com.wp.baselib.utils.UiUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +34,12 @@ public class WelcomeActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         setBarColor(R.color.transparent);
-        mTimeTask = new TimeTask(3 * 1000, 1000);
-        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION);
+        mTimeTask = new TimeTask( 500, 500);
     }
 
     /**
      * 检查权限
+     *
      * @param permiss
      */
     private void checkPermission(String... permiss) {
@@ -55,7 +58,7 @@ public class WelcomeActivity extends BaseActivity {
                     ActivityCompat.requestPermissions(WelcomeActivity.this, requestPermissionList.toArray(new String[requestPermissionList.size()]), 1);
                 }
             }
-        }else {
+        } else {
             permissionAllGranted();
         }
     }
@@ -141,7 +144,7 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
+        checkPermission(Manifest.permission.ACCESS_FINE_LOCATION);
         JPushInterface.onResume(this);
         if (JPushInterface.isPushStopped(this)) {
             JPushInterface.resumePush(this);
@@ -177,13 +180,24 @@ public class WelcomeActivity extends BaseActivity {
 
         @Override
         public void onFinish() {
-            if (!Preference.getBoolean(mShouNewApplication, Config.ISFIRST_ENTER, false)) {
-                mainApplication.redirect(GuideActivity.class);
-                Preference.putBoolean(mShouNewApplication, Config.ISFIRST_ENTER, true);
+            if (NetWorkUtil.checkNetworkConnected(WelcomeActivity.this, true, new UiUtil.AlertDialogLisener() {
+                @Override
+                public void alertDialogClick() {
+                    finish();
+                }
+            })) {
+                if (!Preference.getBoolean(mShouNewApplication, Config.ISFIRST_ENTER, false)) {
+                    mainApplication.redirect(GuideActivity.class);
+                    Preference.putBoolean(mShouNewApplication, Config.ISFIRST_ENTER, true);
+                } else {
+                    mainApplication.redirect(MainActivity.class);
+                }
+                finish();
             } else {
-                mainApplication.redirect(MainActivity.class);
+                OkGo.getInstance().cancelTag(this);
+                OkGo.getInstance().cancelAll();
             }
-            finish();
+
         }
     }
 }

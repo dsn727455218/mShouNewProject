@@ -21,17 +21,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
+
 import com.wp.baselib.MainApplication;
 import com.wp.baselib.R;
 
 import java.io.File;
 
 import java.util.List;
+
 
 /**
  * 常用视图操作工具栏
@@ -320,40 +323,83 @@ public class UiUtil {
 
     }
 
+    public static void showNoNetworkDialog(final Context context) {
+        showNoNetworkDialog(context, null);
+    }
+
+
+    public interface AlertDialogLisener {
+        void alertDialogClick();
+    }
+
     /**
      * 没有网络时提醒设置网络对话框
      *
      * @param context
      */
-    public static void showNoNetworkDialog(final Context context) {
-        AlertUtil.showAlert(context, R.string.not_network,
-                R.string.open_gprs_msg, R.string.ok, new OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
+    public static void showNoNetworkDialog(final Context context, final AlertDialogLisener listener) {
+        final AlertDialog alertDialog = AlertUtil.showViewDialog(context, R.layout.checknetwort_dialog);
 
-                        if (android.os.Build.VERSION.SDK_INT > 10) {
-                            // 3.0以上打开设置界面
-                            context.startActivity(new Intent(
-                                    android.provider.Settings.ACTION_SETTINGS));
-                        } else {
-                            // context.startActivity(new Intent(
-                            // android.provider.Settings.ACTION_WIRELESS_SETTINGS));
-                            Intent intent = new Intent("/");
-                            intent.setComponent(new ComponentName(
-                                    "com.android.settings",
-                                    "com.android.settings.WirelessSettings"));
-                            intent.setAction("android.intent.action.VIEW");
-                            context.startActivity(intent);
-                        }
-                    }
-                }, R.string.cancle, new OnClickListener() {
+        if (alertDialog == null)
+            return;
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.setCancelable(false);
+        Window window = alertDialog.getWindow();
+        if (window == null)
+            return;
+        window.findViewById(R.id.sure).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.cancel();
+                if (android.os.Build.VERSION.SDK_INT > 10) {
+                    // 3.0以上打开设置界面
+                    context.startActivity(new Intent(
+                            android.provider.Settings.ACTION_SETTINGS));
+                } else {
+                    // context.startActivity(new Intent(
+                    // android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+                    Intent intent = new Intent("/");
+                    intent.setComponent(new ComponentName(
+                            "com.android.settings",
+                            "com.android.settings.WirelessSettings"));
+                    intent.setAction("android.intent.action.VIEW");
+                    context.startActivity(intent);
+                }
+            }
+        });
+        window.findViewById(R.id.cacel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.cancel();
+                if (listener != null) {
+                    listener.alertDialogClick();
+                }
+            }
+        });
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
+
+//        AlertUtil.showAlert(context, R.string.not_network,
+//                R.string.open_gprs_msg, R.string.ok, new OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.cancel();
+//
+//                        if (android.os.Build.VERSION.SDK_INT > 10) {
+//                            // 3.0以上打开设置界面
+//                            context.startActivity(new Intent(
+//                                    android.provider.Settings.ACTION_SETTINGS));
+//                        } else {
+//                            // context.startActivity(new Intent(
+//                            // android.provider.Settings.ACTION_WIRELESS_SETTINGS));
+//                            Intent intent = new Intent("/");
+//                            intent.setComponent(new ComponentName(
+//                                    "com.android.settings",
+//                                    "com.android.settings.WirelessSettings"));
+//                            intent.setAction("android.intent.action.VIEW");
+//                            context.startActivity(intent);
+//                        }
+//                    }
+//                }, R.string.cancle, listener);
     }
 
     /**

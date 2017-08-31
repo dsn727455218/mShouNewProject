@@ -70,7 +70,6 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
         updataDeviceData();
         initShare();
         getReource();
-
     }
 
     public void loadImg(String imgUrl, final ImageView imageView) {
@@ -87,6 +86,11 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
      */
     private void getReource() {
         mUserAPI.getReource(new ShouNewHttpCallBackLisener() {
+            @Override
+            public void onError(Call call, Response response, Exception e) {
+
+            }
+
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 if (exception == null) {
@@ -111,8 +115,8 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
     public void getSystemTime() {
         mUserAPI.getSystemTime(new ShouNewHttpCallBackLisener() {
             @Override
-            protected Object parseData(String result) {
-                return null;
+            public void onError(Call call, Response response, Exception e) {
+
             }
 
             @Override
@@ -274,8 +278,8 @@ public class ShouNewApplication extends MainApplication implements Thread.Uncaug
     private void updataDeviceData() {
         new DeviceAPI(instance).controlLock("4", new ShouNewHttpCallBackLisener() {
             @Override
-            protected Object parseData(String result) {
-                return null;
+            public void onError(Call call, Response response, Exception e) {
+
             }
 
             @Override

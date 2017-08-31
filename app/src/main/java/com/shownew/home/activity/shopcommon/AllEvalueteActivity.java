@@ -25,8 +25,6 @@ import java.util.ArrayList;
 
 import okhttp3.Response;
 
-import static com.umeng.socialize.utils.DeviceConfig.context;
-
 
 public class AllEvalueteActivity extends BaseActivity implements View.OnClickListener {
     private ShopAPI shopAPI;
@@ -89,8 +87,8 @@ public class AllEvalueteActivity extends BaseActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rightBt_img2:
-                new ShareDialog(context, mShouNewApplication).setCancelable(true).show();
-                break;
+                new ShareDialog(this, mShouNewApplication).setCancelable(true).show();
+            break;
             case R.id.rightBt_img1:
                 mShouNewApplication.redirect(ShoppingCartActivity.class);
                 break;

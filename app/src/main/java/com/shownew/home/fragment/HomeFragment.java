@@ -61,6 +61,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import okhttp3.Call;
 import okhttp3.Response;
 
 
@@ -131,9 +132,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mCentigradeTv = (TextView) mConverView.findViewById(R.id.centigrade_tv);
         mWeatherTv = (TextView) mConverView.findViewById(R.id.weather_tv);
         mBattery = (TextView) mConverView.findViewById(R.id.battery_values_tv);
-         View mChepeiShoppingIv = mConverView.findViewById(R.id.chepei_shopping_iv);
+        View mChepeiShoppingIv = mConverView.findViewById(R.id.chepei_shopping_iv);
         mChepeiShoppingIv.setOnClickListener(this);
-        View   mSelectShouniuIv = mConverView.findViewById(R.id.select_shouniu_iv);
+        View mSelectShouniuIv = mConverView.findViewById(R.id.select_shouniu_iv);
         mSelectShouniuIv.setOnClickListener(this);
 
         mTitleBarView = (TitleBarView) mConverView.findViewById(R.id.headbar);
@@ -154,19 +155,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
      * 汽车相关的控间
      */
     private void findViewIdByCar() {
-         LinearLayout mCarLocation = (LinearLayout) mConverView.findViewById(R.id.track_location_car);
+        LinearLayout mCarLocation = (LinearLayout) mConverView.findViewById(R.id.track_location_car);
         ((ImageView) mCarLocation.getChildAt(0)).setImageResource(R.drawable.select_location);
         setTextColorContent(((TextView) mCarLocation.getChildAt(1)), "追踪定位");
         mCarLocation.getChildAt(0).setTag("mCarLocation");
         mCarLocation.getChildAt(0).setOnClickListener(this);
-         LinearLayout
-        mCarHistory = (LinearLayout) mConverView.findViewById(R.id.car_mute_car);
+        LinearLayout
+                mCarHistory = (LinearLayout) mConverView.findViewById(R.id.car_mute_car);
         ((ImageView) mCarHistory.getChildAt(0)).setImageResource(R.drawable.select_history_car);
         setTextColorContent(((TextView) mCarHistory.getChildAt(1)), "历史轨迹");
         mCarHistory.getChildAt(0).setTag("mCarHistory");
         mCarHistory.getChildAt(0).setOnClickListener(this);
 
-        LinearLayout  mCarMYCAR = (LinearLayout) mConverView.findViewById(R.id.battery_manage_car);
+        LinearLayout mCarMYCAR = (LinearLayout) mConverView.findViewById(R.id.battery_manage_car);
         ((ImageView) mCarMYCAR.getChildAt(0)).setImageResource(R.drawable.select_my_car);
         setTextColorContent(((TextView) mCarMYCAR.getChildAt(1)), "我的车辆");
         mCarMYCAR.getChildAt(0).setTag("mCarMYCAR");
@@ -337,7 +338,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
 
-
     @Override
     public void onRefresh() {
         getDeviceNewData();
@@ -424,56 +424,21 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private void controlLock(final int values) {
         mDeviceAPI.controlLock(String.valueOf(values), mShouNewApplication.new ShouNewHttpCallBackLisener() {
             @Override
-            protected String parseData(String data) {
-                return null;
+            public void onError(Call call, Response response, Exception e) {
+                mHandler.sendEmptyMessageDelayed(1, 5000);
             }
 
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 if (null == exception) {
-                    mHandler.sendEmptyMessageDelayed(0, 5000);
-                    switch (values) {
-                        case 1:
-                            if ("汽车".equals(mType)) {
-                                mCarLockIv.setImageResource(R.drawable.select_lock_start);
-                            } else if ("电动车".equals(mType)) {
-                                mLock_iv.setImageResource(R.drawable.select_lock_start);
-                            }
-                            mDeviceEntity.setIsLock("0");
-                            break;
-                        case 2:
-                            mDeviceEntity.setIsLock("1");
-                            if ("汽车".equals(mType)) {
-                                mCarLockIv.setImageResource(R.drawable.select_unlock_start);
-                            } else if ("电动车".equals(mType)) {
-                                mLock_iv.setImageResource(R.drawable.select_unlock_start);
-                            }
-
-                            break;
-                    }
+                    Message message = new Message();
+                    message.what = 3;//车子开关锁 成功
+                    message.arg1 = values;
+                    mHandler.sendMessageDelayed(message, 5000);
                     //                    ToastUtil.showToast("操作成功");
                 } else if ("302".equals(exception.getMessage()) || "305".equals(exception.getMessage())) {
 
                 } else {
-                    switch (values) {
-                        case 1:
-                            mDeviceEntity.setIsLock("0");
-
-                            if ("汽车".equals(mType)) {
-                                mCarLockIv.setImageResource(R.drawable.select_lock_start);
-                            } else if ("电动车".equals(mType)) {
-                                mLock_iv.setImageResource(R.drawable.select_lock_start);
-                            }
-                            break;
-                        case 2:
-                            if ("汽车".equals(mType)) {
-                                mCarLockIv.setImageResource(R.drawable.select_unlock_start);
-                            } else if ("电动车".equals(mType)) {
-                                mLock_iv.setImageResource(R.drawable.select_unlock_start);
-                            }
-                            mDeviceEntity.setIsLock("1");
-                            break;
-                    }
                     //                    ToastUtil.showToast("操作失败");
                     mHandler.sendEmptyMessageDelayed(1, 5000);
                 }
@@ -513,24 +478,18 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mDeviceAPI.setShockWarn(values, mShouNewApplication.new ShouNewHttpCallBackLisener() {
 
             @Override
-            protected Object parseData(String result) {
-                return null;
+            public void onError(Call call, Response response, Exception e) {
+                mHandler.sendEmptyMessageDelayed(1, 5000);
             }
 
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 if (null == exception) {
-                    mHandler.sendEmptyMessageDelayed(0, 5000);
-                    if ("0".equals(values)) {
-                        ((ImageView) mCar_mute.getChildAt(0)).setImageResource(R.drawable.select_car_mute);
-                        setTextColorContent(((TextView) mCar_mute.getChildAt(1)), "关闭静音");
-                    } else if ("1".equals(values)) {
-                        ((ImageView) mCar_mute.getChildAt(0)).setImageResource(R.drawable.select_volume);
-                        setTextColorContent(((TextView) mCar_mute.getChildAt(1)), "开启静音");
-                    }
-                    mDeviceEntity.setIsMute(values);
+                    Message message = new Message(); //车辆静音
+                    message.what = 2;
+                    message.obj = values;
+                    mHandler.sendMessageDelayed(message, 5000);
                 } else if ("302".equals(exception.getMessage()) || "305".equals(exception.getMessage())) {
-
                 } else {
                     mHandler.sendEmptyMessageDelayed(1, 5000);
                 }
@@ -577,6 +536,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             @Override
             protected DeviceEntity parseData(String result) {
                 return JsonUtils.fromJson(result, DeviceEntity.class);
+            }
+
+            @Override
+            public void onError(Call call, Response response, Exception e) {
+
             }
 
             @Override
@@ -758,6 +722,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         UMShareAPI.get(context).onActivityResult(requestCode, resultCode, data);
     }
 
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -846,10 +811,42 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             if (context != null) {
                 MainActivity activity = (MainActivity) context;
                 activity.closeLoadingDialog();
+
                 if (msg.what == 0) {
                     ToastUtil.showToast("发送成功");
                 } else if (msg.what == 1) {
                     ToastUtil.showToast("发送失败");
+                } else if (msg.what == 3) {
+                    ToastUtil.showToast("发送成功");
+                    switch (msg.arg1) {
+                        case 1:
+                            if ("汽车".equals(mType)) {
+                                mCarLockIv.setImageResource(R.drawable.select_lock_start);
+                            } else if ("电动车".equals(mType)) {
+                                mLock_iv.setImageResource(R.drawable.select_lock_start);
+                            }
+                            mDeviceEntity.setIsLock("0");
+                            break;
+                        case 2:
+                            mDeviceEntity.setIsLock("1");
+                            if ("汽车".equals(mType)) {
+                                mCarLockIv.setImageResource(R.drawable.select_unlock_start);
+                            } else if ("电动车".equals(mType)) {
+                                mLock_iv.setImageResource(R.drawable.select_unlock_start);
+                            }
+                            break;
+                    }
+                } else if (msg.what == 2) {
+                    ToastUtil.showToast("发送成功");
+                    String values = (String) msg.obj;
+                    if ("0".equals(values)) {
+                        ((ImageView) mCar_mute.getChildAt(0)).setImageResource(R.drawable.select_car_mute);
+                        setTextColorContent(((TextView) mCar_mute.getChildAt(1)), "关闭静音");
+                    } else if ("1".equals(values)) {
+                        ((ImageView) mCar_mute.getChildAt(0)).setImageResource(R.drawable.select_volume);
+                        setTextColorContent(((TextView) mCar_mute.getChildAt(1)), "开启静音");
+                    }
+                    mDeviceEntity.setIsMute(values);
                 }
             }
 
