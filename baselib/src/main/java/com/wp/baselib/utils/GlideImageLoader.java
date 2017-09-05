@@ -11,7 +11,7 @@ import com.wp.baselib.utils.imagepicker.loader.ImageLoader;
 
 import java.io.File;
 
-import static android.R.attr.path;
+
 
 
 /**

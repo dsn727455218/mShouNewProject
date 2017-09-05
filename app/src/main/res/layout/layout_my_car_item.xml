@@ -6,7 +6,6 @@
               android:orientation="vertical">
 
     <View
-        layout="@layout/commone_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_my_car_bottom_top_bg_h"
         android:background="#35383f"

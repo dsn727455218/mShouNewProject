@@ -64,7 +64,8 @@ public class ImagePageAdapter extends PagerAdapter {
             ImageItem imageItem = images.get(position);
             imagePicker.getImageLoader().displayImage(mActivity, imageItem.path, photoView, screenWidth, screenHeight);
         } else if (null != mImageUrls) {
-            imagePicker.getImageLoader().displayImageFromUrl(mActivity, mImageUrls[position], photoView, screenWidth, screenHeight);
+            //在浏览评价大图的时候显示原图
+            imagePicker.getImageLoader().displayImageFromUrl(mActivity, mImageUrls[position]+"_", photoView, screenWidth, screenHeight);
         }
         photoView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
             @Override
