@@ -20,6 +20,7 @@ import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
+import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.wp.baselib.utils.ToastUtil;
 import com.wp.baselib.widget.TitleBarView;
@@ -203,7 +204,7 @@ public class ChargingStationActivity extends BaseLocationActivity implements AMa
                 if (poiItems != null && poiItems.size() > 0) {
                     clearMapMarker(mAMap);
                     addMarkersToMap(mAMap, R.drawable.gps_point, new LatLng(location.getLatitude(), location.getLongitude()), true, location.getAddress(), "");
-                    changeMapCenter(mAMap,new LatLng(location.getLatitude(), location.getLongitude()),12);
+                    changeMapCenter(mAMap, new LatLng(location.getLatitude(), location.getLongitude()), 12);
                     for (PoiItem poiItem : poiItems) {
                         startGrowAnimation(addMarkersToMap(mAMap, R.drawable.chargelocation, new LatLng(poiItem.getLatLonPoint().getLatitude(), poiItem.getLatLonPoint().getLongitude()), true, poiItem.getTitle(), ""));
                     }
@@ -216,7 +217,6 @@ public class ChargingStationActivity extends BaseLocationActivity implements AMa
         }
 
     }
-
 
 
     @Override

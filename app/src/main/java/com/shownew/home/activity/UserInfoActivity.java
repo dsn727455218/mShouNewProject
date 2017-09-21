@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -244,7 +245,7 @@ public class UserInfoActivity extends BaseActivity implements View.OnClickListen
                                 UserEntity.UserBean userBean = JsonUtils.fromJson(user, UserEntity.UserBean.class);
                                 if(null!=userBean){
                                     mNichengEd.setText(TextUtils.isEmpty(userBean.getUNickname())?"修改昵称":userBean.getUNickname());
-                                    Glide.with(UserInfoActivity.this).load(userBean.getUIcon()).asBitmap().placeholder(R.drawable.ic_launcher).error(R.drawable.ic_launcher).into(new SimpleTarget<Bitmap>() {
+                                    Glide.with(UserInfoActivity.this).load(userBean.getUIcon()).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.ic_launcher).error(R.drawable.ic_launcher).into(new SimpleTarget<Bitmap>() {
                                         @Override
                                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                             mMyInfoHeaderIv.setImageBitmap(resource);

@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -79,7 +80,7 @@ public class ShopSelectDialog extends BaseDialog implements View.OnClickListener
                 load(imgUrl).
 
                 asBitmap().
-
+                diskCacheStrategy(DiskCacheStrategy.ALL).
                 placeholder(R.drawable.square_seize).
 
                 error(R.drawable.square_seize).

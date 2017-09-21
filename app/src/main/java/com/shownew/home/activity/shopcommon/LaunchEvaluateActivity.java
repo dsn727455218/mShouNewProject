@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
 import com.shownew.home.module.ShopAPI;
@@ -167,7 +168,7 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
                 ImageView imageView = views.get(i);
                 if (i == fileSize - 1) {
                     imageView.setScaleType(ImageView.ScaleType.CENTER);
-                    Glide.with(LaunchEvaluateActivity.this).load(R.drawable.pic_evaluate).asBitmap().into(imageView);
+                    Glide.with(LaunchEvaluateActivity.this).load(R.drawable.pic_evaluate).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
                     imageView.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -187,7 +188,7 @@ public class LaunchEvaluateActivity extends BaseActivity implements View.OnClick
                         }
                     });
                     imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-                    Glide.with(LaunchEvaluateActivity.this).load(imageItems.get(i).path).asBitmap().into(imageView);
+                    Glide.with(LaunchEvaluateActivity.this).load(imageItems.get(i).path).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
                 }
             }
         } else {

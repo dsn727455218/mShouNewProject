@@ -27,6 +27,7 @@ import com.amap.api.navi.model.NaviLatLng;
 import com.autonavi.tbt.TrafficFacilityInfo;
 import com.shownew.home.ShouNewApplication;
 import com.shownew.home.activity.common.BaseActivity;
+import com.wp.baselib.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
         }
 
         //实例化语音引擎
-        mTtsManager = TTSController.getInstance(ShouNewApplication.getInstance());
+        mTtsManager = TTSController.getInstance();
         mTtsManager.init();
         mAMapNavi = AMapNavi.getInstance(ShouNewApplication.getInstance());
         mAMapNavi.addAMapNaviListener(this);
@@ -89,7 +90,7 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
 
     @Override
     public void onInitNaviFailure() {
-        Toast.makeText(this, "init navi Failed", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "init navi Failed", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -139,7 +140,8 @@ public class BaseNavigationActivity extends BaseActivity implements AMapNaviList
         Log.i("dm", "路线计算失败：错误码=" + errorInfo + ",Error Message= " + "ErrorInfo.getError(errorInfo)");
         Log.i("dm", "错误码详细链接见：http://lbs.amap.com/api/android-navi-sdk/guide/tools/errorcode/");
         Log.e("dm", "--------------------------------------------");
-        Toast.makeText(this, "errorInfo：" + errorInfo + ",Message：" + "ErrorInfo.getError(errorInfo)", Toast.LENGTH_LONG).show();
+        ToastUtil.showToast("起点和终点距离太大，路径规划失败");
+//        Toast.makeText(this, "errorInfo：" + errorInfo + ",Message：" + "ErrorInfo.getError(errorInfo)", Toast.LENGTH_LONG).show();
     }
 
     @Override

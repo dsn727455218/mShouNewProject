@@ -1,5 +1,6 @@
 package com.shownew.home.activity.map;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -157,7 +158,7 @@ public class StopCarActivity extends BaseLocationActivity implements AMap.OnInfo
 
     @Override
     public View getInfoContents(final Marker marker) {
-        View infoView = getLayoutInflater().inflate(R.layout.map_info_windows, null);
+        @SuppressLint("InflateParams") View infoView = getLayoutInflater().inflate(R.layout.map_info_windows, null);
         TextView infowindowsTv = (TextView) infoView.findViewById(R.id.infowindows_tv);
         infoView.findViewById(R.id.infowindows_btn).setOnClickListener(new View.OnClickListener() {
             @Override

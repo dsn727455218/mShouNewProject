@@ -8,6 +8,9 @@ import android.widget.Toast;
 
 import com.wp.baselib.MainApplication;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  * 用于显示 Toast
@@ -22,7 +25,7 @@ public class ToastUtil {
     }
 
     /**
-     * 调用该方法 如果需要取消显示Toast 使用cancelToast()
+     * 调用该方法 如果需要取消显示Toast 使用showToast()
      *
      * @param text text
      */
@@ -40,6 +43,7 @@ public class ToastUtil {
                 toast = Toast.makeText(MainApplication.getInstance(), text, Toast.LENGTH_LONG);
                 toast.setText(text);
                 toast.setDuration(Toast.LENGTH_LONG);
+
             }
         }
         toast.setGravity(Gravity.CENTER, 0, 0);
@@ -52,7 +56,7 @@ public class ToastUtil {
             if (lay.getChildCount() == 2)  //移除自定义视图
                 lay.removeViewAt(0);
         }
-        toast.show();
+        showToast(1000l);
     }
 
     public static void cancelToast() {
@@ -60,4 +64,30 @@ public class ToastUtil {
             toast.cancel();
         }
     }
+
+    /**
+     * 设置Toast消失的时间
+     *
+     * @param date
+     */
+    public static void showToast(long date) {
+        final Timer time = new Timer();
+        time.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (null != toast)
+                    toast.show();
+            }
+        }, 0, 3500);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (null != time) {
+                    cancelToast();
+                    time.cancel();
+                }
+            }
+        }, date);
+    }
+
 }

@@ -17,6 +17,7 @@ import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeAddress;
 import com.amap.api.services.geocoder.RegeocodeResult;
+import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
 import com.wp.baselib.widget.TitleBarView;

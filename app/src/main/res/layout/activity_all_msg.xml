@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
-    <include layout="@layout/title_bar"/>
+    <include layout="@layout/title_bar" />
 
     <LinearLayout
         android:id="@+id/msg_car"
@@ -20,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/vehiclenews"/>
+            android:src="@drawable/vehiclenews" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -34,7 +32,7 @@
                 android:padding="7dp"
                 android:text="车辆消息"
                 android:textColor="#357FED"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
             <TextView
@@ -46,7 +44,7 @@
                 android:gravity="left"
                 android:maxLines="1"
                 android:textColor="#9ba4b2"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -68,7 +66,7 @@
                     android:singleLine="true"
                     android:text="没有最新消息"
                     android:textColor="#9ba4b2"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/msg_count_car"
@@ -84,7 +82,7 @@
                     android:paddingRight="2dp"
                     android:textColor="#CED2D9"
                     android:textSize="10sp"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -94,7 +92,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1.5dp"
-        android:background="@drawable/dividing_line_hei"/>
+        android:background="@drawable/dividing_line_hei" />
 
     <LinearLayout
         android:id="@+id/msg_action"
@@ -107,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/huodongnews"/>
+            android:src="@drawable/huodongnews" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -121,7 +119,7 @@
                 android:padding="7dp"
                 android:text="活动消息"
                 android:textColor="#f4cd45"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
             <TextView
@@ -133,7 +131,7 @@
                 android:gravity="left"
                 android:maxLines="1"
                 android:textColor="#9ba4b2"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -155,7 +153,7 @@
                     android:singleLine="true"
                     android:text="没有最新消息"
                     android:textColor="#9ba4b2"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/msg_count_action"
@@ -171,7 +169,7 @@
                     android:paddingRight="2dp"
                     android:textColor="#CED2D9"
                     android:textSize="10sp"
-                    android:visibility="invisible"/>
+                    android:visibility="invisible" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -181,7 +179,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1.5dp"
-        android:background="@drawable/dividing_line_hei"/>
+        android:background="@drawable/dividing_line_hei" />
 
     <LinearLayout
         android:id="@+id/msg_sys"
@@ -194,7 +192,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/xitongnews"/>
+            android:src="@drawable/xitongnews" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -208,7 +206,7 @@
                 android:padding="7dp"
                 android:text="系统消息"
                 android:textColor="#e77817"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
             <TextView
@@ -220,7 +218,7 @@
                 android:gravity="left"
                 android:maxLines="1"
                 android:textColor="#9ba4b2"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -242,7 +240,7 @@
                     android:singleLine="true"
                     android:text="没有最新消息"
                     android:textColor="#9ba4b2"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/msg_count_sys"
@@ -258,8 +256,7 @@
                     android:paddingRight="2dp"
                     android:textColor="#CED2D9"
                     android:textSize="10sp"
-                    android:visibility="invisible"
-                    />
+                    android:visibility="invisible" />
             </RelativeLayout>
 
         </RelativeLayout>
@@ -270,6 +267,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1.5dp"
-        android:background="@drawable/dividing_line_hei"/>
+        android:background="@drawable/dividing_line_hei" />
 
 </LinearLayout>

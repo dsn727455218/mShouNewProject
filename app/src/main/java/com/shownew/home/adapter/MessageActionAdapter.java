@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -84,7 +85,7 @@ public class MessageActionAdapter extends RecyclerView.Adapter<MessageActionAdap
          String url = messageActionEntity.getNImg();
         holder.msg_img.setTag(url);
         if(!TextUtils.isEmpty(url)&&url.equals(holder.msg_img.getTag())){
-            Glide.with(context).load(url).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+            Glide.with(context).load(url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     holder.msg_img.setImageBitmap(resource);

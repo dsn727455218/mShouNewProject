@@ -20,6 +20,7 @@ import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.geocoder.GeocodeResult;
 import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.RegeocodeResult;
+import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.ShouNewApplication;
 import com.shownew.home.module.DeviceAPI;
@@ -305,6 +306,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("startLocaltion", new NaviLatLng(location.getLatitude(), location.getLongitude()));
                     bundle.putParcelable("endLocaltion", new NaviLatLng(marker.getPosition().latitude, marker.getPosition().longitude));
+                    bundle.putInt("navigationType", Config.WALKROUTE);
                     mainApplication.redirectAndPrameter(MapNavigationActivity.class, bundle);
                 }
             }
@@ -346,6 +348,7 @@ public class ChaseBrownActivity extends BaseLocationActivity implements AMap.OnI
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("startLocaltion", new NaviLatLng(location.getLatitude(), location.getLongitude()));
                 bundle.putParcelable("endLocaltion", new NaviLatLng(mDeviceLatitude, mDeviceLongitude));
+                bundle.putInt("navigationType", Config.WALKROUTE);
                 mainApplication.redirectAndPrameter(MapNavigationActivity.class, bundle);
                 break;
             case R.id.history_stop_car_point_btn:

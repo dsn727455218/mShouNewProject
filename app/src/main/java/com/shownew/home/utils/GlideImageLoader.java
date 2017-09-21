@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -29,9 +30,7 @@ public class GlideImageLoader extends ImageLoader {
 
     @Override
     public void displayImage(Context context, Object path, final ImageView imageView) {
-
-//        Glide.with(context).load(path).placeholder(sourceId).error(sourceId).into(imageView);
-                Glide.with(context).load(path).asBitmap().
+                Glide.with(context).load(path).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).
                                 placeholder(sourceId)
                                 .error(sourceId)
                                 .into(new SimpleTarget<Bitmap>() {

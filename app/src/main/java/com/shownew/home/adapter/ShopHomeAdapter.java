@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -81,7 +82,7 @@ public class ShopHomeAdapter extends RecyclerView.Adapter<ShopHomeAdapter.ShouHo
         String url = superMarketEntity.getMpSimg();
         holder.shop_img.setTag(url);
         if (!TextUtils.isEmpty(url) && url.equals(holder.shop_img.getTag())) {
-            Glide.with(mShouNewApplication).load(url).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+            Glide.with(mShouNewApplication).load(url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     holder.shop_img.setImageBitmap(resource);
@@ -116,7 +117,7 @@ public class ShopHomeAdapter extends RecyclerView.Adapter<ShopHomeAdapter.ShouHo
          String url = superMarketEntity.getpSimg();
         holder.shop_img.setTag(url);
         if (!TextUtils.isEmpty(url) && url.equals(holder.shop_img.getTag())) {
-            Glide.with(mShouNewApplication).load(url).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+            Glide.with(mShouNewApplication).load(url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     holder.shop_img.setImageBitmap(resource);

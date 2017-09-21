@@ -15,7 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginRight="7dp"
+            android:layout_toLeftOf="@+id/shopping_cart_a_iv"
             android:layout_marginTop="5dp"
             android:background="@drawable/shape_shop_search_title"
             android:orientation="horizontal">
@@ -44,7 +45,17 @@
                 android:layout_marginRight="5dp"
                 android:padding="8dp"
                 android:src="@drawable/search_shop" />
+
         </LinearLayout>
+        <ImageView
+            android:id="@+id/shopping_cart_a_iv"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dp"
+            android:padding="5dp"
+            android:src="@drawable/shopping_cart_a" />
     </RelativeLayout>
 
     <ImageView

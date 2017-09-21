@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -42,7 +43,7 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
          String url = datas.get(position).getAImg();
         viewHolder.img.setTag(url);
        if(!TextUtils.isEmpty(url)&&url.equals(viewHolder.img.getTag())){
-           Glide.with(context).load(url).asBitmap().placeholder(R.drawable.sevice_runseize).error(R.drawable.sevice_runseize).into(new SimpleTarget<Bitmap>() {
+           Glide.with(context).load(url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.sevice_runseize).error(R.drawable.sevice_runseize).into(new SimpleTarget<Bitmap>() {
                @Override
                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
 

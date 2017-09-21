@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -49,7 +50,7 @@ public class CollectShopAdapter extends RecyclerView.Adapter<CollectShopAdapter.
         String url = collectShopEntity.getCoSimg();
         holder.search_img.setTag(url);
         if (!TextUtils.isEmpty(url) && url.equals(holder.search_img.getTag())) {
-            Glide.with(shopCollectActivity).load(url).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+            Glide.with(shopCollectActivity).load(url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     holder.search_img.setImageBitmap(resource);

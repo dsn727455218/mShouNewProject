@@ -14,6 +14,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.Config;
@@ -63,7 +64,7 @@ public class FunctionRenewActivity extends BaseActivity implements View.OnClickL
         ArrayList<SourcesEntity> sourcesEntities = mUserAPI.getSourcesData();
         if (sourcesEntities != null && sourcesEntities.size() >= 4) {
             final String url = sourcesEntities.get(3).getSImg();
-            Glide.with(this).load(url).asBitmap().placeholder(R.drawable.renew_seize).error(R.drawable.renew_seize).into(new SimpleTarget<Bitmap>() {
+            Glide.with(this).load(url).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.renew_seize).error(R.drawable.renew_seize).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     mBattery_day_tv.setImageBitmap(resource);

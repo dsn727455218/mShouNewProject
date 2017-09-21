@@ -64,6 +64,9 @@ import java.util.ArrayList;
 import okhttp3.Call;
 import okhttp3.Response;
 
+import static com.shownew.home.Config.DRIVEROUTE;
+import static com.shownew.home.Config.RIDEROUTE;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -403,10 +406,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
             controlLock(3);
         } else if ("battery_manage".equals(v.getTag())) {
-            if (null == mDeviceEntity) {
-                mShouNewApplication.handleCarBind(context);
-                return;
-            }
+//            if (null == mDeviceEntity) {
+//                mShouNewApplication.handleCarBind(context);
+//                return;
+//            }
             mShouNewApplication.redirect(BatteryManagerActivity.class);
             //车辆管理
         } else if ("mCarHistory".equals(tag)) {//汽车的历史轨迹
@@ -557,21 +560,25 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                                 if (null != mDeviceEntity) {
                                     mType = jsonObject.getString("type");
                                     if ("汽车".equals(mType)) {
+                                        Preference.putInt(mShouNewApplication
+                                        ,Config.DEVICETYPE,DRIVEROUTE);
                                         if ("1".equals(mDeviceEntity.getIsLock())) {
                                             mCarLockIv.setImageResource(R.drawable.select_unlock_start);
                                         } else {
                                             mCarLockIv.setImageResource(R.drawable.select_lock_start);
                                         }
-                                        mConverView.findViewById(R.id.electric_vehicle).setVisibility(View.GONE);
+                                        mConverView.findViewById(R.id.electric_vehicle).setVisibility(View.INVISIBLE);
                                         mConverView.findViewById(R.id.car).setVisibility(View.VISIBLE);
                                     } else if ("电动车".equals(mType)) {
+                                        Preference.putInt(mShouNewApplication
+                                                ,Config.DEVICETYPE,RIDEROUTE);
                                         if ("1".equals(mDeviceEntity.getIsLock())) {
                                             mLock_iv.setImageResource(R.drawable.select_unlock_start);
                                         } else {
                                             mLock_iv.setImageResource(R.drawable.select_lock_start);
                                         }
                                         mConverView.findViewById(R.id.electric_vehicle).setVisibility(View.VISIBLE);
-                                        mConverView.findViewById(R.id.car).setVisibility(View.GONE);
+                                        mConverView.findViewById(R.id.car).setVisibility(View.INVISIBLE);
 
 
                                         if ("0".equals(mDeviceEntity.getIsMute())) {

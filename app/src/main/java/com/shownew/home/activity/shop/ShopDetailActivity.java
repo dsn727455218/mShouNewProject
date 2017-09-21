@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.reflect.TypeToken;
@@ -445,7 +446,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                                             imageView.setImageResource(R.drawable.square_seize);
                                             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                                             imageView.setLayoutParams(layoutParams);
-                                            Glide.with(ShopDetailActivity.this).load(img).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+                                            Glide.with(ShopDetailActivity.this).load(img).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                                                 @Override
                                                 public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
                                                     imageView.setImageBitmap(bitmap);
@@ -477,12 +478,12 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                                     mShouNewApplication.loadImg(discuss.getString("dUicon"), my_info_header_scv);
                                 } else {
                                     mShouNewApplication.loadImg("dUicon", my_info_header_scv);
-                                }
-                                if (discuss.has("dUname")) {
-                                    nicheng_tv.setText(discuss.getString("dUname"));
-                                } else {
-                                    nicheng_tv.setText("首牛用户");
-                                }
+                            }
+                            if (discuss.has("dUname")) {
+                                nicheng_tv.setText(discuss.getString("dUname"));
+                            } else {
+                                nicheng_tv.setText("首牛用户");
+                            }
 //                                String dimg = discuss.getString("dImg");
                                 evelute_time.setText(discuss.getString("dDate"));
                                 evelute_content.setText(discuss.getString("dText"));

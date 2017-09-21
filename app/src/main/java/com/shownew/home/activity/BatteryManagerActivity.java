@@ -1,5 +1,7 @@
 package com.shownew.home.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -7,21 +9,19 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
-import com.shownew.home.activity.shop.ShopDetailActivity;
 import com.shownew.home.module.DeviceAPI;
 import com.shownew.home.module.entity.DeviceEntity;
-import com.shownew.home.module.entity.SourcesEntity;
 import com.wp.baselib.utils.JsonUtils;
 import com.wp.baselib.utils.ToastUtil;
 import com.wp.baselib.widget.TitleBarView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 import okhttp3.Response;
 
@@ -31,8 +31,8 @@ public class BatteryManagerActivity extends BaseActivity implements View.OnClick
 
     private DeviceAPI deviceAPI;
     private ImageView chargeBattery;
-    private ImageView overChargeBattery;
     private ImageView batteryState;
+    private ImageView yellowProgress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,26 +51,27 @@ public class BatteryManagerActivity extends BaseActivity implements View.OnClick
         titleBarView.setLeftIconAndText(R.drawable.back_arrow, "返回");
         titleBarView.setTitleSize(20);
 
-        ImageView imageView = (ImageView) findViewById(R.id.battery_iv);
-        final ArrayList<SourcesEntity> sourcesEntities = deviceAPI.getSourcesData();
-        if (sourcesEntities != null && sourcesEntities.size() >= 4) {
-            final String url = sourcesEntities.get(1).getSImg();
-            mShouNewApplication.loadImg(url, imageView);
-            imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Bundle bundle = new Bundle();
-                    bundle.putString("shopId", sourcesEntities.get(1).getSPid());
-                    mShouNewApplication.redirectAndPrameter(ShopDetailActivity.class, bundle);
-                }
-            });
-        }
+        yellowProgress = (ImageView) findViewById(R.id.yellow_progress);
+        TextView yellowWendu= (TextView) findViewById(R.id.yellow_wendu);
+
+        ImageView redProgress = (ImageView) findViewById(R.id.red_progress);
+        TextView redWendu= (TextView) findViewById(R.id.red_wendu);
 
         chargeBattery = (ImageView) findViewById(R.id.charge_battery);
-        overChargeBattery = (ImageView) findViewById(R.id.over_charge_battery);
         batteryState = (ImageView) findViewById(R.id.battery_state);
         chargeBattery.setOnClickListener(this);
-        overChargeBattery.setOnClickListener(this);
+        RelativeLayout.LayoutParams layoutParams= (RelativeLayout.LayoutParams) yellowProgress.getLayoutParams();
+        RelativeLayout.LayoutParams redLayoutParams= (RelativeLayout.LayoutParams) yellowProgress.getLayoutParams();
+        Bitmap yellowBitmap=BitmapFactory.decodeResource(getResources(),R.drawable.yellowup);
+        int x=yellowBitmap.getWidth();
+        if (yellowBitmap!=null&&!yellowBitmap.isRecycled()){
+            yellowBitmap.recycle();
+        }
+        layoutParams.width= (int) (x*(50/150.0));
+        yellowWendu.setText(String.valueOf(50));
+        yellowProgress.setLayoutParams(layoutParams);
+        redLayoutParams.width=(int) (x*(40/150.0));
+        redWendu.setText(String.valueOf(40));
 
 
     }
@@ -83,9 +84,6 @@ public class BatteryManagerActivity extends BaseActivity implements View.OnClick
                 break;
             case R.id.charge_battery:
                 chargeBattert(1);
-                break;
-            case R.id.over_charge_battery:
-                chargeBattert(0);
                 break;
         }
     }
@@ -115,7 +113,6 @@ public class BatteryManagerActivity extends BaseActivity implements View.OnClick
                 if (value == 1) {
                     chargeBattery.setEnabled(false);
                 } else if (value == 0) {
-                    overChargeBattery.setEnabled(false);
                 }
             }
         });
@@ -129,11 +126,11 @@ public class BatteryManagerActivity extends BaseActivity implements View.OnClick
             closeLoadingDialog();
 
             chargeBattery.setEnabled(true);
-            overChargeBattery.setEnabled(true);
             switch (msg.arg1) {
                 case 1:
                     if (msg.what == 1) {
                         ToastUtil.showToast("开启成功");
+                        chargeBattery.setImageResource(R.drawable.end_charge);
                         batteryState.setImageResource(R.drawable.battery_animation_list);
                         Drawable drawable = batteryState.getDrawable();
                         if (drawable != null && drawable instanceof AnimationDrawable) {
@@ -143,6 +140,7 @@ public class BatteryManagerActivity extends BaseActivity implements View.OnClick
                             }
                         }
                     } else if (msg.what == 0) {
+                        chargeBattery.setImageResource(R.drawable.charge);
                         Drawable drawable = batteryState.getDrawable();
                         if (drawable != null && drawable instanceof AnimationDrawable) {
                             AnimationDrawable animationDrawable = (AnimationDrawable) drawable;

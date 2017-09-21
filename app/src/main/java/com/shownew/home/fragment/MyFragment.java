@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.shownew.home.R;
@@ -226,7 +227,7 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                                 UserEntity.UserBean userBean = JsonUtils.fromJson(user, UserEntity.UserBean.class);
                                 if (null != userBean) {
                                     mNichengTv.setText(TextUtils.isEmpty(userBean.getUNickname()) ? "修改昵称" : userBean.getUNickname());
-                                    Glide.with(context).load(userBean.getUIcon()).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+                                    Glide.with(context).load(userBean.getUIcon()).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                                         @Override
                                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                             mHeaderIcon.setImageBitmap(resource);

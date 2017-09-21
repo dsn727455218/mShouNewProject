@@ -22,6 +22,7 @@ import com.wp.baselib.widget.banner.Transformer;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import okhttp3.Call;
 import okhttp3.Response;
 
 /**
@@ -113,6 +114,11 @@ public class BaseFragment extends Fragment implements MsgBroadCasetRecivier.MsgL
 
     private void exsitUnReadMsg() {
         mPublicApi.exsitUnReadMsg(mShouNewApplication.new ShouNewHttpCallBackLisener() {
+            @Override
+            public void onError(Call call, Response response, Exception e) {
+
+            }
+
             @Override
             protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
                 if (exception == null) {

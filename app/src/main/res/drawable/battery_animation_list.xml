@@ -2,18 +2,18 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@drawable/charge_battery1"
+        android:drawable="@drawable/mannage_battery1"
         android:duration="500" />
     <item
-        android:drawable="@drawable/charge_battery2"
+        android:drawable="@drawable/mannage_battery2"
         android:duration="500" />
     <item
-        android:drawable="@drawable/charge_battery3"
+        android:drawable="@drawable/mannage_battery3"
         android:duration="500" />
     <item
-        android:drawable="@drawable/charge_battery4"
+        android:drawable="@drawable/mannage_battery4"
         android:duration="500" />
     <item
-        android:drawable="@drawable/charge_battery5"
+        android:drawable="@drawable/mannage_battery5"
         android:duration="500" />
 </animation-list>

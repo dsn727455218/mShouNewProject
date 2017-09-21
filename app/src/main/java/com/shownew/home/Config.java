@@ -162,4 +162,21 @@ public class Config extends com.wp.baselib.Config {
      */
     public static final java.lang.String WXPAY = "wx18e68dc827ac8cc7";
     public static final String SN = "SN";
+    /**
+     * 骑行
+     */
+    public static final int RIDEROUTE = 1;
+    /**
+     * 步行
+     */
+    public static final int WALKROUTE = 2;
+    /**
+     * 自驾车
+     */
+    public static final int DRIVEROUTE = 3;
+
+    /**
+     * 车辆类型
+     */
+    public static final String DEVICETYPE = "BIND_CAR_TYPE";
 }

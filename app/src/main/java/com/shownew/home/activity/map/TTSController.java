@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Toast;
 
 import com.amap.api.navi.MyNaviListener;
 import com.amap.api.navi.model.AMapLaneInfo;
@@ -26,6 +25,8 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SpeechUtility;
 import com.iflytek.cloud.SynthesizerListener;
+import com.shownew.home.ShouNewApplication;
+import com.wp.baselib.utils.ToastUtil;
 
 import java.util.LinkedList;
 
@@ -39,7 +40,7 @@ public class TTSController implements MyNaviListener {
     /**
      * 请替换您自己申请的ID。
      */
-    private final static String appId = "595386f2";
+    private final static String APPID = "595386f2";
 
     public static TTSController ttsManager;
     private Context mContext;
@@ -115,7 +116,7 @@ public class TTSController implements MyNaviListener {
 
     private TTSController(Context context) {
         mContext = context.getApplicationContext();
-        SpeechUtility.createUtility(mContext, SpeechConstant.APPID + "=" + appId);
+        SpeechUtility.createUtility(mContext, SpeechConstant.APPID + "=" + APPID);
         if (mTts == null) {
             createSynthesizer();
         }
@@ -126,9 +127,9 @@ public class TTSController implements MyNaviListener {
                 new InitListener() {
                     @Override
                     public void onInit(int errorcode) {
-                        if (ErrorCode.SUCCESS == errorcode) {
-                        } else {
-                            Toast.makeText(mContext, "语音合成初始化失败!", Toast.LENGTH_SHORT);
+                        if (ErrorCode.SUCCESS
+                                != errorcode) {
+                            ToastUtil.showToast("语音合成初始化失败!");
                         }
                     }
                 });
@@ -145,9 +146,9 @@ public class TTSController implements MyNaviListener {
         mTts.setParameter(SpeechConstant.PITCH, "tts_pitch");
     }
 
-    public static TTSController getInstance(Context context) {
+    public static TTSController getInstance() {
         if (ttsManager == null) {
-            ttsManager = new TTSController(context);
+            ttsManager = new TTSController(ShouNewApplication.getInstance());
         }
         return ttsManager;
     }

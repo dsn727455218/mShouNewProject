@@ -18,6 +18,7 @@ import com.shownew.home.Config;
 import com.shownew.home.R;
 import com.shownew.home.activity.common.BaseActivity;
 import com.shownew.home.activity.shop.ShopDetailActivity;
+import com.shownew.home.activity.shopcommon.ShoppingCartActivity;
 import com.shownew.home.adapter.ShopHeaderAdapter;
 import com.shownew.home.adapter.ShopHomeAdapter;
 import com.shownew.home.module.ShopAPI;
@@ -25,6 +26,7 @@ import com.shownew.home.module.entity.HomeAdverEntity;
 import com.shownew.home.module.entity.ShopMaillTypeEntity;
 import com.shownew.home.module.entity.ShopMallListEntity;
 import com.shownew.home.utils.GlideImageLoader;
+import com.shownew.home.utils.dialog.ShopPopwindow;
 import com.wp.baselib.utils.JsonUtils;
 import com.wp.baselib.widget.TitleBarView;
 import com.wp.baselib.widget.banner.Banner;
@@ -65,6 +67,8 @@ public class ShoppingMallActivity extends BaseActivity implements View.OnClickLi
         titleBarView.setTitleTextColor(R.color.color_title);
         titleBarView.setOnLeftOnClickListener(this);
         titleBarView.setLeftIcon(R.drawable.back_arrow);
+        titleBarView.setMoreIcon(R.drawable.gengduo);
+        titleBarView.setOnMoreClickListener(this);
         titleBarView.setTitleSize(20);
 
 
@@ -114,6 +118,7 @@ public class ShoppingMallActivity extends BaseActivity implements View.OnClickLi
         View hearderView = getLayoutInflater().inflate(R.layout.layout_supermarket_home_header, null);
         mBanner = (Banner) hearderView.findViewById(R.id.banner);
         hearderView.findViewById(R.id.search_shop).setOnClickListener(this);
+        hearderView.findViewById(R.id.shopping_cart_a_iv).setOnClickListener(this);
         mShopSearchContent = (EditText) hearderView.findViewById(R.id.shop_search);
         mShopSearchContent.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -186,11 +191,17 @@ public class ShoppingMallActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.shopping_cart_a_iv:
+                mShouNewApplication.redirect(ShoppingCartActivity.class);
+                break;
             case R.id.backBtn:
                 finish();
                 break;
             case R.id.search_shop:
                 search();
+                break;
+            case R.id.title_bar_more:
+                new ShopPopwindow(this,mShouNewApplication).showPopupWindow(v);
                 break;
 
         }

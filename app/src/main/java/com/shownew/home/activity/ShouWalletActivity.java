@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.gson.reflect.TypeToken;
@@ -132,7 +133,7 @@ public class ShouWalletActivity extends BaseActivity implements View.OnClickList
                             if (!TextUtils.isEmpty(user)) {
                                 UserEntity.UserBean userBean = JsonUtils.fromJson(user, UserEntity.UserBean.class);
                                 if (null != userBean) {
-                                    Glide.with(mShouNewApplication).load(userBean.getUIcon()).asBitmap().placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
+                                    Glide.with(mShouNewApplication).load(userBean.getUIcon()).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.drawable.square_seize).error(R.drawable.square_seize).into(new SimpleTarget<Bitmap>() {
                                         @Override
                                         public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                                             mMy_header_icon.setImageBitmap(resource);
