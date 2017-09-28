@@ -18,7 +18,7 @@ import com.shownew.home.module.entity.HomeAdverEntity;
 
 import java.util.ArrayList;
 
-/**
+/**服务适配
  * Created by jianghejie on 15/11/26.
  */
 public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHolder> {

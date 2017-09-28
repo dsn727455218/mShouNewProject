@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-/**
+/**首牛商城详情
  * @author Jason
  * @version 1.0
  * @date 2017/6/3 0003

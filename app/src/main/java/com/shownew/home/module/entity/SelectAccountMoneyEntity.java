@@ -1,6 +1,6 @@
 package com.shownew.home.module.entity;
 
-/**
+/**选择金额实体
  * @author Jason
  * @version 1.0
  * @date 2017/4/21 0021

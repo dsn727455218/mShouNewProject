@@ -11,7 +11,7 @@ import android.widget.RadioGroup;
 import com.shownew.home.R;
 
 /**
- * @descirpte     支付方式选择
+ * @descirpte     支付方式选择dialog
  * @version 1.0
  * @date 2017/5/3 0003
  */

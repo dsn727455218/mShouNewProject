@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * 我的 地址
  * @author Jason
  * @version 1.0
  * @date 2017/5/3 0003

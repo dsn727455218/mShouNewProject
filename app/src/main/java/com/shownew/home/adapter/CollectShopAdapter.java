@@ -20,7 +20,7 @@ import com.wp.baselib.utils.StringUtil;
 
 import java.util.ArrayList;
 
-/**
+/**收藏适配
  * Created by WP on 2017/7/28.
  */
 

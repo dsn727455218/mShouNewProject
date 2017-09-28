@@ -3,7 +3,7 @@ package com.shownew.home.module.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
+/**订单   详情
  * @author Jason
  * @version 1.0
  * @date 2017/5/20 0020

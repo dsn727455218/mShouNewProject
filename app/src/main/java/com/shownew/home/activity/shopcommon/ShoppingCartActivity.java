@@ -160,7 +160,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
 
                     } else if ("完成".equals(rightText)) {
                         if (!Preference.getBoolean(mShouNewApplication, Preference.IS_LOGIN, false)) {
-                            DatabaseUtils.updateSelectData(this, shopCarEntities);
+                            DatabaseUtils.getInstances().updateSelectData( shopCarEntities);
                         } else {
                             updateShopCart(shopCarEntities);
                         }
@@ -192,7 +192,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
             shopCarEntities.clear();
         }
         titleBarView.setTitle(String.format("购物车(%s)", size));
-        shopCarEntities.addAll(DatabaseUtils.queryAllData(this));
+        shopCarEntities.addAll(DatabaseUtils.getInstances().queryAllData());
         size = shopCarEntities.size();
         titleBarView.setTitle(String.format("购物车(%s)", size));
         if (size == 0) {
@@ -215,7 +215,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     public void saveShopCar(ShopCarEntity shopCarEntity) {
         if (shopCarEntity != null) {
             if (!Preference.getBoolean(mShouNewApplication, Preference.IS_LOGIN, false)) {
-                DatabaseUtils.updateData(this, shopCarEntity);
+                DatabaseUtils.getInstances().updateData(shopCarEntity);
             } else {
                 ArrayList<ShopCarEntity> shopCarEntities = new ArrayList<ShopCarEntity>();
                 shopCarEntities.add(shopCarEntity);
@@ -229,7 +229,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
         if (shopCarEntity != null && shopCarEntity.size() > position) {
             ShopCarEntity carEntity = shopCarEntity.get(position);
             if (!Preference.getBoolean(mShouNewApplication, Preference.IS_LOGIN, false)) {
-                DatabaseUtils.delete(this, carEntity);
+                DatabaseUtils.getInstances().delete( carEntity);
                 shopCarEntity.remove(position);
                 if (shopCarEntity.size() == 0) {
                     mEmptyTips.setText("你购物车还没有商品哦\n快去加入购物车吧!");

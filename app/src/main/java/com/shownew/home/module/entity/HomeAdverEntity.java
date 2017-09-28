@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * 广告实体
  * @author Jason
  * @version 1.0
  * @date 2017/5/4 0004

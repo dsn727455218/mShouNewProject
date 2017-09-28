@@ -23,6 +23,7 @@ import com.wp.baselib.widget.WordWrapLayout;
 
 
 /**
+ * 购买商品时的 Dialog
  * @author Jason
  * @version 1.0
  * @date 2017/4/28 0028

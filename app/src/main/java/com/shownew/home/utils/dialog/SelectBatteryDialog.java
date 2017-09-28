@@ -14,7 +14,7 @@ import com.wp.zxing.view.ViewfinderView;
 
 import java.util.ArrayList;
 
-/**
+/**电池选择dialog
  * @author Jason
  * @version 1.0
  * @date 2017/4/18 0018

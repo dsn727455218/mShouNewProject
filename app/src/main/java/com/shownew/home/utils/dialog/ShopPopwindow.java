@@ -17,7 +17,7 @@ import com.wp.baselib.utils.Preference;
 import static com.shownew.home.R.id.home_pop;
 import static com.shownew.home.R.id.msg;
 
-/**
+/**商品中的菜单popwindow
  * @author Jason
  * @version 1.0
  * @date 2017/5/4 0004

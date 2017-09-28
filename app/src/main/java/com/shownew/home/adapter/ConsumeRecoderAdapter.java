@@ -12,7 +12,7 @@ import com.wp.baselib.utils.StringUtil;
 
 import java.util.ArrayList;
 
-/**
+/**消费记录
  * @author Jason
  * @version 1.0
  * @date 2017/4/21 0021

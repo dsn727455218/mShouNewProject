@@ -3,7 +3,7 @@ package com.shownew.home.module.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
+/**首牛商城类别
  * @author Jason
  * @version 1.0
  * @date 2017/6/3 0003

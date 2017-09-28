@@ -23,7 +23,7 @@ import com.shownew.home.module.entity.CarEntity;
 import java.util.ArrayList;
 
 
-/**
+/**我的车辆适配
  * @author Jason
  * @version 1.0
  * @date 2017/4/17 0017

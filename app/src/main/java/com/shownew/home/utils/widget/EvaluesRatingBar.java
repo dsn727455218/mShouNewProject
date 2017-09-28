@@ -14,7 +14,7 @@ import com.shownew.home.R;
 
 
 
-/**
+/**商品评价
  * Created by WP on 2017/7/25.
  */
 

@@ -68,7 +68,7 @@ import static com.shownew.home.Config.DRIVEROUTE;
 import static com.shownew.home.Config.RIDEROUTE;
 
 
-/**
+/**主页
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends BaseFragment implements View.OnClickListener, SwipeRefreshLayout.OnRefreshListener {

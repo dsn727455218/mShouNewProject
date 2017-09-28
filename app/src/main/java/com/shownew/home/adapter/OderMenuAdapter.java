@@ -21,7 +21,7 @@ import com.wp.baselib.utils.StringUtil;
 import java.util.ArrayList;
 
 
-/**
+/**订单适配
  * @author Jason
  * @version 1.0
  * @date 2017/4/21 0021

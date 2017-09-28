@@ -18,7 +18,7 @@ import com.shownew.home.module.entity.HomeAdverEntity;
 
 import java.util.ArrayList;
 
-/**
+/**首牛钱包的适配
  * Created by jianghejie on 15/11/26.
  */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {

@@ -13,7 +13,7 @@ import com.shownew.home.module.entity.MsgListEntity;
 
 import java.util.ArrayList;
 
-/**
+/**消息中心
  * @author Jason
  * @version 1.0
  * @date 2017/4/17 0017

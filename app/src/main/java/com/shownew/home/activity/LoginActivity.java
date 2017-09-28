@@ -220,12 +220,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 
     private void updateShopCar() {
-        List<ShopCarEntity> shopCarEntities = DatabaseUtils.queryAllData(this);
+        List<ShopCarEntity> shopCarEntities = DatabaseUtils.getInstances().queryAllData();
         if (shopCarEntities != null && shopCarEntities.size() > 0) {
             shopAPI.updateShopCar(JsonUtils.toJson(shopCarEntities), mShouNewApplication.new ShouNewHttpCallBackLisener() {
                 @Override
                 protected void resultData(Object data, JSONObject json, Response response, Exception exception) {
-                    DatabaseUtils.deleteAll(LoginActivity.this);
+                    DatabaseUtils.getInstances().deleteAll();
                     finish();
                 }
             });

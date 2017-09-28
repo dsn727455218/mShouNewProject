@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 
 /**
+ * 评价列表实体
  * Created by WP on 2017/8/7.
  */
 

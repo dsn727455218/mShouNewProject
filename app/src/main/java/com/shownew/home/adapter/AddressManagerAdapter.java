@@ -13,7 +13,7 @@ import com.shownew.home.activity.AddressManagerActivity;
 
 import java.util.ArrayList;
 
-/**
+/**地址管理适配器   没有使用
  * Created by jianghejie on 15/11/26.
  */
 public class AddressManagerAdapter extends RecyclerView.Adapter<AddressManagerAdapter.ViewHolder> {

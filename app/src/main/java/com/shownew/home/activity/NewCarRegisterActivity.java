@@ -109,7 +109,7 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
         if (mBundle != null) {
             String qrCode = mBundle.getString("QRCode");
             if (!TextUtils.isEmpty(qrCode)) {
-                int length = 15 + Config.SN.length();
+                int length = 13 + Config.SN.length();
                 mDeviceType_ed.setText(qrCode.substring(Config.SN.length(), length));
                 mCarNameEt.setText(qrCode.substring(length, qrCode.length()));
             }
@@ -205,8 +205,8 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
             ToastUtil.showToast("请输入设备号");
             return;
         }
-        if (deviceTypeNumber.length() < 15) {
-            ToastUtil.showToast("设备号为15位");
+        if (deviceTypeNumber.length() < 13) {
+            ToastUtil.showToast("设备号为13位");
             return;
         }
 
@@ -361,7 +361,7 @@ public class NewCarRegisterActivity extends BaseActivity implements View.OnClick
                 ToastUtil.showToast("二维码扫描超时！请手动输入设备号！");
             } else if (!com.wp.zxing.config.Config.jump_saoma.equals(qrCode)) {
                 if (qrCode.contains(Config.SN)) {
-                    int length = 15 + Config.SN.length();
+                    int length = 13 + Config.SN.length();
                     mDeviceType_ed.setText(qrCode.substring(Config.SN.length(), length));
                     mCarNameEt.setText(qrCode.substring(length, qrCode.length()));
                 } else {

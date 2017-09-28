@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.util.ArrayList;
 
-/**
+/**车配超市详情
  * @author Jason
  * @version 1.0
  * @date 2017/5/6 0006

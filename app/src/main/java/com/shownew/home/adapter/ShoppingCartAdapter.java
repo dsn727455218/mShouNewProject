@@ -27,6 +27,7 @@ import java.util.ArrayList;
 
 
 /**
+ * 购物车适配
  * Created by WP on 2017/8/9.
  */
 

@@ -24,7 +24,7 @@ import com.wp.baselib.utils.StringUtil;
 import java.util.ArrayList;
 
 
-/**
+/**订单列表适配
  * Created by WP on 2017/8/14.
  */
 

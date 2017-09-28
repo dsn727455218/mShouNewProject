@@ -21,7 +21,7 @@ import com.shownew.home.module.entity.MessageActionEntity;
 import java.util.ArrayList;
 
 
-/**
+/**活动消息
  * @author Jason
  * @version 1.0
  * @date 2017/5/24 0024

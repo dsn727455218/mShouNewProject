@@ -12,7 +12,7 @@ import com.wp.baselib.BaseObjectAdapter;
 
 import java.util.ArrayList;
 
-/**
+/**分享适配
  * @author Jason
  * @version 1.0
  * @date 2017/5/3 0003

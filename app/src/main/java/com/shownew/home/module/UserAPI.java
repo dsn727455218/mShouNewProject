@@ -472,6 +472,11 @@ public class UserAPI extends PublicApi {
         post(Config.PAY, map, lisener);
     }
 
+    /**
+     * 取消订单
+     * @param oId
+     * @param lisener
+     */
     public void cancelOrderz(String oId, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
         Map<String, String> map = getHashMap(Config.ODER_MENU);
         map.put("method", "cannelOrderz");
@@ -479,6 +484,11 @@ public class UserAPI extends PublicApi {
         post(Config.ODER_MENU, map, lisener);
     }
 
+    /**
+     * 确认收货
+     * @param oId
+     * @param lisener
+     */
     public void confirmReceived(String oId, ShouNewApplication.ShouNewHttpCallBackLisener lisener) {
         Map<String, String> map = getHashMap(Config.ODER_MENU);
         map.put("method", "confirmReceived");

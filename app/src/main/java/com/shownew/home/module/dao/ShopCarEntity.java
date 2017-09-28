@@ -1,9 +1,15 @@
 package com.shownew.home.module.dao;
 
 
+import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * 购物车
+ */
+
+@SuppressLint("ParcelCreator")
 public class ShopCarEntity implements Parcelable {
     public Integer get_id() {
         return _id;

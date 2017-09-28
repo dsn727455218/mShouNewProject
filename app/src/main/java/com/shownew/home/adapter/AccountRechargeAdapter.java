@@ -14,6 +14,7 @@ import com.wp.baselib.utils.StringUtil;
 import java.util.ArrayList;
 
 /**
+ * 选择金额适配器
  * @author Jason
  * @version 1.0
  * @date 2017/4/21 0021

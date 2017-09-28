@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.shownew.home.R;
 
-/**
+/**公共的dialog
  * @author Jason
  * @version 1.0
  * @date 2017/4/18 0018

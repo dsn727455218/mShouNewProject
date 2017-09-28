@@ -1,7 +1,7 @@
 package com.shownew.home.pay;
 
 import android.text.TextUtils;
-
+// 支付包支付结果解析
 public class PayResult {
     private String resultStatus;
     private String result;

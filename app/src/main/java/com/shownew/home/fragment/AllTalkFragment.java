@@ -29,6 +29,9 @@ import java.util.ArrayList;
 
 import okhttp3.Response;
 
+/**
+ * 评价
+ */
 public class AllTalkFragment extends Fragment implements View.OnClickListener {
 
     private static final String ARG_PARAM1 = "type";

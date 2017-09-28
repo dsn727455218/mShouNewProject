@@ -25,7 +25,7 @@ import com.wp.baselib.widget.CustomShapeImageView;
 
 import java.util.ArrayList;
 
-/**
+/**评价的适配
  * Created by WP on 2017/8/7.
  */
 

@@ -319,6 +319,11 @@ public class ShopAPI extends PublicApi {
         post(Config.Shop_DISCUSS, map, shouNewHttpCallBackLisener);
     }
 
+    /**
+     * 更新购物车
+     * @param data
+     * @param shouNewHttpCallBackLisener
+     */
     public void updateShopCar(String data, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
 
         Map<String, String> map = getHashMap(Config.SHOP_CAR);
@@ -327,12 +332,21 @@ public class ShopAPI extends PublicApi {
         post(Config.SHOP_CAR, map, shouNewHttpCallBackLisener);
     }
 
+    /**
+     * 获取购物车列表
+     * @param shouNewHttpCallBackLisener
+     */
     public void getShopcarList( ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
         Map<String, String> map = getHashMap(Config.SHOP_CAR);
         map.put("method", "getShopcarList");
         get(createUrlFromParams(Config.SHOP_CAR, map), shouNewHttpCallBackLisener);
     }
 
+    /**
+     * 收藏夹
+     * @param data
+     * @param shouNewHttpCallBackLisener
+     */
     public void updateShopCart(String data, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
         Map<String, String> map = getHashMap(Config.SHOP_CAR);
         map.put("method", "update");
@@ -340,6 +354,11 @@ public class ShopAPI extends PublicApi {
         post(Config.SHOP_CAR, map, shouNewHttpCallBackLisener);
     }
 
+    /**
+     * 删除购物车
+     * @param shId
+     * @param shouNewHttpCallBackLisener
+     */
     public void deleteShopCar(String shId, ShouNewApplication.ShouNewHttpCallBackLisener shouNewHttpCallBackLisener) {
         Map<String, String> map = getHashMap(Config.SHOP_CAR);
         map.put("method", "delete");

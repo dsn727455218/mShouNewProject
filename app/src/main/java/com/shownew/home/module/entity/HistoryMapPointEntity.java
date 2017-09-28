@@ -3,7 +3,7 @@ package com.shownew.home.module.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
+/**历史停车点实体
  * Created by WP on 2017/7/20.
  */
 

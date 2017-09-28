@@ -564,7 +564,7 @@ public class ShopDetailActivity extends AndroidActivity implements View.OnClickL
                             shopCarEntity.setShKdprice(mSuperMarkeDetailEntity.getPKdprice());
 
                             if (!Preference.getBoolean(mShouNewApplication, Preference.IS_LOGIN, false)) {
-                                DatabaseUtils.insert(ShopDetailActivity.this, shopCarEntity);
+                                DatabaseUtils.getInstances().insert( shopCarEntity);
                                 ToastUtil.showToast("添加成功");
                             } else {
                                 updateShopCar(shopCarEntity);

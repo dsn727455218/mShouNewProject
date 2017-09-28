@@ -25,7 +25,7 @@ import org.json.JSONObject;
 import okhttp3.Call;
 import okhttp3.Response;
 
-/**
+/**base
  * A simple {@link Fragment} subclass.
  */
 public class BaseFragment extends Fragment implements MsgBroadCasetRecivier.MsgLisener {

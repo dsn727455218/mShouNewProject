@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
+ * 功能续费选择实体
  * @author Jason
  * @version 1.0
  * @date 2017/5/5 0005

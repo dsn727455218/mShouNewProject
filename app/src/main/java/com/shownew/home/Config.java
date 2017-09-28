@@ -41,8 +41,8 @@ public class Config extends com.wp.baselib.Config {
     /**
      * api接口跟路径
      */
-    private static final String WEB_ROOT = "http://www.shounew.cn:8090/Shou6Control/";
-//    private static final String WEB_ROOT = "http://www.shounew.cn/Shou6Control/";
+    private static final String WEB_ROOT = "http://www.shounew.cn:8090/Shou6Control/";// 测试服务地址
+//    private static final String WEB_ROOT = "http://www.shounew.cn/Shou6Control/";   //正式服务地址
     //================================================================用户相关==
 
     public static final String USER = WEB_ROOT + "user.do";
@@ -62,10 +62,7 @@ public class Config extends com.wp.baselib.Config {
      * 注销
      */
     public static final String LOGINOUT = USER;
-    /**
-     * 上传用户头像
-     */
-    public static final String UPLOAD_HEAD_ICON = USER;
+
     //=======================================================================云控设备
 
     public static final String DEVICE = WEB_ROOT + "userCtl.do";

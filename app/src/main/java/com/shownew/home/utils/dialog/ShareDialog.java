@@ -13,7 +13,7 @@ import com.shownew.home.ShouNewApplication;
 import com.shownew.home.activity.share.ShareUtils;
 import com.shownew.home.adapter.ShareAdapter;
 
-/**
+/**分享的dialog
  * @author Jason
  * @version 1.0
  * @date 2017/5/3 0003

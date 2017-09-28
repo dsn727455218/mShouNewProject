@@ -22,7 +22,11 @@ import java.io.File;
 import okhttp3.Call;
 import okhttp3.Response;
 
+import static com.umeng.socialize.utils.DeviceConfig.context;
 
+/**
+ * app更新的服务  展示没用   用的直接是应拥宝的链接地址
+ */
 public class AppUpdateService extends IntentService {
 
 
@@ -37,14 +41,13 @@ public class AppUpdateService extends IntentService {
         mPublicApi = new PublicApi(mShouNewApplication);
     }
 
-    public void sendResidentNoticeType2(Context context, String title, int progress, String apkUrl) {
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context);
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         builder.setOngoing(false);
         builder.setPriority(NotificationCompat.PRIORITY_MAX);
         remoteViews = new RemoteViews(context.getPackageName(), R.layout.notifiticon_update_file);
-        remoteViews.setTextViewText(R.id.title_tv, title);
-        remoteViews.setTextViewText(R.id.progress, String.format("%s", progress));
-        remoteViews.setProgressBar(R.id.progressBar, 100, progress, false);
         builder.setSmallIcon(R.mipmap.ic_launcher);
         notification = builder.build();
         if (android.os.Build.VERSION.SDK_INT >= 16) {
@@ -53,6 +56,12 @@ public class AppUpdateService extends IntentService {
         }
         notification.contentView = remoteViews;
         manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+    }
+
+    public void sendResidentNoticeType2(String title, int progress, String apkUrl) {
+        remoteViews.setTextViewText(R.id.title_tv, title);
+        remoteViews.setTextViewText(R.id.progress, String.format("%s", progress));
+        remoteViews.setProgressBar(R.id.progressBar, 100, progress, false);
         manager.notify(NOTICE_ID_TYPE_0, notification);
         downFile(apkUrl);
     }
@@ -118,7 +127,7 @@ public class AppUpdateService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent) {
         if (intent != null) {
             String apkUrl = intent.getStringExtra("url");
-            sendResidentNoticeType2(this, "首牛云控更新包下载中", 0, apkUrl);
+            sendResidentNoticeType2( "首牛云控更新包下载中", 0, apkUrl);
         }
     }
 

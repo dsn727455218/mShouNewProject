@@ -38,7 +38,7 @@ import java.util.LinkedList;
 public class TTSController implements MyNaviListener {
 
     /**
-     * 请替换您自己申请的ID。
+     * 如果需更改可以替换成公司申请的appID。
      */
     private final static String APPID = "595386f2";
 

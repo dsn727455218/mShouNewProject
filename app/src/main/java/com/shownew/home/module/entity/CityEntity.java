@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**城市选择 实体
  * @author Jason
  * @version 1.0
  * @date 2017/4/20 0020

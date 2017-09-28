@@ -2,7 +2,7 @@ package com.shownew.home.module.dao;
 
 import android.os.Parcel;
 
-/**
+/**购物车
  * Created by WP on 2017/8/11.
  */
 

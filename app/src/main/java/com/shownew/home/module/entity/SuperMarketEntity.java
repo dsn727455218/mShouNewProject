@@ -3,7 +3,7 @@ package com.shownew.home.module.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
+/**车配超市列表
  * @author Jason
  * @version 1.0
  * @date 2017/5/6 0006

@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
+/**用户实体
  * @author Jason
  * @version 1.0
  * @date 2017/3/31 0031

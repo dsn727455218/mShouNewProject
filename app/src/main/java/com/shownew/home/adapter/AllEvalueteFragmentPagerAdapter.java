@@ -8,7 +8,7 @@ import com.shownew.home.fragment.AllTalkFragment;
 
 import java.util.ArrayList;
 
-/**
+/**评价的Fragment
  * Created by WP on 2017/7/27.
  */
 
